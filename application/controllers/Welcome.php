@@ -110,10 +110,26 @@ class Welcome extends CI_Controller {
 	public function contact()
 	{
 		$data=array();
-		if($_POST)
-		{
-		echo '<pre>';print_r($_POST);exit;
-	    }
+
+		$this->form_validation->set_rules('firstname', 'FirstName', 'required');
+    	$this->form_validation->set_rules('lastname', 'LastName', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('message', 'Message', 'required');
+        if($_POST)
+        {
+        	
+        if ($this->form_validation->run() == TRUE) 
+        {
+           $msg=$this->input->post('message');
+           //print_r($this->input->post('message'));
+           mail("iamgargi92@mail.com","Customer Query",$msg);
+        }
+        else
+        {
+            
+          echo "bye";
+        }
+    	}
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
 		$this->load->view('contact_us',$data);

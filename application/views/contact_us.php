@@ -44,15 +44,15 @@
                 <h4>Contact Form</h4>
                 <div class="status alert alert-success" style="display: none"></div>
 
-                <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="welcome/contact">
+                <form  method="post">
                   <div class="row-fluid">
                     <div class="span5">
                         <label>First Name</label>
-                        <input type="text" class="input-block-level" required="required" placeholder="Your First Name" name='fname'>
+                        <input type="text" name="firstname" class="input-block-level" required="required" placeholder="Your First Name">
                         <label>Last Name</label>
-                        <input type="text" class="input-block-level" required="required" placeholder="Your Last Name" name='lname'>
+                        <input type="text" name="lastname" class="input-block-level" required="required" placeholder="Your Last Name">
                         <label>Email Address</label>
-                        <input type="text" class="input-block-level" required="required" placeholder="Your email address" name='email'>
+                        <input type="email" name="email" class="input-block-level" required="required" placeholder="Your email address">
                     </div>
                     <div class="span7">
                         <label>Message</label>
@@ -60,8 +60,8 @@
                     </div>
 
                 </div>
-                <input type="submit" class="btn btn-primary btn-large pull-right" value="Send Message" name='sub'>
-                <p> </p>
+               <!--  <button type="submit" class="btn btn-primary btn-large pull-right">Send Message</button> -->
+                <input type='submit' name='submit' value='send message' class="btn btn-primary btn-large pull-right">
 
             </form>
         </div>
