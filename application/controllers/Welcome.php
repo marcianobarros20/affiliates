@@ -33,19 +33,24 @@ class Welcome extends CI_Controller {
 		$data=array();
 
 
-$this->email->from('your@example.com', 'Your Name');
-$this->email->to('subhu.tcs@gmail.com'); 
-
+$this->email->from('iamgargi92@gmail.com', 'Your Name');
+$this->email->to('iamgargi92@gmail.com'); 
+ 	
 
 $this->email->subject('Email Test');
 $this->email->message('Testing the email class.');	
 
-$this->email->send();
+$mail=$this->email->send();
 
 
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
 		$this->load->view('index',$data);
+
+if ($mail)
+{
+	echo 'mail sent';
+}
 	}
 	public function signup()
 	{
