@@ -23,6 +23,7 @@ class Welcome extends CI_Controller {
 		parent::__construct();
 		
 		$this->load->library('form_validation');
+		//$this->load->library('email');
 		$this->load->model('Common_model');
 	}
 
@@ -30,6 +31,18 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$data=array();
+
+
+$this->email->from('your@example.com', 'Your Name');
+$this->email->to('subhu.tcs@gmail.com'); 
+
+
+$this->email->subject('Email Test');
+$this->email->message('Testing the email class.');	
+
+$this->email->send();
+
+
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
 		$this->load->view('index',$data);
