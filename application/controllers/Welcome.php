@@ -139,9 +139,17 @@ if ($mail)
         if ($this->form_validation->run() == TRUE) 
         {
            $msg=$this->input->post('message');
+           $this->email->from('iamgargi92@gmail.com', 'Your Name');
+$this->email->to('hello@tier5.us'); 
+ 	
+
+$this->email->subject('Email Test');
+$this->email->message('Testing the email class.');	
+
+$mail=$this->email->send();
            //print_r($this->input->post('message'));
-           $status=mail("roysubho687@gmail.com","Customer Query",$msg);
-           if ($status) {
+           //$status=mail("roysubho687@gmail.com","Customer Query",$msg);
+           if ($mail) {
            	echo "Mail sent successfully";
            }
            else
