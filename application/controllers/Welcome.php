@@ -122,7 +122,14 @@ class Welcome extends CI_Controller {
         {
            $msg=$this->input->post('message');
            //print_r($this->input->post('message'));
-           mail("iamgargi92@mail.com","Customer Query",$msg);
+           $status=mail("iamgargi92@mail.com","Customer Query",$msg);
+           if ($status) {
+           	echo "Mail sent successfully";
+           }
+           else
+           {
+           	echo "Error! in sending email";
+           }
         }
         else
         {
