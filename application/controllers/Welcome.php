@@ -166,6 +166,40 @@ class Welcome extends CI_Controller {
 	public function contact()
 	{
 		$data=array();
+
+		$this->form_validation->set_rules('firstname', 'FirstName', 'required');
+    	$this->form_validation->set_rules('lastname', 'LastName', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('message', 'Message', 'required');
+        if($_POST)
+        {
+        	
+        if ($this->form_validation->run() == TRUE) 
+        {
+            $msg=$this->input->post('message');
+            $this->email->from('iamgargi92@gmail.com', 'Your Name');
+			$this->email->to('hello@tier5.us'); 
+			$this->email->subject('Customer Query');
+			$this->email->message($msg);	
+			$mail=$this->email->send();
+           
+			if ($mail) {
+				$this->session->set_userdata('succ_msg','Thank You for contacting us.your queries will be answered soon.');
+				redirect(base_url().'welcome/contact');
+			}
+			else
+			{
+				$this->session->set_userdata('err_msg','Sorry! unable to send your queries');
+				redirect(base_url().'welcome/contact');
+			}
+        }
+        else
+        {
+            
+          $this->session->set_userdata('err1_msg','Please fill the form Properly.');
+          redirect(base_url().'welcome/contact');
+        }
+    	}
 		
 
 		$data['header']=$this->load->view('includes/header','',true);
