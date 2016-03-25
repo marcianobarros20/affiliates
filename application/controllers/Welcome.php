@@ -33,24 +33,9 @@ class Welcome extends CI_Controller {
 		$data=array();
 
 
-$this->email->from('iamgargi92@gmail.com', 'Your Name');
-$this->email->to('iamgargi92@gmail.com'); 
- 	
-
-$this->email->subject('Email Test');
-$this->email->message('Testing the email class.');	
-
-$mail=$this->email->send();
-
-
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
 		$this->load->view('index',$data);
-
-if ($mail)
-{
-	echo 'mail sent';
-}
 	}
 	public function signup()
 	{
@@ -78,7 +63,7 @@ if ($mail)
 			if ($this->form_validation->run() == TRUE)
 			{
 			  $email=$this->input->post('email');
-			  $$username=$this->input->post('username');
+			  $username=$this->input->post('username');
 
 			  $chk_email_exists=$this->Common_model->Fnemailexists($email);	
 			  $chk_user_exists=$this->Common_model->Fnuserxists($username);	
@@ -125,46 +110,75 @@ if ($mail)
 		$this->load->view('registration',$data);
 	}
 
+
+	public function login()
+	{
+		if($_POST)
+		{
+			$email=$this->input->post('email');
+			$pass=$this->input->post('password');
+			$log=$this->Common_model->FnchLogin($email,$pass);
+			if(count($log)>0)
+			{
+				if($log['status']==1)
+				{
+					if($this->input->post('remember_me')==1)
+					{
+						$cookie= array(
+						'name'   => 'email',
+						'value'  => $email,
+						'expire' => '86500',
+						);
+						
+
+						$cookie= array(
+						'name'   => 'password',
+						'value'  => $pass,
+						'expire' => '86500',
+						);
+
+
+						$cookie= array(
+						'name'   => 'rem',
+						'value'  => 1,
+						'expire' => '86500',
+						);
+						$this->input->set_cookie($cookie);
+					}
+					$this->session->set_userdata('user_id',$log['uid']);
+					$this->session->set_userdata('username',$log['username']);
+                    redirect(base_url().'welcome');
+				}
+				else
+				{
+					$this->session->set_userdata('err_msg','You are not yet activated');
+					redirect(base_url().'welcome');
+				}
+			}
+			else
+			{
+				$this->session->set_userdata('err_msg','You are not yet registered with us.please register');
+				redirect(base_url().'welcome/register');
+			}
+		}
+	}
+
 	public function contact()
 	{
 		$data=array();
+		
 
-		$this->form_validation->set_rules('firstname', 'FirstName', 'required');
-    	$this->form_validation->set_rules('lastname', 'LastName', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-        $this->form_validation->set_rules('message', 'Message', 'required');
-        if($_POST)
-        {
-        	
-        if ($this->form_validation->run() == TRUE) 
-        {
-           $msg=$this->input->post('message');
-           $this->email->from('iamgargi92@gmail.com', 'Your Name');
-$this->email->to('hello@tier5.us'); 
- 	
-
-$this->email->subject('Email Test');
-$this->email->message('Testing the email class.');	
-
-$mail=$this->email->send();
-           //print_r($this->input->post('message'));
-           //$status=mail("roysubho687@gmail.com","Customer Query",$msg);
-           if ($mail) {
-           	echo "Mail sent successfully";
-           }
-           else
-           {
-           	echo "Error! in sending email";
-           }
-        }
-        else
-        {
-            
-          echo "bye";
-        }
-    	}
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
 		$this->load->view('contact_us',$data);
 	}
+	public function logout()
+	{
+		$this->session->set_userdata('user_id','');
+		$this->session->set_userdata('username','');
+		$this->session->set_userdata('succ_msg','You have successfully Logout.');
+		redirect(base_url().'welcome');
+	}
+
+
 }

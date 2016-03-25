@@ -40,5 +40,14 @@
         $this->db->insert($tbl,$data);
         return $this->db->affected_rows();
       }
+
+      public function FnchLogin($email,$pass)
+      {
+        $this->db->select('*');
+        $this->db->where('email',$email);
+        $this->db->where('password',md5($pass));
+        $res=$this->db->get('users');
+        return  $result=$res->row_array();
+      }
   }
 ?> 

@@ -92,7 +92,9 @@
 <!-- /slider-wrapper -->           
 </section>
 <!--/Slider-->
-
+ <div class='text-center'><h4><?php if($this->session->userdata('err_msg')!=''){ echo '<span class="error">'.$this->session->userdata('err_msg').'</span>'; $this->session->set_userdata('err_msg','');} 
+if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg','');}?>
+</h4></div>
 <section class="main-info">
     <div class="container">
         <div class="row-fluid">
