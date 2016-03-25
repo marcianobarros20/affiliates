@@ -40,6 +40,8 @@
     }
   }
 });
+
+   $( "#form-login" ).validate();
 });
 
    function validate()
@@ -47,26 +49,66 @@
     var err=0;
     var email=$('#email').val();
     var username=$('#username').val();
+
+    
     if(email!='')
     {
       var res= $.ajax({
     type : 'post',
-    url : 'ajax/EmailExists',
+    url : '<?php echo base_url();?>Ajax/EmailExists',
     data : 'email='+email,
     async : false,
     success : function(msg){ 
-    alert(msg);
-        
-    return false;
+    if(msg==1)
+           {
+
+            err=1;
+            $('#err_em').html('Email already exists');
+            return false;
+           }
+           else
+           {
+            err=0;
+           }
         }
     }); 
   
-    return res.responseText;
+    
     }
-    if(err==1)
+
+    if(username!='')
+    {
+      var res= $.ajax({
+    type : 'post',
+    url : '<?php echo base_url();?>Ajax/UserExists',
+    data : 'username='+username,
+    async : false,
+    success : function(msg){ 
+    if(msg==1)
+           {
+            err=1;
+            $('#err_us').html('Username already exists');
+            return false;
+           }
+           else
+           {
+            err=0;
+           }
+        }
+    }); 
+  
+    
+    }
+if(err==1)
     {
       return false;
     }
+else
+{
+  $('#err_em').html('');
+  $('#err_us').html('');
+}
+   
 
    }
     </script>
@@ -97,9 +139,12 @@
   </section>
   <!-- / .title -->       
 
- <h4><?php if($this->session->userdata('err_msg')!=''){ echo $this->session->userdata('err_msg'); $this->session->set_userdata('err_msg','');} 
+ <div class='text-center'><h4><?php if($this->session->userdata('err_msg')!=''){ echo '<span class="error">'.$this->session->userdata('err_msg').'</span>'; $this->session->set_userdata('err_msg','');} 
 if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg','');}?>
- </h1>
+</h4></div>
+    <div class='text-center'><span id='err_em' class='error text-center'></span>
+    <span id='err_us' class='error text-center'></span></div>
+ </h4>
   <section id="registration-page" class="container">
  
          
@@ -273,26 +318,7 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
 <!--/Footer-->
 
 <!--  Login form -->
-<div class="modal hide fade in" id="loginForm" aria-hidden="false">
-    <div class="modal-header">
-        <i class="icon-remove" data-dismiss="modal" aria-hidden="true"></i>
-        <h4>Login Form</h4>
-    </div>
-    <!--Modal Body-->
-    <div class="modal-body">
-        <form class="form-inline" action="index.html" method="post" id="form-login">
-            <input type="text" class="input-small" placeholder="Email">
-            <input type="password" class="input-small" placeholder="Password">
-            <label class="checkbox">
-                <input type="checkbox"> Remember me
-            </label>
-            <button type="submit" class="btn btn-primary">Sign in</button>
-        </form>
-        <a href="#">Forgot your password?</a>
-    </div>
-    <!--/Modal Body-->
-</div>
-<!--  /Login form -->
+
 
 
 

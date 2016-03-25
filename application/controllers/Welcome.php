@@ -60,7 +60,7 @@ class Welcome extends CI_Controller {
 			if ($this->form_validation->run() == TRUE)
 			{
 			  $email=$this->input->post('email');
-			  $$username=$this->input->post('username');
+			  $username=$this->input->post('username');
 
 			  $chk_email_exists=$this->Common_model->Fnemailexists($email);	
 			  $chk_user_exists=$this->Common_model->Fnuserxists($username);	
@@ -107,15 +107,74 @@ class Welcome extends CI_Controller {
 		$this->load->view('registration',$data);
 	}
 
+
+	public function login()
+	{
+		if($_POST)
+		{
+			$email=$this->input->post('email');
+			$pass=$this->input->post('password');
+			$log=$this->Common_model->FnchLogin($email,$pass);
+			if(count($log)>0)
+			{
+				if($log['status']==1)
+				{
+					if($this->input->post('remember_me')==1)
+					{
+						$cookie= array(
+						'name'   => 'email',
+						'value'  => $email,
+						'expire' => '86500',
+						);
+						
+
+						$cookie= array(
+						'name'   => 'password',
+						'value'  => $pass,
+						'expire' => '86500',
+						);
+
+
+						$cookie= array(
+						'name'   => 'rem',
+						'value'  => 1,
+						'expire' => '86500',
+						);
+						$this->input->set_cookie($cookie);
+					}
+					$this->session->set_userdata('user_id',$log['uid']);
+					$this->session->set_userdata('username',$log['username']);
+                    redirect(base_url().'welcome');
+				}
+				else
+				{
+					$this->session->set_userdata('err_msg','You are not yet activated');
+					redirect(base_url().'welcome');
+				}
+			}
+			else
+			{
+				$this->session->set_userdata('err_msg','You are not yet registered with us.please register');
+				redirect(base_url().'welcome/register');
+			}
+		}
+	}
+
 	public function contact()
 	{
 		$data=array();
-		if($_POST)
-		{
-		echo '<pre>';print_r($_POST);exit;
-	    }
+		
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
 		$this->load->view('contact_us',$data);
 	}
+	public function logout()
+	{
+		$this->session->set_userdata('user_id','');
+		$this->session->set_userdata('username','');
+		$this->session->set_userdata('succ_msg','You have successfully Logout.');
+		redirect(base_url().'welcome');
+	}
+
+
 }
