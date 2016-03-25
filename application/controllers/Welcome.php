@@ -45,14 +45,12 @@ class Welcome extends CI_Controller {
 		$this->load->view('sign_up',$data);
 	}
 
-	public function register($ref_code=null)
+	public function register()
 	{
 		$data=array();
-		$parent_id='';
 
 		if($_POST)
 		{
-
 			$this->form_validation->set_rules('fname', 'First name', 'required');
 			$this->form_validation->set_rules('lname', 'Last Name', 'required');
 			$this->form_validation->set_rules('username', 'Username', 'required');
@@ -64,11 +62,6 @@ class Welcome extends CI_Controller {
 			$this->form_validation->set_rules('password_confirm', 'Confirm Password', 'required');
 			if ($this->form_validation->run() == TRUE)
 			{
-				if($ref_code!='')
-				{
-					$get_explode=explode('-',$ref_code);
-					$parent_id=$get_explode[2];
-				}
 			  $email=$this->input->post('email');
 			  $username=$this->input->post('username');
 
@@ -81,11 +74,6 @@ class Welcome extends CI_Controller {
 			  $ins['username']=$this->input->post('username');
 			  $ins['email']=$this->input->post('email');
 			  $ins['password']=md5($this->input->post('password'));
-			  if($parent_id!='')
-			  {
-			  	$ins['parent_id']=$parent_id;
-			  	$ins['refferalcode']=$ref_code;
-			  }
 			  $ins['status']=1;
 			  $ins['date_register']=date('Y-m-d');
 			  $insert=$this->Common_model->insert('users',$ins);
@@ -136,14 +124,14 @@ class Welcome extends CI_Controller {
 				{
 					if($this->input->post('remember_me')==1)
 					{
-						$cookie= array(
+						$cookie1= array(
 						'name'   => 'email',
 						'value'  => $email,
 						'expire' => '86500',
 						);
 						
 
-						$cookie= array(
+						$cookie2= array(
 						'name'   => 'password',
 						'value'  => $pass,
 						'expire' => '86500',
@@ -155,12 +143,41 @@ class Welcome extends CI_Controller {
 						'value'  => 1,
 						'expire' => '86500',
 						);
-						$this->input->set_cookie($cookie);
+						$this->input->set_cookie($cookie1);
+                                                $this->input->set_cookie($cookie2);
+                                                $this->input->set_cookie($cookie);
 					}
+                                             else
+                                             {
+                                               $cookie1= array(
+						'name'   => 'email',
+						'value'  => '',
+						'expire' => '86500',
+						);
+						
+
+						$cookie2= array(
+						'name'   => 'password',
+						'value'  => '',
+						'expire' => '86500',
+						);
+
+
+						$cookie= array(
+						'name'   => 'rem',
+						'value'  => '',
+						'expire' => '86500',
+						);
+						$this->input->set_cookie($cookie1);
+                                                $this->input->set_cookie($cookie2);
+                                                $this->input->set_cookie($cookie);
+                                             }
+
+
 					$this->session->set_userdata('user_id',$log['uid']);
 					$this->session->set_userdata('username',$log['username']);
 
-                    redirect(base_url());
+                    redirect();exit();
 				}
 				else
 				{
@@ -233,7 +250,8 @@ class Welcome extends CI_Controller {
 		$this->session->set_userdata('user_id','');
 		$this->session->set_userdata('username','');
 		$this->session->set_userdata('succ_msg','You have successfully Logout.');
-		redirect(base_url());
+		redirect();
+                exit();
 	}
 
 

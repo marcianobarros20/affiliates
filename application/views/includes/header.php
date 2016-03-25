@@ -22,22 +22,20 @@
                                 <li><a href="pricing.html">Pricing</a></li>
                                 <li><a href="404.html">404</a></li>
                                 <li><a href="typography.html">Typography</a></li>
-                                <?php if($this->session->userdata('user_id')==''){ ?>
                                 <li><a href="<?php echo base_url();?>welcome/register">Registration</a></li>
-                                <?php }?>
                                 <li class="divider"></li>
                                 <li><a href="privacy.html">Privacy Policy</a></li>
                                 <li><a href="terms.html">Terms of Use</a></li>
                             </ul>
                         </li>
                         <li><a href="blog.html">Blog</a></li> 
-                        <li class="active"><a href="<?php echo base_url();?>welcome/contact">Contact</a></li>
+                        <li class="active"><a href="<?php echo base_url();?>index.php/welcome/contact">Contact</a></li>
                         <li class="login">
                         <?php if($this->session->userdata('user_id')==''){ ?>
                             <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
                         <?php } else { ?>
                         HI !! <?php echo $this->session->userdata('username');?>
-                        <a href="<?php echo base_url();?>welcome/logout">Logout</a>
+                        <a href="<?php echo base_url();?>index.php/welcome/logout">Logout</a>
                         <?php }?>
                         </li>
                     </ul>        

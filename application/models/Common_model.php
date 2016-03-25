@@ -1,7 +1,8 @@
-<?php 
+<?php
+ 
    Class Common_model extends CI_Model 
    { 
-	
+  
       Public function __construct() 
       { 
          parent::__construct(); 
@@ -20,7 +21,7 @@
                
       }
 
-      public function Fnemailexists($email,$u_name)
+      public function Fnemailexists($email)
       {
         $this->db->select('*');
         $this->db->where('email',$email);
@@ -50,4 +51,4 @@
         return  $result=$res->row_array();
       }
   }
-?> 
+?>
