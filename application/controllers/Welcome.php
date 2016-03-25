@@ -92,7 +92,7 @@ class Welcome extends CI_Controller {
 			  if($insert)
 			  {
 			  		$this->session->set_userdata('succ_msg','You Have successfully registered with us.please log in now.');
-			  		redirect(base_url().'welcome/register');
+			  		//redirect(base_url().'index.php/welcome/register');
 			  }
 			 }
 			 else
@@ -105,15 +105,15 @@ class Welcome extends CI_Controller {
 			    {
 			    	$this->session->set_userdata('err_msg','Username Already Exists.');
 			    }
-				redirect(base_url().'welcome/register');
+				//redirect(base_url().'index.php/welcome/register');
 			 }
 			  
 			}
 			else
 			{
-				//echo 'kk';exit;
+				
 				$this->session->set_userdata('err_msg','Please fill All required fields Properly.');
-				redirect(base_url().'welcome/register');
+				//redirect(base_url().'index.php/welcome/register');
 			}
 		}
 
@@ -159,18 +159,19 @@ class Welcome extends CI_Controller {
 					}
 					$this->session->set_userdata('user_id',$log['uid']);
 					$this->session->set_userdata('username',$log['username']);
-                    redirect(base_url().'welcome');
+
+                    redirect(base_url());
 				}
 				else
 				{
 					$this->session->set_userdata('err_msg','You are not yet activated');
-					redirect(base_url().'welcome');
+					redirect(base_url());
 				}
 			}
 			else
 			{
 				$this->session->set_userdata('err_msg','You are not yet registered with us.please register');
-				redirect(base_url().'welcome/register');
+				redirect(base_url());
 			}
 		}
 	}
@@ -188,28 +189,37 @@ class Welcome extends CI_Controller {
         	
         if ($this->form_validation->run() == TRUE) 
         {
-            $msg=$this->input->post('message');
-            $this->email->from('iamgargi92@gmail.com', 'Your Name');
-			$this->email->to('hello@tier5.us'); 
-			$this->email->subject('Customer Query');
-			$this->email->message($msg);	
+            
+            $email=$this->input->post('email');
+            $name.=$this->input->post('firstname');
+            $name.=" ".$this->input->post('lastname');
+            $msg=$name."<br>".$this->input->post('message');
+            
+            $this->email->from($email);
+	        $this->email->to('hello@tier5.us'); 
+	        //$this->email->cc('iamgargi92@gmail.com'); 
+	        $this->email->subject('Customer Query');
+			$this->email->message($msg);
+	
 			$mail=$this->email->send();
+			//$headers = "From: " .$email;
+              //mail('sudiptamit1@gmail.com','Customer Query',$msg,$headers);
            
 			if ($mail) {
 				$this->session->set_userdata('succ_msg','Thank You for contacting us.your queries will be answered soon.');
-				redirect(base_url().'welcome/contact');
+				//redirect(base_url().'index.php/welcome/contact');
 			}
 			else
 			{
 				$this->session->set_userdata('err_msg','Sorry! unable to send your queries');
-				redirect(base_url().'welcome/contact');
+				//redirect(base_url().'index.php/welcome/contact');
 			}
         }
         else
         {
             
           $this->session->set_userdata('err1_msg','Please fill the form Properly.');
-          redirect(base_url().'welcome/contact');
+         // redirect(base_url().'index.php/welcome/contact');
         }
     	}
 		
@@ -223,7 +233,7 @@ class Welcome extends CI_Controller {
 		$this->session->set_userdata('user_id','');
 		$this->session->set_userdata('username','');
 		$this->session->set_userdata('succ_msg','You have successfully Logout.');
-		redirect(base_url().'welcome');
+		redirect(base_url());
 	}
 
 
