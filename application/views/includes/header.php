@@ -22,7 +22,9 @@
                                 <li><a href="pricing.html">Pricing</a></li>
                                 <li><a href="404.html">404</a></li>
                                 <li><a href="typography.html">Typography</a></li>
+                                <?php if($this->session->userdata('user_id')==''){ ?>
                                 <li><a href="<?php echo base_url();?>welcome/register">Registration</a></li>
+                                <?php }?>
                                 <li class="divider"></li>
                                 <li><a href="privacy.html">Privacy Policy</a></li>
                                 <li><a href="terms.html">Terms of Use</a></li>
