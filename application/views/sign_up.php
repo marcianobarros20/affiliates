@@ -192,7 +192,8 @@
             </label>
             <button type="submit" class="btn btn-primary">Sign in</button>
         </form>
-        <a href="#">Forgot your password?</a>
+       
+        <a>Forgot your password?</a>
     </div>
     <!--/Modal Body-->
 </div>

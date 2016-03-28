@@ -134,4 +134,18 @@ class Welcome extends CI_Controller {
 		$data['footer']=$this->load->view('includes/footer','',true);
 		$this->load->view('contact_us',$data);
 	}
+
+
+	public function forget()
+	{
+		$data=array();
+
+
+		$data['header']=$this->load->view('includes/header','',true);
+		$data['footer']=$this->load->view('includes/footer','',true);
+		$this->load->view('forget',$data);
+        
+       
+        
+	}
 }

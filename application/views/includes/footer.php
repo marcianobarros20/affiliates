@@ -23,7 +23,7 @@
             </div>
 
             <div class="span1">
-                <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
+                <a id="gototop" class="gototop pull-right" href="<?php echo base_url();?>welcome/forget"><i class="icon-angle-up"></i></a>
             </div>
             <!--/Goto Top-->
         </div>
