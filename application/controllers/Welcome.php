@@ -223,6 +223,39 @@ class Welcome extends CI_Controller {
 		$this->session->set_userdata('succ_msg','You have successfully Logout.');
 		redirect(base_url());
 	}
+    
+    public function forget()
+	{
+		$data=array();
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+	        if($_POST)
+	        {
+				if ($this->form_validation->run() == TRUE)
+				{
+					$email=$this->input->post('email');
+                    // $this->session->set_userdata('succ_msg','Email For Password Reset.');
+				     $chk_email_exists=$this->Common_model->Fnemailexists($email);
+				     if($chk_email_exists==0)
+				     {
+                         print_r('No Email in database');
+				     }
+				     else
+				     {
+				     	print_r('emailsend');
+				     }
 
+				}
+				else
+				{
+					print_r('Send Proper Email');
+                    //$this->session->set_userdata('err_msg','Enter Proper Email Id');
+				}
+				
+			}
+			
+		$data['header']=$this->load->view('includes/header','',true);
+		$data['footer']=$this->load->view('includes/footer','',true);
+		$this->load->view('forget',$data);
+	}
 
 }

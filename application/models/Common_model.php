@@ -20,7 +20,7 @@
                
       }
 
-      public function Fnemailexists($email,$u_name)
+      public function Fnemailexists($email)
       {
         $this->db->select('*');
         $this->db->where('email',$email);

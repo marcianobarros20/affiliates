@@ -45,7 +45,7 @@
             </label>
             <button type="submit" class="btn btn-primary">Sign in</button>
         </form>
-        <a href="#">Forgot your password?</a>
+        <a href="<?php echo base_url();?>welcome/forget">Forgot your password?</a>
     </div>
     <!--/Modal Body-->
 </div>
