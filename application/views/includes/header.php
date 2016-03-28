@@ -29,13 +29,13 @@
                             </ul>
                         </li>
                         <li><a href="blog.html">Blog</a></li> 
-                        <li class="active"><a href="<?php echo base_url();?>welcome/contact">Contact</a></li>
+                        <li class="active"><a href="<?php echo base_url();?>index.php/welcome/contact">Contact</a></li>
                         <li class="login">
                         <?php if($this->session->userdata('user_id')==''){ ?>
                             <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
                         <?php } else { ?>
                         HI !! <?php echo $this->session->userdata('username');?>
-                        <a href="<?php echo base_url();?>welcome/logout">Logout</a>
+                        <a href="<?php echo base_url();?>index.php/welcome/logout">Logout</a>
                         <?php }?>
                         </li>
                     </ul>        
