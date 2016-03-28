@@ -45,7 +45,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('sign_up',$data);
 	}
 
-	public function register()
+	public function register($ref_id=NULL)
 	{
 		$data=array();
 
@@ -74,7 +74,18 @@ class Welcome extends CI_Controller {
 			  $ins['username']=$this->input->post('username');
 			  $ins['email']=$this->input->post('email');
 			  $ins['password']=md5($this->input->post('password'));
-			  $ins['status']=1;
+			  
+			  if($ref_id!='')
+			  {
+			  	$get_explode=explode('-',$ref_id);
+			  	$ins['parent_id']=$get_explode[2];
+			  	$ins['refferalcode']=$ref_id;
+			  	$ins['status']=1;
+			  }
+			  else
+			  {
+			  	$ins['status']=0;
+			  }
 			  $ins['date_register']=date('Y-m-d');
 			  $insert=$this->Common_model->insert('users',$ins);
 			  if($insert)
@@ -181,7 +192,7 @@ class Welcome extends CI_Controller {
 				}
 				else
 				{
-					$this->session->set_userdata('err_msg','You are not yet activated');
+					$this->session->set_userdata('err_msg','You are not yet activated By admin');
 					redirect(base_url());
 				}
 			}
