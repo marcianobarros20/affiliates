@@ -381,10 +381,6 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
 <?php echo $footer;?>
 <!--/Footer-->
 
-<<<<<<< HEAD
-<!--  Login form -->
-=======
->>>>>>> contact_us
 
 
 <script src="js/vendor/jquery-1.9.1.min.js"></script>
