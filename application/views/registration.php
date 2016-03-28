@@ -315,10 +315,13 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
 
 <!--Footer-->
 <?php echo $footer;?>
+<<<<<<< HEAD
 <!--/Footer-->
 
 <!--  Login form -->
 
+=======
+>>>>>>> contact_us
 
 
 
