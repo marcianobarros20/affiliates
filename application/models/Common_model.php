@@ -1,7 +1,8 @@
-<?php 
+<?php
+ 
    Class Common_model extends CI_Model 
    { 
-	
+  
       Public function __construct() 
       { 
          parent::__construct(); 
@@ -50,4 +51,4 @@
         return  $result=$res->row_array();
       }
   }
-?> 
+?>

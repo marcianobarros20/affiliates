@@ -45,7 +45,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('sign_up',$data);
 	}
 
-	public function register()
+	public function register($ref_id=NULL)
 	{
 		$data=array();
 
@@ -74,7 +74,18 @@ class Welcome extends CI_Controller {
 			  $ins['username']=$this->input->post('username');
 			  $ins['email']=$this->input->post('email');
 			  $ins['password']=md5($this->input->post('password'));
-			  $ins['status']=1;
+			  
+			  if($ref_id!='')
+			  {
+			  	$get_explode=explode('-',$ref_id);
+			  	$ins['parent_id']=$get_explode[2];
+			  	$ins['refferalcode']=$ref_id;
+			  	$ins['status']=1;
+			  }
+			  else
+			  {
+			  	$ins['status']=0;
+			  }
 			  $ins['date_register']=date('Y-m-d');
 			  $insert=$this->Common_model->insert('users',$ins);
 			  if($insert)
@@ -124,14 +135,14 @@ class Welcome extends CI_Controller {
 				{
 					if($this->input->post('remember_me')==1)
 					{
-						$cookie= array(
+						$cookie1= array(
 						'name'   => 'email',
 						'value'  => $email,
 						'expire' => '86500',
 						);
 						
 
-						$cookie= array(
+						$cookie2= array(
 						'name'   => 'password',
 						'value'  => $pass,
 						'expire' => '86500',
@@ -143,16 +154,45 @@ class Welcome extends CI_Controller {
 						'value'  => 1,
 						'expire' => '86500',
 						);
-						$this->input->set_cookie($cookie);
+						$this->input->set_cookie($cookie1);
+                                                $this->input->set_cookie($cookie2);
+                                                $this->input->set_cookie($cookie);
 					}
+                                             else
+                                             {
+                                               $cookie1= array(
+						'name'   => 'email',
+						'value'  => '',
+						'expire' => '86500',
+						);
+						
+
+						$cookie2= array(
+						'name'   => 'password',
+						'value'  => '',
+						'expire' => '86500',
+						);
+
+
+						$cookie= array(
+						'name'   => 'rem',
+						'value'  => '',
+						'expire' => '86500',
+						);
+						$this->input->set_cookie($cookie1);
+                                                $this->input->set_cookie($cookie2);
+                                                $this->input->set_cookie($cookie);
+                                             }
+
+
 					$this->session->set_userdata('user_id',$log['uid']);
 					$this->session->set_userdata('username',$log['username']);
 
-                    redirect(base_url());
+                    redirect();exit();
 				}
 				else
 				{
-					$this->session->set_userdata('err_msg','You are not yet activated');
+					$this->session->set_userdata('err_msg','You are not yet activated By admin');
 					redirect(base_url());
 				}
 			}
@@ -221,7 +261,8 @@ class Welcome extends CI_Controller {
 		$this->session->set_userdata('user_id','');
 		$this->session->set_userdata('username','');
 		$this->session->set_userdata('succ_msg','You have successfully Logout.');
-		redirect(base_url());
+		redirect();
+                exit();
 	}
     
     public function forget()
