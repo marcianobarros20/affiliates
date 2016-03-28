@@ -38,11 +38,11 @@
     <!--Modal Body-->
     <div class="modal-body">
 
-        <form class="form-inline" action="index.html" method="post" id="form-login">
-            <input type="text" class="input-small" placeholder="Email">
-            <input type="password" class="input-small" placeholder="Password">
+       <form class="form-inline" method="post" id="form-login" action="<?php echo base_url();?>index.php/welcome/login">
+            <input type="text" class="required email input-small" placeholder="Email" name='email' value="<?php if($this->input->cookie('email',true)){ echo $this->input->cookie('email');} ?>">
+            <input type="password" class="input-small required" placeholder="Password" name='password' value="<?php if($this->input->cookie('password',true)){ echo $this->input->cookie('password');} ?>">
             <label class="checkbox">
-                <input type="checkbox"> Remember me
+                <input type="checkbox"  name="remember_me" value="1" <?php if($this->input->cookie('rem',true)){ echo "checked";} ?>> Remember me
             </label>
             <button type="submit" class="btn btn-primary">Sign in</button>
         </form>
