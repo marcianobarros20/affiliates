@@ -42,8 +42,15 @@
 
             <div class="span8">
                 <h4>Contact Form</h4>
-                <div class="status alert alert-success" style="display: none"></div>
-
+                <div class="status alert alert-success" <?php if(!$this->session->userdata('succ_msg')){ echo 'style=display:none;';}?>>
+                    <?php if($this->session->userdata('succ_msg')){echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg',''); }?>
+                </div>
+                <div class="status alert alert-error" <?php if(!$this->session->userdata('err_msg')){ echo 'style=display:none;';}?>>
+                <?php if($this->session->userdata('err_msg')){echo $this->session->userdata('err_msg');$this->session->set_userdata('err_msg',''); }?>
+                </div>
+                <div class="status alert alert-warning" <?php if(!$this->session->userdata('err1_msg')){ echo 'style=display:none;';}?>>
+                <?php if($this->session->userdata('err1_msg')){echo $this->session->userdata('err1_msg');$this->session->set_userdata('err1_msg',''); }?>
+                </div>
                 <form  method="post">
                   <div class="row-fluid">
                     <div class="span5">
@@ -68,19 +75,19 @@
 
         <div class="span3">
             <h4>Our Address</h4>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+            
             <p>
-                <i class="icon-map-marker pull-left"></i> 1209 Willow Oaks Lane, New York<br>
-                Lafayette, 1212,  United States
+                <i class="icon-map-marker pull-left"></i> 2789 N Newman Rd, Lexington IN, 47138<br>
+                
             </p>
             <p>
-                <i class="icon-envelope"></i> &nbsp;email@example.com
+                <i class="icon-envelope"></i> &nbsp;hello@tier5.us
             </p>
             <p>
-                <i class="icon-phone"></i> &nbsp;+123 45 67 89
+                <i class="icon-phone"></i> &nbsp;+812 722 4722
             </p>
             <p>
-                <i class="icon-globe"></i> &nbsp;http://www.shapebootstrap.net
+                <i class="icon-globe"></i> &nbsp;http://www.tier5.us
             </p>
         </div>
 

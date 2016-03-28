@@ -23,9 +23,30 @@
             </div>
 
             <div class="span1">
-                <a id="gototop" class="gototop pull-right" href="<?php echo base_url();?>welcome/forget"><i class="icon-angle-up"></i></a>
+                <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
             </div>
             <!--/Goto Top-->
         </div>
     </div>
 </footer>
+<!--  Login form -->
+<div class="modal hide fade in" id="loginForm" aria-hidden="false">
+    <div class="modal-header">
+        <i class="icon-remove" data-dismiss="modal" aria-hidden="true"></i>
+        <h4>Login Form</h4>
+    </div>
+    <!--Modal Body-->
+    <div class="modal-body">
+        <form class="form-inline" action="index.html" method="post" id="form-login">
+            <input type="text" class="input-small" placeholder="Email">
+            <input type="password" class="input-small" placeholder="Password">
+            <label class="checkbox">
+                <input type="checkbox"> Remember me
+            </label>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
+        <a href="<?php echo base_url();?>index.php/Welcome/forget">Forgot your password?</a>
+    </div>
+    <!--/Modal Body-->
+</div>
+<!--  /Login form -->

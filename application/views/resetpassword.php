@@ -29,14 +29,7 @@
   <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="js/jquery.validate.js"></script>
-    <script type="text/javascript">
-
-   $(document ).ready(function() {
-   
-   $( "#forget_form" ).validate();
-});
-
-    </script>
+    
 
 </head>
 
@@ -51,13 +44,14 @@
     <div class="container">
       <div class="row-fluid">
         <div class="span6">
-          <h1>Forgot Password</h1>
+          <h1>Reset Password</h1>
         </div>
         <div class="span6">
           <ul class="breadcrumb pull-right">
             <li><a href="index.html">Home</a> <span class="divider">/</span></li>
             <li><a href="#">LOGIN FORM</a> <span class="divider">/</span></li>
-            <li class="active">Forgot your password?</li>
+            <li><a href="#">Forgot your password ?</a> <span class="divider">/</span></li>
+            <li class="active">Reset password</li>
           </ul>
         </div>
       </div>
@@ -69,14 +63,29 @@
  
          
        
-    <form class="center"  method="POST" id='forget_form'>
+    <form class="center"  method="POST" id='reset_form'>
       <fieldset class="registration-form">
-          <div><?php if($this->session->userdata('err_msg')!=" "){echo $this->session->userdata('err_msg'); $this->session->set_userdata('err_msg'," ");} ?></div>
+          
         <div class="control-group">
-          <!-- E-mail -->
-          <div class="controls">
-            <input type="text" id="email" name="email" placeholder="Enter Your Registered E-mail" class="input-xlarge required email">
-          </div>
+           <!-- E-mail -->
+             <div class="controls">
+              Email:<span id="showemail"><?php echo $s_email; ?></span>
+            </div>
+
+            <div><?php if($this->session->userdata('err_msg')!=" "){echo $this->session->userdata('err_msg'); $this->session->set_userdata('err_msg'," ");} ?>
+            </div>
+         
+
+            <!-- New Password -->
+            <div class="controls">
+              <input type="password" id="new_pass" name="new_pass" placeholder="Enter New Password" class="input-xlarge required">
+            </div>
+             
+            <!-- Confirm Password -->
+            <div class="controls">
+              <input type="password" id="conf_pass" name="conf_pass" placeholder="Enter Confirm Password" class="input-xlarge required">
+            </div>
+
         </div>
 
         
