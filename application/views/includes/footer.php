@@ -37,7 +37,8 @@
     </div>
     <!--Modal Body-->
     <div class="modal-body">
-        <form class="form-inline" method="post" id="form-login" action="<?php echo base_url();?>index.php/welcome/login">
+
+       <form class="form-inline" method="post" id="form-login" action="<?php echo base_url();?>index.php/welcome/login">
             <input type="text" class="required email input-small" placeholder="Email" name='email' value="<?php if($this->input->cookie('email',true)){ echo $this->input->cookie('email');} ?>">
             <input type="password" class="input-small required" placeholder="Password" name='password' value="<?php if($this->input->cookie('password',true)){ echo $this->input->cookie('password');} ?>">
             <label class="checkbox">
@@ -45,8 +46,9 @@
             </label>
             <button type="submit" class="btn btn-primary">Sign in</button>
         </form>
-        <a href="#">Forgot your password?</a>
+        <a href="<?php echo base_url();?>index.php/Welcome/forget">Forgot your password?</a>
     </div>
     <!--/Modal Body-->
 </div>
 <!--  /Login form -->
+

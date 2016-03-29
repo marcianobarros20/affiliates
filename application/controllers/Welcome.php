@@ -35,6 +35,8 @@ class Welcome extends CI_Controller {
 
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
+		
+
 		$this->load->view('index',$data);
 	}
 	public function signup()
@@ -118,11 +120,10 @@ class Welcome extends CI_Controller {
 
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
+		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('registration',$data);
 	}
-
-
-	public function login()
+    public function login()
 	{
 		if($_POST)
 		{
@@ -141,14 +142,11 @@ class Welcome extends CI_Controller {
 						'expire' => '86500',
 						);
 						
-
 						$cookie2= array(
 						'name'   => 'password',
 						'value'  => $pass,
 						'expire' => '86500',
 						);
-
-
 						$cookie= array(
 						'name'   => 'rem',
 						'value'  => 1,
@@ -166,14 +164,11 @@ class Welcome extends CI_Controller {
 						'expire' => '86500',
 						);
 						
-
 						$cookie2= array(
 						'name'   => 'password',
 						'value'  => '',
 						'expire' => '86500',
 						);
-
-
 						$cookie= array(
 						'name'   => 'rem',
 						'value'  => '',
@@ -183,16 +178,13 @@ class Welcome extends CI_Controller {
                                                 $this->input->set_cookie($cookie2);
                                                 $this->input->set_cookie($cookie);
                                              }
-
-
 					$this->session->set_userdata('user_id',$log['uid']);
 					$this->session->set_userdata('username',$log['username']);
-
                     redirect();exit();
 				}
 				else
 				{
-					$this->session->set_userdata('err_msg','You are not yet activated By admin');
+					$this->session->set_userdata('err_msg','You are not yet activated');
 					redirect(base_url());
 				}
 			}
@@ -204,10 +196,94 @@ class Welcome extends CI_Controller {
 		}
 	}
 
-	public function contact()
+
+	
+	
+	public function logout()
+	{
+		$this->session->set_userdata('user_id','');
+		$this->session->set_userdata('username','');
+		$this->session->set_userdata('succ_msg','You have successfully Logout.');
+		redirect();
+                exit();
+	}
+
+
+	public function forget()
 	{
 		$data=array();
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 
+        if($_POST)
+        {
+               
+	        if ($this->form_validation->run() == TRUE)
+	        {
+	            $email=$this->input->post('email');
+	            $chk_email_exists=$this->Common_model->checkemailexists($email);
+	            if($chk_email_exists==0)
+	            {
+	               //echo "Not rEGISTERED WITH US";
+	               $this->session->set_userdata('err_msg','This Email Id Is Not Registered With Us.');
+	            }	
+	            else
+	            {
+                    $get_userid=$this->Common_model->getuserid($email);
+                    $con=array('uid'=>$get_userid);
+	            	$info=$this->Common_model->fetchinfo('users',$con,'row');
+	            	$name=$info['fname']." ".$info['lname'];
+	            	$token= md5($email);
+	            	$token.="-".$get_userid;
+	            	
+	            	$msg='Hi '. $name .'!! <br> You Want To Reset Your Password<br> ';
+	            	
+	            	$msg.="<a href='".base_url()."index.php/welcome/resetpassword/".$token."'>Click Here To Reset</a>";
+	            	$msg.="<br><br>Thanks Tier5 Team";
+	            	//echo $msg; 
+               
+	                $this->email->from('hello@tier5.us'); 
+			        $this->email->to($email); 
+			        
+			        $this->email->subject('Reset Password For Tier5 Affiliation Program');
+					$this->email->message($msg);
+			
+					$mail=$this->email->send();
+					
+		           
+					if ($mail)
+					{
+						$this->session->set_userdata('succ_msg','Check Your Email Id To Reset Password');
+						redirect(base_url().'index.php/welcome');
+					}
+					else
+					{
+						$this->session->set_userdata('err_msg','Sorry! ');
+						redirect(base_url().'index.php/welcome/forget');
+					}
+	             	
+	             	exit;
+	            }
+
+	        }
+	        else
+	        {
+	            //echo "off";
+	            $this->session->set_userdata('err_msg','Please Enter A Proper Email Id.');
+	        }
+        }
+        
+
+		$data['header']=$this->load->view('includes/header','',true);
+		$data['footer']=$this->load->view('includes/footer','',true);
+		$data['middle']=$this->load->view('includes/middle','',true);
+		$this->load->view('forget',$data);
+        
+       
+        
+	}
+    public function contact()
+	{
+		$data=array();
 		$this->form_validation->set_rules('firstname', 'FirstName', 'required');
     	$this->form_validation->set_rules('lastname', 'LastName', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
@@ -225,13 +301,11 @@ class Welcome extends CI_Controller {
             
             $this->email->from($email);
 	        $this->email->to('hello@tier5.us'); 
-	        //$this->email->cc('iamgargi92@gmail.com'); 
+	        
 	        $this->email->subject('Customer Query');
 			$this->email->message($msg);
 	
 			$mail=$this->email->send();
-			//$headers = "From: " .$email;
-              //mail('sudiptamit1@gmail.com','Customer Query',$msg,$headers);
            
 			if ($mail) {
 				$this->session->set_userdata('succ_msg','Thank You for contacting us.your queries will be answered soon.');
@@ -251,19 +325,70 @@ class Welcome extends CI_Controller {
         }
     	}
 		
-
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
+		$data['middle']=$this->load->view('includes/middle','',true);
 		$this->load->view('contact_us',$data);
 	}
-	public function logout()
-	{
-		$this->session->set_userdata('user_id','');
-		$this->session->set_userdata('username','');
-		$this->session->set_userdata('succ_msg','You have successfully Logout.');
-		redirect();
-                exit();
-	}
 
+	public function resetpassword($token)
+	{
+        //$token="5300882c1f3ffbcc90e7eafe6ef2dd89-3";
+        $get_explode=explode('-',$token);
+        $email=$get_explode[0];
+        $uid=$get_explode[1];
+        $get_emailid=md5($this->Common_model->getemailid($uid));
+        $data['s_email']='';
+        if($get_emailid==$email)
+        {
+		    $data=array();
+		    $this->form_validation->set_rules('new_pass', 'newpass', 'required');
+		    $this->form_validation->set_rules('conf_pass', 'confpass', 'required');
+		    $data['s_email']=$this->Common_model->getemailid($uid);  
+		    if($_POST)
+		    {  
+		        if ($this->form_validation->run() == TRUE)
+			    {  
+			        $newpass=$this->input->post('new_pass');
+			        $confpass=$this->input->post('conf_pass');
+			        	
+			        	if($newpass==$confpass)
+			        	{
+   							$con=array('uid'=>$uid);
+   							$update['password']=md5($newpass);
+			        		$update_password=$this->Common_model->update('users',$con,$update);
+			        		if($update_password)
+			        		{
+			        			echo "done";
+			        		}
+			        		else
+			        		{
+			        			echo "Not Done";
+			        		}
+			        	}
+			        	else
+			        	{
+			        		//echo "New Password and Confirm Password Are Not Same";
+			        		$this->session->set_userdata('err_msg','New Password and Confirm Password Are Not Same.');
+			        	}
+		                
+		                
+			        }
+		            else
+		            {
+		            	$this->session->set_userdata('err_msg','Please Enter New Password and Confirm Password.');
+		                //echo "Please Enter New Password && Confirm Password";
+		            }
+		    }
+
+			$data['header']=$this->load->view('includes/header','',true);
+			$data['footer']=$this->load->view('includes/footer','',true);
+			$this->load->view('resetpassword',$data);      
+        }
+        else
+        {
+            echo "Page Not Found";
+        }     
+	}
 
 }

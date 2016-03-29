@@ -30,6 +30,7 @@ class Contents extends CI_Controller {
 	{
 		$data['header']=$this->load->view('includes/header.php','',true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
+		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('about.php',$data);
 	}
 	public function career()
@@ -37,12 +38,14 @@ class Contents extends CI_Controller {
 		
 		$data['header']=$this->load->view('includes/header.php','',true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
+		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('career.php',$data);
 	}
 	public function blog_item()
 	{
 		$data['header']=$this->load->view('includes/header.php','',true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
+		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('blog_item.php',$data);
 	}
 
@@ -50,6 +53,7 @@ class Contents extends CI_Controller {
 	{
 		$data['header']=$this->load->view('includes/header.php','',true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
+		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('services.php',$data);
 	}
 	public function how()
@@ -62,12 +66,14 @@ class Contents extends CI_Controller {
 	{
 		$data['header']=$this->load->view('includes/header.php','',true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
+		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('portfolio.php',$data);
 	}
 	public function blog()
 	{
 		$data['header']=$this->load->view('includes/header.php','',true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
+		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('blog.php',$data);
 	}
 
@@ -75,36 +81,42 @@ public function faq()
 	{
 		$data['header']=$this->load->view('includes/header.php','',true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
+		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('faq.php',$data);
 	}
 public function pricing()
 	{
 		$data['header']=$this->load->view('includes/header.php','',true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
+		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('pricing.php',$data);
 	}
 	public function error()
 	{
 		$data['header']=$this->load->view('includes/header.php','',true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
+		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('error.php',$data);
 	}
 	public function typography()
 	{
 		$data['header']=$this->load->view('includes/header.php','',true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
+		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('typography.php',$data);
 	}
 	public function privacy()
 	{
 		$data['header']=$this->load->view('includes/header.php','',true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
+		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('privacy.php',$data);
 	}
 	public function terms()
 	{
 		$data['header']=$this->load->view('includes/header.php','',true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
+		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('terms.php',$data);
 	}
 }
