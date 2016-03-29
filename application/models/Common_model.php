@@ -10,6 +10,9 @@
       } 
 
 
+    
+
+
       public function Fnemailexists($email)
       {
         $this->db->select('*');
@@ -40,6 +43,26 @@
         $res=$this->db->get('users');
         return  $result=$res->row_array();
       }
+
+      public function chkAdminlogin($email,$pass)
+      {
+         $this->db->select('*');
+        $this->db->where('email',$email);
+        $this->db->where('password',md5($pass));
+        $res=$this->db->get('Admin');
+        $result=$res->row_array();
+        if(count($result) > 0)
+        {
+          $this->session->set_userdata('adminid',1);
+          $this->session->set_userdata('username',$result['name']);
+          return count($result);
+        }
+        else
+        {
+           return count($result);
+        }
+      }
+
       public function checkemailexists($email)
       {
         $this->db->select('*');
@@ -90,6 +113,7 @@
         {
         return  $result=$res->result_array();
         }
+
 
       }
   }

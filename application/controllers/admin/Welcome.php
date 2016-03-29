@@ -23,26 +23,50 @@ class Welcome extends CI_Controller {
 	{
 		parent::__construct();
 		
-		//$this->load->model('admin/AdminModel');
+		$this->load->model('Common_model');
 		
-
-		
-
-		/*if (!$this->session->userdata('adminid'))
-		{
-			redirect(base_url()."admin/welcome/login");
-			
-		}*/
 
 	}
 
 	public function index()
 	{
-		$this->load->view('admin/index');
+		if (!$this->session->userdata('adminid'))
+		{
+			redirect(base_url()."index.php/admin/welcome/login");
+			
+		}
+		$data['header']=$this->load->view('admin/includes/header','',true);
+		$data['footer']=$this->load->view('admin/includes/footer','',true);
+		$data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
+		$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
+		$this->load->view('admin/index',$data);
 	}
 
 	public function login()
 	{
+		if($_POST)
+		{
+			$email=$this->input->post('email');
+			$pass=$this->input->post('pass');
+			$log_details=$this->Common_model->chkAdminlogin($email,$pass);
+			if($log_details>0)
+			{
+				redirect(base_url().'index.php/admin/welcome');
+			}
+			else
+			{
+				$this->session->set_userdata('err_log_msg','Sorry! Invalid Email or Password');
+				redirect(base_url().'index.php/admin/welcome/login');
+			}
+		}
 		$this->load->view('admin/login');
 	}
+
+	public function logout()
+	{
+		$this->session->set_userdata('adminid','');
+		$this->session->set_userdata('username','');
+		redirect(base_url().'index.php/admin/welcome');
+	}
 }
+?>

@@ -13,7 +13,10 @@
     border: none;
     cursor: pointer;
 }
-
+.error
+{
+    color:red;
+}
 .icheckbox_square-blue {
     background-position: 0 0;
 }
