@@ -48,22 +48,45 @@
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
-            Dashboard
-            <small>Control panel</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="<?php echo base_url();?>index.php/admin"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
-          </ol>
-        </section>
-
-         <section class="content">
-         <div class="col-md-12 col-lg-12 col-sm-12">
-         <h3>Welcome Admin.</h3>         </div>
-         </section>
-       
+        <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">List Of Affiliate Users</h3>
+                  <div class="box-tools">
+                    <div style="width: 150px;" class="input-group">
+                   
+                      
+                    </div>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                  <table class="table table-hover">
+                    <tbody><tr>
+                      <th>ID</th>
+                      <th>User</th>
+                      <th>Date(dd/mm/yy)</th>
+                      <th>Status</th>
+                      
+                      
+                    </tr>
+                    <?php if(!empty($list_users)):
+                      foreach($list_users as $users):?>
+                    <tr>
+                      <td><?php echo $users['uid'];?></td>
+                      <td><?php echo ucfirst($users['fname']).' '.ucfirst($users['lname']);?></td>
+                      <td><?php echo date('d/m/Y',strtotime($users['date_register']));?></td>
+                      <td><span class="label label-success"><?php if($users['status']==1){ echo 'Approved';}?></span></td>
+                     
+                    </tr>
+                    <?php endforeach; endif;?>
+                  </tbody></table>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div>
+          </div>
+          </section>
       </div>
      <!-- footer -->
      <?php echo $footer;?>

@@ -24,6 +24,7 @@ class Users extends CI_Controller {
 		parent::__construct();
 		
 		$this->load->model('Common_model');
+		$this->load->helper('custom');
 		
 
 	}
@@ -34,6 +35,16 @@ class Users extends CI_Controller {
 		{
 			redirect(base_url()."index.php/admin/welcome/login");
 			
+		}
+		else
+		{	
+			$data['header']=$this->load->view('admin/includes/header','',true);
+			$data['footer']=$this->load->view('admin/includes/footer','',true);
+			$data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
+			$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
+			$con=array('refferalcode !='=>null);
+			$data['list_users']=$this->Common_model->fetchinfo('users',$con,'result');
+			$this->load->view('admin/affiliates',$data);
 		}
 		
 	}

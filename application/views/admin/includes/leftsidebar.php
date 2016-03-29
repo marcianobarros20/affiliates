@@ -29,8 +29,8 @@
                 <i class="fa fa-dashboard"></i> <span>Manage users</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="<?php echo base_url();?>index.php/admin/users"><i class="fa fa-circle-o"></i> Affiliate</a></li>
-                <li><a href="index2.html"><i class="fa fa-circle-o"></i>Non-affiliate</a></li>
+                <li <?php if($this->uri->segment(2)=='users' && $this->uri->segment(3)==''){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>index.php/admin/users"><i class="fa fa-circle-o"></i> Affiliate</a></li>
+                <li <?php if($this->uri->segment(2)=='users' && $this->uri->segment(3)=='non_aff'){ ?>class="active" <?php } ?>><a href="index2.html"><i class="fa fa-circle-o"></i>Non-affiliate</a></li>
               </ul>
             </li>
             <!-- <li class="treeview">

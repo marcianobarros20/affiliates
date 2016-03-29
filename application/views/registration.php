@@ -147,7 +147,7 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
  </h4>
   <section id="registration-page" class="container">
  
-         
+    
        
     <form class="center"  method="POST" id='reg_form' onsubmit="return validate();">
       <fieldset class="registration-form">

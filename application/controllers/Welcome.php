@@ -50,6 +50,10 @@ class Welcome extends CI_Controller {
 	public function register($ref_id=NULL)
 	{
 		$data=array();
+		if($ref_id!='')
+		{
+		$this->session->set_userdata('reffrence_id',$ref_id);
+	    }
 
 		if($_POST)
 		{
@@ -79,19 +83,37 @@ class Welcome extends CI_Controller {
 			  
 			  if($ref_id!='')
 			  {
+
+			  	
+			  	
 			  	$get_explode=explode('-',$ref_id);
 			  	$ins['parent_id']=$get_explode[2];
 			  	$ins['refferalcode']=$ref_id;
+			  	$ins['status']=1;
+			  	
+			  }
+			  else
+			  {
+			  	
+			  if($this->session->userdata('reffrence_id')!='')
+			  {
+			  	$ref_id1=$this->session->userdata('reffrence_id');
+			  	$get_explode=explode('-',$ref_id1);
+			  	$ins['parent_id']=$get_explode[2];
+			  	$ins['refferalcode']=$ref_id1;
 			  	$ins['status']=1;
 			  }
 			  else
 			  {
 			  	$ins['status']=0;
+
 			  }
+			 }
 			  $ins['date_register']=date('Y-m-d');
 			  $insert=$this->Common_model->insert('users',$ins);
 			  if($insert)
 			  {
+			  		$this->session->set_userdata('reffrence_id','');
 			  		$this->session->set_userdata('succ_msg','You Have successfully registered with us.please log in now.');
 			  		//redirect(base_url().'index.php/welcome/register');
 			  }
