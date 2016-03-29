@@ -35,8 +35,38 @@ class Users extends CI_Controller {
 			redirect(base_url()."index.php/admin/welcome/login");
 			
 		}
-		
 	}
+
+	public function non_aff()
+	{
+		if (!$this->session->userdata('adminid'))
+		{
+			redirect(base_url()."index.php/admin/welcome/login");
+			
+		}
+		else
+		{
+		   $data=array();
+
+           $con=array('status != ' => 1);
+   		  
+		  
+
+
+
+
+		   $data['list']= $this->Common_model->fetchinfo('users',$con, 'result');
+		  
+
+		   $data['header']=$this->load->view('admin/includes/header','',true);
+		   $data['footer']=$this->load->view('admin/includes/footer','',true);
+		   $data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
+		   $data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
+		   $this->load->view('admin/nonaff',$data);
+		}
+
+	}
+
 
 	
 }
