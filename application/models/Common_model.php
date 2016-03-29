@@ -114,7 +114,14 @@
         return  $result=$res->result_array();
         }
 
-
       }
+
+      public function check_non_aff()
+      {
+        
+      }
+
+
+
   }
 ?>
