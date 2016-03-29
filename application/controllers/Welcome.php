@@ -35,6 +35,8 @@ class Welcome extends CI_Controller {
 
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
+		
+
 		$this->load->view('index',$data);
 	}
 	public function signup()
@@ -118,6 +120,7 @@ class Welcome extends CI_Controller {
 
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
+		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('registration',$data);
 	}
     public function login()
@@ -238,7 +241,7 @@ class Welcome extends CI_Controller {
 	            	$msg.="<br><br>Thanks Tier5 Team";
 	            	//echo $msg; 
                
-	
+	                $this->email->from('hello@tier5.us'); 
 			        $this->email->to($email); 
 			        
 			        $this->email->subject('Reset Password For Tier5 Affiliation Program');
@@ -272,6 +275,7 @@ class Welcome extends CI_Controller {
 
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
+		$data['middle']=$this->load->view('includes/middle','',true);
 		$this->load->view('forget',$data);
         
        
@@ -323,6 +327,7 @@ class Welcome extends CI_Controller {
 		
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
+		$data['middle']=$this->load->view('includes/middle','',true);
 		$this->load->view('contact_us',$data);
 	}
 
@@ -350,8 +355,8 @@ class Welcome extends CI_Controller {
 			        	if($newpass==$confpass)
 			        	{
    							$con=array('uid'=>$uid);
-   							$data['password']=md5($newpass);
-			        		$update_password=$this->Common_model->update('users',$con,$data);
+   							$update['password']=md5($newpass);
+			        		$update_password=$this->Common_model->update('users',$con,$update);
 			        		if($update_password)
 			        		{
 			        			echo "done";
