@@ -9,14 +9,14 @@
          //$this->load->database();
       } 
 
-      public function updateEmp($data1, $data)
+      public function update($tbl,$con,$data)
       {  
-          $d=$this->db->where($data1);
-          $res=$this->db->update('employee',$data);
+          $d=$this->db->where($con);
+          $res=$this->db->update($tbl,$data);
 
           if($res)
           {
-            return true;
+            return $this->db->affected_rows();
           }
                
       }
@@ -49,6 +49,24 @@
         $this->db->where('password',md5($pass));
         $res=$this->db->get('users');
         return  $result=$res->row_array();
+      }
+      public function chkAdminlogin($email,$pass)
+      {
+         $this->db->select('*');
+        $this->db->where('email',$email);
+        $this->db->where('password',md5($pass));
+        $res=$this->db->get('Admin');
+        $result=$res->row_array();
+        if(count($result) > 0)
+        {
+          $this->session->set_userdata('adminid',1);
+          $this->session->set_userdata('username',$result['name']);
+          return count($result);
+        }
+        else
+        {
+           return count($result);
+        }
       }
   }
 ?>
