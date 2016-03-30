@@ -37,6 +37,7 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript" src="js/affiliate.js"></script>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -67,18 +68,39 @@
                       <th>ID</th>
                       <th>User</th>
                       <th>Date(dd/mm/yy)</th>
+                      <th>Referelcode</th>
                       <th>Status</th>
+                      <th>Action</th>
                       
                       
                     </tr>
                     <?php if(!empty($list_users)):
-                      foreach($list_users as $users):?>
+                      foreach($list_users as $users):
+
+
+                        ?>
                     <tr>
                       <td><?php echo $users['uid'];?></td>
                       <td><?php echo ucfirst($users['fname']).' '.ucfirst($users['lname']);?></td>
                       <td><?php echo date('d/m/Y',strtotime($users['date_register']));?></td>
-                      <td><span class="label label-success"><?php if($users['status']==1){ echo 'Approved';}?></span></td>
-                     
+                      <td><?php echo 'ref-'.time().'-'.$users['uid'];?></td>
+                      <td><?php if($users['status']==1){?><span class="label label-success"><?php echo 'Approved';?></span><?php }?>
+                      <?php if($users['status']==2){?><span class="label label-danger"><?php echo 'Deleted By admin';?></span><?php }?>
+                       <?php if($users['status']==3){?><span class="label label-danger"><?php echo 'Rejected By admin';?></span><?php }?>
+                      <?php 
+                       if($users['parent_id']!=0)
+                          {
+                            $fnchkparent_status=Parentstatus($users['parent_id']);
+                          if($fnchkparent_status['status']!=1)
+                          {
+                            echo 'assign parent';
+                          }
+                          }
+                        ?>
+
+                      </td>
+                     <td><span class="label label-danger" onclick="change_status('Delete','<?php echo $users['uid'];?>')">Delete</span></td>
+                     <td><span class="label label-danger" onclick="change_status('Reject','<?php echo $users['uid'];?>')">Reject</span></td>
                     </tr>
                     <?php endforeach; endif;?>
                   </tbody></table>

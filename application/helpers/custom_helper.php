@@ -1,15 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-function yourHelperFunction(){
-        $ci=& get_instance();
-        $ci->load->database(); 
+function Parentstatus($parent_id){
+        $CI=& get_instance();
+        $CI->load->database(); 
 
-       /* $sql = "select * from table"; 
-        $query = $ci->db->query($sql);
-        $row = $query->result();*/
+        $CI->db->select('status');
+        $CI->db->where('uid',$parent_id);
+        $res = $CI->db->get('users');
+        return $return = $res->row_array();
 
-        return $val='hello ok';
+        
    }
 
 ?>

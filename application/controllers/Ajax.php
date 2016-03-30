@@ -59,5 +59,20 @@ class Ajax extends CI_Controller {
 			 }
 		}
 	}
+
+
+			public function change_status()
+			{
+			if($_POST)
+			{
+
+			$uid=$this->input->post('uid');
+			$con=array('uid'=>$uid);
+			$data['status']=$this->input->post('status');
+			$update=$this->Common_model->update('users',$con,$data);
+			return $update;
+
+			}
+			}
 }
 ?>

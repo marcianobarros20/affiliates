@@ -27,7 +27,7 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active treeview">
+            <li class="<?php if($this->uri->segment(2)=='users'){ echo 'active';}?> treeview">
               <a href="<?php echo base_url();?>index.php/admin/welcome">
                 <i class="fa fa-dashboard"></i> <span>Manage users</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
