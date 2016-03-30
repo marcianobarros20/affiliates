@@ -55,7 +55,7 @@
                   <h3 class="box-title">Add Blog</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" method="post" name="add_blog" id="add_blog">
+                <form role="form" method="post" name="add_blog" id="add_blog" enctype="mul">
                   <div class="box-body">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Blog Title:</label>
