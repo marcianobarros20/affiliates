@@ -68,6 +68,7 @@
                       <th>User</th>
                       <th>Date(dd/mm/yy)</th>
                       <th>Status</th>
+                      <th>Action</th>
                       
                       
                     </tr>
@@ -77,7 +78,10 @@
                       <td><?php echo $users['uid'];?></td>
                       <td><?php echo ucfirst($users['fname']).' '.ucfirst($users['lname']);?></td>
                       <td><?php echo date('d/m/Y',strtotime($users['date_register']));?></td>
-                      <td><span class="label label-success"><?php if($users['status']==1){ echo 'Approved';}?></span></td>
+                      <td>Approved</td>
+                      <td><span class="label label-success">Delete</span>
+                          <span class="label label-success">Reject</span>
+                      </td>
                      
                     </tr>
                     <?php endforeach; endif;?>

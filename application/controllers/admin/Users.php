@@ -43,7 +43,7 @@ class Users extends CI_Controller {
 			$data['footer']=$this->load->view('admin/includes/footer','',true);
 			$data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
 			$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
-			$con=array('refferalcode !='=>null);
+			$con=array('status'=>1);
 			$data['list_users']=$this->Common_model->fetchinfo('users',$con,'result');
 			$this->load->view('admin/affiliates',$data);
 		}

@@ -37,6 +37,7 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript" src="js/affiliate.js"></script>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -69,7 +70,7 @@
                               <th>Date(dd/mm/yy)</th>
                               <th>Status</th>
                               <th>Action</th>
-                              
+                              <th>Refferal Code</th>
                             </tr>
                             <?php if(!empty($list)):
                               foreach($list as $users):?>
@@ -95,16 +96,23 @@
                                 ?>
                               </td>
                               <td>
-                                <span class="label label-success">Approve</span>
-
-                                <span class="label label-success">Delete</span>
-                                <span class="label label-success">Reject</span>
-
+                                <span class="label label-success" onclick="change_status('Approve','<?php echo $users['uid'];?>');">Approve</span>
+                           
+                                <span class="label label-success" onclick="change_status('Delete','<?php echo $users['uid'];?>');">Delete</span>
+                             
+                                <span class="label label-success" onclick="change_status('Reject','<?php echo $users['uid'];?>');">Reject</span><br>
+                               
+                                
+                                
                                 
                               </td>
+                              <td><input type="text" ></td>
                               
                             </tr>
+                            
+                             
                             <?php endforeach; endif;?>
+
                           </tbody></table>
                         </div><!-- /.box-body -->
                       </div><!-- /.box -->
@@ -167,6 +175,33 @@
     <script src="admin_support/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="admin_support/dist/js/demo.js"></script>
+
+     
+
+
+
+
+
+    <div class="modal fade" id="assign_affiliatecode" role="dialog">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 >Assign Refferal Code</h4>
+          </div>
+          <div class="modal-body deleteconfirm" align="center">
+           
+               <div  id="assignreff">
+                Refferal Code:<input type="text"><input type="submit" value="Assign Code">
+
+              </div>
+          </div>
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+    </div>
+
+
   </body>
 </html>
 
