@@ -322,8 +322,8 @@ class Welcome extends CI_Controller {
             $msg=$name."<br>".$this->input->post('message');
             
             $this->email->from($email);
-	        $this->email->to('hello@tier5.us');
-	        $this->email->cc('sudiptamit1@gmail.com');  
+	        $this->email->to('sudiptamit1@gmail.com');
+	        //$this->email->cc('sudiptamit1@gmail.com');  
 	        
 	        $this->email->subject('Customer Query');
 			$this->email->message($msg);
