@@ -61,6 +61,7 @@ class Ajax extends CI_Controller {
 	}
 
 
+
 			public function change_status()
 			{
 			if($_POST)
@@ -74,5 +75,6 @@ class Ajax extends CI_Controller {
 
 			}
 			}
+	
 }
 ?>

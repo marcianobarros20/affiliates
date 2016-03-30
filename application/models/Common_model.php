@@ -116,10 +116,7 @@
 
       }
 
-      public function check_non_aff()
-      {
-        
-      }
+      
 
 
 

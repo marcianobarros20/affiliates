@@ -24,7 +24,7 @@ class Users extends CI_Controller {
 		parent::__construct();
 		
 		$this->load->model('Common_model');
-		$this->load->model('admin/AdminModel');
+		
 		$this->load->helper('custom');
 		
 
@@ -45,7 +45,9 @@ class Users extends CI_Controller {
 			$data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
 			$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
 			$con=array('status'=>1);
-			$data['list_users']=$this->AdminModel->fetchAffiliate();
+
+			$data['list_users']=$this->Common_model->fetchinfo('users',$con,'result');
+
 			$this->load->view('admin/affiliates',$data);
 		}
 

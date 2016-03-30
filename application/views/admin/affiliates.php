@@ -83,6 +83,7 @@
                       <td><?php echo $users['uid'];?></td>
                       <td><?php echo ucfirst($users['fname']).' '.ucfirst($users['lname']);?></td>
                       <td><?php echo date('d/m/Y',strtotime($users['date_register']));?></td>
+
                       <td><?php echo 'ref-'.time().'-'.$users['uid'];?></td>
                       <td><?php if($users['status']==1){?><span class="label label-success"><?php echo 'Approved';?></span><?php }?>
                       <?php if($users['status']==2){?><span class="label label-danger"><?php echo 'Deleted By admin';?></span><?php }?>
@@ -101,6 +102,9 @@
                       </td>
                      <td><span class="label label-danger" onclick="change_status('Delete','<?php echo $users['uid'];?>')">Delete</span></td>
                      <td><span class="label label-danger" onclick="change_status('Reject','<?php echo $users['uid'];?>')">Reject</span></td>
+
+                       
+
                     </tr>
                     <?php endforeach; endif;?>
                   </tbody></table>
