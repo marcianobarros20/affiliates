@@ -37,7 +37,6 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="js/affiliate.js"></script>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -48,77 +47,47 @@
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
+      <section>
         <!-- Content Header (Page header) -->
-               <section class="content">
-                <div class="row">
-                    <div class="col-xs-12">
-                      <div class="box">
-                        <div class="box-header">
-                          <h3 class="box-title">List Of Non Affiliate Users</h3>
-                          <div class="box-tools">
-                            <div style="width: 150px;" class="input-group">
-                           
-                              
-                            </div>
-                          </div>
-                        </div><!-- /.box-header -->
-                        <div class="box-body table-responsive no-padding">
-                          <table class="table table-hover">
-                            <tbody><tr>
-                              <th>ID</th>
-                              <th>User</th>
-                              <th>Date(dd/mm/yy)</th>
-                              <th>Status</th>
-                              <th>Action</th>
-                              <th>Refferal Code</th>
-                            </tr>
-                            <?php if(!empty($list)):
-                              foreach($list as $users):?>
-                            <tr>
-                              <td><?php echo $users['uid'];?></td>
-                              <td><?php echo ucfirst($users['fname']).' '.ucfirst($users['lname']);?></td>
-                              <td><?php echo date('d/m/Y',strtotime($users['date_register']));?></td>
-                              <td>
-                                <?php 
-                                //echo $users['status'];
-                                  if($users['status']==0)
-                                  {
-                                    echo "Pending For Approval";
-                                  }
-                                  elseif($users['status']==2)
-                                  {
-                                    echo "Deleted";
-                                  }
-                                  else
-                                  {
-                                    echo "Rejected";
-                                  }
-                                ?>
-                              </td>
-                              <td>
-                                <span class="label label-success" onclick="change_status('Approve','<?php echo $users['uid'];?>');">Approve</span>
-                           
-                                <span class="label label-success" onclick="change_status('Delete','<?php echo $users['uid'];?>');">Delete</span>
-                             
-                                <span class="label label-success" onclick="change_status('Reject','<?php echo $users['uid'];?>');">Reject</span><br>
-                               
-                                
-                                
-                                
-                              </td>
-                              <td><input type="text" ></td>
-                              
-                            </tr>
-                            
-                             
-                            <?php endforeach; endif;?>
-
-                          </tbody></table>
-                        </div><!-- /.box-body -->
-                      </div><!-- /.box -->
+        <div class="clearfix"></div>
+        <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Add Blog</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" method="post" name="add_blog" id="add_blog">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Blog Title:</label>
+                      <input type="text" placeholder="Enter Blog Title" id="b_title" class="form-control">
                     </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Description</label>
+                      <textarea class="form-control" id='b_des' name="b_des"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>Select</label>
+                      <select class="form-control">
+                      <option value="">Select</option>
+                        <option value="1">Image</option>
+                        <option value="2">video</option>
+                       
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputFile">Browse file</label>
+                      <input type="file" id="file_media" name="file_media">
+                      
+                    </div>
+                    
+                  </div><!-- /.box-body -->
+
+                  <div class="box-footer">
+                    <button class="btn btn-primary" type="submit">Submit</button>
                   </div>
-                  </section>
+                </form>
+              </div>
+       </section>
       </div>
      <!-- footer -->
      <?php echo $footer;?>
@@ -150,7 +119,7 @@
     <script src="admin_support/bootstrap/js/bootstrap.min.js"></script>
     <!-- Morris.js charts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="admin_support/plugins/morris/morris.min.js"></script>
+   
     <!-- Sparkline -->
     <script src="admin_support/plugins/sparkline/jquery.sparkline.min.js"></script>
     <!-- jvectormap -->
@@ -172,36 +141,8 @@
     <!-- AdminLTE App -->
     <script src="admin_support/dist/js/app.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="admin_support/dist/js/pages/dashboard.js"></script>
+    
     <!-- AdminLTE for demo purposes -->
     <script src="admin_support/dist/js/demo.js"></script>
-
-     
-
-
-
-
-
-    <div class="modal fade" id="assign_affiliatecode" role="dialog">
-      <div class="modal-dialog modal-md">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 >Assign Refferal Code</h4>
-          </div>
-          <div class="modal-body deleteconfirm" align="center">
-           
-               <div  id="assignreff">
-                Refferal Code:<input type="text"><input type="submit" value="Assign Code">
-
-              </div>
-          </div>
-          <div class="modal-footer"></div>
-        </div>
-      </div>
-    </div>
-
-
   </body>
 </html>
-
