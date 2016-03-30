@@ -106,7 +106,7 @@
                                 
                                 
                               </td>
-                              <td><input type="text" ></td>
+                              <td></td>
                               
                             </tr>
                             
