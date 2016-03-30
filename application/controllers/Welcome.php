@@ -317,7 +317,7 @@ class Welcome extends CI_Controller {
         {
             
             $email=$this->input->post('email');
-            $name.=$this->input->post('firstname');
+            $name=$this->input->post('firstname');
             $name.=" ".$this->input->post('lastname');
             $msg=$name."<br>".$this->input->post('message');
             
