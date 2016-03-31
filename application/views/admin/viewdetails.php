@@ -37,7 +37,6 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="js/affiliate.js"></script>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -49,72 +48,77 @@
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content">
-        <div class="row">
-            <div class="col-xs-12">
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">List Of Affiliate Users </h3>
-                  <div class="box-tools">
-                    <div style="width: 150px;" class="input-group">
-                   
-                      
-                    </div>
-                  </div>
-                </div><!-- /.box-header -->
-                <div class="box-body table-responsive no-padding">
-                  <table class="table table-hover">
-                    <tbody><tr>
-                      <th>ID</th>
-                      <th>User</th>
-                      <th>Date(dd/mm/yy)</th>
-                      <th>Referelcode</th>
-                      <th>Status</th>
-                      <th>Action</th>
-                      <th>Details</th>
-                      
-                    </tr>
-                    <?php if(!empty($list_users)):
-                      foreach($list_users as $users):
+          <section class="content">
+            
+                  <div class="box">
+                    <div class="box-header">
+                      <h1 class="box-title">User Details</h1> 
+                       </div><!-- /.box-header -->
+                      <div class="row">
+
+                         <div class="col-sm-6">
+                          
+                          
+                           Id: <?php echo $user_info['uid'];?>
+                           <br>
+                           Name: <?php echo $user_info['fname']." ".$user_info['lname'];?>
+                           <br>
+                           User Name: <?php echo $user_info['username'];?>
+                           <br>
+                           Email: <?php echo $user_info['email'];?>
+                           <br>
+                           Refferal Code: <?php echo $user_info['refferalcode'];?>
+                           <br>
+                           Date Of Registration: <?php echo date('m/d/Y',strtotime($user_info['date_register']));?>
+                          
+                         </div>
+                         <div class="col-sm-6">
+                          Parent Id:<?php echo $user_info['parent_id'];
+
+                            $parent_info=Parentstatus($user_info['parent_id']);
+                          ?>
+                          <br>
+                          Parent Name:  <?php echo $parent_info['fname'].  ' '.$parent_info['lname']; ?>
+                           
 
 
-                        ?>
-                    <tr>
-                      <td><?php echo $users['uid'];?></td>
-                      <td><?php echo ucfirst($users['fname']).' '.ucfirst($users['lname']);?></td>
-                      <td><?php echo date('d/m/Y',strtotime($users['date_register']));?></td>
-                      <td><?php echo $users['refferalcode'];?></td>
-                      <td>
-                        <!--<?php if($users['status']==1){?><span class="label label-success"><?php echo 'Approved';?></span><?php }?>
-                        <?php if($users['status']==2){?><span class="label label-danger"><?php echo 'Deleted By admin';?></span><?php }?>
-                        <?php if($users['status']==3){?><span class="label label-danger"><?php echo 'Rejected By admin';?></span><?php }?>
-                        <?php 
-                            if($users['parent_id']!=0)
-                            {
-                              $fnchkparent_status=Parentstatus($users['parent_id']);
-                            if($fnchkparent_status['status']!=1)
-                            {
-                              echo 'assign parent';
-                            }
-                            }
-                        ?>-->
+                         </div>
+                      </div>
 
-                      </td>
-                     <td><span class="label label-danger" onclick="change_status('Delete','<?php echo $users['uid'];?>')">Delete</span></td>
-                     <td> 
-                         <span class="label label-success" ><a href="<?php echo base_url();?>index.php/admin/users/view_details/<?php echo $users['uid']; ?>">View Details</span>
-                              </td>
+                        <!-- /.box-body -->
+                  </div><!-- /.box -->
 
-                       
+                  
+            
+                  <div class="box">
+                    <div class="box-header">
+                      <h1 class="box-title">Affiliate Details</h1> 
+                       </div><!-- /.box-header -->
+                      <div class="row">
 
-                    </tr>
-                    <?php endforeach; endif;?>
-                  </tbody></table>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
-            </div>
-          </div>
-          </section>
+                         <div class="col-sm-3">
+                            <p>Tier4<P>
+                         <?php  $child_info=children_info($user_info['uid']);
+                            echo '<pre>';
+                            print_r($child_info);
+                         ?>
+
+                          
+                         
+
+
+                           
+                         </div>
+                         <div class="col-sm-3"><p>Tier3<P></div>
+                         <div class="col-sm-3"><p>Tier2<P></div>
+                         <div class="col-sm-3"><p>Tier1<P></div>
+                      </div>
+
+                        <!-- /.box-body -->
+                  </div><!-- /.box -->
+               
+         
+
       </div>
      <!-- footer -->
      <?php echo $footer;?>

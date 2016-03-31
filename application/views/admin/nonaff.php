@@ -69,8 +69,10 @@
                               <th>User</th>
                               <th>Date(dd/mm/yy)</th>
                               <th>Status</th>
-                              <th>Action</th>
                               <th>Refferal Code</th>
+                              <th>Action</th>
+                             
+                             
                             </tr>
                             <?php if(!empty($list)):
                               foreach($list as $users):?>
@@ -95,10 +97,11 @@
                                   }
                                 ?>
                               </td>
+                              <td><?php echo $users['refferalcode'];?></td>
                               <td>
                                 <span class="label label-success" onclick="change_status('Approve','<?php echo $users['uid'];?>');">Approve</span>
                            
-                                <span class="label label-success" onclick="change_status('Delete','<?php echo $users['uid'];?>');">Delete</span>
+                               <!-- <span class="label label-success" onclick="change_status('Delete','<?php echo $users['uid'];?>');">Delete</span>-->
                              
                                 <span class="label label-success" onclick="change_status('Reject','<?php echo $users['uid'];?>');">Reject</span><br>
                                
@@ -106,7 +109,6 @@
                                 
                                 
                               </td>
-                              <td></td>
                               
                             </tr>
                             

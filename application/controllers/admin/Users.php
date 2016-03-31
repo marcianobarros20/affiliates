@@ -44,10 +44,10 @@ class Users extends CI_Controller {
 			$data['footer']=$this->load->view('admin/includes/footer','',true);
 			$data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
 			$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
-			$con=array('status'=>1);
-
+			$con=array('status'=>1,'refferalparent != '=>null);
+ 
 			$data['list_users']=$this->Common_model->fetchinfo('users',$con,'result');
-
+             
 			$this->load->view('admin/affiliates',$data);
 		}
 
@@ -82,6 +82,27 @@ class Users extends CI_Controller {
 		}
 
 	}
+
+	public function view_details($uid)
+	{
+           //echo $uid;
+
+		   $con=array('uid' => $uid);
+
+
+           $data['user_info']= $this->Common_model->fetchinfo('users',$con, 'row');
+           //print_r( $data['user_info']);
+            //exit;
+		   $data['header']=$this->load->view('admin/includes/header','',true);
+		   $data['footer']=$this->load->view('admin/includes/footer','',true);
+		   $data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
+		   $data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
+		   $this->load->view('admin/viewdetails',$data);
+		
+	}
+
+	
+
 
 
 	
