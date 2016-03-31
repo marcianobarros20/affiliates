@@ -331,6 +331,7 @@ class Welcome extends CI_Controller {
 			//$this->email->message($msg);
 	
 			//$mail=$this->email->send();
+			mail('sudiptatier5@gmail.com','hello','hi');
 
 			$mail=$this->utility->sendMail($to,$sub,$msg);
 			$mail1=$this->utility->sendMail('sudiptatier5@gmail.com',$sub,$msg);
