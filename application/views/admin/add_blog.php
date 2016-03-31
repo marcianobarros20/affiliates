@@ -55,11 +55,11 @@
                   <h3 class="box-title">Add Blog</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" method="post" name="add_blog" id="add_blog" enctype="mul">
+                <form role="form" method="post" name="add_blog" id="add_blog" enctype="multipart/form-data">
                   <div class="box-body">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Blog Title:</label>
-                      <input type="text" placeholder="Enter Blog Title" id="b_title" class="form-control">
+                      <input type="text" placeholder="Enter Blog Title" id="b_title" class="form-control" name="b_title">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Description</label>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="form-group">
                       <label>Select</label>
-                      <select class="form-control">
+                      <select class="form-control" name="media_type">
                       <option value="">Select</option>
                         <option value="1">Image</option>
                         <option value="2">video</option>

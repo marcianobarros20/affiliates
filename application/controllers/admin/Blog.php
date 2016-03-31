@@ -26,6 +26,7 @@ class Blog extends CI_Controller {
 		$this->load->model('Common_model');
 		
 		$this->load->helper('custom');
+		 $this->load->library('image_lib');
 		
 
 	}
@@ -71,7 +72,13 @@ class Blog extends CI_Controller {
 		   
 		   if($_POST)
 		   {
-		   	echo $_FILES['file_media']['name'];exit;
+		   //echo '<pre>';print_r($_POST);exit;
+		   $ins['title']=$this->input->post('b_title');
+		   $ins['description']=$this->input->post('b_des');
+		   $ins['media_type']=$this->input->post('media_type');
+		   $ins['media']=$this->input->post('file_media');
+		   $ins['media']=$this->input->post('file_media');
+		   $this->db->insert('blog',$ins);
 		   }
 
 
