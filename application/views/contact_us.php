@@ -144,17 +144,9 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
 </h4></div>
     <div class='text-center'><span id='err_em' class='error text-center'></span>
     <span id='err_us' class='error text-center'></span></div>
- </h4>
+ 
   <section id="registration-page" class="container">
- <div class="status alert alert-success" <?php if(!$this->session->userdata('succ_msg')){ echo 'style=display:none;';}?>>
-                    <?php if($this->session->userdata('succ_msg')){echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg',''); }?>
-                </div>
-                <div class="status alert alert-error" <?php if(!$this->session->userdata('err_msg')){ echo 'style=display:none;';}?>>
-                <?php if($this->session->userdata('err_msg')){echo $this->session->userdata('err_msg');$this->session->set_userdata('err_msg',''); }?>
-                </div>
-                <div class="status alert alert-warning" <?php if(!$this->session->userdata('err1_msg')){ echo 'style=display:none;';}?>>
-                <?php if($this->session->userdata('err1_msg')){echo $this->session->userdata('err1_msg');$this->session->set_userdata('err1_msg',''); }?>
-                </div>
+ 
     
        
     <form class="center"  method="POST" id='reg_form' onsubmit="return validate();" action="<?php echo base_url();?>Welcome/register">
@@ -215,16 +207,7 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
 
             <div class="span8">
                 <h4>Getting Started</h4>
-               
-                <div class="status alert alert-success" <?php if(!$this->session->userdata('succ_msg')){ echo 'style=display:none;';}?>>
-                    <?php if($this->session->userdata('succ_msg')){echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg',''); }?>
-                </div>
-                <div class="status alert alert-error" <?php if(!$this->session->userdata('err_msg')){ echo 'style=display:none;';}?>>
-                <?php if($this->session->userdata('err_msg')){echo $this->session->userdata('err_msg');$this->session->set_userdata('err_msg',''); }?>
-                </div>
-                <div class="status alert alert-warning" <?php if(!$this->session->userdata('err1_msg')){ echo 'style=display:none;';}?>>
-                <?php if($this->session->userdata('err1_msg')){echo $this->session->userdata('err1_msg');$this->session->set_userdata('err1_msg',''); }?>
-                </div>
+              
                 <form  method="post">
                   <div class="row-fluid">
                     <div class="span5">
