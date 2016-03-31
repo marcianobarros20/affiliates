@@ -40,7 +40,7 @@
                 </div>
                 <div class="span6">
                     <ul class="breadcrumb pull-right">
-                        <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+                        <li><a href="<?php echo base_url();?>">Home</a> <span class="divider">/</span></li>
                         <li class="active">About Us</li>
                     </ul>
                 </div>
