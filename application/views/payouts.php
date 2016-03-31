@@ -9,7 +9,7 @@
     <title>Affiliates Payouts</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-
+    <base href="<?php echo base_url();?>">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -29,29 +29,7 @@
 <body>
 
     <!--Header-->
-    <header class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a id="logo" class="pull-left" href="index.html"></a>
-                <div class="nav-collapse collapse pull-right">
-                    <ul class="nav">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="how-it-works.html">How it Works</a></li>
-                        <li   class="active"><a href="payouts.html">{Payouts}</a></li>
-                        <li><a href="sign-up.html">Get Started</a></li>
-                        <li class="login">
-                            <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
-                        </li>
-                    </ul>        
-                </div><!--/.nav-collapse -->
-            </div>
-        </div>
-    </header>
+   <?php echo $header;?>
     <!-- /header -->
 
     <section class="title">
@@ -246,37 +224,7 @@
 
 
 <!--Footer-->
-<footer id="footer">
-    <div class="container">
-        <div class="row-fluid">
-            <div class="span5 cp">
-                &copy; 2016 <a target="_blank" href="http://tier5.us/" title="Tier5">Tier5</a>. All Rights Reserved.
-            </div>
-            <!--/Copyright-->
-
-            <div class="span6">
-                <ul class="social pull-right">
-                    <li><a href="https://www.facebook.com/tier5development/?ref=bookmarks"><i class="icon-facebook"></i></a></li>
-                   <!-- <li><a href="#"><i class="icon-twitter"></i></a></li>
-                    <li><a href="#"><i class="icon-pinterest"></i></a></li>
-                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
-                    <li><a href="#"><i class="icon-google-plus"></i></a></li>                       
-                    <li><a href="#"><i class="icon-youtube"></i></a></li>
-                    <li><a href="#"><i class="icon-tumblr"></i></a></li>                        
-                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                    <li><a href="#"><i class="icon-rss"></i></a></li> -->
-                    <li><a href="https://github.com/tier5"><i class="icon-github-alt"></i></a></li>
-                    <!--<li><a href="#"><i class="icon-instagram"></i></a></li>                   -->
-                </ul>
-            </div>
-
-            <div class="span1">
-                <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
-            </div>
-            <!--/Goto Top-->
-        </div>
-    </div>
-</footer>
+<?php echo $footer;?>
 <!--/Footer-->
 
 <!--  Login form -->

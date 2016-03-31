@@ -50,6 +50,7 @@ class Welcome extends CI_Controller {
 
 	public function register($ref_id=NULL)
 	{
+		//echo 'hi';exit;
 		$data=array();
 		if($ref_id!='')
 		{
@@ -117,6 +118,7 @@ class Welcome extends CI_Controller {
 			  		$this->session->set_userdata('reffrence_id','');
 			  		$this->session->set_userdata('succ_msg','You Have successfully registered with us.please log in now.');
 			  		//redirect(base_url().'index.php/welcome/register');
+			  redirect(base_url().'index.php/welcome/contact');
 			  }
 			 }
 			 else
@@ -130,6 +132,7 @@ class Welcome extends CI_Controller {
 			    	$this->session->set_userdata('err_msg','Username Already Exists.');
 			    }
 				//redirect(base_url().'index.php/welcome/register');
+			redirect(base_url().'index.php/welcome/contact');
 			 }
 			  
 			}
@@ -137,14 +140,11 @@ class Welcome extends CI_Controller {
 			{
 				
 				$this->session->set_userdata('err_msg','Please fill All required fields Properly.');
-				//redirect(base_url().'index.php/welcome/register');
+				redirect(base_url().'index.php/welcome/contact');
 			}
 		}
 
-		$data['header']=$this->load->view('includes/header','',true);
-		$data['footer']=$this->load->view('includes/footer','',true);
-		$data['middle']=$this->load->view('includes/middle.php','',true);
-		$this->load->view('registration',$data);
+		
 	}
     public function login()
 	{

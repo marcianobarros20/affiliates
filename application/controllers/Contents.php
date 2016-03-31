@@ -56,12 +56,7 @@ class Contents extends CI_Controller {
 		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('services.php',$data);
 	}
-	public function how()
-	{
-		$data['header']=$this->load->view('includes/header.php','',true);
-		$data['footer']=$this->load->view('includes/footer.php','',true);
-		$this->load->view('how_it_works.php',$data);
-	}
+	
 	public function portfolio()
 	{
 		$data['header']=$this->load->view('includes/header.php','',true);
@@ -119,5 +114,21 @@ public function pricing()
 		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('terms.php',$data);
 	}
+	public function how()
+	{
+		$data['header']=$this->load->view('includes/header.php','',true);
+		$data['footer']=$this->load->view('includes/footer.php','',true);
+		$data['middle']=$this->load->view('includes/middle.php','',true);
+		$this->load->view('how_it_works.php',$data);
+	}
+
+	public function payout()
+	{
+		$data['header']=$this->load->view('includes/header.php','',true);
+		$data['footer']=$this->load->view('includes/footer.php','',true);
+		$data['middle']=$this->load->view('includes/middle.php','',true);
+		$this->load->view('payouts.php',$data);
+	}
+
 }
 ?>
