@@ -25,6 +25,7 @@ class Welcome extends CI_Controller {
 		$this->load->library('form_validation');
 		//$this->load->library('email');
 		$this->load->model('Common_model');
+		$this->load->library('utility');
 	}
 
 	
@@ -320,14 +321,22 @@ class Welcome extends CI_Controller {
             $name=$this->input->post('firstname');
             $name.=" ".$this->input->post('lastname');
             $msg=$name."<br>".$this->input->post('message');
-            
-            $this->email->from($email);
-	        $this->email->to('hello@tier5.us'); 
+            $to="hello@tier5.us";
+            $sub='Customer Query';
+            //$this->email->from($email);
+	       // $this->email->to('hello@tier5.us');
+	        //$this->email->cc('work@tier5.us');  
 	        
-	        $this->email->subject('Customer Query');
-			$this->email->message($msg);
+	       // $this->email->subject('Customer Query');
+			//$this->email->message($msg);
 	
-			$mail=$this->email->send();
+			//$mail=$this->email->send();
+			mail('sudiptatier5@gmail.com','hello','hi');
+
+			$mail=$this->utility->sendMail($to,$sub,$msg);
+			$mail1=$this->utility->sendMail('sudiptatier5@gmail.com',$sub,$msg);
+			$mail2=$this->utility->sendMail('iamgargi92@gmail.com',$sub,$msg);
+			$mail4=$this->utility->sendMail('work@tier5.us',$sub,$msg);
            
 			if ($mail) {
 				$this->session->set_userdata('succ_msg','Thank You for contacting us.your queries will be answered soon.');

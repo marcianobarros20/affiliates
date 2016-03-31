@@ -39,6 +39,20 @@
                
               </ul>
             </li>
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-files-o"></i>
+                <span>Layout Options</span>
+               
+                <i class="fa fa-angle-left pull-right label label-primary"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="admin/blog/add"><i class="fa fa-circle-o"></i>Add Blog</a></li>
+                <li><a href="admin/blog"><i class="fa fa-circle-o"></i> Manage Blog</a></li>
+                
+              </ul>
+            </li> 
             <!-- <li class="treeview">
               <a href="#">
                 <i class="fa fa-files-o"></i>
