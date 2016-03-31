@@ -32,12 +32,14 @@
                             </ul>
                         </li> -->
                         <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='blog'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>index.php/Contents/blog">Blog</a></li> 
-                        <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='contact'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>index.php/welcome/contact">{Get Started}</a></li>
+
+                        
                         <li class="login">
                         <?php if($this->session->userdata('user_id')==''){ ?>
+                        <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='contact'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>index.php/welcome/contact">{Get Started}</a></li>
                             <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
                         <?php } else { ?>
-                        HI !! <?php echo $this->session->userdata('username');?>
+                        <a href="<?php echo base_url()?>index.php/welcome/dashboard">HI !! <?php echo $this->session->userdata('username');?></a>
                         <a href="<?php echo base_url();?>index.php/welcome/logout">Logout</a>
                         <?php }?>
                         </li>
