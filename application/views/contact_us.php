@@ -147,9 +147,18 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
  
   <section id="registration-page" class="container">
  
-    
+    <?php
+        if($this->session->userdata('reffrence_id')!='')
+        {
+            $ref_id=$this->session->userdata('reffrence_id');
+        }
+        else
+        {
+          $ref_id='';  
+        }
+    ?>
        
-    <form class="center"  method="POST" id='reg_form' onsubmit="return validate();" action="<?php echo base_url();?>index.php/Welcome/register">
+    <form class="center"  method="POST" id='reg_form' onsubmit="return validate();" action="<?php echo base_url();?>index.php/Welcome/register/<?php echo $ref_id;?>">
       <fieldset class="registration-form">
        <div class="control-group">
           <!-- Username -->
