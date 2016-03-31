@@ -48,8 +48,8 @@
                 <i class="fa fa-angle-left pull-right label label-primary"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="admin/blog/add"><i class="fa fa-circle-o"></i>Add Blog</a></li>
-                <li><a href="admin/blog"><i class="fa fa-circle-o"></i> Manage Blog</a></li>
+                <li><a href="<?php echo base_url();?>index.php/admin/blog/add"><i class="fa fa-circle-o"></i>Add Blog</a></li>
+                <li><a href="<?php echo base_url();?>index.php/admin/blog"><i class="fa fa-circle-o"></i> Manage Blog</a></li>
                 
               </ul>
             </li> 
