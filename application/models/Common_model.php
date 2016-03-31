@@ -31,7 +31,7 @@
       public function insert($tbl,$data)
       {
         $this->db->insert($tbl,$data);
-        return $this->db->affected_rows();
+        return $this->db->insert_id();
       }
 
 
@@ -116,8 +116,16 @@
 
       }
 
+      public function fetchinfoBlog($con,$limit,$start)
+      {
+        $this->db->select('*');
+        $this->db->where($con);
+       
+        $this->db->limit($limit);
+         $res=$this->db->get('blog');
+         return $res->result_array();
+      }
 
-      
 
       
 

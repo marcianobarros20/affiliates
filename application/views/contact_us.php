@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/sl-slide.css">
 
-    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="images/ico/favicon.ico">
@@ -24,7 +24,91 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="js/jquery.validate.js"></script>
+<script type="text/javascript">
+  $(document ).ready(function() {
+   
+   $( "#reg_form" ).validate({
+  rules: {
+    password: "required",
+    password_confirm: {
+      equalTo: "#password"
+    }
+  }
+});
 
+   $( "#form-login" ).validate();
+});
+
+   function validate()
+   {
+    var err=0;
+    var email=$('#email').val();
+    var username=$('#username').val();
+
+    
+    if(email!='')
+    {
+      var res= $.ajax({
+    type : 'post',
+    url : '<?php echo base_url();?>Ajax/EmailExists',
+    data : 'email='+email,
+    async : false,
+    success : function(msg){ 
+    if(msg==1)
+           {
+
+            err=1;
+            $('#err_em').html('Email already exists');
+            return false;
+           }
+           else
+           {
+            err=0;
+           }
+        }
+    }); 
+  
+    
+    }
+
+    if(username!='')
+    {
+      var res= $.ajax({
+    type : 'post',
+    url : '<?php echo base_url();?>Ajax/UserExists',
+    data : 'username='+username,
+    async : false,
+    success : function(msg){ 
+    if(msg==1)
+           {
+            err=1;
+            $('#err_us').html('Username already exists');
+            return false;
+           }
+           else
+           {
+            err=0;
+           }
+        }
+    }); 
+  
+    
+    }
+if(err==1)
+    {
+      return false;
+    }
+else
+{
+  $('#err_em').html('');
+  $('#err_us').html('');
+}
+   
+
+   }
+    </script>
 </head>
 
 <body>
@@ -33,24 +117,106 @@
    <?php echo $header;?>
     <!-- /header -->
 
+
+
     <section class="no-margin">
         <iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49799.26337019521!2d-85.69035624773345!3d38.73034377843344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886bd20ec02fdea7%3A0x1c16995e39978d1!2sTier5!5e0!3m2!1sen!2s!4v1458908236414"></iframe>
     </section>
+
+<section class="title">
+    <div class="container">
+      <div class="row-fluid">
+        <div class="span6">
+          <h1>{Get Started}</h1>
+        </div>
+        <div class="span6">
+          <ul class="breadcrumb pull-right">
+            <li><a href="<?php echo base_url();?>">Home</a> <span class="divider">/</span></li>
+           
+            <li class="active">Get Started</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+ <div class='text-center'><h4><?php if($this->session->userdata('err_msg')!=''){ echo '<span class="error">'.$this->session->userdata('err_msg').'</span>'; $this->session->set_userdata('err_msg','');} 
+if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg','');}?>
+</h4></div>
+    <div class='text-center'><span id='err_em' class='error text-center'></span>
+    <span id='err_us' class='error text-center'></span></div>
+ 
+  <section id="registration-page" class="container">
+ 
+    <?php
+        if($this->session->userdata('reffrence_id')!='')
+        {
+            $ref_id=$this->session->userdata('reffrence_id');
+        }
+        else
+        {
+          $ref_id='';  
+        }
+    ?>
+       
+    <form class="center"  method="POST" id='reg_form' onsubmit="return validate();" action="<?php echo base_url();?>index.php/Welcome/register/<?php echo $ref_id;?>">
+      <fieldset class="registration-form">
+       <div class="control-group">
+          <!-- Username -->
+          <div class="controls">
+            <input type="text" id="fname" name="fname" placeholder="First Name" class="input-xlarge required">
+          </div>
+        </div>
+         <div class="control-group">
+          <!-- Username -->
+          <div class="controls">
+            <input type="text" id="lname" name="lname" placeholder="Last Name" class="input-xlarge required">
+          </div>
+        </div>
+        <div class="control-group">
+          <!-- Username -->
+          <div class="controls">
+            <input type="text" id="username" name="username" placeholder="Username" class="input-xlarge required">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <!-- E-mail -->
+          <div class="controls">
+            <input type="text" id="email" name="email" placeholder="E-mail" class="input-xlarge required email">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <!-- Password-->
+          <div class="controls">
+            <input type="password" id="password" name="password" placeholder="Password" class="input-xlarge required">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <!-- Password -->
+          <div class="controls">
+            <input type="password" id="password_confirm" name="password_confirm" placeholder="Password (Confirm)" class="input-xlarge required equalTo">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <!-- Button -->
+          <div class="controls">
+            <input type="submit" class="btn btn-success btn-large btn-block" value="Register" name="Register">
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </section>
+  <!-- /#registration-page -->
 
     <section id="contact-page" class="container">
         <div class="row-fluid">
 
             <div class="span8">
-                <h4>Contact Form</h4>
-                <div class="status alert alert-success" <?php if(!$this->session->userdata('succ_msg')){ echo 'style=display:none;';}?>>
-                    <?php if($this->session->userdata('succ_msg')){echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg',''); }?>
-                </div>
-                <div class="status alert alert-error" <?php if(!$this->session->userdata('err_msg')){ echo 'style=display:none;';}?>>
-                <?php if($this->session->userdata('err_msg')){echo $this->session->userdata('err_msg');$this->session->set_userdata('err_msg',''); }?>
-                </div>
-                <div class="status alert alert-warning" <?php if(!$this->session->userdata('err1_msg')){ echo 'style=display:none;';}?>>
-                <?php if($this->session->userdata('err1_msg')){echo $this->session->userdata('err1_msg');$this->session->set_userdata('err1_msg',''); }?>
-                </div>
+                <h4>Getting Started</h4>
+              
                 <form  method="post">
                   <div class="row-fluid">
                     <div class="span5">
@@ -62,13 +228,15 @@
                         <input type="email" name="email" class="input-block-level" required="required" placeholder="Your email address">
                     </div>
                     <div class="span7">
-                        <label>Message</label>
+                        <label>
+Why do you want to be a Tier5 Affiliate?
+</label>
                         <textarea name="message" id="message" required="required" class="input-block-level" rows="8"></textarea>
                     </div>
 
                 </div>
                <!--  <button type="submit" class="btn btn-primary btn-large pull-right">Send Message</button> -->
-                <input type='submit' name='submit' value='send message' class="btn btn-primary btn-large pull-right">
+                <input type='submit' name='submit' value='Become an Affiliate' class="btn btn-primary btn-large pull-right">
 
             </form>
         </div>
@@ -105,7 +273,7 @@
 
 
 
-<script src="js/vendor/jquery-1.9.1.min.js"></script>
+
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/main.js"></script>   
 

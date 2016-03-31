@@ -45,11 +45,27 @@ class Blog extends CI_Controller {
 			$data['footer']=$this->load->view('admin/includes/footer','',true);
 			$data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
 			$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
-			$con=array('status'=>1);
+			$con=array('status'=>0);
+			$page = $this->uri->segment(3)?$this->uri->segment(3):1;
+		$this->load->library('pagination');			
+		$config['base_url'] = base_url('blog/index');
+		
+		$data['RecordTotal']=$this->Common_model->fetchinfo('blog',$con,'count');
+		//$data['RecordTotal']=$this->home_model->casino_total();
+		$config['total_rows'] = $data['RecordTotal'];
+		$config['per_page'] = $limit = 6;
+		$start = ($page-1)*$limit;//start page			
+		$config["uri_segment"] =3;
+		$this->pagination->initialize($config);			
+		$data['PaginationLink']= $this->pagination->create_links();
+		//$data['casino_list']=$this->home_model->casino($limit,$start);
+		
+		$data['all_blog']=$this->Common_model->fetchinfoBlog($con,$limit,$start);
+			
 
-			$data['list_users']=$this->Common_model->fetchinfo('users',$con,'result');
+			
 
-			$this->load->view('admin/affiliates',$data);
+			$this->load->view('admin/manage_blog',$data);
 		}
 
 	}
@@ -72,13 +88,100 @@ class Blog extends CI_Controller {
 		   
 		   if($_POST)
 		   {
+		   	if($this->input->post('media_type')==1)
+		   	{
+		   	/* image upload start */
+		   	 if($_FILES['file_media']['size']!=0){
+			    $this->load->library('image_lib');
+				$time=time();
+			    $config['upload_path'] ='./blog_file/original/';
+				$config['file_name']=$time;
+				$config['overwrite']='TRUE';
+				$config['allowed_types']='jpg|jpeg|gif|png|PNG';
+				$config['max_size']='2000';
+								
+				$this->load->library('upload', $config);
+				if( ! $this->upload->do_upload('file_media'))//initialize
+				{
+				
+					$this->session->set_userdata('err_msg',$this->upload->display_errors());
+					echo $this->upload->display_errors();
+					die();
+				}
+				else
+				{
+				
+				$updata=array();//get the uploaded data details
+				$updata = $this->upload->data();				
+				$f_resize=$updata['file_name'];
+					
+				$config['image_library'] = 'gd2';
+				$config['thumb_marker']='';
+				$config['create_thumb'] = TRUE;
+				$config['maintain_ratio'] = TRUE;
+				$config['height']=250;
+				$config['width']=250;
+				$config['new_image'] = './blog_file/thumb/'.$f_resize;
+				$config['source_image']="./blog_file/original/".$f_resize;
+				
+				$this->image_lib->initialize($config);
+				$this->image_lib->resize();
+				
+				
+	
+				}
+			}
+		   	/* image upload end */
+		   }
+		   else
+		   {
+		   	/* video upload start */
+
+		   	if($_FILES['file_media']['size']!=0){
+			    $this->load->library('image_lib');
+				$time=time();
+			    $config['upload_path'] ='./blog_file/video/';
+				$config['file_name']=$time;
+				$config['overwrite']='TRUE';
+				$config['allowed_types']='avi|flv|wmv|mp3|mp4|AVI|FLV|WMV|MP3|MP4';
+				$config['max_size']='2000';
+								
+				$this->load->library('upload', $config);
+				if( ! $this->upload->do_upload('file_media'))//initialize
+				{
+				
+					$this->session->set_userdata('err_msg',$this->upload->display_errors());
+					echo $this->upload->display_errors();
+					die();
+				}
+				else
+				{
+				
+				$updata=array();//get the uploaded data details
+				$updata = $this->upload->data();				
+				//echo '<pre>';print_r($updata);
+				$f_resize=$updata['file_name'];
+
+				}
+			}
+		   	/* video upload end */
+
+		   }
+
+
 		   //echo '<pre>';print_r($_POST);exit;
 		   $ins['title']=$this->input->post('b_title');
 		   $ins['description']=$this->input->post('b_des');
 		   $ins['media_type']=$this->input->post('media_type');
-		   $ins['media']=$this->input->post('file_media');
-		   $ins['media']=$this->input->post('file_media');
-		   $this->db->insert('blog',$ins);
+		   $ins['add_date']=date('Y-m-d');
+		   $ins['media']=$f_resize;
+		  
+		   $insert=$this->db->insert('blog',$ins);
+		   if($insert)
+		   {
+		   	$this->session->set_userdata('succ_msg','Blog added successfully');
+		   	redirect(base_url().'index.php/admin/blog/add');
+		   }
 		   }
 
 

@@ -50,6 +50,7 @@ class Welcome extends CI_Controller {
 
 	public function register($ref_id=NULL)
 	{
+		//echo 'hi';exit;
 		$data=array();
 		if($ref_id!='')
 		{
@@ -89,7 +90,7 @@ class Welcome extends CI_Controller {
 			  	
 			  	$get_explode=explode('-',$ref_id);
 			  	$ins['parent_id']=$get_explode[2];
-			  	$ins['refferalcode']=$ref_id;
+			  	$ins['refferalparent']=$ref_id;
 			  	$ins['status']=1;
 			  	
 			  }
@@ -101,7 +102,7 @@ class Welcome extends CI_Controller {
 			  	$ref_id1=$this->session->userdata('reffrence_id');
 			  	$get_explode=explode('-',$ref_id1);
 			  	$ins['parent_id']=$get_explode[2];
-			  	$ins['refferalcode']=$ref_id1;
+			  	$ins['refferalparent']=$ref_id1;
 			  	$ins['status']=1;
 			  }
 			  else
@@ -114,9 +115,19 @@ class Welcome extends CI_Controller {
 			  $insert=$this->Common_model->insert('users',$ins);
 			  if($insert)
 			  {
+			  	//echo $insert;exit;
+			  		if($this->session->userdata('reffrence_id')!='')
+			        {
+			        	$con2=array('uid'=>$insert);
+			        	$update['refferalcode']='Ref-'.time().'-'.$insert;
+			        	$this->Common_model->update('users',$con2,$update);
+			        }
+
+
 			  		$this->session->set_userdata('reffrence_id','');
 			  		$this->session->set_userdata('succ_msg','You Have successfully registered with us.please log in now.');
 			  		//redirect(base_url().'index.php/welcome/register');
+			  redirect(base_url().'index.php/welcome/contact');
 			  }
 			 }
 			 else
@@ -130,6 +141,7 @@ class Welcome extends CI_Controller {
 			    	$this->session->set_userdata('err_msg','Username Already Exists.');
 			    }
 				//redirect(base_url().'index.php/welcome/register');
+			redirect(base_url().'index.php/welcome/contact');
 			 }
 			  
 			}
@@ -137,14 +149,11 @@ class Welcome extends CI_Controller {
 			{
 				
 				$this->session->set_userdata('err_msg','Please fill All required fields Properly.');
-				//redirect(base_url().'index.php/welcome/register');
+				redirect(base_url().'index.php/welcome/contact');
 			}
 		}
 
-		$data['header']=$this->load->view('includes/header','',true);
-		$data['footer']=$this->load->view('includes/footer','',true);
-		$data['middle']=$this->load->view('includes/middle.php','',true);
-		$this->load->view('registration',$data);
+		
 	}
     public function login()
 	{
@@ -304,8 +313,12 @@ class Welcome extends CI_Controller {
        
         
 	}
-    public function contact()
+    public function contact($ref_id='')
 	{
+		if($ref_id!='')
+		{
+		$this->session->set_userdata('reffrence_id',$ref_id);
+	    }
 		$data=array();
 		$this->form_validation->set_rules('firstname', 'FirstName', 'required');
     	$this->form_validation->set_rules('lastname', 'LastName', 'required');
