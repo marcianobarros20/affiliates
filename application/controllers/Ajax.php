@@ -75,6 +75,47 @@ class Ajax extends CI_Controller {
 
 			}
 			}
+
+
+			public function check_refferalcode()
+			{
+				if($_POST)
+				{
+					$refferalcode=$this->input->post('refferalcode');
+					$con=array('refferalcode'=>$refferalcode);
+					$check_reff=$this->Common_model->fetchinfo('users',$con,'count');
+                    if($check_reff>0)
+                    {
+                    	$get_parent_uid=$this->Common_model->fetchinfo('users',$con,'row');
+                        $parent_id=$get_parent_uid['uid'];
+
+                        $user_id=$this->input->post('uid');
+                        $userid=array('uid'=>$user_id);
+                        $data['refferalparent']=$refferalcode;
+                        $data['parent_id']=$parent_id;
+                        $data['status']=$this->input->post('status');
+                        $data['refferalcode']='Ref-'.time().'-'.$user_id;
+
+
+                        $update=$this->Common_model->update('users',$userid,$data);
+
+                        if($update)
+                        {
+                            echo "Assigned Successful";
+                        }
+                        else
+                        {
+                            echo "Assigned Rejected";
+                        }
+
+
+                    }
+                    else
+                    {
+                    	echo "No Such refferal Code";
+                    }
+				}
+			}
 	
 }
 ?>

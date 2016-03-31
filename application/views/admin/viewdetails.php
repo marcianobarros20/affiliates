@@ -79,7 +79,7 @@
                           ?>
                           <br>
                           Parent Name:  <?php echo $parent_info['fname'].  ' '.$parent_info['lname']; ?>
-                           
+                          
 
 
                          </div>
