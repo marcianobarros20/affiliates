@@ -11,7 +11,7 @@
                     <ul class="nav">
 
                         <li <?php if($this->uri->segment(2)==''){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>">Home</a></li>
-                        <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='about_us'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>index.php/Contents/about_us">About Us</a></li>
+                        <!--<li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='about_us'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>index.php/Contents/about_us">About Us</a></li>-->
                         <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='how'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>index.php/Contents/how">How it Works</a></li>
                         <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='payout'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>index.php/Contents/payout">Payouts</a></li>
                         <!-- <li  <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='services'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>index.php/Contents/services">Services</a></li>
@@ -31,7 +31,7 @@
                                 <li><a href="<?php echo base_url();?>index.php/Contents/terms">Terms of Use</a></li>
                             </ul>
                         </li> -->
-                        <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='blog'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>index.php/Contents/blog">Blog</a></li> 
+                       <!-- <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='blog'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>index.php/Contents/blog">Blog</a></li> -->
 
                         
                         <li class="login">

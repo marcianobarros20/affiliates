@@ -73,5 +73,20 @@
         }
     }
 
+function show_child_id(uid) {
+ // alert(uid);
 
+                  var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/show_child',
+                  data : 'uid='+uid,
+                  async : false,
+                  success : function(msg)
+                   {
+                        alert(msg);
+                       
+                   }
+                  });
+
+}
     

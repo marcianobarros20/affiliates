@@ -116,6 +116,40 @@ class Ajax extends CI_Controller {
                     }
 				}
 			}
+
+
+			public function show_child()
+			{
+
+
+				//echo "child";
+				if($_POST)
+				{
+					$user_id=$this->input->post('uid');
+	                $parent_id=array('parent_id'=>$user_id);
+	                $get_child=$this->Common_model->fetchinfo('users',$parent_id,'result');
+	                //print_r($get_child) ;
+	                if($get_child)
+	                {
+	                   print_r($get_child) ;
+	                }
+	                else
+                    {
+                    	echo "No Child";
+                    }
+
+	             }
+	             else
+	             {
+	             	echo "No ";
+	             }
+
+
+
+			}
+
+
+
 	
 }
 ?>

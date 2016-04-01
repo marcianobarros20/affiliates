@@ -37,6 +37,41 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript" src="js/affiliate.js"></script>
+
+ 
+    <style>
+  
+
+
+   #user_info_box{
+    background-color: lightgrey;
+    border: 10px solid #003366;
+   }
+   
+   .box-header{
+    padding: 10px;
+
+   }
+
+   .box-body{
+    padding: 10px;
+
+   }
+
+   #uppertier_info_box{
+    background-color: lightgrey;
+    border: 10px solid #003366;
+
+   }
+
+   #first_lower_tier_info{
+    background-color: lightgrey;
+    border: 10px solid #003366;
+
+   }
+
+</style>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -49,16 +84,12 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
           <section class="content">
-            
-                  <div class="box">
+
+                <div class="box" id="user_info_box">
                     <div class="box-header">
                       <h1 class="box-title">User Details</h1> 
-                       </div><!-- /.box-header -->
-                      <div class="row">
-
-                         <div class="col-sm-6">
-                          
-                          
+                    </div><!-- /.box-header -->
+                    <div class="box-body"> <!-- box-body -->     
                            Id: <?php echo $user_info['uid'];?>
                            <br>
                            Name: <?php echo $user_info['fname']." ".$user_info['lname'];?>
@@ -70,52 +101,69 @@
                            Refferal Code: <?php echo $user_info['refferalcode'];?>
                            <br>
                            Date Of Registration: <?php echo date('m/d/Y',strtotime($user_info['date_register']));?>
-                          
-                         </div>
-                         <div class="col-sm-6">
-                          Parent Id:<?php echo $user_info['parent_id'];
+                    </div> <!-- /.box-body -->
+                </div><!-- /.box -->
+
+
+                  <div class="box" id="uppertier_info_box">
+                      <div class="box-header">
+                        <h1 class="box-title">Upper Tier</h1> 
+                      </div><!-- /.box-header -->
+                      <div class="box-body"> <!-- box-body -->     
+                              Id:<?php echo $user_info['parent_id'];
 
                             $parent_info=Parentstatus($user_info['parent_id']);
                           ?>
                           <br>
-                          Parent Name:  <?php echo $parent_info['fname'].  ' '.$parent_info['lname']; ?>
-                          
-
-
-                         </div>
-                      </div>
-
-                        <!-- /.box-body -->
+                           Name:  <?php echo $parent_info['fname'].  ' '.$parent_info['lname']; ?>
+                      </div> <!-- /.box-body -->
                   </div><!-- /.box -->
-
-                  
+ 
             
-                  <div class="box">
-                    <div class="box-header">
-                      <h1 class="box-title">Affiliate Details</h1> 
-                       </div><!-- /.box-header -->
-                      <div class="row">
-
-                         <div class="col-sm-3">
-                            <p>Tier4<P>
-                         <?php  $child_info=children_info($user_info['uid']);
-                            echo '<pre>';
-                            print_r($child_info);
-                         ?>
-
-                          
+                  <div class="box" id="first_lower_tier_info">
+                      <div class="box-header">
+                        <h1 class="box-title">Affiliate Details</h1> 
+                      </div><!-- /.box-header -->
+                      <div class="box-body">
+                        
+                         <h1>Tier 4</h1>
                          
+                        
+                         <?php  $child_info=children_info($user_info['uid']);
+                           if($child_info)
+                           {
+                                 foreach ($child_info as $key )
+                                 {   
+
+                                ?><div class="row-wrapper">
+                                  
+                                <?php
+                                      
+                                   print_r('Id:'.$key['uid']. '</br> Name:'.$key['fname']." ".$key['lname'].'<br> Email:'.$key['email'].'<br> Refferal Code:'.$key['refferalcode'].'<br><input type="button" value="Show Child" onclick="show_child_id('.$key['uid'].')">');
+                                  
+                                  }
+                                  ?>
+                                  
+                                </div><?php
 
 
-                           
-                         </div>
-                         <div class="col-sm-3"><p>Tier3<P></div>
-                         <div class="col-sm-3"><p>Tier2<P></div>
-                         <div class="col-sm-3"><p>Tier1<P></div>
-                      </div>
+                           }
+                           else
+                           {
+                                 
+                                  echo('Donot Have Any Affiliate Till Now');
+                            }
+                         ?>
+                          
+                       </div>
+                      </div>  
+                    
 
-                        <!-- /.box-body -->
+                        
                   </div><!-- /.box -->
+
+
+
                
          
 
