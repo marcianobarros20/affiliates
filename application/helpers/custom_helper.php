@@ -17,7 +17,7 @@
 		$CI=& get_instance();
         $CI->load->database(); 
 
-        $CI->db->select('uid,fname,lname');
+        $CI->db->select('uid,fname,lname,refferalcode,username,email,date_register,profile_image');
         $CI->db->where('parent_id',$uid);
         $res = $CI->db->get('users');
         return $return = $res->result_array();

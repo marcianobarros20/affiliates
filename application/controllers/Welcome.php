@@ -212,7 +212,7 @@ class Welcome extends CI_Controller {
                                              }
 					$this->session->set_userdata('user_id',$log['uid']);
 					$this->session->set_userdata('username',$log['username']);
-                    redirect();exit();
+                    redirect(base_url().'index.php/welcome/dashboard');exit();
 				}
 				else
 				{
@@ -229,7 +229,28 @@ class Welcome extends CI_Controller {
 	}
 
 
-	
+	public function dashboard()
+	{
+		if($this->session->userdata('user_id')!='')
+		{
+
+		$data=array();
+
+		$u_id=$this->session->userdata('user_id');
+		$con=array('uid'=>$u_id);
+		$data['fetch_allinfo']=$this->Common_model->fetchinfo('users',$con,'row');
+		$data['header']=$this->load->view('includes/header','',true);
+		$data['footer']=$this->load->view('includes/footer','',true);
+		$data['middle']=$this->load->view('includes/middle','',true);
+
+		$this->load->view('dashboard',$data);
+		}
+		else
+		{
+			$this->session->set_userdata('err_msg','You are Not Yet Logged In.');
+			redirect();exit();
+		}
+	}
 	
 	public function logout()
 	{
@@ -334,6 +355,7 @@ class Welcome extends CI_Controller {
             $name=$this->input->post('firstname');
             $name.=" ".$this->input->post('lastname');
             $msg=$name."<br>".$this->input->post('message');
+
             $to="hello@tier5.us";
             $sub='Customer Query';
             //$this->email->from($email);

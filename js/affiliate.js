@@ -2,20 +2,38 @@
     {
         if (param=="Approve")
         {
-          var conf=confirm("You sure you want to Approve this user!");
+         // var conf=confirm("You sure you want to Approve this user!");
           
+           $("#assign_reff_"+param1).toggle();
 
-        /*var status=1;
-        var res= $.ajax({
-               type : 'post',
-               url : 'Ajax/change_status',
-               data : 'uid='+param1+'& status='+status,
-               async : false,
-            success : function(msg)
-            {
-          alert(msg);
-               }
-               }); */
+           $('#assign_code_btn_'+param1).click(function(){
+
+             refferalcode=$.trim($('#refferal_code_'+param1).val());
+              
+                if(refferalcode)
+                {
+                  
+                  var status=1;
+                  var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/check_refferalcode',
+                  data : 'refferalcode='+refferalcode+'& uid='+param1+'& status='+status,
+                  async : false,
+                  success : function(msg)
+                   {
+                       alert(msg);
+                        window.location.reload();
+
+                   }
+                  });
+                }
+                else
+                {
+                   alert("Assign Refferal Code");
+                }
+             });
+        
+
         }
         else if(param=="Delete")
         { 
@@ -54,5 +72,95 @@
             }
         }
     }
+
+function show_child_tier3(uid) {
+ // alert(uid);
+
+                  var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/show_child_tier3',
+                  data : 'uid='+uid,
+                  async : false,
+                  success : function(msg)
+                   {
+                       if(msg)
+                       {
+                        $('#child_show_tier3'+uid).html(msg);
+                       }
+                       
+                   }
+                  });
+
+}
+
+function show_child_tier2(uid)
+{
+  
+
+                  var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/show_child_tier2',
+                  data : 'uid='+uid,
+                  async : false,
+                  success : function(msg)
+                   {
+
+                    //alert(msg);
+                    if(msg)
+                       {
+                        $('#child_show_tier2'+uid).html(msg);
+                       }
+                       
+                     
+                   }
+                  });
+       }
+
+
+
+function show_child_tier1(uid)
+{
+  
+
+                  var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/show_child_tier1',
+                  data : 'uid='+uid,
+                  async : false,
+                  success : function(msg)
+                   {
+
+                    //alert(msg);
+                    if(msg)
+                       {
+                        $('#child_show_tier1'+uid).html(msg);
+                       }
+                       
+                     
+                   }
+                  });
+       }
+
+function show_child_tier0(uid)
+{
+ 
+                  var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/show_child_tier0',
+                  data : 'uid='+uid,
+                  async : false,
+                  success : function(msg)
+                   {
+
+                    //alert(msg);
+                    if(msg)
+                       {
+                        $('#child_show_tier0'+uid).html(msg);
+                       }
+                       
+                     
+                   }
+                  });
+       }
 
     

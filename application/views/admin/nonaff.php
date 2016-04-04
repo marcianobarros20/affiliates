@@ -97,13 +97,13 @@
                                   }
                                 ?>
                               </td>
-                              <td><?php echo $users['refferalcode'];?></td>
+                              <td><span id="assign_reff_<?php echo $users['uid'];?>" style="display:none"><input type="text" placeholder="Assign Refferal Code" id="refferal_code_<?php echo $users['uid'];?>"><input type="submit" value="Assign" id="assign_code_btn_<?php echo $users['uid'];?>"> </span></td>
                               <td>
-                                <span class="label label-success" onclick="change_status('Approve','<?php echo $users['uid'];?>');">Approve</span>
+                                <input type="button" onclick="change_status('Approve','<?php echo $users['uid'];?>');" value="Approve">
                            
                                <!-- <span class="label label-success" onclick="change_status('Delete','<?php echo $users['uid'];?>');">Delete</span>-->
                              
-                                <span class="label label-success" onclick="change_status('Reject','<?php echo $users['uid'];?>');">Reject</span><br>
+                                <input type="button" onclick="change_status('Reject','<?php echo $users['uid'];?>');" value="Reject" ><br>
                                
                                 
                                 
