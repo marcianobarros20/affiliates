@@ -139,12 +139,23 @@
                                   
                                 <?php
                                       
-                                   print_r('Id:'.$key['uid']. '</br> Name:'.$key['fname']." ".$key['lname'].'<br> Email:'.$key['email'].'<br> Refferal Code:'.$key['refferalcode'].'<br><input type="button" value="Show Child" onclick="show_child_id('.$key['uid'].')">');
                                   
-                                  }
+                                   echo 'Id:'.$key['uid']. '</br> Name:'.$key['fname']." ".$key['lname'].'<br> Email:'.$key['email'].'<br> Refferal Code:'.$key['refferalcode'].'<br><input type="button" value="Show Tier 3 Affiliates" onclick="show_child_tier3('.$key['uid'].')">';
+                                 
+                                   ?>
+                                   <div id="child_show_tier3<?php echo $key['uid'];?>" style="background:#F9EECF;border:1px; padding-left:50px;">
+
+                                      
+
+                                   </div>
+                                   
+
+                                   <hr>
+                                  
+                                  <?php }
                                   ?>
                                   
-                                </div><?php
+                                <?php
 
 
                            }

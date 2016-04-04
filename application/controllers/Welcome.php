@@ -355,6 +355,7 @@ class Welcome extends CI_Controller {
             $name=$this->input->post('firstname');
             $name.=" ".$this->input->post('lastname');
             $msg=$name."<br>".$this->input->post('message');
+
             $to="hello@tier5.us";
             $sub='Customer Query';
             //$this->email->from($email);

@@ -73,20 +73,94 @@
         }
     }
 
-function show_child_id(uid) {
+function show_child_tier3(uid) {
  // alert(uid);
 
                   var res= $.ajax({
                   type : 'post',
-                  url : 'Ajax/show_child',
+                  url : 'Ajax/show_child_tier3',
                   data : 'uid='+uid,
                   async : false,
                   success : function(msg)
                    {
-                        alert(msg);
+                       if(msg)
+                       {
+                        $('#child_show_tier3'+uid).html(msg);
+                       }
                        
                    }
                   });
 
 }
+
+function show_child_tier2(uid)
+{
+  
+
+                  var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/show_child_tier2',
+                  data : 'uid='+uid,
+                  async : false,
+                  success : function(msg)
+                   {
+
+                    //alert(msg);
+                    if(msg)
+                       {
+                        $('#child_show_tier2'+uid).html(msg);
+                       }
+                       
+                     
+                   }
+                  });
+       }
+
+
+
+function show_child_tier1(uid)
+{
+  
+
+                  var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/show_child_tier1',
+                  data : 'uid='+uid,
+                  async : false,
+                  success : function(msg)
+                   {
+
+                    //alert(msg);
+                    if(msg)
+                       {
+                        $('#child_show_tier1'+uid).html(msg);
+                       }
+                       
+                     
+                   }
+                  });
+       }
+
+function show_child_tier0(uid)
+{
+ 
+                  var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/show_child_tier0',
+                  data : 'uid='+uid,
+                  async : false,
+                  success : function(msg)
+                   {
+
+                    //alert(msg);
+                    if(msg)
+                       {
+                        $('#child_show_tier0'+uid).html(msg);
+                       }
+                       
+                     
+                   }
+                  });
+       }
+
     
