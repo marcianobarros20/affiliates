@@ -118,10 +118,11 @@
 
       public function fetchinfoBlog($con,$limit,$start)
       {
+       
         $this->db->select('*');
         $this->db->where($con);
        
-        $this->db->limit($limit);
+        $this->db->limit($limit,$start);
          $res=$this->db->get('blog');
          return $res->result_array();
       }

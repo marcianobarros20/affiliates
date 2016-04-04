@@ -18,6 +18,7 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="admin_support/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="admin_support/dist/css/style.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="admin_support/plugins/iCheck/flat/blue.css">
     <!-- Morris chart -->
@@ -57,8 +58,9 @@
                   <h3 class="box-title">List Of Blogs </h3>
                   <div class="box-tools">
                     <div style="width: 150px;" class="input-group">
-                   
-                      
+                   <div class="paginationD">
+                      <?php echo $PaginationLink;?>
+
                     </div>
                   </div>
                 </div><!-- /.box-header -->
