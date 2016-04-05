@@ -116,14 +116,26 @@
 
       }
 
-      public function fetchinfoBlog($con,$limit,$start)
+      public function fetchinfoBlog($type,$limit=null,$start=null)
       {
-        $this->db->select('*');
-        $this->db->where($con);
        
-        $this->db->limit($limit);
-         $res=$this->db->get('blog');
-         return $res->result_array();
+        $this->db->select('*');
+       
+        if($type=='count')
+        {
+          $res=$this->db->get('blog');
+           //$this->db->order_by('blog_id','desc');
+          return $res->num_rows();
+        }
+        else
+        {
+          $this->db->limit($limit,$start);
+          // $this->db->order_by('blog_id','desc');
+          $res=$this->db->get('blog');
+          return $res->result_array();
+        }
+       
+       
       }
 
 

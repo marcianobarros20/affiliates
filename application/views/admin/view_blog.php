@@ -58,47 +58,31 @@
                   <h3 class="box-title">List Of Blogs </h3>
                   <div class="box-tools">
                     <div style="width: 150px;" class="input-group">
-                   <div class="paginationD">
-                      <?php echo $PaginationLink;?>
-
-                    </div>
+                   <a href="<?php echo base_url();?>index.php/admin/blog">Back</a>
                   </div>
                 </div><!-- /.box-header -->
-                <div class="box-body table-responsive no-padding">
-                  <table class="table table-hover">
-                    <tbody><tr>
-                      <th>Title</th>
-                      <th>Description</th>
-                      <th>Date(mm/dd/yy)</th>
-                      <th>Status</th>
-                      <th>Action</th>
-                      
-                      
-                    </tr>
-                    <?php if(!empty($all_blog)):
-                      foreach($all_blog as $blog):
-                    ?>
-                    <tr>
-                      <td><?php echo substr($blog['title'],0,20);?></td>
-                      <td><?php echo substr($blog['description'],0,40);?></td>
-                      <td><?php echo date('m/d/Y',strtotime($blog['add_date']));?></td>
-                      <td><?php if($blog['status']==0){echo 'Active';} else { echo 'Inactive';}?></td>
-                      
-                     <td><span class="label label-danger" style="cursor:pointer;" onclick="change_status('Delete','<?php echo $blog['blog_id'];?>')">Delete</span>
-                     <?php if($blog['status']==0):?>
-                     <span class="label label-warning" style="cursor:pointer;" onclick="change_status_blog('Inactive','<?php echo $blog['blog_id'];?>')" title="Make it Inactive">Inactive</span>
-                     <?php endif;?>
-                     <?php if($blog['status']==1):?>
-                     <span class="label label-success" style="cursor:pointer;" onclick="change_status_blog('active','<?php echo $blog['blog_id'];?>')" title="Make it Active">Active</span>
-                     <?php endif;?>
+              <div>
+              <?php 
 
-                     <a href="<?php echo base_url();?>index.php/admin/blog/view_details/<?php echo $blog['blog_id'];?>"><span class="label label-success" style="cursor:pointer;">View Details</span>
-                     </a></td>
-                    
-                    </tr>
-                    <?php endforeach; endif;?>
-                  </tbody></table>
-                </div><!-- /.box-body -->
+              echo "Title: ".$single_blog['title'];
+              echo "Description: ".$single_blog['description'];
+              echo '<br>';
+              if($single_blog['media_type']==1)
+              {
+                ?>
+
+                <img src="<?php echo base_url();?>blog_file/original/<?php echo $single_blog['media'];?>" alt="image">
+                <?php
+              }
+              else
+              {?>
+                <source src="<?php echo base_url();?>blog_file/video/<?php echo $single_blog['media'];?>" type="video/mp4">
+              <?php }
+              
+
+
+              ?>
+              </div>
               </div><!-- /.box -->
             </div>
           </div>

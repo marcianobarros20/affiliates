@@ -163,4 +163,37 @@ function show_child_tier0(uid)
                   });
        }
 
+
+
+       function change_status_blog(param,id)
+       {
+         var conf=confirm("You sure you want to Change the status!");
+            if(conf)
+            {
+              
+              if(param=="Inactive")
+              {
+                var status=1;
+              }
+              else
+              {
+                var status=0;
+              }
+                var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/blog_status',
+                  data : 'b_id='+id+'& status='+status,
+                  async : false,
+                  success : function(msg)
+                  {
+                    //alert(msg)
+                    if(msg)
+                    {
+                     window.location.reload();
+                    }
+                  }
+               });
+            }
+       }
+
     

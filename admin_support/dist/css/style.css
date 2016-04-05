@@ -1,0 +1,45 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);
+/*!
+ *   AdminLTE v2.3.0
+ *   Author: Almsaeed Studio
+ *	 Website: Almsaeed Studio <http://almsaeedstudio.com>
+ *   License: Open source - MIT
+ *           Please visit http://opensource.org/licenses/MIT for more information
+!*/
+/*
+ * Core: General Layout Style
+ * -------------------------
+ */
+.paginationD {
+    margin-bottom: 19px;
+    width: 100%;
+}
+
+.paginationD strong {
+    background-color: #3C8DBC;
+    color: #ffffff;
+    display: inline-block;
+    font-family: 'Open Sans', sans-serif; 
+    font-size: 12px;
+    font-weight: 700;
+  margin-left: 4px;
+    
+    line-height:19px;
+    text-align: center;
+    width: 26px;
+}
+
+
+.paginationD a {
+  background-color:#42AEED;
+  color: #ffffff;
+  display: inline-block;
+  float: inherit;
+  font-family: "Open Sans",sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 19px;
+  margin-left: 4px;
+  text-align: center;
+  width: 26px;
+}
