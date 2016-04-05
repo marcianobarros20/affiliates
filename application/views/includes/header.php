@@ -7,7 +7,7 @@
                     <span class="icon-bar"></span>
                 </a>
                 <a id="logo" class="pull-left" href="<?php echo base_url();?>"></a>
-                <div class="nav-collapse collapse pull-right">
+                <div class="nav-collapse pull-right">
                     <ul class="nav">
 
                         <li <?php if($this->uri->segment(2)==''){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>">Home</a></li>

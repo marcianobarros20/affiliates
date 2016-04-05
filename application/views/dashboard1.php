@@ -73,7 +73,6 @@
     </script>
 
     <style>
-
         
         /* jssor slider bullet navigator skin 03 css */
         /*
@@ -149,7 +148,7 @@
                 </div>
                 <div class="span6">
                     <ul class="breadcrumb pull-right">
-                        <li><a href="<?php echo base_url();?>">Home</a> <span class="divider"></span></li>
+                        <li><a href="<?php echo base_url();?>">Home</a> <span class="divider">/</span></li>
                         <li class="active">Dashboard</li>
                     </ul>
                 </div>
