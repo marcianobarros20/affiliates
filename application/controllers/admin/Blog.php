@@ -50,7 +50,7 @@ class Blog extends CI_Controller {
 		$this->load->library('pagination');			
 		$config['base_url'] = base_url('admin/blog/index');
 		
-		$data['RecordTotal']=$this->Common_model->fetchinfo('blog',$con,'count');
+		$data['RecordTotal']=$this->Common_model->fetchinfoBlog('count');
 		//$data['RecordTotal']=$this->home_model->casino_total();
 		$config['total_rows'] = $data['RecordTotal'];
 		$config['per_page'] = $limit = 2;
@@ -60,7 +60,7 @@ class Blog extends CI_Controller {
 		$data['PaginationLink']= $this->pagination->create_links();
 		//$data['casino_list']=$this->home_model->casino($limit,$start);
 		
-		$data['all_blog']=$this->Common_model->fetchinfoBlog($con,$limit,$start);
+		$data['all_blog']=$this->Common_model->fetchinfoBlog('result',$limit,$start);
 			
 // $this->db->last_query();
 			
@@ -188,6 +188,27 @@ class Blog extends CI_Controller {
 		   $this->load->view('admin/add_blog',$data);
 		}
 
+	}
+
+	public function view_details($blog_id)
+	{
+		
+		if (!$this->session->userdata('adminid'))
+		{
+			redirect(base_url()."index.php/admin/welcome/login");
+			
+		}
+		else
+		{
+		   $data=array();
+		   $con=array('blog_id'=>$blog_id);
+		   $data['single_blog']=$this->Common_model->fetchinfo('blog',$con,'row');
+		   $data['header']=$this->load->view('admin/includes/header','',true);
+		   $data['footer']=$this->load->view('admin/includes/footer','',true);
+		   $data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
+		   $data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
+		   $this->load->view('admin/view_blog',$data);
+		 }  
 	}
 
 

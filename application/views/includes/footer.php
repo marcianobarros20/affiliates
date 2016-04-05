@@ -9,7 +9,7 @@
             <div class="span6">
                 <ul class="social pull-right">
                     <li><a href="https://www.facebook.com/Tier5.us/"><i class="icon-facebook"></i></a></li>
-                    <li><a href="https://twitter.com/Tier5Us"><i class="icon-twitter"></i></a></li>
+                    <!-- <li><a href="https://twitter.com/Tier5Us"><i class="icon-twitter"></i></a></li>
                     <li><a href="https://www.pinterest.com/Tier5US/"><i class="icon-pinterest"></i></a></li>
                     <li><a href="#"><i class="icon-linkedin"></i></a></li>
                     <li><a href="https://plus.google.com/+Tier5USA/"><i class="icon-google-plus"></i></a></li>                       
@@ -17,7 +17,7 @@
                     <li><a href="#"><i class="icon-tumblr"></i></a></li>                        
                     <li><a href="https://dribbble.com/Tier5"><i class="icon-dribbble"></i></a></li>
                     <li><a href="#"><i class="icon-rss"></i></a></li>
-                    <li><a href="https://github.com/tier5"><i class="icon-github-alt"></i></a></li>
+                    <li><a href="https://github.com/tier5"><i class="icon-github-alt"></i></a></li> -->
                     <li><a href="#"><i class="icon-instagram"></i></a></li>                   
                 </ul>
             </div>
