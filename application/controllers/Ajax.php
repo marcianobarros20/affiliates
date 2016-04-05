@@ -137,7 +137,7 @@ class Ajax extends CI_Controller {
 	                	foreach ($get_child as $value)
 	                	{
                            
-                        $result.="Id:".$value['uid']."<br>Name:".$value['fname']." ".$value['lname']."<br>Email:".$value['email']."<br>Refferal Code:".$value['refferalcode']."<br><input type='button' Value='Show Tier2 Affiliates' onclick='show_child_tier2(".$value['uid'].")'><br>";
+                        $result.="Id:".$value['uid']."<br>Name:".$value['fname']." ".$value['lname']."<br>Email:".$value['email']."<br>Refferal Code:".$value['refferalcode']."<br><input type='button' Value='Show Tier2 Affiliates' onclick='show_child_tier2(".$value['uid'].")'><br><br>";
                         $result.="<div id='child_show_tier2".$value['uid']."'></div>";
 	                	}
 	                	$result.="</div>";
@@ -145,7 +145,7 @@ class Ajax extends CI_Controller {
 	                }
 	                else
                     {
-                    	echo "No Child";
+                    	echo "No Affiliate Till Now";
                     }
 
 	             }
@@ -172,12 +172,12 @@ class Ajax extends CI_Controller {
 	                
 	                if($get_child)
 	                {
-	                  $result.="<div style='background:#FF9999;padding-left: 100px;'> <h3> Tier 2</h3><br>";
+	                  $result.="<div style='border: 10px solid #003366;padding-left: 50px; padding-right: 10px;'> <h3> Tier 2</h3><br>";
 
 	                	foreach ($get_child as $value)
 	                	{
                            
-                        $result.="Id:".$value['uid']."<br>Name:".$value['fname']." ".$value['lname']."<br>Email:".$value['email']."<br>Refferal Code:".$value['refferalcode']."<br><input type='button' Value='Show Tier1 Affiliates' onclick='show_child_tier1(".$value['uid'].")'><br>";
+                        $result.="Id:".$value['uid']."<br>Name:".$value['fname']." ".$value['lname']."<br>Email:".$value['email']."<br>Refferal Code:".$value['refferalcode']."<br><input type='button' Value='Show Tier1 Affiliates' onclick='show_child_tier1(".$value['uid'].")'><br><br>";
                         $result.="<div id='child_show_tier1".$value['uid']."'></div>";
 	                	}
 	                	$result.="</div>";
@@ -185,7 +185,7 @@ class Ajax extends CI_Controller {
 	                }
 	                else
                     {
-                    	echo "No Child";
+                    	echo "No Affiliate Till Now";
                     }
 
 	             }
@@ -210,12 +210,12 @@ class Ajax extends CI_Controller {
 	                
 	                if($get_child)
 	                {
-	                  $result.="<div style='background:#FF6699;padding-left:150px;'> <h4> Tier 1</h4><br>";
+	                  $result.="<div style='border: 10px solid #003366; padding-left:50px; padding-right:10px;'> <h4> Tier 1</h4><br>";
 
 	                	foreach ($get_child as $value)
 	                	{
                            
-                        $result.="Id:".$value['uid']."<br>Name:".$value['fname']." ".$value['lname']."<br>Email:".$value['email']."<br>Refferal Code:".$value['refferalcode']."<br><input type='button' Value='Show Tier0 Affiliates' onclick='show_child_tier0(".$value['uid'].")'><br>";
+                        $result.="Id:".$value['uid']."<br>Name:".$value['fname']." ".$value['lname']."<br>Email:".$value['email']."<br>Refferal Code:".$value['refferalcode']."<br><input type='button' Value='Show Tier0 Affiliates' onclick='show_child_tier0(".$value['uid'].")'><br><br>";
                         $result.="<div id='child_show_tier0".$value['uid']."'></div>";
 	                	}
 	                	$result.="</div>";
@@ -223,7 +223,7 @@ class Ajax extends CI_Controller {
 	                }
 	                else
                     {
-                    	echo "No Child";
+                    	echo "No Affiliate Till Now";
                     }
 
 	             }
@@ -248,12 +248,12 @@ class Ajax extends CI_Controller {
 	                
 	                if($get_child)
 	                {
-	                  $result.="<div style='background:#FF6633;padding-left:200px;'> <h5> Tier 0</h5><br>";
+	                  $result.="<div style='border: 10px solid #003366; padding-left:40px; padding-right:10px;'> <h5> Tier 0</h5><br>";
 
 	                	foreach ($get_child as $value)
 	                	{
                            
-                        $result.="Id:".$value['uid']."<br>Name:".$value['fname']." ".$value['lname']."<br>Email:".$value['email']."<br>Refferal Code:".$value['refferalcode']."<br>";
+                        $result.="Id:".$value['uid']."<br>Name:".$value['fname']." ".$value['lname']."<br>Email:".$value['email']."<br>Refferal Code:".$value['refferalcode']."<br><br>";
 
 	                	}
 	                	$result.="</div>";
@@ -261,7 +261,7 @@ class Ajax extends CI_Controller {
 	                }
 	                else
                     {
-                    	echo "No Child";
+                    	echo "No Affiliate Till Now";
                     }
 
 	             }

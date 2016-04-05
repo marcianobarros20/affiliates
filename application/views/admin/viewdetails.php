@@ -128,22 +128,24 @@
                         
                          <h1>Tier 4</h1>
                          
-                        
+                         <div class="row-fluid">
+                             <div class="span3">
                          <?php  $child_info=children_info($user_info['uid']);
                            if($child_info)
                            {
                                  foreach ($child_info as $key )
-                                 {   
+                                 {  
 
+                                  
                                 ?><div class="row-wrapper">
                                   
                                 <?php
                                       
                                   
-                                   echo 'Id:'.$key['uid']. '</br> Name:'.$key['fname']." ".$key['lname'].'<br> Email:'.$key['email'].'<br> Refferal Code:'.$key['refferalcode'].'<br><input type="button" value="Show Tier 3 Affiliates" onclick="show_child_tier3('.$key['uid'].')">';
+                                   echo 'Id:'.$key['uid']. '</br> Name:'.$key['fname']." ".$key['lname'].'<br> Email:'.$key['email'].'<br> Refferal Code:'.$key['refferalcode'].'<br><input type="button" value="Show Tier 3 Affiliates" onclick="show_child_tier3('.$key['uid'].')"><br><br>';
                                  
                                    ?>
-                                   <div id="child_show_tier3<?php echo $key['uid'];?>" style="background:#F9EECF;border:1px; padding-left:50px;">
+                                    <div id="child_show_tier3<?php echo $key['uid'];?>" style="border: 10px solid #003366; padding-left:50px; padding-right:10px;">
 
                                       
 
@@ -152,9 +154,11 @@
 
                                    <hr>
                                   
-                                  <?php }
+                                  <?php
+                                   }
                                   ?>
-                                  
+                                   </div>
+                                 </div>
                                 <?php
 
 

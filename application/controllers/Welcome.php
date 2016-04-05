@@ -24,6 +24,7 @@ class Welcome extends CI_Controller {
 		
 		$this->load->library('form_validation');
 		//$this->load->library('email');
+		$this->load->helper('custom');
 		$this->load->model('Common_model');
 		$this->load->library('utility');
 	}
@@ -212,7 +213,8 @@ class Welcome extends CI_Controller {
                                              }
 					$this->session->set_userdata('user_id',$log['uid']);
 					$this->session->set_userdata('username',$log['username']);
-                    redirect(base_url().'index.php/welcome/dashboard');exit();
+                    redirect(base_url().'index.php/welcome/dashboard');
+                    exit();
 				}
 				else
 				{
@@ -238,6 +240,8 @@ class Welcome extends CI_Controller {
 
 		$u_id=$this->session->userdata('user_id');
 		$con=array('uid'=>$u_id);
+		$con1=array('parent_id'=>$u_id);
+		$data['fetch_child']=$this->Common_model->fetchinfo('users',$con1,'result');
 		$data['fetch_allinfo']=$this->Common_model->fetchinfo('users',$con,'row');
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
@@ -261,6 +265,13 @@ class Welcome extends CI_Controller {
                 exit();
 	}
 
+    public function editprofile()
+	{
+		$data['header']=$this->load->view('includes/header','',true);
+		$data['footer']=$this->load->view('includes/footer','',true);
+		$data['middle']=$this->load->view('includes/middle','',true);
+		$this->load->view('edit_profile',$data);
+	}
 
 	public function forget()
 	{
