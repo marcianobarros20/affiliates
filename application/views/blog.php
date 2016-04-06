@@ -14,10 +14,11 @@
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/sl-slide.css">
 
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-
+    <script type="text/javascript" src="js/affiliate.js"></script>
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
@@ -54,21 +55,30 @@
         <div class="row-fluid">
             <div class="span8">
                 <div class="blog">
+                <?php if(!empty($all_blog)):
+
+                foreach($all_blog as $blog):?>
                     <div class="blog-item well">
-                        <a href="#"><h2>Duis sed odio sit amet nibh vulputate cursus</h2></a>
+                        <a href="#"><h2><?php echo $blog['title'];?></h2></a>
                         <div class="blog-meta clearfix">
                             <p class="pull-left">
-                              <i class="icon-user"></i> by <a href="#">John</a> | <i class="icon-folder-close"></i> Category <a href="#">Bootstrap</a> | <i class="icon-calendar"></i> Sept 16th, 2012
+                              <i class="icon-user"></i> by <a href="#">John</a> | <i class="icon-folder-close"></i> Category <a href="#">Bootstrap</a> | <i class="icon-calendar"></i> <?php echo date('jS F Y',strtotime($blog['add_date']));?>
                           </p>
                           <p class="pull-right"><i class="icon-comment pull"></i> <a href="blog-item.html#comments">3 Comments</a></p>
                       </div>
                       <p><img src="images/sample/blog1.jpg" width="100%" alt="" /></p>
-                      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-                      <a class="btn btn-link" href="#">Read More <i class="icon-angle-right"></i></a>
+                      <div id="main_<?php echo $blog['blog_id'];?>"><p><?php echo substr($blog['description'],0,200);?></p>
+
+                        <?php if(strlen($blog['description'])>200){?><a class="btn btn-link" onclick="readFn('less',<?php echo $blog['blog_id'];?>);">Read More <i class="icon-angle-right"></i></a><?php }?>
+                      </div>
+
+   <div id="full_<?php echo $blog['blog_id'];?>" style="display:none;">               
+ <p><?php echo $blog['description'];?></p><a class="btn btn-link" onclick="readFn('more',<?php echo $blog['blog_id'];?>);">Read Less <i class="icon-angle-right"></i></a></div>
                   </div>
+              <?php endforeach; endif;?>
                   <!-- End Blog Item -->
 
-                  <div class="blog-item well">
+                 <!-- <div class="blog-item well">
                     <a href="#"><h2>Duis sed odio sit amet nibh vulputate cursus a sit</h2></a>
                     <div class="blog-meta clearfix">
                         <p class="pull-left">
@@ -80,14 +90,17 @@
                   <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
 
                   <a class="btn btn-link" href="#">Read More <i class="icon-angle-right"></i></a>
-              </div>
+              </div>-->
               <!-- End Blog Item -->
 
               <div class="gap"></div>
 
               <!-- Paginationa -->
-              <div class="pagination">
-                <ul>
+              <div class="paginationD">
+             
+              <?php echo $PaginationLink;?>
+             
+               <!--  <ul>
                     <li><a href="#"><i class="icon-angle-left"></i></a></li>
                     <li class="active"><a href="#">1</a></li>
                     <li><a href="#">2</a></li>
@@ -95,10 +108,10 @@
                     <li><a href="#">4</a></li>
                     <li><a href="#">5</a></li>
                     <li><a href="#"><i class="icon-angle-right"></i></a></li>
-                </ul>
+                </ul> -->
             </div>
 
-
+                 
         </div>
     </div>
     <aside class="span4">

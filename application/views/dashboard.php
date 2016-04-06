@@ -168,7 +168,7 @@
                 <p>Description: <?php echo $fetch_allinfo['description'];?></p> 
                  
                 <p>Refferal Code: <?php echo $fetch_allinfo['refferalcode'];?></p>
-                <a href="<?php echo base_url();?>/index.php/Welcome/editprofile">Edit Profile</a>
+                <a href="<?php echo base_url();?>index.php/Welcome/editprofile">Edit Profile</a>
             </div>
             <div class="span6">
               

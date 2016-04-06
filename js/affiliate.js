@@ -196,4 +196,19 @@ function show_child_tier0(uid)
             }
        }
 
+       function readFn(param,blog_id)
+       {
+        
+        if(param=='less')
+        {
+        $('#main_'+blog_id).hide();
+        $('#full_'+blog_id).show();
+        }
+        else
+        {
+        $('#main_'+blog_id).show();
+        $('#full_'+blog_id).hide();
+        }
+       }
+
     
