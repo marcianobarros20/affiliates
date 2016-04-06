@@ -91,7 +91,7 @@
                         Description:
                          <textarea   placeholder="Enter Descriptions Here" class="form-control" id="edit_description" name="edit_description"><?php echo $fetch_allinfo['description'];?></textarea>
                          <br>
-                         Select image to upload:
+                         Select image to upload ( Minimum Size 220x150)
                                 <input type="file" name="fileToUpload" id="fileToUpload">
                                 
                          <button type="submit" class="btn btn-default btn-xm" id="update_button" name="update_button" >Update</button>

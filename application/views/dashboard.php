@@ -206,15 +206,17 @@
         </div>
 
         <hr>
-
+      </div>
         <!-- Meet the team -->
-        <h1 class="center">Meet the Team</h1>
-
-        <hr>
+       
 
               
  
         <div class="row-fluid">
+            <hr>
+             <h1 class="center">Meet the Team</h1>
+
+        
               <h2 align="center"> Tier4 Affiliates</h2>
                         <br>
                 <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 809px; height: 350px; overflow: hidden; visibility: hidden;">
