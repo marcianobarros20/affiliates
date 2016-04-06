@@ -32,7 +32,9 @@ $('#add_blog').validate();
     var old_pass=$('#old_password').val();
     var res= $.ajax({
     type : 'post',
+
     url : 'index.php/Ajax/Fnoldpasswordchk',
+
     data : 'o_pass='+old_pass,
     async : false,
     success : function(msg){ 

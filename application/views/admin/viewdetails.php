@@ -79,6 +79,10 @@
      <?php echo $header;?>
       <!-- Left side column. contains the logo and sidebar -->
       <?php echo $leftsidebar;?>
+      <!-- Control Sidebar -->
+
+      <?php echo $rightsidebar;?>
+      <!-- /.control-sidebar -->
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -183,16 +187,11 @@
          
 
       </div>
-     <!-- footer -->
-     <?php echo $footer;?>
-     <!-- footer -->
+   
 
 
 
-      <!-- Control Sidebar -->
-
-      <?php echo $rightsidebar;?>
-      <!-- /.control-sidebar -->
+      
 
 
 
@@ -238,5 +237,10 @@
     
     <!-- AdminLTE for demo purposes -->
     <script src="admin_support/dist/js/demo.js"></script>
+
+
+      <!-- footer -->
+     <?php echo $footer;?>
+     <!-- footer -->
   </body>
 </html>

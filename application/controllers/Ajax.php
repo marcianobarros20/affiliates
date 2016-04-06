@@ -95,13 +95,41 @@ class Ajax extends CI_Controller {
 			}
 			}
 
+		public function delete_users()
+		{
+			if($_POST)
+			{
+
+			$uid=$this->input->post('uid');
+			$con=array('uid'=>$uid);
+			$data['status']=$this->input->post('status');
+			$update=$this->Common_model->update('users',$con,$data);
+            if($update)
+            {
+                $con1=array('parent_id'=>$uid);
+                $data1['parent_id']=null;
+                $data1['refferalparent']=null;
+            	$update1=$this->Common_model->update('users',$con1,$data1);
+
+            	if($update1)
+            	{
+            		return $update1;
+            	}
+
+            }
+
+			//return $update;
+
+			}
+		}
+
 
 			public function check_refferalcode()
 			{
 				if($_POST)
 				{
 					$refferalcode=$this->input->post('refferalcode');
-					$con=array('refferalcode'=>$refferalcode);
+					$con=array('refferalcode'=>$refferalcode,'status'=>1);
 					$check_reff=$this->Common_model->fetchinfo('users',$con,'count');
                     if($check_reff>0)
                     {
@@ -291,7 +319,34 @@ class Ajax extends CI_Controller {
 
 			}
 
-function Fnoldpasswordchk()
+			public function approve()
+			{
+
+				if($_POST)
+					{
+
+						$user_id=$this->input->post('uid');
+                        $userid=array('uid'=>$user_id);
+						$data['status']=$this->input->post('status');
+                     
+
+
+                        $update=$this->Common_model->update('users',$userid,$data);
+
+                        if($update)
+                        {
+                            echo "Assigned Successful";
+                        }
+                        else
+                        {
+                            echo "Assigned Rejected";
+                        }
+							
+					}
+
+			}
+
+public function Fnoldpasswordchk()
 {
 	if($_POST)
 	{
@@ -311,6 +366,48 @@ function Fnoldpasswordchk()
 			
 	}
 }
+
+
+    public function assign_parent()
+			{
+				if($_POST)
+				{
+					$refferalcode=$this->input->post('refferalcode');
+					$con=array('refferalcode'=>$refferalcode,'status'=>1);
+					$check_reff=$this->Common_model->fetchinfo('users',$con,'count');
+                    if($check_reff>0)
+                    {
+                    	$get_parent_uid=$this->Common_model->fetchinfo('users',$con,'row');
+                        $parent_id=$get_parent_uid['uid'];
+
+                        $user_id=$this->input->post('uid');
+                        $userid=array('uid'=>$user_id);
+                        $data['refferalparent']=$refferalcode;
+                        $data['parent_id']=$parent_id;
+                        
+
+
+                        $update=$this->Common_model->update('users',$userid,$data);
+
+                        if($update)
+                        {
+                            echo "Assigned Successful";
+                        }
+                        else
+                        {
+                            echo "Assigned Rejected";
+                        }
+
+
+                    }
+                    else
+                    {
+                    	echo "No Such refferal Code";
+                    }
+				}
+			}
+
+
 
 
 

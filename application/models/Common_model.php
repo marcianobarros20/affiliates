@@ -153,6 +153,7 @@
        
       }
 
+
       public function fetchinfoCategory($type,$con=null,$limit=null,$start=null)
       {
          $this->db->select('*');
@@ -176,6 +177,17 @@
           $res=$this->db->get('category');
           return $res->result_array();
         }
+      }
+
+      public function fetchrejectandpending()
+      {
+
+        $this->db->select('*');
+        $this->db->where('status',0);
+        $this->db->or_where('status',3);
+        $res=$this->db->get('users');
+        return $res->result_array();
+
       }
 
 

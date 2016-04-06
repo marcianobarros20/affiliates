@@ -34,8 +34,8 @@
               <ul class="treeview-menu">
 
                 <li <?php if($this->uri->segment(2)=='users' && $this->uri->segment(3)==''){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>index.php/admin/users"><i class="fa fa-circle-o"></i> Affiliate</a></li>
-                <li <?php if($this->uri->segment(2)=='users' && $this->uri->segment(3)=='non_aff'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>index.php/admin/users/non_aff"><i class="fa fa-circle-o"></i>Non-affiliate</a></li>
-
+                <li <?php if($this->uri->segment(2)=='users' && $this->uri->segment(3)=='non_aff'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>index.php/admin/users/non_aff"><i class="fa fa-circle-o"></i>Non-Affiliate</a></li>
+                <li <?php if($this->uri->segment(2)=='users' && $this->uri->segment(3)=='delete_affiliate'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>index.php/admin/users/delete_affiliate"><i class="fa fa-circle-o"></i>Deleted-Affiliate</a></li>
                
               </ul>
             </li>
