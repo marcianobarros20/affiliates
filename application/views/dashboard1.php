@@ -25,7 +25,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script type="text/javascript" src="js/affiliate.js"></script>
+  
 <!-- jessore slider starts -->
 <script type="text/javascript" src="js/jssor.slider.min.js"></script>
     <!-- use jssor.slider.debug.js instead for debug -->
@@ -73,7 +73,6 @@
     </script>
 
     <style>
-
         
         /* jssor slider bullet navigator skin 03 css */
         /*
@@ -129,14 +128,6 @@
         .jssora03r:hover { background-position: -183px -33px; }
         .jssora03l.jssora03ldn { background-position: -243px -33px; }
         .jssora03r.jssora03rdn { background-position: -303px -33px; }
-
-
-        .comment
-        {
-            width: 150px;
-           
-            
-        }
     </style>
 
 <!-- jessore slider ends -->
@@ -157,7 +148,7 @@
                 </div>
                 <div class="span6">
                     <ul class="breadcrumb pull-right">
-                        <li><a href="<?php echo base_url();?>">Home</a> <span class="divider"></span></li>
+                        <li><a href="<?php echo base_url();?>">Home</a> <span class="divider">/</span></li>
                         <li class="active">Dashboard</li>
                     </ul>
                 </div>
@@ -176,32 +167,13 @@
                 <p>Description: <?php echo $fetch_allinfo['description'];?></p> 
                  
                 <p>Refferal Code: <?php echo $fetch_allinfo['refferalcode'];?></p>
-                <a href="<?php echo base_url();?>index.php/Welcome/editprofile">Edit Profile</a>
+                <a href="<?php echo base_url();?>/index.php/Welcome/editprofile">Edit Profile</a>
             </div>
             <div class="span6">
-
-                
+              
                 <div>
-                     <?php if( $fetch_allinfo['profile_image'])
-                      {
-                     ?>
-                    <p><img src="profile_img/thumb/<?php echo $fetch_allinfo['profile_image'];?>" alt="images/sample/no_photo.png" ></p>
-                     <?php
-                     }
-                    else
-                    {
-                      
-
-                     ?> 
-                               <img src="images/sample/no_photo.png" alt="images/sample/no_photo.png" >
-
-
-                     <?php
-
-                    }
-                      
-
-                     ?>
+                    <p><img src="images/sample/no_photo.png" alt="images/sample/no_photo.png" ></p>
+                </div>
             </div>
         </div>
 
@@ -215,6 +187,11 @@
               
  
         <div class="row-fluid">
+        
+
+
+
+
               <h2 align="center"> Tier4 Affiliates</h2>
                         <br>
                 <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 809px; height: 350px; overflow: hidden; visibility: hidden;">
@@ -230,39 +207,12 @@
                             ?>
                         
                            <div class="span3" style="display: none;">
-
-                            <div class="box"  style="height: 350px;">
-                               <?php if( $value['profile_image'])
-                                {
-                                 ?>
-                                <p><img src="profile_img/thumb/<?php echo $value['profile_image'];?>" alt="images/sample/no_photo.png" ></p>
-                                 <?php
-                                 }
-                                  else
-                                 {?>
-                                   <img src="images/sample/no_photo.png" alt="images/sample/no_photo.png" >
-
-
-                     <?php
-
-                    }
-                      
-
-                     ?>
-  
-
-                                
-
-                           
+                            <div class="box">
+                                <p><img src="images/sample/no_photo.png" alt="no_photo.png" ></p>
                         
-
                             <h5> <?php echo $value['fname']." ".$value['lname']?></h5>
-                            <br>
-                            <?php echo $value['description']?><br><br>
-                           
+                            <?php echo $value['description']?><br>
                             Referal Code:<br><?php echo $value['refferalcode']?>
-                            
-                            <input type="button" value="Show Tier3" onclick="show_tier3( <?php echo $value['uid']?>)">
                                 
                             </div>
                         </div>
@@ -282,14 +232,10 @@
                     <span data-u="arrowleft" class="jssora03l" style="top:0px;left:8px;width:55px;height:55px;" data-autocenter="2"></span>
                     <span data-u="arrowright" class="jssora03r" style="top:0px;right:8px;width:55px;height:55px;" data-autocenter="2"></span>
                 </div>
-        </div>
-       <br>
-       <br>
-        <div class="row-fluid">
-              <h2 align="center"> Tier3 Affiliates</h2>
-                        
+
             
         </div>
+       
         
 </section>
 

@@ -116,21 +116,27 @@
 
       }
 
-      public function fetchinfoBlog($type,$limit=null,$start=null)
+      public function fetchinfoBlog($type,$con=null,$limit=null,$start=null)
       {
-       
+       // echo $start;       
         $this->db->select('*');
-       
+        if($con)
+        {
+          $this->db->where($con);
+        }
+        
         if($type=='count')
         {
+          $this->db->order_by('blog_id','desc');
           $res=$this->db->get('blog');
-           //$this->db->order_by('blog_id','desc');
+          
           return $res->num_rows();
         }
         else
         {
+          $this->db->order_by('blog_id','desc');
           $this->db->limit($limit,$start);
-          // $this->db->order_by('blog_id','desc');
+//$this->db->order_by('blog_id','desc');
           $res=$this->db->get('blog');
           return $res->result_array();
         }

@@ -50,6 +50,8 @@
               <ul class="treeview-menu">
                 <li><a href="<?php echo base_url();?>index.php/admin/blog/add"><i class="fa fa-circle-o"></i>Add Blog</a></li>
                 <li><a href="<?php echo base_url();?>index.php/admin/blog"><i class="fa fa-circle-o"></i> Manage Blog</a></li>
+                <li><a href="<?php echo base_url();?>index.php/admin/blog/add_category"><i class="fa fa-circle-o"></i>Add Blog Category</a></li>
+                <li><a href="<?php echo base_url();?>index.php/admin/blog/manage"><i class="fa fa-circle-o"></i>Manage Blog Category</a></li>
                 
               </ul>
             </li> 

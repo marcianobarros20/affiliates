@@ -69,6 +69,25 @@ class Contents extends CI_Controller {
 		$data['header']=$this->load->view('includes/header.php','',true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
 		$data['middle']=$this->load->view('includes/middle.php','',true);
+		$con=array('status'=>0);
+		$page = $this->uri->segment(4)?$this->uri->segment(4):0;
+		$this->load->library('pagination');			
+		$config['base_url'] = base_url('Contents/blog/index');
+		
+		$data['RecordTotal']=$this->Common_model->fetchinfoBlog('count',$con);
+		//$data['RecordTotal']=$this->home_model->casino_total();
+		$config['total_rows'] = $data['RecordTotal'];
+		//$config['use_page_numbers'] = TRUE;
+		$config['per_page'] = $limit = 2;
+		$start = $page;//start page			
+		$config["uri_segment"] =4;
+		$this->pagination->initialize($config);			
+		$data['PaginationLink']= $this->pagination->create_links();
+		//$data['casino_list']=$this->home_model->casino($limit,$start);
+		
+		$data['all_blog']=$this->Common_model->fetchinfoBlog('result',$con,$limit,$start);
+		//echo $this->db->last_query();
+
 		$this->load->view('blog.php',$data);
 	}
 

@@ -460,7 +460,11 @@ class Welcome extends CI_Controller {
 		    	$this->session->set_userdata('succ_msg','Successfully updated your profile');
 		    	redirect(base_url().'index.php/welcome/editprofile');
 		    }
-   
+		    else
+		    {
+		    	redirect(base_url().'index.php/welcome/editprofile');
+		    }
+  
 		}
 	}
 

@@ -46,7 +46,7 @@ class Blog extends CI_Controller {
 			$data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
 			$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
 			$con=array('status'=>0);
-			$page = $this->uri->segment(4)?$this->uri->segment(4):1;
+		$page = $this->uri->segment(4)?$this->uri->segment(4):1;
 		$this->load->library('pagination');			
 		$config['base_url'] = base_url('admin/blog/index');
 		
@@ -54,13 +54,13 @@ class Blog extends CI_Controller {
 		//$data['RecordTotal']=$this->home_model->casino_total();
 		$config['total_rows'] = $data['RecordTotal'];
 		$config['per_page'] = $limit = 2;
-		$start = ($page-1)*$limit;//start page			
+		$start = $page;//start page			
 		$config["uri_segment"] =4;
 		$this->pagination->initialize($config);			
 		$data['PaginationLink']= $this->pagination->create_links();
 		//$data['casino_list']=$this->home_model->casino($limit,$start);
 		
-		$data['all_blog']=$this->Common_model->fetchinfoBlog('result',$limit,$start);
+		$data['all_blog']=$this->Common_model->fetchinfoBlog('result','',$limit,$start);
 			
 // $this->db->last_query();
 			
