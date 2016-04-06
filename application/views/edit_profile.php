@@ -65,12 +65,12 @@
             <div class="span6" >
                <?php if( $fetch_allinfo['profile_image'])
                        { ?>
-                        <img src="profile_img/thumb/<?php echo $fetch_allinfo['profile_image'];?>" alt="images/sample/no_photo.jpg">
+                        <img src="profile_img/thumb/<?php echo $fetch_allinfo['profile_image'];?>" alt="Image">
                          
                 <?php  } 
                        else
                        { ?>
-                          <img src="images/sample/no_photo.jpg" alt="images/sample/no_photo.jpg">
+                          <img src="images/sample/no_photo.png" alt="images/sample/no_photo.png">
 
                 <?php                 
                        }                 
