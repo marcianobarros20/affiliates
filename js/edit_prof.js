@@ -31,7 +31,9 @@ $(document).ready(function(){
     var old_pass=$('#old_password').val();
     var res= $.ajax({
     type : 'post',
-    url : '<?php echo base_url()?>index.php/Ajax/Fnoldpasswordchk',
+
+    url : 'index.php/Ajax/Fnoldpasswordchk',
+
     data : 'o_pass='+old_pass,
     async : false,
     success : function(msg){ 
