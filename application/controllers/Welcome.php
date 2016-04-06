@@ -267,10 +267,20 @@ class Welcome extends CI_Controller {
 
     public function editprofile()
 	{
+		if($this->session->userdata('user_id'))
+		{
+		$u_id=$this->session->userdata('user_id');
+		$con=array('uid'=>$u_id);
+		$data['fetch_allinfo']=$this->Common_model->fetchinfo('users',$con,'row');
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
 		$data['middle']=$this->load->view('includes/middle','',true);
 		$this->load->view('edit_profile',$data);
+		}
+		else
+		{
+			redirect();exit();
+		}
 	}
 
 	public function forget()
@@ -345,6 +355,149 @@ class Welcome extends CI_Controller {
        
         
 	}
+
+
+	public function update_profile()
+	{
+		$u_id=$this->session->userdata('user_id');
+		$con=array('uid'=>$u_id);
+		if($_POST)
+		{
+			/* image upload start */
+             $image1="";
+			 $image=$this->Common_model->fetchinfo('users',$con,'row');
+			 $profile_img=$image['profile_image'];
+			 $f_resize='';
+			 if($_FILES['fileToUpload']['size']!=0)
+			 {
+			 	
+                $img_size=getimagesize($_FILES['fileToUpload']['tmp_name']);
+                
+                if($img_size[0] >=220 && $img_size[1] >=150)
+                {
+				    $this->load->library('image_lib');
+					$time=time();
+				    $config['upload_path'] ='./profile_img/';
+					$config['file_name']=$time;
+					$config['overwrite']='TRUE';
+					$config['allowed_types']='jpg|jpeg|gif|png|PNG';
+					$config['max_size']='2000';
+									
+					$this->load->library('upload', $config);
+					if( ! $this->upload->do_upload('fileToUpload'))//initialize
+					{
+					
+						$this->session->set_userdata('err_msg',$this->upload->display_errors());
+						echo $this->upload->display_errors();
+						die();
+					}
+					else
+					{
+					
+					$updata=array();//get the uploaded data details
+					$updata = $this->upload->data();				
+					$f_resize=$updata['file_name'];
+						
+					$config['image_library'] = 'gd2';
+					$config['thumb_marker']='';
+					$config['create_thumb'] = TRUE;
+					$config['maintain_ratio'] = False;
+					$config['height']=150;
+					$config['width']=220;
+					$config['new_image'] = './profile_img/thumb/'.$f_resize;
+					$config['source_image']="./profile_img/".$f_resize;
+					
+					$this->image_lib->initialize($config);
+					$this->image_lib->resize();
+					
+			           
+					}
+
+				}
+				else
+				{
+				$this->session->set_userdata('err_msg','Profile updation failed due to violation of maintain of recomended image size');
+		    	redirect(base_url().'index.php/welcome/editprofile');
+				}
+	
+
+				
+			}
+/* image upload end */
+
+
+			 if($f_resize)
+			            {
+				            	if($profile_img)
+				            	{
+				            		unlink('./profile_img/thumb/'.$profile_img);
+				            		unlink('./profile_img/'.$profile_img);
+				            		$image1=$f_resize;
+				            	}
+				                else
+				                {
+				                   $image1=$f_resize;
+				                }
+			            }
+			            else
+			            {
+
+				            	if($profile_img)
+				            	{
+				            		$image1=$profile_img;
+				            	}
+				               
+			            }
+            $data['fname']=$this->input->post('edit_first_name');
+			$data['lname']=$this->input->post('edit_last_name');
+		    $data['description']=$this->input->post('edit_description');
+			$data['profile_image']=$image1;
+					
+
+		    $edit_profile=$this->Common_model->update('users',$con,$data);
+		    if($edit_profile)
+		    {
+		    	$this->session->set_userdata('succ_msg','Successfully updated your profile');
+		    	redirect(base_url().'index.php/welcome/editprofile');
+		    }
+   
+		}
+	}
+
+	public function change_password()
+	{
+            $u_id=$this->session->userdata('user_id');
+		
+		if($_POST)
+		{
+			$oldpassword=md5($this->input->post('old_password'));
+			$con=array('uid'=>$u_id,'password'=>$oldpassword);
+			
+			$newpassword=md5($this->input->post('new_password'));
+			$confpassword=md5($this->input->post('conf_password'));
+
+			$data['password']=$newpassword;
+			
+			if($newpassword==$confpassword)
+			{
+			    $edit_password=$this->Common_model->update('users',$con,$data);
+			    if($edit_password)
+			    {
+			    $this->session->set_userdata('succ_msg','password updated successfully');
+		    	redirect(base_url().'index.php/welcome/editprofile');
+			    }
+			    else
+			    {
+			    	$this->session->set_userdata('err_msg','password updation failed');
+		    	redirect(base_url().'index.php/welcome/editprofile');
+			    }
+		    }
+		}
+	}
+
+
+
+
     public function contact($ref_id='')
 	{
 		if($ref_id!='')

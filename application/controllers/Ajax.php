@@ -291,7 +291,26 @@ class Ajax extends CI_Controller {
 
 			}
 
+function Fnoldpasswordchk()
+{
+	if($_POST)
+	{
+		$o_pass=$this->input->post('o_pass');
+		$u_id=$this->session->userdata('user_id');
+		$con=array('uid'=>$u_id,'password'=>md5($o_pass));
+		$get_info=$this->Common_model->fetchinfo('users',$con,'count');
+		if($get_info>0)
+		{
+			echo 2;
+		}
+		else
+		{
+			echo 1;
+		}
 
+			
+	}
+}
 
 
 

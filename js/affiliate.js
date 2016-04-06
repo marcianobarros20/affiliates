@@ -196,4 +196,10 @@ function show_child_tier0(uid)
             }
        }
 
+
+       function show_tier3(uid)
+       {
+        alert(uid);
+       }
+
     

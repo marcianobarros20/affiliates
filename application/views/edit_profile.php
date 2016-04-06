@@ -25,7 +25,12 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  
+    <script src="js/vendor/jquery-1.9.1.min.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="js/jquery.validate.js"></script>
+   <script type="text/javascript" src="js/edit_prof.js"></script>
 
 
     
@@ -41,7 +46,7 @@
                 </div>
                 <div class="span6">
                     <ul class="breadcrumb pull-right">
-                        <li><a href="<?php echo base_url();?>">Home</a> <span class="divider">/</span></li>
+                        <li><a href="<?php echo base_url();?>">Home</a> <span class="divider"></span></li>
                         <li class="active">Edit Profile</li>
                     </ul>
                 </div>
@@ -54,7 +59,71 @@
     <?php echo $header;?>
     <!-- /header -->
   
+      <section id="about-us" class="container main">
+         <h2 align="center"> Edit Personal Information </h2>
+        <div class="row-fluid">
+            <div class="span6" >
+               <?php if( $fetch_allinfo['profile_image'])
+                       { ?>
+                        <img src="profile_img/thumb/<?php echo $fetch_allinfo['profile_image'];?>" alt="images/sample/no_photo.jpg">
+                         
+                <?php  } 
+                       else
+                       { ?>
+                          <img src="images/sample/no_photo.jpg" alt="images/sample/no_photo.jpg">
 
+                <?php                 
+                       }                 
+                ?>
+            </div>
+
+            <div><?php if($this->session->userdata('err_msg')!=' '){ echo "<font color='red'>".$this->session->userdata('err_msg').'</font>';$this->session->set_userdata('err_msg',' ');} if($this->session->userdata('succ_msg')!=' '){ echo "<font color='green'>".$this->session->userdata('succ_msg').'</font>';$this->session->set_userdata('succ_msg',' ');}?></div>
+            <div class="span6" >
+               
+              
+                    <div class="box">
+                         <form method="post" action="welcome/update_profile" enctype="multipart/form-data">
+                        First Name: <input type="text" placeholder="First Name" id="edit_first_name" name="edit_first_name" value="<?php echo $fetch_allinfo['fname'];?>">
+                        <br>
+                        Last Name:<input type="text" placeholder="Last Name" id="edit_last_name" name="edit_last_name" value="<?php echo $fetch_allinfo['lname'];?>">
+                        <br>
+                        <br>
+                        Description:
+                         <textarea   placeholder="Enter Descriptions Here" class="form-control" id="edit_description" name="edit_description"><?php echo $fetch_allinfo['description'];?></textarea>
+                         <br>
+                         Select image to upload:
+                                <input type="file" name="fileToUpload" id="fileToUpload">
+                                
+                         <button type="submit" class="btn btn-default btn-xm" id="update_button" name="update_button" >Update</button>
+                         </form>
+                    </div>
+                    <br>
+                    <div class="box" > 
+                         Change Password 
+                         <button type="button" class="btn btn-default btn-sm" id="edit_password_button" name="edit_password_button">
+                             <span class="glyphicon glyphicon-edit"></span> Edit
+                         </button>
+                         <br>
+                         <div style="display:none;" id="edit_password_div" name="edit_password_div">
+                            <form method="post" action="welcome/change_password" id="change_password">
+                            <div><div><input type="password" placeholder="Old Password" id="old_password" name="old_password" onblur="old_password_chk();"></div><div id="msg_pass"></div></div>
+                            <br>
+                            <input type="password" placeholder="New Password" id="new_password" name="new_password">
+                            <br>
+                            <input type="password" placeholder="Confirm Password" id="conf_password" name="conf_password">
+                            <br>
+                            <input type="submit" value="Change Password" class="btn btn-default btn-xm" id="update_password_button" name="update_password_button" >
+                            </form>
+                         </div>
+                    </div>
+                    <br>
+            
+            </div>
+        </div>
+
+
+        
+</section>
     
 
 
@@ -69,9 +138,7 @@
 
  
 
-<script src="js/vendor/jquery-1.9.1.min.js"></script>
-<script src="js/vendor/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
+
 
 </body>
 </html>
