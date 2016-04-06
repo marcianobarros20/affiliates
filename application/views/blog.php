@@ -25,6 +25,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+   
 </head>
 
 <body>
@@ -55,17 +57,23 @@
         <div class="row-fluid">
             <div class="span8">
                 <div class="blog">
+
                 <?php if(!empty($all_blog)):
 
-                foreach($all_blog as $blog):?>
+                foreach($all_blog as $blog):
+
+                    $category_name=category($blog['cat_id']);
+                    ?>
                     <div class="blog-item well">
                         <a href="#"><h2><?php echo $blog['title'];?></h2></a>
                         <div class="blog-meta clearfix">
                             <p class="pull-left">
-                              <i class="icon-user"></i> by <a href="#">John</a> | <i class="icon-folder-close"></i> Category <a href="#">Bootstrap</a> | <i class="icon-calendar"></i> <?php echo date('jS F Y',strtotime($blog['add_date']));?>
+                              <i class="icon-user"></i> by <a href="#">John</a> | <i class="icon-folder-close"></i> Category <a href="#"><?php echo $category_name['title'];?></a> | <i class="icon-calendar"></i> <?php echo date('jS F Y',strtotime($blog['add_date']));?>
                           </p>
                           <p class="pull-right"><i class="icon-comment pull"></i> <a href="blog-item.html#comments">3 Comments</a></p>
                       </div>
+                     
+
                       <p><img src="images/sample/blog1.jpg" width="100%" alt="" /></p>
                       <div id="main_<?php echo $blog['blog_id'];?>"><p><?php echo substr($blog['description'],0,200);?></p>
 

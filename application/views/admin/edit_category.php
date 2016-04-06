@@ -18,7 +18,6 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="admin_support/dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="admin_support/dist/css/style.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="admin_support/plugins/iCheck/flat/blue.css">
     <!-- Morris chart -->
@@ -38,7 +37,10 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="js/affiliate.js"></script>
+     <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    
+  <script src="js/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/edit_prof.js"></script>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -49,64 +51,39 @@
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
+      <section>
         <!-- Content Header (Page header) -->
-        <section class="content">
-        <div class="row">
-            <div class="col-xs-12">
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">List Of Blogs </h3>
-                  <div class="box-tools">
-                    <div style="width: 150px;" class="input-group">
-                   <div class="paginationD">
-                      <?php echo $PaginationLink;?>
-
-                    </div>
-                  </div>
+        <div class="clearfix"></div>
+        <div class="box box-primary">
+                <div class="box-header with-border">
+                <div> <?php if($this->session->userdata('succ_msg')!=' '){ echo "<font color='green'>".$this->session->userdata('succ_msg')."</font>";} $this->session->set_userdata('succ_msg',' ')?> </div>
+                  <h3 class="box-title">Edit Category</h3>
                 </div><!-- /.box-header -->
-                <div class="box-body table-responsive no-padding">
-                  <table class="table table-hover">
-                    <tbody><tr>
-                      <th>Title</th>
-                      <th>Description</th>
-                      <th>Date(mm/dd/yy)</th>
-                      <th>Status</th>
-                      <th>Action</th>
-                      
-                      
-                    </tr>
-                    <?php if(!empty($all_blog)):
-                      foreach($all_blog as $blog):
-                    ?>
-                    <tr>
-                      <td><?php echo substr($blog['title'],0,20);?></td>
-                      <td><?php echo substr($blog['description'],0,40);?></td>
-                      <td><?php echo date('m/d/Y',strtotime($blog['add_date']));?></td>
-                      <td><?php if($blog['status']==0){echo 'Active';} else { echo 'Inactive';}?></td>
-                      
-                     <td><span class="label label-danger" style="cursor:pointer;" onclick="change_status('Delete','<?php echo $blog['blog_id'];?>')">Delete</span>
-                     <?php if($blog['status']==0):?>
-                     <span class="label label-warning" style="cursor:pointer;" onclick="change_status_blog('Inactive','<?php echo $blog['blog_id'];?>')" title="Make it Inactive">Inactive</span>
-                     <?php endif;?>
-                     <?php if($blog['status']==1):?>
-                     <span class="label label-success" style="cursor:pointer;" onclick="change_status_blog('active','<?php echo $blog['blog_id'];?>')" title="Make it Active">Active</span>
-                     <?php endif;?>
-                      <a href="<?php echo base_url();?>index.php/admin/blog/edit_blog/<?php echo $blog['blog_id'];?>"><span class="label label-success" style="cursor:pointer;">Edit</span>
-                     </a>
-                     <a href="<?php echo base_url();?>index.php/admin/blog/view_details/<?php echo $blog['blog_id'];?>"><span class="label label-success" style="cursor:pointer;">View Details</span>
-                     </a>
-
-
-                     </td>
+                <!-- form start -->
+                <form role="form" method="post" name="edit_category" id="edit_category" >
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Category Title:</label>
+                      <input type="text" placeholder="Enter category Title" id="cat_title" class="form-control required" name="cat_title" value="<?php echo $edit_category['title'];?>">
+                    </div>
                     
-                    </tr>
-                    <?php endforeach; endif;?>
-                  </tbody></table>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
-            </div>
-          </div>
-          </section>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Select Status:</label>
+                     <select class="form-control required" name="status" id="status">
+                     <option value="">Select</option>
+                     <option value="0" <?php if($edit_category['status']==0){ echo "selected";}?>>Active</option>
+                     <option value="1" <?php if($edit_category['status']==1){ echo "selected";}?>>Inactive</option>
+                     </select>
+                    </div>
+                    
+                  </div><!-- /.box-body -->
+
+                  <div class="box-footer">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                  </div>
+                </form>
+              </div>
+       </section>
       </div>
      <!-- footer -->
      <?php echo $footer;?>
@@ -127,7 +104,7 @@
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+   
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

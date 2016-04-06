@@ -18,7 +18,6 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="admin_support/dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="admin_support/dist/css/style.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="admin_support/plugins/iCheck/flat/blue.css">
     <!-- Morris chart -->
@@ -38,7 +37,9 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="js/affiliate.js"></script>
+     <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+     <script src="js/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/edit_prof.js"></script>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -49,64 +50,66 @@
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
+      <section>
         <!-- Content Header (Page header) -->
-        <section class="content">
-        <div class="row">
-            <div class="col-xs-12">
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">List Of Blogs </h3>
-                  <div class="box-tools">
-                    <div style="width: 150px;" class="input-group">
-                   <div class="paginationD">
-                      <?php echo $PaginationLink;?>
-
-                    </div>
-                  </div>
+        <div class="clearfix"></div>
+        <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Edit Blog</h3>
+                  <br>
+<?php if($this->session->userdata('succ_msg')!=" "){ echo '<font color="green">'.$this->session->userdata('succ_msg').'</font>';$this->session->set_userdata('succ_msg',' ');}?>
+<?php if($this->session->userdata('err_msg')!=" "){ echo '<font color="red">'.$this->session->userdata('err_msg').'</font>';$this->session->set_userdata('err_msg',' ');}?>
                 </div><!-- /.box-header -->
-                <div class="box-body table-responsive no-padding">
-                  <table class="table table-hover">
-                    <tbody><tr>
-                      <th>Title</th>
-                      <th>Description</th>
-                      <th>Date(mm/dd/yy)</th>
-                      <th>Status</th>
-                      <th>Action</th>
-                      
-                      
-                    </tr>
-                    <?php if(!empty($all_blog)):
-                      foreach($all_blog as $blog):
-                    ?>
-                    <tr>
-                      <td><?php echo substr($blog['title'],0,20);?></td>
-                      <td><?php echo substr($blog['description'],0,40);?></td>
-                      <td><?php echo date('m/d/Y',strtotime($blog['add_date']));?></td>
-                      <td><?php if($blog['status']==0){echo 'Active';} else { echo 'Inactive';}?></td>
-                      
-                     <td><span class="label label-danger" style="cursor:pointer;" onclick="change_status('Delete','<?php echo $blog['blog_id'];?>')">Delete</span>
-                     <?php if($blog['status']==0):?>
-                     <span class="label label-warning" style="cursor:pointer;" onclick="change_status_blog('Inactive','<?php echo $blog['blog_id'];?>')" title="Make it Inactive">Inactive</span>
-                     <?php endif;?>
-                     <?php if($blog['status']==1):?>
-                     <span class="label label-success" style="cursor:pointer;" onclick="change_status_blog('active','<?php echo $blog['blog_id'];?>')" title="Make it Active">Active</span>
-                     <?php endif;?>
-                      <a href="<?php echo base_url();?>index.php/admin/blog/edit_blog/<?php echo $blog['blog_id'];?>"><span class="label label-success" style="cursor:pointer;">Edit</span>
-                     </a>
-                     <a href="<?php echo base_url();?>index.php/admin/blog/view_details/<?php echo $blog['blog_id'];?>"><span class="label label-success" style="cursor:pointer;">View Details</span>
-                     </a>
+                <!-- form start -->
+                <form role="form" method="post" name="add_blog" id="add_blog" enctype="multipart/form-data">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Blog Title:</label>
+                      <input type="text" value="<?php echo $edit_blog['title'];?>" id="b_title" class="form-control required" name="b_title">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Description</label>
+                      <textarea class="form-control required" id='b_des' name="b_des"><?php echo $edit_blog['description'];?></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>Select</label>
+                      <select class="form-control required" name="media_type">
+                      <option value="">Select</option>
+                        <option value="1" <?php if($edit_blog['media_type']==1){echo "selected";}?>>Image</option>
+                        <option value="2" <?php if($edit_blog['media_type']==2){echo "selected";};?>>video</option>
+                       
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Select Category</label>
+                      <select class="form-control required" name="category_type">
+                      <option value="">Select</option>
+                        <?php foreach($category as $cat):?>
+                          <option value="<?php echo $cat['cat_id'];?>" <?php if($edit_blog['cat_id']==$cat['cat_id']){echo "selected";}?>>
 
+                          <?php echo $cat['title'];?>
+                          </option>
 
-                     </td>
+                        <?php endforeach;?>
+                       
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputFile">Browse file</label>
+                      <input type="file" id="file_media" name="file_media">
+                      
+                    </div>
+                    <div><?php if($edit_blog['media_type']==1){?><img src="<?php echo base_url();?>blog_file/thumb/<?php echo $edit_blog['media'];?>" alt='' height='100' width='100'><?php }?></div>
                     
-                    </tr>
-                    <?php endforeach; endif;?>
-                  </tbody></table>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
-            </div>
-          </div>
-          </section>
+                  </div><!-- /.box-body -->
+
+                  <div class="box-footer">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                  </div>
+                </form>
+              </div>
+       </section>
       </div>
      <!-- footer -->
      <?php echo $footer;?>
@@ -127,7 +130,7 @@
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+   
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

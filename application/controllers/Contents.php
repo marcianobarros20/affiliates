@@ -24,6 +24,7 @@ class Contents extends CI_Controller {
 		
 		$this->load->library('form_validation');
 		$this->load->model('Common_model');
+		$this->load->helper('custom');
 	}
 
 	public function about_us()
