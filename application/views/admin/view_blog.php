@@ -55,7 +55,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">List Of Blogs </h3>
+                  <h3 class="box-title">View Blog Details </h3><br>
                   <div class="box-tools">
                     <div style="width: 150px;" class="input-group">
                    <a href="<?php echo base_url();?>index.php/admin/blog">Back</a>
@@ -64,8 +64,8 @@
               <div>
               <?php 
 
-              echo "Title: ".$single_blog['title'];
-              echo "Description: ".$single_blog['description'];
+              echo "Title: ".$single_blog['title'].'<br>';
+              echo "Description: ".$single_blog['description'].'<br>';
               echo '<br>';
               if($single_blog['media_type']==1)
               {

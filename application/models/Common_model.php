@@ -99,7 +99,10 @@
        public function fetchinfo($tbl,$con,$type)
       {
         $this->db->select('*');
+        if($con)
+        {
         $this->db->where($con);
+        }
         $res=$this->db->get($tbl);
         if($type=="row")
         {
@@ -114,6 +117,12 @@
         return  $result=$res->result_array();
         }
 
+      }
+      public function delete($con,$tbl)
+      {
+        $this->db->where($con);
+        $this->db->delete($tbl);
+        return $this->db->affected_rows(); 
       }
 
       public function fetchinfoBlog($type,$con=null,$limit=null,$start=null)
@@ -144,6 +153,32 @@
        
       }
 
+
+      public function fetchinfoCategory($type,$con=null,$limit=null,$start=null)
+      {
+         $this->db->select('*');
+        if($con)
+        {
+          $this->db->where($con);
+        }
+        
+        if($type=='count')
+        {
+          $this->db->order_by('cat_id','desc');
+          $res=$this->db->get('category');
+          
+          return $res->num_rows();
+        }
+        else
+        {
+          $this->db->order_by('cat_id','desc');
+          $this->db->limit($limit,$start);
+//$this->db->order_by('blog_id','desc');
+          $res=$this->db->get('category');
+          return $res->result_array();
+        }
+      }
+
       public function fetchrejectandpending()
       {
 
@@ -154,6 +189,7 @@
         return $res->result_array();
 
       }
+
 
       
 

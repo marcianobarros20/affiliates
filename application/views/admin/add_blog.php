@@ -37,6 +37,9 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+     <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+     <script src="js/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/edit_prof.js"></script>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -53,21 +56,23 @@
         <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Add Blog</h3>
+<?php if($this->session->userdata('succ_msg')!=" "){ echo '<font color="green">'.$this->session->userdata('succ_msg').'</font>';$this->session->set_userdata('succ_msg',' ');}?>
+
                 </div><!-- /.box-header -->
                 <!-- form start -->
                 <form role="form" method="post" name="add_blog" id="add_blog" enctype="multipart/form-data">
                   <div class="box-body">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Blog Title:</label>
-                      <input type="text" placeholder="Enter Blog Title" id="b_title" class="form-control" name="b_title">
+                      <input type="text" placeholder="Enter Blog Title" id="b_title" class="form-control required" name="b_title">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Description</label>
-                      <textarea class="form-control" id='b_des' name="b_des"></textarea>
+                      <textarea class="form-control required" id='b_des' name="b_des"></textarea>
                     </div>
                     <div class="form-group">
                       <label>Select</label>
-                      <select class="form-control" name="media_type">
+                      <select class="form-control required" name="media_type">
                       <option value="">Select</option>
                         <option value="1">Image</option>
                         <option value="2">video</option>
@@ -75,8 +80,23 @@
                       </select>
                     </div>
                     <div class="form-group">
+                      <label>Select Category</label>
+                      <select class="form-control required" name="category_type">
+                      <option value="">Select</option>
+                        <?php foreach($category as $cat):?>
+                          <option value="<?php echo $cat['cat_id'];?>">
+
+                          <?php echo $cat['title'];?>
+                          </option>
+
+                        <?php endforeach;?>
+                       
+                      </select>
+                    </div>
+
+                    <div class="form-group">
                       <label for="exampleInputFile">Browse file</label>
-                      <input type="file" id="file_media" name="file_media">
+                      <input type="file" id="file_media" name="file_media" class="required">
                       
                     </div>
                     
@@ -108,7 +128,7 @@
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+   
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

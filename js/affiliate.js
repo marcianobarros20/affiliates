@@ -37,7 +37,7 @@
         }
         else if(param=="Delete")
         { 
-            var conf=confirm("You sure you want to delete this user!");
+            var conf=confirm("You sure you want to delete this!");
             if(conf)
             {
                 var status=2;
@@ -55,7 +55,7 @@
         }
         else
         {      
-            var conf=confirm("You sure you want to Reject this user!");
+            var conf=confirm("You sure you want to Reject this!");
             if(conf)
             {
                 var status=3;

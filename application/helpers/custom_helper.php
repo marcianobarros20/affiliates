@@ -23,6 +23,17 @@
         return $return = $res->result_array();
 
     }
+
+    function category($cat_id)
+    {
+        $CI=& get_instance();
+        $CI->load->database(); 
+
+        $CI->db->select('title');
+        $CI->db->where('cat_id',$cat_id);
+        $res = $CI->db->get('category');
+        return $return = $res->row_array();
+    }
    
 
 ?>

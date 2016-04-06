@@ -55,7 +55,10 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">List Of Blogs </h3>
+                  <h3 class="box-title">Manage Category </h3>
+                  <br>
+                  <?php if($this->session->userdata('succ_msg')!=' '){ echo "<font color='green'>".$this->session->userdata('succ_msg')."</font>";$this->session->set_userdata('succ_msg',' ');}
+                  if($this->session->userdata('err_msg')!=' '){ echo "<font color='red'>".$this->session->userdata('err_msg')."</font>";$this->session->set_userdata('err_msg',' ');}?>
                   <div class="box-tools">
                     <div style="width: 150px;" class="input-group">
                    <div class="paginationD">
@@ -68,32 +71,24 @@
                   <table class="table table-hover">
                     <tbody><tr>
                       <th>Title</th>
-                      <th>Description</th>
-                      <th>Date(mm/dd/yy)</th>
+                      
                       <th>Status</th>
                       <th>Action</th>
                       
                       
                     </tr>
-                    <?php if(!empty($all_blog)):
-                      foreach($all_blog as $blog):
+                    <?php if(!empty($manage_category)):
+                      foreach($manage_category as $category):
                     ?>
                     <tr>
-                      <td><?php echo substr($blog['title'],0,20);?></td>
-                      <td><?php echo substr($blog['description'],0,40);?></td>
-                      <td><?php echo date('m/d/Y',strtotime($blog['add_date']));?></td>
-                      <td><?php if($blog['status']==0){echo 'Active';} else { echo 'Inactive';}?></td>
+                      <td><?php echo $category['title'];?></td>
                       
-                     <td><span class="label label-danger" style="cursor:pointer;" onclick="change_status('Delete','<?php echo $blog['blog_id'];?>')">Delete</span>
-                     <?php if($blog['status']==0):?>
-                     <span class="label label-warning" style="cursor:pointer;" onclick="change_status_blog('Inactive','<?php echo $blog['blog_id'];?>')" title="Make it Inactive">Inactive</span>
-                     <?php endif;?>
-                     <?php if($blog['status']==1):?>
-                     <span class="label label-success" style="cursor:pointer;" onclick="change_status_blog('active','<?php echo $blog['blog_id'];?>')" title="Make it Active">Active</span>
-                     <?php endif;?>
-
-                     <a href="<?php echo base_url();?>index.php/admin/blog/view_details/<?php echo $blog['blog_id'];?>"><span class="label label-success" style="cursor:pointer;">View Details</span>
-                     </a></td>
+                      <td><?php if($category['status']==0){echo 'Active';} else { echo 'Inactive';}?></td>
+                      
+                     
+                     <td><a href="<?php echo base_url();?>index.php/admin/blog/delete/<?php echo $category['cat_id'];?>" onclick="return confirm('Are you sure you want to delete this category?')" ><span class="label label-danger">Delete</span></a>
+                      <a href="<?php echo base_url();?>index.php/admin/blog/edit/<?php echo $category['cat_id'];?>"><span class="label label-danger">Edit</span></a>
+                     </td>
                     
                     </tr>
                     <?php endforeach; endif;?>

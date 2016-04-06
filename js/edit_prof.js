@@ -1,6 +1,7 @@
 $(document).ready(function(){
-  
-
+$('#edit_category').validate();
+$('#add_category').validate();
+$('#add_blog').validate();
  $( "#change_password" ).validate({
   rules: {
     old_password: "required",
