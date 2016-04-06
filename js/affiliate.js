@@ -43,7 +43,7 @@
                 var status=2;
                 var res= $.ajax({
                   type : 'post',
-                  url : 'index.php/Ajax/change_status',
+                  url : 'index.php/Ajax/delete_users',
                   data : 'uid='+param1+'& status='+status,
                   async : false,
                   success : function(msg)
@@ -213,4 +213,40 @@ function show_child_tier0(uid)
 
        }
 
-    
+  function show_assign_div(uid)
+  {
+    //alert(uid);
+    $('#Assign_div_'+uid).toggle();
+
+    $('#assign_code_button_'+uid).click(function(){
+
+             refferalcode=$.trim($('#assign_code_'+uid).val());
+              
+                if(refferalcode)
+                {
+                  
+                  
+                  var res= $.ajax({
+                  type : 'post',
+                  url : 'index.php/Ajax/assign_parent',
+                  data : 'refferalcode='+refferalcode+'& uid='+uid,
+                  async : false,
+                  success : function(msg)
+                   {
+                       alert(msg);
+                        window.location.reload();
+
+                   }
+                  });
+                }
+                else
+                {
+                   alert("Assign Refferal Code");
+                }
+             });
+        
+
+
+  }  
+
+

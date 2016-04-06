@@ -65,8 +65,8 @@
                 <div class="box-body table-responsive no-padding">
                   <table class="table table-hover">
                     <tbody><tr>
-                      <th>ID</th>
-                      <th>User</th>
+                      
+                      <th>User Name</th>
                       <th>Date(dd/mm/yy)</th>
                       <th>Referelcode</th>
                       <th>Status</th>
@@ -80,7 +80,7 @@
 
                         ?>
                     <tr>
-                      <td><?php echo $users['uid'];?></td>
+                      
                       <td><?php echo ucfirst($users['fname']).' '.ucfirst($users['lname']);?></td>
                       <td><?php echo date('d/m/Y',strtotime($users['date_register']));?></td>
                       <td><?php echo $users['refferalcode'];?></td>
@@ -98,6 +98,24 @@
                             }
                             }
                         ?>-->
+                        <?php 
+                          if($users['parent_id'])
+                          {
+
+                          }
+                          else
+                          {
+                            echo '<button id="Assign_upperdiv_button'.$users['uid'].'" onclick="show_assign_div('.$users['uid'].')">Assign Upper Tier</button>
+                                  <br>
+                                  <br>
+                                  <div style="display:none" id="Assign_div_'.$users['uid'].'"><input type="Text" placeholder="Assign Refferal Code" id="assign_code_'.$users['uid'].'">
+                                  <br>
+                                  <input type="button" value="Click To Assign" id="assign_code_button_'.$users['uid'].'" onclick="assign_uppertier('.$users['uid'].')">
+                                  </div>';
+                          }
+
+
+                        ?>
 
                       </td>
                      <td><span class="label label-danger" onclick="change_status('Delete','<?php echo $users['uid'];?>')">Delete</span></td>

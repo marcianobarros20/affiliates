@@ -37,7 +37,7 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="js/affiliate.js"></script>
+    <script type="text/javascript" src="js/deleteaffiliate.js"></script>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -45,23 +45,22 @@
      <?php echo $header;?>
       <!-- Left side column. contains the logo and sidebar -->
       <?php echo $leftsidebar;?>
-
-      <?php echo $rightsidebar;?>
+           <?php echo $rightsidebar;?>
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-               <section class="content">
+             <section class="content">
                 <div class="row">
                     <div class="col-xs-12">
                       <div class="box">
                         <div class="box-header">
-                          <h3 class="box-title">List Of Non Affiliate Users</h3>
-                          
+                          <h3 class="box-title">List Of Deleted Users</h3>
                         </div><!-- /.box-header -->
-                        <div class="box-body table-responsive no-padding">
+                           <div class="box-body table-responsive no-padding">
                           <table class="table table-hover">
-                            <tbody><tr>
+                            <tbody>
+                            <tr>
                               
                               <th>User Name</th>
                               <th>Date(dd/mm/yy)</th>
@@ -78,49 +77,13 @@
                               <td><?php echo ucfirst($users['fname']).' '.ucfirst($users['lname']);?></td>
                               <td><?php echo date('d/m/Y',strtotime($users['date_register']));?></td>
                               <td>
-                                <?php 
-                                //echo $users['status'];
-                                  if($users['status']==0)
-                                  {
-                                    echo "Pending For Approval";
-                                  }
-                                  else
-                                  {
-                                    echo "Rejected";
-                                  }
-                                ?>
+                                 Deleted
                               </td>
-                              <td><span id="assign_reff_<?php echo $users['uid'];?>" style="display:none"><input type="text" placeholder="Assign Refferal Code" id="refferal_code_<?php echo $users['uid'];?>"><input type="submit" value="Assign" id="assign_code_btn_<?php echo $users['uid'];?>"> </span></td>
+                              <td><?php echo $users['refferalcode'];?></td>
                               <td>
-
-                                   <?php 
-                                //echo $users['status'];
-                                  if($users['status']==0)
-                                  {
-                                    ?>
-
-                                       <input type="button" onclick="change_status('Approve','<?php echo $users['uid'];?>');" value="Approve">
-                                       <input type="button" onclick="change_status('Reject','<?php echo $users['uid'];?>');" value="Reject" >
-
-                                    <?php
-                                  }
-                                  else
-                                  {
-                                    ?>
-
-                                       <input type="button" onclick="change_status('Approve','<?php echo $users['uid'];?>');" value="Approve">
-                                       
-
-                                    <?php
-                                  }
-                                ?>
-                                
-
-                                <!--  <input type="button" onclick="change_status('Approve','<?php echo $users['uid'];?>');" value="Approve">
+                                <input type="button" onclick="approve('<?php echo $users['uid'];?>');" value="Approve">
                            
-       
-                             
-                                <input type="button" onclick="change_status('Reject','<?php echo $users['uid'];?>');" value="Reject" ><br>  -->
+                 
                                
                                 
                                 
@@ -137,7 +100,7 @@
                       </div><!-- /.box -->
                     </div>
                   </div>
-                  </section>
+             </section>
       </div>
      <!-- footer -->
      <?php echo $footer;?>
@@ -145,9 +108,6 @@
 
 
 
-      <!-- Control Sidebar -->
-
-      <!-- /.control-sidebar -->
 
 
 
@@ -200,7 +160,6 @@
 
 
 
-    
 
   </body>
 </html>

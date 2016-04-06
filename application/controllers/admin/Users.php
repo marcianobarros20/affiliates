@@ -44,7 +44,7 @@ class Users extends CI_Controller {
 			$data['footer']=$this->load->view('admin/includes/footer','',true);
 			$data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
 			$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
-			$con=array('status'=>1,'refferalparent != '=>null);
+			$con=array('status'=>1);
  
 			$data['list_users']=$this->Common_model->fetchinfo('users',$con,'result');
              
@@ -63,15 +63,13 @@ class Users extends CI_Controller {
 		else
 		{
 		   $data=array();
-
-           $con=array('status != ' => 1);
    		  
 		  
 
 
 
 
-		   $data['list']= $this->Common_model->fetchinfo('users',$con, 'result');
+		   $data['list']= $this->Common_model->fetchrejectandpending();
 		  
 
 		   $data['header']=$this->load->view('admin/includes/header','',true);
@@ -99,6 +97,38 @@ class Users extends CI_Controller {
 		   $data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
 		   $this->load->view('admin/viewdetails',$data);
 		
+	}
+
+	public function delete_affiliate()
+	{
+
+
+		   if (!$this->session->userdata('adminid'))
+			{
+				redirect(base_url()."index.php/admin/welcome/login");
+				
+			}
+		  else
+		{
+		   $data=array();
+
+           $con=array('status' => 2);
+   		  
+		  
+
+
+
+
+		   $data['list']= $this->Common_model->fetchinfo('users',$con, 'result');
+		  
+
+         
+           $data['header']=$this->load->view('admin/includes/header','',true);
+		   $data['footer']=$this->load->view('admin/includes/footer','',true);
+		   $data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
+		   $data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
+		   $this->load->view('admin/deletedaff',$data);
+	    }
 	}
 
 	
