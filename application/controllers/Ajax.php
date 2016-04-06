@@ -409,6 +409,28 @@ public function Fnoldpasswordchk()
 
 
 
+			public function user_show_tier3()
+			{ 
+
+				if($_POST)
+				{
+					$parent_id=$this->input->post('uid');
+					return $parent_id;
+					/*$con=array('parent_id'=>$parent_id);
+
+					$user_fetch_child=$this->Common_model->fetchinfo('users',$con,'result');
+                    return $user_fetch_child;
+                    foreach ($user_fetch_child as $value)
+	                	{
+ 							echo $value['fname'];
+	                	}*/
+
+			    }
+
+			}
+
+
+
 
 
 	

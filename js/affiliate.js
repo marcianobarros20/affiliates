@@ -247,6 +247,29 @@ function show_child_tier0(uid)
         
 
 
+  }
+
+
+  function show_tier3(uid)
+  {
+          //alert(uid);
+          $('#show_lower_affiliates').toggle();
+
+                  
+                  /*var res= $.ajax({
+                  type : 'post',
+                  url : 'index.php/Ajax/user_show_tier3',
+                  data : 'uid='+uid,
+                  async : false,
+                  success : function(msg)
+                   {
+                       //alert(msg);
+                       $('#show_lower_affiliates_'+uid).html(msg);
+
+                   }
+                  });*/
+               
+
   }  
 
 

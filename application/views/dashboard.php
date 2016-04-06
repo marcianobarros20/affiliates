@@ -287,9 +287,9 @@
         </div>
        <br>
        <br>
-        <div class="row-fluid">
+        <div id="show_lower_affiliates" class="row-fluid" style="display:none">
               <h2 align="center"> Tier3 Affiliates</h2>
-                        
+               
             
         </div>
         
