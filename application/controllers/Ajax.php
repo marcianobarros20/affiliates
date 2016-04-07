@@ -431,6 +431,35 @@ public function Fnoldpasswordchk()
 
 
 
+	public function delete_to_active()
+			{
+
+				if($_POST)
+					{
+
+						$user_id=$this->input->post('uid');
+                        $userid=array('uid'=>$user_id);
+						$data['status']=$this->input->post('status');
+                     
+
+
+                        $update=$this->Common_model->update('users',$userid,$data);
+
+                        if($update)
+                        {
+                            echo "Successfully Moved To Affiliate List";
+                        }
+                        else
+                        {
+                            echo "Unable To Move Affiliate List";
+                        }
+							
+					}
+
+			}
+
+
+
 
 
 	

@@ -87,15 +87,20 @@
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
+          
+
+
           <section class="content">
+            <div align="right">
+                  <h4><a  href="<?php echo base_url();?>index.php/admin/users"><span><<</span>  Back </a> </h4>
+            </div><!-- /.box-header -->
 
                 <div class="box" id="user_info_box">
                     <div class="box-header">
                       <h1 class="box-title">User Details</h1> 
                     </div><!-- /.box-header -->
                     <div class="box-body"> <!-- box-body -->     
-                           Id: <?php echo $user_info['uid'];?>
-                           <br>
+                           
                            Name: <?php echo $user_info['fname']." ".$user_info['lname'];?>
                            <br>
                            User Name: <?php echo $user_info['username'];?>
@@ -108,21 +113,32 @@
                     </div> <!-- /.box-body -->
                 </div><!-- /.box -->
 
-
+                 <?php 
+                   if ($user_info['parent_id']==0)
+                   {
+                        echo "";
+                   }
+                   else
+                  {
+                  ?>
                   <div class="box" id="uppertier_info_box">
                       <div class="box-header">
                         <h1 class="box-title">Upper Tier</h1> 
                       </div><!-- /.box-header -->
-                      <div class="box-body"> <!-- box-body -->     
-                              Id:<?php echo $user_info['parent_id'];
+                      <div class="box-body"> <!-- box-body -->  
+                       
+                              <?php 
 
                             $parent_info=Parentstatus($user_info['parent_id']);
                           ?>
-                          <br>
+                      
                            Name:  <?php echo $parent_info['fname'].  ' '.$parent_info['lname']; ?>
+                           <br>
+                           Refferal Code:  <?php echo $user_info['refferalparent']; ?>
+
                       </div> <!-- /.box-body -->
                   </div><!-- /.box -->
- 
+                  <?php } ?>
             
                   <div class="box" id="first_lower_tier_info">
                       <div class="box-header">
@@ -182,7 +198,7 @@
                   </div><!-- /.box -->
 
 
-
+        </section>
                
          
 

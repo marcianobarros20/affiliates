@@ -55,12 +55,6 @@
               <div class="box">
                 <div class="box-header">
                   <h3 class="box-title">List Of Affiliate Users </h3>
-                  <div class="box-tools">
-                    <div style="width: 150px;" class="input-group">
-                   
-                      
-                    </div>
-                  </div>
                 </div><!-- /.box-header -->
                 <div class="box-body table-responsive no-padding">
                   <table class="table table-hover">
@@ -85,23 +79,17 @@
                       <td><?php echo date('d/m/Y',strtotime($users['date_register']));?></td>
                       <td><?php echo $users['refferalcode'];?></td>
                       <td>
-                        <!--<?php if($users['status']==1){?><span class="label label-success"><?php echo 'Approved';?></span><?php }?>
-                        <?php if($users['status']==2){?><span class="label label-danger"><?php echo 'Deleted By admin';?></span><?php }?>
-                        <?php if($users['status']==3){?><span class="label label-danger"><?php echo 'Rejected By admin';?></span><?php }?>
                         <?php 
-                            if($users['parent_id']!=0)
-                            {
-                              $fnchkparent_status=Parentstatus($users['parent_id']);
-                            if($fnchkparent_status['status']!=1)
-                            {
-                              echo 'assign parent';
-                            }
-                            }
-                        ?>-->
-                        <?php 
-                          if($users['parent_id'])
+                          if($users['refferalparent'])
                           {
-
+                              if($users['parent_id']==0)
+                              {
+                                 echo "Top Most Tier";
+                              }
+                              else
+                              {
+                               echo "";
+                              }
                           }
                           else
                           {
@@ -118,9 +106,31 @@
                         ?>
 
                       </td>
-                     <td><span class="label label-danger" onclick="change_status('Delete','<?php echo $users['uid'];?>')">Delete</span></td>
+                     <td><?php 
+                        
+                              if($users['parent_id']=="0")
+                              {
+                                echo ""; 
+                              }
+                              
+                             else
+                          {
+                            ?>
+                             <span class="label label-danger" onclick="change_status('Delete','<?php echo $users['uid'];?>')" style="cursor:pointer;">Delete</span>
+
+                            <?php
+                          }
+
+
+                        ?>
+
+
+
+
+                      
+                    </td>
                      <td> 
-                         <span class="label label-success" ><a href="<?php echo base_url();?>index.php/admin/users/view_details/<?php echo $users['uid']; ?>">View Details</span>
+                         <a href="<?php echo base_url();?>index.php/admin/users/view_details/<?php echo $users['uid']; ?>"><span class="label label-success" >View Details</span>
                               </td>
 
                        

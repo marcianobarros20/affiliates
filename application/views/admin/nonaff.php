@@ -99,7 +99,7 @@
                                   {
                                     ?>
 
-                                       <input type="button" onclick="change_status('Approve','<?php echo $users['uid'];?>');" value="Approve">
+                                       <input type="button" onclick="change_status('Active','<?php echo $users['uid'];?>');" value="Active">
                                        <input type="button" onclick="change_status('Reject','<?php echo $users['uid'];?>');" value="Reject" >
 
                                     <?php
