@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="admin_support/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-     <link rel="stylesheet" href="admin_support/dist/css/style.css">
+     <link rel="stylesheet" href="admin_support/dist/css/admindashboard.css">
     <link rel="stylesheet" href="admin_support/dist/css/skins/_all-skins.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="admin_support/plugins/iCheck/flat/blue.css">

@@ -45,31 +45,4 @@
 }
 
 
-#Dispaly_Div
-   {
-    border: 5px solid rgb(96, 92, 168);
-background: rgb(210, 210, 209) none repeat scroll 0% 0%;
-    
-    }
-  .box
-  {
-      background: rgba(12, 11, 3, 0.6) none repeat scroll 0% 0%;
-      color: #fff;
-      text-align: center;
-      padding: 5px;
-      margin-top: 15px;
-  }
-  
-  /* unvisited link */
-#link_index {
-    color: #00008B;
-    text-decoration: underline;
-}
-
-
-/* mouse over link */
-#link_index:hover {
-    color: white;
-    text-decoration: underline;
-}
 
