@@ -120,7 +120,7 @@
                       </td>
                      <td><span class="label label-danger" onclick="change_status('Delete','<?php echo $users['uid'];?>')">Delete</span></td>
                      <td> 
-                         <span class="label label-success" ><a href="<?php echo base_url();?>index.php/admin/users/view_details/<?php echo $users['uid']; ?>">View Details</span>
+                         <span class="label label-success" ><a href="<?php echo base_url();?>admin/users/view_details/<?php echo $users['uid']; ?>">View Details</span>
                               </td>
 
                        

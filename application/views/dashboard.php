@@ -176,7 +176,12 @@
                 <p>Description: <?php echo $fetch_allinfo['description'];?></p> 
                  
                 <p>Refferal Code: <?php echo $fetch_allinfo['refferalcode'];?></p>
-                <a href="<?php echo base_url();?>index.php/Welcome/editprofile">Edit Profile</a>
+                <a href="<?php echo base_url();?>Welcome/editprofile">Edit Profile</a>
+                <br>
+                In Order To Affiliate People, Please forword the below link.
+                <br>
+                <?php echo base_url();?>welcome/contact/<?php echo $fetch_allinfo['refferalcode'];?>
+
             </div>
             <div class="span6">
 

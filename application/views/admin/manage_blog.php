@@ -91,9 +91,9 @@
                      <?php if($blog['status']==1):?>
                      <span class="label label-success" style="cursor:pointer;" onclick="change_status_blog('active','<?php echo $blog['blog_id'];?>')" title="Make it Active">Active</span>
                      <?php endif;?>
-                      <a href="<?php echo base_url();?>index.php/admin/blog/edit_blog/<?php echo $blog['blog_id'];?>"><span class="label label-success" style="cursor:pointer;">Edit</span>
+                      <a href="<?php echo base_url();?>admin/blog/edit_blog/<?php echo $blog['blog_id'];?>"><span class="label label-success" style="cursor:pointer;">Edit</span>
                      </a>
-                     <a href="<?php echo base_url();?>index.php/admin/blog/view_details/<?php echo $blog['blog_id'];?>"><span class="label label-success" style="cursor:pointer;">View Details</span>
+                     <a href="<?php echo base_url();?>admin/blog/view_details/<?php echo $blog['blog_id'];?>"><span class="label label-success" style="cursor:pointer;">View Details</span>
                      </a>
 
 

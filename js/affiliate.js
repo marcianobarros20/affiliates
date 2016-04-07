@@ -16,7 +16,7 @@
                   var status=1;
                   var res= $.ajax({
                   type : 'post',
-                  url : 'index.php/Ajax/check_refferalcode',
+                  url : 'Ajax/check_refferalcode',
                   data : 'refferalcode='+refferalcode+'& uid='+param1+'& status='+status,
                   async : false,
                   success : function(msg)
@@ -43,7 +43,7 @@
                 var status=2;
                 var res= $.ajax({
                   type : 'post',
-                  url : 'index.php/Ajax/delete_users',
+                  url : 'Ajax/delete_users',
                   data : 'uid='+param1+'& status='+status,
                   async : false,
                   success : function(msg)
@@ -61,7 +61,7 @@
                 var status=3;
                 var res= $.ajax({
                   type : 'post',
-                  url : 'index.php/Ajax/change_status',
+                  url : 'Ajax/change_status',
                   data : 'uid='+param1+'& status='+status,
                   async : false,
                   success : function(msg)
@@ -78,7 +78,7 @@ function show_child_tier3(uid) {
 
                   var res= $.ajax({
                   type : 'post',
-                  url : 'index.php/Ajax/show_child_tier3',
+                  url : 'Ajax/show_child_tier3',
                   data : 'uid='+uid,
                   async : false,
                   success : function(msg)
@@ -99,7 +99,7 @@ function show_child_tier2(uid)
 
                   var res= $.ajax({
                   type : 'post',
-                  url : 'index.php/Ajax/show_child_tier2',
+                  url : 'Ajax/show_child_tier2',
                   data : 'uid='+uid,
                   async : false,
                   success : function(msg)
@@ -124,7 +124,7 @@ function show_child_tier1(uid)
 
                   var res= $.ajax({
                   type : 'post',
-                  url : 'index.php/Ajax/show_child_tier1',
+                  url : 'Ajax/show_child_tier1',
                   data : 'uid='+uid,
                   async : false,
                   success : function(msg)
@@ -146,7 +146,7 @@ function show_child_tier0(uid)
  
                   var res= $.ajax({
                   type : 'post',
-                  url : 'index.php/Ajax/show_child_tier0',
+                  url : 'Ajax/show_child_tier0',
                   data : 'uid='+uid,
                   async : false,
                   success : function(msg)
@@ -181,7 +181,7 @@ function show_child_tier0(uid)
               }
                 var res= $.ajax({
                   type : 'post',
-                  url : 'index.php/Ajax/blog_status',
+                  url : 'Ajax/blog_status',
                   data : 'b_id='+id+'& status='+status,
                   async : false,
                   success : function(msg)
@@ -228,7 +228,7 @@ function show_child_tier0(uid)
                   
                   var res= $.ajax({
                   type : 'post',
-                  url : 'index.php/Ajax/assign_parent',
+                  url : 'Ajax/assign_parent',
                   data : 'refferalcode='+refferalcode+'& uid='+uid,
                   async : false,
                   success : function(msg)

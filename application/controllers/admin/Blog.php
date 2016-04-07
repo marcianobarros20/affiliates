@@ -35,7 +35,7 @@ class Blog extends CI_Controller {
 	{
 		if (!$this->session->userdata('adminid'))
 		{
-			redirect(base_url()."index.php/admin/welcome/login");
+			redirect(base_url()."admin/welcome/login");
 			
 		}
 
@@ -74,7 +74,7 @@ class Blog extends CI_Controller {
 		{
 			if (!$this->session->userdata('adminid'))
 		{
-			redirect(base_url()."index.php/admin/welcome/login");
+			redirect(base_url()."admin/welcome/login");
 			
 		}
 		else
@@ -86,7 +86,7 @@ class Blog extends CI_Controller {
 		  		$insert=$this->Common_model->insert('category',$ins);
 		  		if($insert)
 		  		{	$this->session->set_userdata('succ_msg','category added successfully');
-		  			redirect(base_url().'index.php/admin/blog/add_category');
+		  			redirect(base_url().'admin/blog/add_category');
 		  		}
 		  	}
 
@@ -102,7 +102,7 @@ class Blog extends CI_Controller {
 	{
 		if (!$this->session->userdata('adminid'))
 		{
-			redirect(base_url()."index.php/admin/welcome/login");
+			redirect(base_url()."admin/welcome/login");
 			
 		}
 		else
@@ -209,7 +209,7 @@ class Blog extends CI_Controller {
 		   if($insert)
 		   {
 		   	$this->session->set_userdata('succ_msg','Blog added successfully');
-		   	redirect(base_url().'index.php/admin/blog/add');
+		   	redirect(base_url().'admin/blog/add');
 		   }
 		   }
 
@@ -224,7 +224,7 @@ class Blog extends CI_Controller {
 
 		if (!$this->session->userdata('adminid'))
 		{
-			redirect(base_url()."index.php/admin/welcome/login");
+			redirect(base_url()."admin/welcome/login");
 			
 		}
 		else
@@ -294,7 +294,7 @@ class Blog extends CI_Controller {
 		   		}
 		   		else
 		   		{	$this->session->set_userdata('err_msg','You have changed media type but did not upload any please upload one.');
-		   			redirect(base_url().'index.php/admin/blog/edit_blog/'.$blog_id);
+		   			redirect(base_url().'admin/blog/edit_blog/'.$blog_id);
 		   		}
 		   	}
 		   }
@@ -341,7 +341,7 @@ class Blog extends CI_Controller {
 		   		}
 		   		else
 		   		{	$this->session->set_userdata('err_msg','You have changed media type but did not upload any please upload one.');
-		   			redirect(base_url().'index.php/admin/blog/edit_blog/'.$blog_id);
+		   			redirect(base_url().'admin/blog/edit_blog/'.$blog_id);
 		   		}
 		   	}
 
@@ -360,7 +360,7 @@ class Blog extends CI_Controller {
 		   if($update)
 		   {
 		   	$this->session->set_userdata('succ_msg','Blog updated successfully');
-		   	redirect(base_url().'index.php/admin/blog/edit_blog/'.$blog_id);
+		   	redirect(base_url().'admin/blog/edit_blog/'.$blog_id);
 		   }
 		   }
 
@@ -375,7 +375,7 @@ class Blog extends CI_Controller {
 		
 		if (!$this->session->userdata('adminid'))
 		{
-			redirect(base_url()."index.php/admin/welcome/login");
+			redirect(base_url()."admin/welcome/login");
 			
 		}
 		else
@@ -396,7 +396,7 @@ class Blog extends CI_Controller {
 	{
 		if (!$this->session->userdata('adminid'))
 		{
-			redirect(base_url()."index.php/admin/welcome/login");
+			redirect(base_url()."admin/welcome/login");
 			
 		}
 		else
@@ -411,7 +411,7 @@ class Blog extends CI_Controller {
 		   	if($up)
 		   	{
 		   		$this->session->set_userdata('succ_msg','Category Updated Successfully');
-		   		redirect(base_url().'index.php/admin/blog/edit/'.$cat_id);
+		   		redirect(base_url().'admin/blog/edit/'.$cat_id);
 		   	}
 		   }
 		   $data['header']=$this->load->view('admin/includes/header','',true);
@@ -428,7 +428,7 @@ class Blog extends CI_Controller {
 		{
 			if (!$this->session->userdata('adminid'))
 		{
-			redirect(base_url()."index.php/admin/welcome/login");
+			redirect(base_url()."admin/welcome/login");
 			
 		}
 		else
@@ -470,7 +470,7 @@ class Blog extends CI_Controller {
 		if($info >0)
 		{
 			$this->session->set_userdata('err_msg','Sorry blog already exists under this category. so you can not delete this.');
-			redirect(base_url().'index.php/admin/blog/manage');
+			redirect(base_url().'admin/blog/manage');
 		}
 		else
 		{
@@ -478,7 +478,7 @@ class Blog extends CI_Controller {
 			if($del)
 			{
 			$this->session->set_userdata('succ_msg','Category deleted Successfully.');
-			redirect(base_url().'index.php/admin/blog/manage');
+			redirect(base_url().'admin/blog/manage');
 			}
 		}
 	}

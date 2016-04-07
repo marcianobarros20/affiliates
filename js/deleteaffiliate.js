@@ -4,7 +4,7 @@ function approve(uid)
         var status=1;
                   var res= $.ajax({
                   type : 'post',
-                  url : 'index.php/Ajax/approve',
+                  url : 'Ajax/approve',
                   data : 'uid='+uid+'& status='+status,
                   async : false,
                   success : function(msg)
