@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/sl-slide.css">
 
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="images/ico/favicon.ico">
@@ -25,7 +26,10 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script type="text/javascript" src="js/affiliate.js"></script>
+   
+    <script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.5"></script>
+    <link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
+     <script type="text/javascript" src="js/affiliate.js"></script>
 <!-- jessore slider starts -->
 <script type="text/javascript" src="js/jssor.slider.min.js"></script>
     <!-- use jssor.slider.debug.js instead for debug -->
@@ -141,6 +145,7 @@
 
 <!-- jessore slider ends -->
 
+<script src="js/vendor/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -265,16 +270,22 @@
 
                             <h5> <?php echo $value['fname']." ".$value['lname']?></h5>
                             <br>
-                            <?php echo $value['description']?><br><br>
-                           
+                            <?php echo substr($value['description'],0,60);?><br>
+                            <?php if(strlen($value['description']) >=60):?>
+                               <a class="fancybox" href="#inline1_<?php echo $value['uid'];?>" title="Referal Code: <?php echo $value['refferalcode'];?>">More</a>
+                           <?php endif;?>
+                               <br>
                             Referal Code:<br><?php echo $value['refferalcode']?>
-                            
+                              
+                               <br>
                             <input type="button" value="Show Tier3" onclick="show_tier3( <?php echo $value['uid']?>)">
                                 
                             </div>
+                            
                         </div>
-                        
-                        <?php }}?>
+
+
+                         <?php }}?>
                    
                        
                     </div>
@@ -299,7 +310,16 @@
         </div>
        
         
+
 </section>
+ <?php if(!empty($fetch_child)){ foreach ($fetch_child as $value) {
+                            ?>
+<div id="inline1_<?php echo $value['uid'];?>" style="width:400px;display: none;">
+        <h3><?php echo $value['fname'].' '.$value['lname'];?></h3>
+        <p><?php echo $value['description'];?></p>
+        
+    </div>
+<?php }}?>
 
 <!--Bottom-->
   <?php echo $middle;?>
@@ -314,8 +334,8 @@
         jssor_1_slider_init();
     </script>
 
-<script src="js/vendor/jquery-1.9.1.min.js"></script>
-<script src="js/vendor/bootstrap.min.js"></script>
+
+
 <script src="js/main.js"></script>
 
 </body>
