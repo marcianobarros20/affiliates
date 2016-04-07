@@ -9,7 +9,9 @@ function approve(uid)
         var status=1;
                   var res= $.ajax({
                   type : 'post',
+
                   url : 'index.php/Ajax/delete_to_active',
+
                   data : 'uid='+uid+'& status='+status,
                   async : false,
                   success : function(msg)

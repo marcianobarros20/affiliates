@@ -128,7 +128,7 @@ class Welcome extends CI_Controller {
 			  		$this->session->set_userdata('reffrence_id','');
 			  		$this->session->set_userdata('succ_msg','You Have successfully registered with us.please log in now.');
 			  		//redirect(base_url().'index.php/welcome/register');
-			  redirect(base_url().'index.php/welcome/contact');
+			  redirect(base_url().'welcome/contact');
 			  }
 			 }
 			 else
@@ -142,7 +142,7 @@ class Welcome extends CI_Controller {
 			    	$this->session->set_userdata('err_msg','Username Already Exists.');
 			    }
 				//redirect(base_url().'index.php/welcome/register');
-			redirect(base_url().'index.php/welcome/contact');
+			redirect(base_url().'welcome/contact');
 			 }
 			  
 			}
@@ -150,7 +150,7 @@ class Welcome extends CI_Controller {
 			{
 				
 				$this->session->set_userdata('err_msg','Please fill All required fields Properly.');
-				redirect(base_url().'index.php/welcome/contact');
+				redirect(base_url().'welcome/contact');
 			}
 		}
 
@@ -213,7 +213,7 @@ class Welcome extends CI_Controller {
                                              }
 					$this->session->set_userdata('user_id',$log['uid']);
 					$this->session->set_userdata('username',$log['username']);
-                    redirect(base_url().'index.php/welcome/dashboard');
+                    redirect(base_url().'welcome/dashboard');
                     exit();
 				}
 				else
@@ -311,7 +311,7 @@ class Welcome extends CI_Controller {
 	            	
 	            	$msg='Hi '. $name .'!! <br> You Want To Reset Your Password<br> ';
 	            	
-	            	$msg.="<a href='".base_url()."index.php/welcome/resetpassword/".$token."'>Click Here To Reset</a>";
+	            	$msg.="<a href='".base_url()."welcome/resetpassword/".$token."'>Click Here To Reset</a>";
 	            	$msg.="<br><br>Thanks Tier5 Team";
 	            	//echo $msg; 
                
@@ -327,12 +327,12 @@ class Welcome extends CI_Controller {
 					if ($mail)
 					{
 						$this->session->set_userdata('succ_msg','Check Your Email Id To Reset Password');
-						redirect(base_url().'index.php/welcome');
+						redirect(base_url().'welcome');
 					}
 					else
 					{
 						$this->session->set_userdata('err_msg','Sorry! ');
-						redirect(base_url().'index.php/welcome/forget');
+						redirect(base_url().'welcome/forget');
 					}
 	             	
 	             	exit;
@@ -417,7 +417,7 @@ class Welcome extends CI_Controller {
 				else
 				{
 				$this->session->set_userdata('err_msg','Profile updation failed due to violation of maintain of recomended image size');
-		    	redirect(base_url().'index.php/welcome/editprofile');
+		    	redirect(base_url().'welcome/editprofile');
 				}
 	
 
@@ -458,11 +458,11 @@ class Welcome extends CI_Controller {
 		    if($edit_profile)
 		    {
 		    	$this->session->set_userdata('succ_msg','Successfully updated your profile');
-		    	redirect(base_url().'index.php/welcome/editprofile');
+		    	redirect(base_url().'welcome/editprofile');
 		    }
 		    else
 		    {
-		    	redirect(base_url().'index.php/welcome/editprofile');
+		    	redirect(base_url().'welcome/editprofile');
 		    }
   
 		}
@@ -488,12 +488,12 @@ class Welcome extends CI_Controller {
 			    if($edit_password)
 			    {
 			    $this->session->set_userdata('succ_msg','password updated successfully');
-		    	redirect(base_url().'index.php/welcome/editprofile');
+		    	redirect(base_url().'welcome/editprofile');
 			    }
 			    else
 			    {
 			    	$this->session->set_userdata('err_msg','password updation failed');
-		    	redirect(base_url().'index.php/welcome/editprofile');
+		    	redirect(base_url().'welcome/editprofile');
 			    }
 		    }
 		}

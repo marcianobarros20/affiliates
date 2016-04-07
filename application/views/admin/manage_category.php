@@ -86,8 +86,8 @@
                       <td><?php if($category['status']==0){echo 'Active';} else { echo 'Inactive';}?></td>
                       
                      
-                     <td><a href="<?php echo base_url();?>index.php/admin/blog/delete/<?php echo $category['cat_id'];?>" onclick="return confirm('Are you sure you want to delete this category?')" ><span class="label label-danger">Delete</span></a>
-                      <a href="<?php echo base_url();?>index.php/admin/blog/edit/<?php echo $category['cat_id'];?>"><span class="label label-danger">Edit</span></a>
+                     <td><a href="<?php echo base_url();?>admin/blog/delete/<?php echo $category['cat_id'];?>" onclick="return confirm('Are you sure you want to delete this category?')" ><span class="label label-danger">Delete</span></a>
+                      <a href="<?php echo base_url();?>admin/blog/edit/<?php echo $category['cat_id'];?>"><span class="label label-danger">Edit</span></a>
                      </td>
                     
                     </tr>

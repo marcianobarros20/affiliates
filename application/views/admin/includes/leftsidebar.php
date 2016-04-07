@@ -28,14 +28,14 @@
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li class="<?php if($this->uri->segment(2)=='users'){ echo 'active';}?> treeview">
-              <a href="<?php echo base_url();?>index.php/admin/welcome">
+              <a href="<?php echo base_url();?>admin/welcome">
                 <i class="fa fa-dashboard"></i> <span>Manage users</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
 
-                <li <?php if($this->uri->segment(2)=='users' && $this->uri->segment(3)==''){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>index.php/admin/users"><i class="fa fa-circle-o"></i> Affiliate</a></li>
-                <li <?php if($this->uri->segment(2)=='users' && $this->uri->segment(3)=='non_aff'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>index.php/admin/users/non_aff"><i class="fa fa-circle-o"></i>Non-Affiliate</a></li>
-                <li <?php if($this->uri->segment(2)=='users' && $this->uri->segment(3)=='delete_affiliate'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>index.php/admin/users/delete_affiliate"><i class="fa fa-circle-o"></i>Deleted-Affiliate</a></li>
+                <li <?php if($this->uri->segment(2)=='users' && $this->uri->segment(3)==''){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/users"><i class="fa fa-circle-o"></i> Affiliate</a></li>
+                <li <?php if($this->uri->segment(2)=='users' && $this->uri->segment(3)=='non_aff'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/users/non_aff"><i class="fa fa-circle-o"></i>Non-Affiliate</a></li>
+                <li <?php if($this->uri->segment(2)=='users' && $this->uri->segment(3)=='delete_affiliate'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/users/delete_affiliate"><i class="fa fa-circle-o"></i>Deleted-Affiliate</a></li>
                
               </ul>
             </li>
@@ -48,10 +48,10 @@
                 <i class="fa fa-angle-left pull-right label label-primary"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="<?php echo base_url();?>index.php/admin/blog/add"><i class="fa fa-circle-o"></i>Add Blog</a></li>
-                <li><a href="<?php echo base_url();?>index.php/admin/blog"><i class="fa fa-circle-o"></i> Manage Blog</a></li>
-                <li><a href="<?php echo base_url();?>index.php/admin/blog/add_category"><i class="fa fa-circle-o"></i>Add Blog Category</a></li>
-                <li><a href="<?php echo base_url();?>index.php/admin/blog/manage"><i class="fa fa-circle-o"></i>Manage Blog Category</a></li>
+                <li><a href="<?php echo base_url();?>admin/blog/add"><i class="fa fa-circle-o"></i>Add Blog</a></li>
+                <li><a href="<?php echo base_url();?>admin/blog"><i class="fa fa-circle-o"></i> Manage Blog</a></li>
+                <li><a href="<?php echo base_url();?>admin/blog/add_category"><i class="fa fa-circle-o"></i>Add Blog Category</a></li>
+                <li><a href="<?php echo base_url();?>admin/blog/manage"><i class="fa fa-circle-o"></i>Manage Blog Category</a></li>
                 
               </ul>
             </li> 

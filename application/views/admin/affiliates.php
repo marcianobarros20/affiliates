@@ -130,7 +130,9 @@
                       
                     </td>
                      <td> 
+
                          <a href="<?php echo base_url();?>index.php/admin/users/view_details/<?php echo $users['uid']; ?>"><span class="label label-success" >View Details</span>
+
                               </td>
 
                        

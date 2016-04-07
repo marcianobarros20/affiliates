@@ -32,7 +32,7 @@ class Welcome extends CI_Controller {
 	{
 		if (!$this->session->userdata('adminid'))
 		{
-			redirect(base_url()."index.php/admin/welcome/login");
+			redirect(base_url()."admin/welcome/login");
 			
 		}
 		$data['header']=$this->load->view('admin/includes/header','',true);
@@ -51,12 +51,12 @@ class Welcome extends CI_Controller {
 			$log_details=$this->Common_model->chkAdminlogin($email,$pass);
 			if($log_details>0)
 			{
-				redirect(base_url().'index.php/admin/welcome');
+				redirect(base_url().'admin/welcome');
 			}
 			else
 			{
 				$this->session->set_userdata('err_log_msg','Sorry! Invalid Email or Password');
-				redirect(base_url().'index.php/admin/welcome/login');
+				redirect(base_url().'admin/welcome/login');
 			}
 		}
 		$this->load->view('admin/login');
@@ -66,7 +66,7 @@ class Welcome extends CI_Controller {
 	{
 		$this->session->set_userdata('adminid','');
 		$this->session->set_userdata('username','');
-		redirect(base_url().'index.php/admin/welcome');
+		redirect(base_url().'admin/welcome');
 	}
 }
 ?>

@@ -34,7 +34,7 @@ class Users extends CI_Controller {
 	{
 		if (!$this->session->userdata('adminid'))
 		{
-			redirect(base_url()."index.php/admin/welcome/login");
+			redirect(base_url()."admin/welcome/login");
 			
 		}
 
@@ -57,7 +57,7 @@ class Users extends CI_Controller {
 	{
 		if (!$this->session->userdata('adminid'))
 		{
-			redirect(base_url()."index.php/admin/welcome/login");
+			redirect(base_url()."admin/welcome/login");
 			
 		}
 		else
@@ -105,7 +105,7 @@ class Users extends CI_Controller {
 
 		   if (!$this->session->userdata('adminid'))
 			{
-				redirect(base_url()."index.php/admin/welcome/login");
+				redirect(base_url()."admin/welcome/login");
 				
 			}
 		  else

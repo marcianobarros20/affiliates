@@ -158,7 +158,7 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
         }
     ?>
        
-    <form class="center"  method="POST" id='reg_form' onsubmit="return validate();" action="<?php echo base_url();?>index.php/Welcome/register/<?php echo $ref_id;?>">
+    <form class="center"  method="POST" id='reg_form' onsubmit="return validate();" action="<?php echo base_url();?>Welcome/register/<?php echo $ref_id;?>">
       <fieldset class="registration-form">
        <div class="control-group">
           <!-- Username -->

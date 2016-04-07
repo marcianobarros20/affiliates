@@ -12,8 +12,8 @@
 
                         <li <?php if($this->uri->segment(2)==''){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>">Home</a></li>
                        <!--  <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='about_us'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>index.php/Contents/about_us">About Us</a></li> -->
-                        <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='how'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>index.php/Contents/how">How it Works</a></li>
-                        <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='payout'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>index.php/Contents/payout">Payouts</a></li>
+                        <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='how'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>Contents/how">How it Works</a></li>
+                        <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='payout'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>Contents/payout">Payouts</a></li>
                         <!-- <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='services'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>index.php/Contents/services">Services</a></li>
                         <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='portfolio'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>index.php/Contents/portfolio">Portfolio</a></li>
                          <li class="dropdown <?php if($this->uri->segment(2)!='' && ($this->uri->segment(2)=='career' || $this->uri->segment(2)=='blog_item' || $this->uri->segment(2)=='faq'|| $this->uri->segment(2)=='pricing' || $this->uri->segment(2)=='error' || $this->uri->segment(2)=='typography' || $this->uri->segment(2)=='register' || $this->uri->segment(2)=='privacy' || $this->uri->segment(2)=='terms')){ ?> active <?php } ?>">
@@ -31,16 +31,16 @@
                                 <li><a href="<?php echo base_url();?>index.php/Contents/terms">Terms of Use</a></li>
                             </ul>
                         </li>  -->
-                      <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='blog'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>index.php/Contents/blog">Blog</a></li>
+                      <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='blog'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>Contents/blog">Blog</a></li>
 
                         
                         <li class="login">
                         <?php if($this->session->userdata('user_id')==''){ ?>
-                        <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='contact'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>index.php/welcome/contact">{Get Started}</a></li>
+                        <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='contact'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>welcome/contact">{Get Started}</a></li>
                             <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
                         <?php } else { ?>
-                        <a href="<?php echo base_url()?>index.php/welcome/dashboard">HI !! <?php echo $this->session->userdata('username');?></a>
-                        <a href="<?php echo base_url();?>index.php/welcome/logout">Logout</a>
+                        <a href="<?php echo base_url()?>welcome/dashboard">HI !! <?php echo $this->session->userdata('username');?></a>
+                        <a href="<?php echo base_url();?>welcome/logout">Logout</a>
                         <?php }?>
                         </li>
                     </ul>        
