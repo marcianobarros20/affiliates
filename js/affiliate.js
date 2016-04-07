@@ -13,7 +13,7 @@
     });
  function change_status(param, param1)
     {
-        if (param=="Approve")
+        if (param=="Active")
         {
          // var conf=confirm("You sure you want to Approve this user!");
         
@@ -57,6 +57,24 @@
                 var res= $.ajax({
                   type : 'post',
                   url : 'Ajax/delete_users',
+                  data : 'uid='+param1+'& status='+status,
+                  async : false,
+                  success : function(msg)
+                   {
+                       window.location.reload();
+                   }
+                });
+            }
+        }
+        else if(param=="Approve")
+        { 
+            var conf=confirm("You sure you want to Approve !");
+            if(conf)
+            {
+                var status=0;
+                var res= $.ajax({
+                  type : 'post',
+                  url : 'index.php/Ajax/delete_users',
                   data : 'uid='+param1+'& status='+status,
                   async : false,
                   success : function(msg)
