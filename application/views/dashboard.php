@@ -284,14 +284,15 @@
                     <span data-u="arrowleft" class="jssora03l" style="top:0px;left:8px;width:55px;height:55px;" data-autocenter="2"></span>
                     <span data-u="arrowright" class="jssora03r" style="top:0px;right:8px;width:55px;height:55px;" data-autocenter="2"></span>
                 </div>
+                <br>
+                <br>
+                <div id="show_lower_affiliates" class="row-fluid" style="display:none">
+                          <h2 align="center"> Tier3 Affiliates</h2>
+                           
+                        
+                </div>
         </div>
-       <br>
-       <br>
-        <div id="show_lower_affiliates" class="row-fluid" style="display:none">
-              <h2 align="center"> Tier3 Affiliates</h2>
-               
-            
-        </div>
+       
         
 </section>
 
