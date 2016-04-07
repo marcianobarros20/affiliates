@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="admin_support/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
+     <link rel="stylesheet" href="admin_support/dist/css/style.css">
     <link rel="stylesheet" href="admin_support/dist/css/skins/_all-skins.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="admin_support/plugins/iCheck/flat/blue.css">
@@ -37,6 +38,7 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+ 
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -46,24 +48,84 @@
       <?php echo $leftsidebar;?>
 
       <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
+       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>
-            Dashboard
-            <small>Control panel</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="<?php echo base_url();?>admin"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
-          </ol>
+            <h1 align="center">
+               Welcome Admin
+            </h1>
+            <ol class="breadcrumb">
+                <li><a id="link_index" href="<?php echo base_url();?>admin"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Dashboard</li>
+            </ol>
         </section>
+        <section class="content">
+            <div class="col-lg-12">
+                <h3>Dashboard</h3>
+            </div>
+            
+            <div id="Dispaly_Div" class="col-sm-12 col-md-12 col-xs-12">
+                  <div class="col-sm-4">
+                      <div class="box">
+                        Active Affiliate
+                        <br>
+                        
+                        <?php echo $active_users;?>
+                        <br>
+                        <br><br>
+                        <a id="link_index" href="<?php echo base_url();?>admin/users">Click</a>
+                      </div>
 
-         <section class="content">
-         <div class="col-md-12 col-lg-12 col-sm-12">
-         <h3>Welcome Admin.</h3>         </div>
-         </section>
-       
+                  </div>
+                   
+                  <div class="col-sm-4">
+                      <div class="box">
+                        Non-Affiliate User
+                         &nbsp;&nbsp;&nbsp;
+                        <?php
+                         echo ($pending_approval+$rejected_approval);
+                        ?>
+                        <br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Pending Approval&nbsp;&nbsp;&nbsp;<?php echo $pending_approval?>
+                         <br>
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         Rejected Approval &nbsp;&nbsp;&nbsp;<?php echo $rejected_approval ?>
+                         <br>
+                         <a id="link_index" href="<?php echo base_url();?>admin/users/non_aff">Click</a>
+                      </div>
+                  </div>
+
+                  <div class="col-sm-4">
+                      <div class="box">
+                        Deleted User
+                         <br>
+                        <?php echo $deleted_users?>
+                        <br>
+                        <br><br>
+                        <a id="link_index" href="<?php echo base_url();?>admin/users/delete_affiliate">Click</a>
+                      </div>
+                  </div>
+                  
+                 
+                  <div class="col-sm-4">
+                      <div class="box">
+                        Blog Status
+                        <br><br>
+                        Active Bloge
+                        &nbsp;&nbsp;&nbsp;
+                        <?php echo $active_blog;?>
+                        <br>
+                        Inctive Bloge
+                        &nbsp;&nbsp;&nbsp;
+                        <?php echo $inactive_blog;?>
+                        
+                      </div>
+
+                  </div>
+                
+            </div>
+        </section>  
       </div>
      <!-- footer -->
      <?php echo $footer;?>
