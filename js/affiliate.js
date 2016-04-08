@@ -1,9 +1,22 @@
-    function change_status(param, param1)
+ 
+  $(document).ready(function() {
+      /*
+       *  Simple image gallery. Uses default settings
+       */
+
+      $('.fancybox').fancybox();
+
+      
+
+    
+
+    });
+ function change_status(param, param1)
     {
         if (param=="Active")
         {
          // var conf=confirm("You sure you want to Approve this user!");
-          
+        
            $("#assign_reff_"+param1).toggle();
 
            $('#assign_code_btn_'+param1).click(function(){
@@ -289,5 +302,4 @@ function show_child_tier0(uid)
                
 
   }  
-
 
