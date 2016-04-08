@@ -88,7 +88,8 @@ class Contents extends CI_Controller {
 		
 		$data['all_blog']=$this->Common_model->fetchinfoBlog('result',$con,$limit,$start);
 		//echo $this->db->last_query();
-
+        $data['blog_catagory_name']=$this->Common_model->fetchinfo('category',$con,'result');
+         $data['blog_catagory']=$this->Common_model->fetchinfo('category',$con,'count');
 		$this->load->view('blog.php',$data);
 	}
 

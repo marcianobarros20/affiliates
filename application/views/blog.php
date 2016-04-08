@@ -197,31 +197,63 @@
         <!-- End Popular Posts -->        
 
         <div class="widget">
-            <h3>Blog Categories</h3>
+             <h3>Blog Categories</h3>
             <div>
-                <div class="row-fluid">
-                    <div class="span6">
-                        <ul class="unstyled">
-                            <li><a href="#">Development</a></li>
-                            <li><a href="#">Design</a></li>
-                            <li><a href="#">Updates</a></li>
-                            <li><a href="#">Tutorial</a></li>
-                            <li><a href="#">News</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="span6">
-                        <ul class="unstyled">
-                            <li><a href="#">Joomla</a></li>
-                            <li><a href="#">Wordpress</a></li>
-                            <li><a href="#">Drupal</a></li>
-                            <li><a href="#">Magento</a></li>
-                            <li><a href="#">Bootstrap</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>                       
+                <?php
+                if($blog_catagory%2==0)
+                { 
+                ?>
+                    <div class="row-fluid">
+                    <?php
+                    $a=$blog_catagory/2;
+                    $i=0;
+                    echo '<div class="span6"><ul class="unstyled">'; 
+                        foreach($blog_catagory_name as $blogs)
+                        {
+                            if($i<$a)
+                            {
+                                echo '<li><a>'. $blogs['title'].'</a></li>';
+                                $i++;
+                            }
+                        }
+                    echo '</ul></div>
+                          <div class="span6"><ul class="unstyled">';
+                        for($k=$a;$k<$blog_catagory;$k++)
+                        {
+                            
+                            echo '<li><a>'.$blog_catagory_name[$k]['title'].'</a></li>';
+                            
+                        
+                        }
+                        echo '</ul></div> </div>';
+                }    
+                else
+                { 
+                ?>
+                    <div class="row-fluid">
+                    <?php
+                    $a=ceil($blog_catagory/2);
+                    $i=0;
+                    echo '<div class="span6"><ul class="unstyled">'; 
+                        foreach($blog_catagory_name as $blogs)
+                        {
+                            if($i<$a)
+                            {
+                               echo '<li><a>'. $blogs['title'].'</a></li>';
+                                $i++;
+                            }
+                        }
+                    echo '</ul></div>
+                          <div class="span6"><ul class="unstyled">';
+                        for($k=$a;$k<$blog_catagory;$k++)
+                        {
+                            
+                            echo '<li><a>'.$blog_catagory_name[$k]['title'].'</a></li>';
+                        }
+                    echo '</ul></div> </div>';
+                }
+                ?> 
+            </div>                   
         </div>
         <!-- End Category Widget -->
 

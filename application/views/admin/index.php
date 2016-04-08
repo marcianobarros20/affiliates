@@ -55,7 +55,7 @@
                Welcome Admin
             </h1>
             <ol class="breadcrumb">
-                <li><a id="link_index" href="<?php echo base_url();?>admin"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="<?php echo base_url();?>admin"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li class="active">Dashboard</li>
             </ol>
         </section>
