@@ -522,24 +522,17 @@ class Welcome extends CI_Controller {
             $email=$this->input->post('email');
             $name=$this->input->post('firstname');
             $name.=" ".$this->input->post('lastname');
-            $msg=$name."<br>".$this->input->post('message');
+            $msg=$this->input->post('message');
 
             $to="hello@tier5.us";
-            $sub='Customer Query';
-            //$this->email->from($email);
-	       // $this->email->to('hello@tier5.us');
-	        //$this->email->cc('work@tier5.us');  
-	        
-	       // $this->email->subject('Customer Query');
-			//$this->email->message($msg);
-	
-			//$mail=$this->email->send();
-			mail('sudiptatier5@gmail.com','hello','hi');
-
-			$mail=$this->utility->sendMail($to,$sub,$msg);
-			$mail1=$this->utility->sendMail('sudiptatier5@gmail.com',$sub,$msg);
-			$mail2=$this->utility->sendMail('iamgargi92@gmail.com',$sub,$msg);
-			$mail4=$this->utility->sendMail('work@tier5.us',$sub,$msg);
+            $sub='Affiliate Lead';
+            
+			//mail('sudiptatier5@gmail.com','hello','hi');
+            $mail=$this->utility->sendMailtoAdmin($email,$name,$to,$sub,$msg);
+			
+			$mail1=$this->utility->sendMailtoAdmin('sudiptatier5@gmail.com',$name,$to,$sub,$msg);
+			$mail2=$this->utility->sendMailtoAdmin('iamgargi92@gmail.com',$name,$to,$sub,$msg);
+			$mail4=$this->utility->sendMailtoAdmin('work@tier5.us',$name,$to,$sub,$msg);
            
 			if ($mail) {
 				$this->session->set_userdata('succ_msg','Thank You for contacting us.your queries will be answered soon.');

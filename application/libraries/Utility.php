@@ -77,6 +77,11 @@ class Utility
 		$this->CI->email->message($cont);
 		return $this->CI->email->send();
 	}
+
+
+	
+
+	
 	
 	function sendMailtoAdmin($from,$from_name,$to,$sub,$body)
 	{

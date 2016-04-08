@@ -33,6 +33,13 @@
 <!-- jessore slider starts -->
 <script type="text/javascript" src="js/jssor.slider.min.js"></script>
     <!-- use jssor.slider.debug.js instead for debug -->
+
+    <script src="js/jquery.movingboxes.js"></script>
+
+    <!-- Demo only -->
+    
+    <script src="js/demo.js"></script>
+<link href="css/movingboxes.css" rel="stylesheet">
     <script>
         jssor_1_slider_init = function() {
             
@@ -309,9 +316,47 @@
                 </div>
         </div>
        
-        
+     <div id="slider-two">
+
+            <div>
+                <img src="demo/5.jpg" alt="picture">
+                <h2>News Heading - <span>Lisa1</span></h2>
+                <p>Add a short exerpt here... <a href="http://flickr.com/photos/fensterbme/499006584/">more</a></p>
+            </div>
+
+            <div>
+                <img src="demo/4.jpg" alt="picture">
+                <h2>News Heading - <span>Monica</span></h2>
+                <p>Add a short exerpt here... <a href="http://flickr.com/photos/emikohime/294092478/">more</a></p>
+            </div>
+
+            <div>
+                <img src="demo/3.jpg" alt="picture">
+                <h2>News Heading - <span>Lin</span></h2>
+                <p>Add a short exerpt here... <a href="http://flickr.com/photos/ruudvanleeuwen/468309897/">more</a></p>
+            </div>
+
+            <div>
+                <img src="demo/2.jpg" alt="picture">
+                <h2>News Heading - <span>Shiela</span></h2>
+                <p>Add a short exerpt here... <a href="http://flickr.com/photos/joshuacraig/2698975899/">more</a></p>
+            </div>
+
+            <div>
+                <img src="demo/1.jpg" alt="picture">
+                <h2>News Heading - <span>Joanne</span></h2>
+                <p>Add a short exerpt here... <a href="http://flickr.com/photos/justbcuz/112479862/">more</a></p>
+            </div>
+
+        </div>
+   
 
 </section>
+
+
+
+
+
  <?php if(!empty($fetch_child)){ foreach ($fetch_child as $value) {
                             ?>
 <div id="inline1_<?php echo $value['uid'];?>" style="width:400px;display: none;">
