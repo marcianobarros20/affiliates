@@ -35,11 +35,32 @@ class Welcome extends CI_Controller {
 			redirect(base_url()."admin/welcome/login");
 			
 		}
+
+         
+
 		$data['header']=$this->load->view('admin/includes/header','',true);
 		$data['footer']=$this->load->view('admin/includes/footer','',true);
 		$data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
 		$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
+		
+		$con1=array('status'=>1);
+		$data['active_users']=$this->Common_model->fetchinfo('users',$con1,'count');
+		 
+		$con2=array('status'=>0);
+		$data['pending_approval']=$this->Common_model->fetchinfo('users',$con2,'count');
+
+		$con3=array('status'=>3);
+		$data['rejected_approval']=$this->Common_model->fetchinfo('users',$con3,'count');
+        
+        $con4=array('status'=>2);
+		$data['deleted_users']=$this->Common_model->fetchinfo('users',$con4,'count');
+
+		$data['active_blog']=$this->Common_model->fetchinfo('blog',$con2,'count');
+
+		$data['inactive_blog']=$this->Common_model->fetchinfo('blog',$con1,'count');
+
 		$this->load->view('admin/index',$data);
+
 	}
 
 	public function login()
