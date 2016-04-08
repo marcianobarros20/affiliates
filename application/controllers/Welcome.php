@@ -530,9 +530,9 @@ class Welcome extends CI_Controller {
 			//mail('sudiptatier5@gmail.com','hello','hi');
             $mail=$this->utility->sendMailtoAdmin($email,$name,$to,$sub,$msg);
 			
-			$mail1=$this->utility->sendMailtoAdmin('sudiptatier5@gmail.com',$name,$to,$sub,$msg);
-			$mail2=$this->utility->sendMailtoAdmin('iamgargi92@gmail.com',$name,$to,$sub,$msg);
-			$mail4=$this->utility->sendMailtoAdmin('work@tier5.us',$name,$to,$sub,$msg);
+			$mail1=$this->utility->sendMailtoAdmin($email,$name,'sudiptatier5@gmail.com',$sub,$msg);
+			$mail2=$this->utility->sendMailtoAdmin($email,$name,'sudiptatier5@gmail.com',$sub,$msg);
+			$mail4=$this->utility->sendMailtoAdmin($email,$name,'work@tier5.us',$sub,$msg);
            
 			if ($mail) {
 				$this->session->set_userdata('succ_msg','Thank You for contacting us.your queries will be answered soon.');
