@@ -531,7 +531,7 @@ class Welcome extends CI_Controller {
             $mail=$this->utility->sendMailtoAdmin($email,$name,$to,$sub,$msg);
 			
 			$mail1=$this->utility->sendMailtoAdmin($email,$name,'sudiptatier5@gmail.com',$sub,$msg);
-			$mail2=$this->utility->sendMailtoAdmin($email,$name,'sudiptatier5@gmail.com',$sub,$msg);
+			$mail2=$this->utility->sendMailtoAdmin($email,$name,'iamgargi92@gmail.com',$sub,$msg);
 			$mail4=$this->utility->sendMailtoAdmin($email,$name,'work@tier5.us',$sub,$msg);
            
 			if ($mail) {

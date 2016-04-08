@@ -100,7 +100,7 @@ class Utility
 	  <body>
 		<div style="width:500px; float:left; background:#fff; border:1px dashed #669932;">
 		 <div style="text-align:center;padding:10px;"><a href="'.base_url().'">
-		 <img src="'.base_url().'images/logo.jpg" border="0" align="middle"/></a></div>
+		 <img src="'.base_url().'images/logo_trans_small.png" border="0" align="middle"/></a></div>
 		 <div style="font-family:Arial, Helvetica, sans-serif; font-weight:bold; font-size:15px; color:#f5673b; width:480px; padding:10px; margin: 0; border-top:1px dashed #669932;">
 		   <div style="color:#f5673b;">'.$body.'</div>
 	     </div>
