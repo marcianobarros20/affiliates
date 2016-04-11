@@ -34,12 +34,6 @@
 <script type="text/javascript" src="js/jssor.slider.min.js"></script>
     <!-- use jssor.slider.debug.js instead for debug -->
 
-    <script src="js/jquery.movingboxes.js"></script>
-
-    <!-- Demo only -->
-    
-    <script src="js/demo.js"></script>
-<link href="css/movingboxes.css" rel="stylesheet">
     <script>
         jssor_1_slider_init = function() {
             
@@ -234,121 +228,29 @@
              <h1 class="center">Meet the Team</h1>
 
         
-              <h2 align="center"> Tier4 Affiliates</h2>
-                        <br>
-                <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 809px; height: 350px; overflow: hidden; visibility: hidden;">
-                    <!-- Loading Screen -->
-                     
-                    <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
-                        <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-                        <div style="position:absolute;display:block;background:url('img/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
-                    </div>
-                    <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: -14px; width: 809px; height: 350px; overflow: hidden;">
+            
+<div class="comment_div text-center">
+   (Click On the '+' To view the child affiliates &amp; Click on name to view description)
+</div>
 
-                        <?php if(!empty($fetch_child)){ foreach ($fetch_child as $value) {
-                            ?>
+
                         
-                           <div class="span3" style="display: none;">
+<hr>
+ 
+<div class="team">
+<ul>
+<?php
+  $res = fetchCategoryTreeList1($this->session->userdata('user_id'));
+  foreach ($res as $r) {
+    echo  $r;
+  }
+?>
+</ul>
 
-                            <div class="box"  style="height: 350px;">
-                               <?php if( $value['profile_image'])
-                                {
-                                 ?>
-                                <p><img src="profile_img/thumb/<?php echo $value['profile_image'];?>" alt="images/sample/no_photo.png" ></p>
-                                 <?php
-                                 }
-                                  else
-                                 {?>
-                                   <img src="images/sample/no_photo.png" alt="images/sample/no_photo.png" >
-
-
-                     <?php
-
-                    }
-                      
-
-                     ?>
-  
-
-                                
-
-                           
-                        
-
-                            <h5> <?php echo $value['fname']." ".$value['lname']?></h5>
-                            <br>
-                            <?php echo substr($value['description'],0,60);?><br>
-                            <?php if(strlen($value['description']) >=60):?>
-                               <a class="fancybox" href="#inline1_<?php echo $value['uid'];?>" title="Referal Code: <?php echo $value['refferalcode'];?>">More</a>
-                           <?php endif;?>
-                               <br>
-                            Referal Code:<br><?php echo $value['refferalcode']?>
-                              
-                               <br>
-                            <input type="button" value="Show Tier3" onclick="show_tier3( <?php echo $value['uid']?>)">
-                                
-                            </div>
-                            
-                        </div>
-
-
-                         <?php }}?>
-                   
-                       
-                    </div>
-                    <!-- Bullet Navigator -->
-                    <div data-u="navigator" class="jssorb03" style="bottom:10px;right:10px;">
-                        <!-- bullet navigator item prototype -->
-                        <div data-u="prototype" style="width:21px;height:21px;">
-                            <div data-u="numbertemplate"></div>
-                        </div>
-                    </div>
-                    <!-- Arrow Navigator -->
-                    <span data-u="arrowleft" class="jssora03l" style="top:0px;left:8px;width:55px;height:55px;" data-autocenter="2"></span>
-                    <span data-u="arrowright" class="jssora03r" style="top:0px;right:8px;width:55px;height:55px;" data-autocenter="2"></span>
-                </div>
-                <br>
-                <br>
-                <div id="show_lower_affiliates" class="row-fluid" style="display:none">
-                          <h2 align="center"> Tier3 Affiliates</h2>
-                           
-                        
-                </div>
+</div>
+                
         </div>
-       
-     <div id="slider-two">
-
-            <div>
-                <img src="demo/5.jpg" alt="picture">
-                <h2>News Heading - <span>Lisa1</span></h2>
-                <p>Add a short exerpt here... <a href="http://flickr.com/photos/fensterbme/499006584/">more</a></p>
-            </div>
-
-            <div>
-                <img src="demo/4.jpg" alt="picture">
-                <h2>News Heading - <span>Monica</span></h2>
-                <p>Add a short exerpt here... <a href="http://flickr.com/photos/emikohime/294092478/">more</a></p>
-            </div>
-
-            <div>
-                <img src="demo/3.jpg" alt="picture">
-                <h2>News Heading - <span>Lin</span></h2>
-                <p>Add a short exerpt here... <a href="http://flickr.com/photos/ruudvanleeuwen/468309897/">more</a></p>
-            </div>
-
-            <div>
-                <img src="demo/2.jpg" alt="picture">
-                <h2>News Heading - <span>Shiela</span></h2>
-                <p>Add a short exerpt here... <a href="http://flickr.com/photos/joshuacraig/2698975899/">more</a></p>
-            </div>
-
-            <div>
-                <img src="demo/1.jpg" alt="picture">
-                <h2>News Heading - <span>Joanne</span></h2>
-                <p>Add a short exerpt here... <a href="http://flickr.com/photos/justbcuz/112479862/">more</a></p>
-            </div>
-
-        </div>
+ 
    
 
 </section>
@@ -358,13 +260,27 @@
 
 
  <?php if(!empty($fetch_child)){ foreach ($fetch_child as $value) {
+                if($value['profile_image']!='')
+                {
+                    $img='profile_img/thumb/'.$value['profile_image'];
+                }
+                else
+                {
+                    $img='images/sample/no_photo.png';
+                }
+
                             ?>
 <div id="inline1_<?php echo $value['uid'];?>" style="width:400px;display: none;">
-        <h3><?php echo $value['fname'].' '.$value['lname'];?></h3>
+        <div class="col-md-12 col-lg-12"><div class="col-md-6 col-lg-6"><h3><?php echo $value['fname'].' '.$value['lname'];?></h3></div><div class="col-md-6 col-lg-6"><img src="<?php echo $img;?>" alt=""></div></div>
         <p><?php echo $value['description'];?></p>
         
     </div>
 <?php }}?>
+
+
+<div id="chkline" style="width:400px;">
+
+</div>
 
 <!--Bottom-->
   <?php echo $middle;?>

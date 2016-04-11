@@ -460,7 +460,30 @@ public function Fnoldpasswordchk()
 
 
 
+		public function Fngetdetails()
+		{
+			if($_POST)
+			{
+				$uid=$this->input->post('uid');
+				$con=array('uid'=>$uid);
+				$info=$this->Common_model->fetchinfo('users',$con,'row');
+				if($info)
+				{
+					if($info['profile_image']!='')
+                {
+                    $img='profile_img/thumb/'.$info['profile_image'];
+                }
+                else
+                {
+                    $img='images/sample/no_photo.png';
+                }
 
+				 echo "<div class='col-md-12 col-lg-12'><div class='col-md-6 col-lg-6'><h3>".$info['fname'].' '.$info['lname']."</h3>
+       			  </div><div class='col-md-6 col-lg-6'><img src='".$img."' alt=''></div></div><p>".$info['description']."</p>";
+       			}
+        
+			}
+		}
 
 	
 }

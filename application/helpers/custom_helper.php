@@ -35,5 +35,72 @@
         return $return = $res->row_array();
     }
    
+function fetchCategoryTreeList($parent = 0, $user_tree_array = '') {
+ $CI=& get_instance();
+        $CI->load->database(); 
+    if (!is_array($user_tree_array))
+    $user_tree_array = array();
+
+        $CI->db->select('*');
+        $CI->db->where('parent_id',$parent);
+        $res = $CI->db->get('users');
+        $info=$res->result_array();
+  
+  if ($res->num_rows() > 0) {
+     $user_tree_array[] = "<ul  class='par_".$parent." new_display2' id='list'>";
+    if ($res->result_array()) {
+        foreach($info as $ins)
+        {
+            $child=children_info($ins['uid']);
+             if(!empty($child))
+         {
+      $user_tree_array[] = "<li style='list-style:none;'><a data-id='".$ins['uid']."' href='javascript:void(0);' class='param_".$ins['uid']."' > + </a><a class='fancybox' href='#chkline' title='Referal Code: ".$ins['refferalcode']."' onclick='description(".$ins['uid'].")'>". $ins['fname'].' '.$ins['lname']."</a></li>";
+        }
+        else
+        {
+         $user_tree_array[] = "<li style='list-style:none;'><a data-id='".$ins['uid']."' href='javascript:void(0);'></a><a class='fancybox' href='#chkline' title='Referal Code: ".$ins['refferalcode']."' onclick='description(".$ins['uid'].")'>". $ins['fname'].' '.$ins['lname']."</a></li>";   
+        }
+      $user_tree_array = fetchCategoryTreeList($ins['uid'], $user_tree_array);
+        }
+    }
+    $user_tree_array[] = "</ul>";
+  }
+  return $user_tree_array;
+}
+
+
+function fetchCategoryTreeList1($parent = 0, $user_tree_array = '') {
+ $CI=& get_instance();
+        $CI->load->database(); 
+    if (!is_array($user_tree_array))
+    $user_tree_array = array();
+
+        $CI->db->select('*');
+        $CI->db->where('parent_id',$parent);
+        $res = $CI->db->get('users');
+        $info=$res->result_array();
+  
+  if ($res->num_rows() > 0) {
+     $user_tree_array[] = "<ul id='list'>";
+    if ($res->result_array()) {
+        foreach($info as $ins)
+        {
+         $child=children_info($ins['uid']);
+         if(!empty($child))
+         {
+      $user_tree_array[] = "<li style='list-style:none;'><a data-id='".$ins['uid']."' href='javascript:void(0);' class='param_".$ins['uid']."'> + </a><a class='fancybox' href='#inline1_".$ins['uid']."' title='Referal Code: ".$ins['refferalcode']."'>". $ins['fname'].' '.$ins['lname']."</a></li>";
+        }
+        else
+        {
+            $user_tree_array[] = "<li style='list-style:none;'><a data-id='".$ins['uid']."' href='javascript:void(0);'></a><a class='fancybox' href='#inline1_".$ins['uid']."' title='Referal Code: ".$ins['refferalcode']."'>". $ins['fname'].' '.$ins['lname']."</a></li>";
+        }
+      $user_tree_array = fetchCategoryTreeList($ins['uid'], $user_tree_array);
+        }
+    }
+    $user_tree_array[] = "</ul>";
+  }
+  return $user_tree_array;
+}
+
 
 ?>
