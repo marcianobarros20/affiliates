@@ -74,7 +74,20 @@
                       </div>
                      
 
-                      <p><img src="images/sample/blog1.jpg" width="100%" alt="" /></p>
+                      <p><!-- <img src="images/sample/blog1.jpg" width="100%" alt="" /> -->
+                      <?php if($blog['media_type']==1){ ?>
+
+                      <img src="blog_file/original/<?php echo $blog['media'];?>" width="100%" alt="" />
+                      <?php } else { ?>
+                      <video src="<?php echo $blog['media'];?>" controls>
+    <object data="<?php echo $blog['media'];?>" type="application/x-shockwave-flash">
+      <param value="<?php echo $blog['media'];?>" name="movie"/>
+    </object>
+</video>
+
+                      <?php } ?>
+
+                      </p>
                       <div id="main_<?php echo $blog['blog_id'];?>"><p><?php echo substr($blog['description'],0,200);?></p>
 
                         <?php if(strlen($blog['description'])>200){?><a class="btn btn-link" onclick="readFn('less',<?php echo $blog['blog_id'];?>);">Read More <i class="icon-angle-right"></i></a><?php }?>
