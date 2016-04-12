@@ -119,9 +119,9 @@ else
 
 
 
-    <section class="no-margin">
+    <!-- <section class="no-margin">
         <iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49799.26337019521!2d-85.69035624773345!3d38.73034377843344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886bd20ec02fdea7%3A0x1c16995e39978d1!2sTier5!5e0!3m2!1sen!2s!4v1458908236414"></iframe>
-    </section>
+    </section> -->
 
 <section class="title">
     <div class="container">
@@ -148,66 +148,66 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
   <section id="registration-page" class="container">
  
     <?php
-        if($this->session->userdata('reffrence_id')!='')
+        /*if($this->session->userdata('reffrence_id')!='')
         {
             $ref_id=$this->session->userdata('reffrence_id');
         }
         else
         {
           $ref_id='';  
-        }
+        }*/
     ?>
        
-    <form class="center"  method="POST" id='reg_form' onsubmit="return validate();" action="<?php echo base_url();?>Welcome/register/<?php echo $ref_id;?>">
+    <!-- <form class="center"  method="POST" id='reg_form' onsubmit="return validate();" action="<?php echo base_url();?>Welcome/register/<?php echo $ref_id;?>">
       <fieldset class="registration-form">
        <div class="control-group">
           <!-- Username -->
-          <div class="controls">
+    <!--       <div class="controls">
             <input type="text" id="fname" name="fname" placeholder="First Name" class="input-xlarge required">
           </div>
         </div>
          <div class="control-group">
-          <!-- Username -->
+          Username
            <div class="controls">
             <input type="text" id="lname" name="lname" placeholder="Last Name" class="input-xlarge required">
           </div>
         </div>
-        <div class="control-group">
+        <div class="control-group"> -->
           <!-- Username -->
-          <div class="controls">
+         <!--  <div class="controls">
             <input type="text" id="username" name="username" placeholder="Username" class="input-xlarge required">
           </div>
         </div>
 
         <div class="control-group">
-          <!-- E-mail -->
+          E-mail
          <div class="controls">
             <input type="text" id="email" name="email" placeholder="E-mail" class="input-xlarge required email">
           </div>
         </div>
 
-        <div class="control-group">
+        <div class="control-group"> -->
           <!-- Password-->
-          <div class="controls">
+    <!--       <div class="controls">
             <input type="password" id="password" name="password" placeholder="Password" class="input-xlarge required">
           </div>
         </div>
 
-        <div class="control-group">
+        <div class="control-group"> -->
           <!-- Password -->
-           <div class="controls">
+         <!--   <div class="controls">
             <input type="password" id="password_confirm" name="password_confirm" placeholder="Password (Confirm)" class="input-xlarge required equalTo">
           </div>
         </div>
 
-        <div class="control-group">
+        <div class="control-group"> -->
           <!-- Button -->
-          <div class="controls">
+         <!-- <div class="controls">
             <input type="submit" class="btn btn-success btn-large btn-block" value="Register" name="Register">
           </div>
         </div>
       </fieldset>
-    </form>
+    </form> -->
   </section> 
   <!-- /#registration-page -->
 
@@ -264,7 +264,7 @@ Why do you want to be a Tier5 Affiliate?
 </section>
 
 <!--Footer-->
- <?php echo $middle;?>
+ <?php //echo $middle;?>
 <!--/Footer-->
 
 <!--Footer-->

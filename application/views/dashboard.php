@@ -185,9 +185,9 @@
                 <a href="<?php echo base_url();?>Welcome/editprofile">Edit Profile</a>
                 <br>
                 In Order To Affiliate People, Please forword the below link.
+                
                 <br>
-                <?php echo base_url();?>welcome/contact/<?php echo $fetch_allinfo['refferalcode'];?>
-
+                <?php echo base_url();?>?aid=<?php echo $fetch_allinfo['refferalcode'];?>
             </div>
             <div class="span6">
 

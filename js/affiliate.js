@@ -4,11 +4,31 @@
        *  Simple image gallery. Uses default settings
        */
 
-      $('.fancybox').fancybox();
-
       
 
+      function initialize() {
+
+    var country = "United States"
+
+    var myOptions = {
+        zoom: 5,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
     
+    var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode( { 'address': country }, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+        } else {
+            alert("Could not find location: " + location);
+        }
+    });
+
+}
+
+    $('.fancybox').fancybox();
 
     });
  function change_status(param, param1)
@@ -342,3 +362,6 @@ function description(uid)
                    }
                   });
 }
+
+
+
