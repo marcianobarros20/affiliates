@@ -375,6 +375,7 @@ class Welcome extends CI_Controller {
 		$con=array('uid'=>$u_id);
 		if($_POST)
 		{
+			//echo '<pre>';print_r($_POST);exit;
 			/* image upload start */
              $image1="";
 			 $image=$this->Common_model->fetchinfo('users',$con,'row');

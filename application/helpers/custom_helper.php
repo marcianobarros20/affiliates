@@ -40,7 +40,7 @@
        $CI=& get_instance();
         $CI->load->database(); 
 
-        $CI->db->select('name');
+        $CI->db->select('id,name');
         $CI->db->where('id',$state_id);
         $res = $CI->db->get('states');
         return $return = $res->row_array();
@@ -51,7 +51,7 @@
        $CI=& get_instance();
         $CI->load->database(); 
 
-        $CI->db->select('name');
+        $CI->db->select('id,name');
         $CI->db->where('id',$city_id);
         $res = $CI->db->get('cities');
         return $return = $res->row_array();
