@@ -43,6 +43,8 @@ class Ajax extends CI_Controller {
 		}
 	}
 
+
+
 	public function UserExists()
 	{
 		if($_POST)
@@ -486,6 +488,7 @@ public function Fnoldpasswordchk()
 		}
 
 
+
 		public function change_course_status()
 		{
 			if($_POST)
@@ -524,7 +527,45 @@ public function Fnoldpasswordchk()
 					 echo "";
 				}
 	    }
-	
-	}
+
+    }
+		public function Fngetstates()
+		{
+			if($_POST)
+			{
+				$country_id=$this->input->post('country_id');
+				$con=array('country_id'=>$country_id);
+				$info_states=$this->Common_model->fetchinfo('states',$con,'result');
+				$result='<option value="">Select State</option>';
+				if(!empty($info_states))
+				{
+					foreach($info_states as $states){
+
+						$result.='<option value="'.$states['id'].'">'.$states['name'].'</option>';
+					}
+					echo $result;
+				}
+			}
+		}
+
+		public function Fngetcity()
+		{
+			if($_POST)
+			{
+				$state_id=$this->input->post('state_id');
+				$con=array('state_id'=>$state_id);
+				$info_cities=$this->Common_model->fetchinfo('cities',$con,'result');
+				$result='<option value="">Select City</option>';
+				if(!empty($info_cities))
+				{
+					foreach($info_cities as $cities){
+
+						$result.='<option value="'.$cities['id'].'">'.$cities['name'].'</option>';
+					}
+					echo $result;
+				}
+			}
+		}
+
 }
 ?>

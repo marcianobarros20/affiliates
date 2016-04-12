@@ -29,8 +29,10 @@
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
   <script src="js/jquery.validate.js"></script>
    <script type="text/javascript" src="js/edit_prof.js"></script>
+   <script type="text/javascript" src="js/registration.js"></script>
 
 
     
@@ -85,15 +87,72 @@
                          <form method="post" action="welcome/update_profile" enctype="multipart/form-data">
                         First Name: <input type="text" placeholder="First Name" id="edit_first_name" name="edit_first_name" value="<?php echo $fetch_allinfo['fname'];?>">
                         <br>
-                        Last Name:<input type="text" placeholder="Last Name" id="edit_last_name" name="edit_last_name" value="<?php echo $fetch_allinfo['lname'];?>">
+                        Last Name: <input type="text" placeholder="Last Name" id="edit_last_name" name="edit_last_name" value="<?php echo $fetch_allinfo['lname'];?>">
                         <br>
-                        <br>
+                        
                         Description:
                          <textarea   placeholder="Enter Descriptions Here" class="form-control" id="edit_description" name="edit_description"><?php echo $fetch_allinfo['description'];?></textarea>
-                         <br>
+                         
+                               <br>
+
+                               <div class="control-group">
+          <!-- country -->
+        <!--   <div class="controls">
+         
+           <select name='country' class="input-xlarge required" id='country'>
+           <option value=''>Select Country</option>
+           <?php foreach($country as $cnt):?>
+            <option value='<?php echo $cnt['id'];?>' <?php if($fetch_allinfo['country_id']==$cnt['id']){ echo 'selected';}?>><?php echo $cnt['name'];?></option>
+
+           <?php endforeach;?>
+           </select>
+          </div>
+          <!-- end country -->
+       <!-- </div>
+ -->
+
+         <div class="control-group">
+          <!-- state -->
+          <div class="controls">
+          <?php $state_info=Fnstateinfo($fetch_allinfo['state_id']);?>
+           <select name='state' class="input-xlarge required" id='state'>
+           <?php foreach($states as $sts):?>
+            <option value='<?php echo $sts['id'];?>' <?php if($sts['id']==$fetch_allinfo['state_id']){ echo 'selected';}?>><?php echo $sts['name'];?></option>
+
+           <?php endforeach;?>
+           </select>
+          </div>
+          <!-- end state -->
+        </div>
+
+
+            <div class="control-group">
+          <!-- state -->
+          <div class="controls">
+             <?php $city_info=Fncityinfo($fetch_allinfo['city_id']);?>
+           <select name='city' class="input-xlarge required" id='city'>
+           <?php if(!empty($city_info)):?>
+            <option value='<?php echo $city_info['id'];?>'><?php echo $city_info['name'];?></option>
+           <?php endif;?>
+           </select>
+          </div>
+          <!-- end state -->
+        </div>
+
+
+
+        <div class="control-group">
+          <!-- Username -->
+          <div class="controls">
+          <input id="address" type="text" size="50" name="address" class="input-xlarge" value="<?php echo $fetch_allinfo['address'];?>">
+          </div>
+        </div>
+        <input type='hidden' id='lat' name='lattitude' value="<?php echo $fetch_allinfo['latitude'];?>">
+        <input type='hidden' id='long' name='longitude' value="<?php echo $fetch_allinfo['longitude'];?>">
+        <br>
                          Select image to upload ( Minimum Size 220x150)
-                                <input type="file" name="fileToUpload" id="fileToUpload">
-                                
+                                <input type="file" name="fileToUpload" id="fileToUpload"><br>
+
                          <button type="submit" class="btn btn-default btn-xm" id="update_button" name="update_button" >Update</button>
                          </form>
                     </div>

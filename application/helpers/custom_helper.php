@@ -6,7 +6,7 @@
         $CI=& get_instance();
         $CI->load->database(); 
 
-        $CI->db->select('status,fname,lname');
+        $CI->db->select('*');
         $CI->db->where('uid',$parent_id);
         $res = $CI->db->get('users');
         return $return = $res->row_array();     
@@ -32,6 +32,28 @@
         $CI->db->select('title');
         $CI->db->where('cat_id',$cat_id);
         $res = $CI->db->get('category');
+        return $return = $res->row_array();
+    }
+
+    function Fnstateinfo($state_id)
+    {
+       $CI=& get_instance();
+        $CI->load->database(); 
+
+        $CI->db->select('name');
+        $CI->db->where('id',$state_id);
+        $res = $CI->db->get('states');
+        return $return = $res->row_array();
+    }
+    
+    function Fncityinfo($city_id)
+    {
+       $CI=& get_instance();
+        $CI->load->database(); 
+
+        $CI->db->select('name');
+        $CI->db->where('id',$city_id);
+        $res = $CI->db->get('cities');
         return $return = $res->row_array();
     }
    

@@ -32,15 +32,26 @@ class Welcome extends CI_Controller {
 	
 	public function index()
 	{
+		
 		$data=array();
-
-
+		$referlcode=$this->input->get_post('aid');
+		if($referlcode)
+		{
+						$cookie_ref= array(
+						'name'   => 'reffrence_id',
+						'value'  => $referlcode,
+						'expire' => '604800',
+						);
+		$this->input->set_cookie($cookie_ref);			
+		}
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
 		
 
 		$this->load->view('index',$data);
 	}
+
+	
 	public function signup()
 	{
 		$data=array();
@@ -49,15 +60,14 @@ class Welcome extends CI_Controller {
 		$this->load->view('sign_up',$data);
 	}
 
-	public function register($ref_id=NULL)
+	public function register()
 	{
-		//echo 'hi';exit;
-		$data=array();
-		if($ref_id!='')
+		$ref_id='';
+		if($this->input->cookie('reffrence_id')!='')
 		{
-		$this->session->set_userdata('reffrence_id',$ref_id);
-	    }
-
+			$ref_id=$this->input->cookie('reffrence_id');
+		}
+		
 		if($_POST)
 		{
 			$this->form_validation->set_rules('fname', 'First name', 'required');
@@ -83,12 +93,15 @@ class Welcome extends CI_Controller {
 			  $ins['username']=$this->input->post('username');
 			  $ins['email']=$this->input->post('email');
 			  $ins['password']=md5($this->input->post('password'));
+			  $ins['country_id']=231;
+			  $ins['state_id']=$this->input->post('state');
+			  $ins['city_id']=$this->input->post('city');
+			  $ins['address']=$this->input->post('address');
+			  $ins['latitude']=$this->input->post('lattitude');
+			  $ins['longitude']=$this->input->post('longitude');
 			  
 			  if($ref_id!='')
 			  {
-
-			  	
-			  	
 			  	$get_explode=explode('-',$ref_id);
 			  	$ins['parent_id']=$get_explode[2];
 			  	$ins['refferalparent']=$ref_id;
@@ -96,28 +109,15 @@ class Welcome extends CI_Controller {
 			  	
 			  }
 			  else
-			  {
-			  	
-			  if($this->session->userdata('reffrence_id')!='')
-			  {
-			  	$ref_id1=$this->session->userdata('reffrence_id');
-			  	$get_explode=explode('-',$ref_id1);
-			  	$ins['parent_id']=$get_explode[2];
-			  	$ins['refferalparent']=$ref_id1;
-			  	$ins['status']=1;
-			  }
-			  else
-			  {
-			  	$ins['status']=0;
-
-			  }
-			 }
+			  	{
+			  		$ins['status']=0;
+			 	}
 			  $ins['date_register']=date('Y-m-d');
 			  $insert=$this->Common_model->insert('users',$ins);
 			  if($insert)
 			  {
 			  	//echo $insert;exit;
-			  		if($this->session->userdata('reffrence_id')!='')
+			  		if($ref_id!='')
 			        {
 			        	$con2=array('uid'=>$insert);
 			        	$update['refferalcode']='Ref-'.time().'-'.$insert;
@@ -125,10 +125,15 @@ class Welcome extends CI_Controller {
 			        }
 
 
-			  		$this->session->set_userdata('reffrence_id','');
+			  	$cookie_ref= array(
+						'name'   => 'reffrence_id',
+						'value'  => '',
+						'expire' => '604800',
+						);
+					$this->input->set_cookie($cookie_ref);			
 			  		$this->session->set_userdata('succ_msg','You Have successfully registered with us.please log in now.');
 			  		//redirect(base_url().'index.php/welcome/register');
-			  redirect(base_url().'welcome/contact');
+			  redirect(base_url().'welcome/register');
 			  }
 			 }
 			 else
@@ -142,7 +147,7 @@ class Welcome extends CI_Controller {
 			    	$this->session->set_userdata('err_msg','Username Already Exists.');
 			    }
 				//redirect(base_url().'index.php/welcome/register');
-			redirect(base_url().'welcome/contact');
+			redirect(base_url().'welcome/register');
 			 }
 			  
 			}
@@ -150,10 +155,16 @@ class Welcome extends CI_Controller {
 			{
 				
 				$this->session->set_userdata('err_msg','Please fill All required fields Properly.');
-				redirect(base_url().'welcome/contact');
+				redirect(base_url().'welcome/register');
 			}
 		}
-
+		$data['country']=$this->Common_model->fetchinfo('countries','','result');
+		$data['states']=$this->Common_model->fetchinfo('states',array('country_id'=>231),'result');
+		
+		$data['header']=$this->load->view('includes/header','',true);
+		$data['footer']=$this->load->view('includes/footer','',true);
+		//$data['middle']=$this->load->view('includes/middle','',true);
+		$this->load->view('registration',$data);
 		
 	}
     public function login()
@@ -271,6 +282,7 @@ class Welcome extends CI_Controller {
 		{
 		$u_id=$this->session->userdata('user_id');
 		$con=array('uid'=>$u_id);
+		$data['states']=$this->Common_model->fetchinfo('states',array('country_id'=>231),'result');
 		$data['fetch_allinfo']=$this->Common_model->fetchinfo('users',$con,'row');
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
@@ -451,7 +463,12 @@ class Welcome extends CI_Controller {
             $data['fname']=$this->input->post('edit_first_name');
 			$data['lname']=$this->input->post('edit_last_name');
 		    $data['description']=$this->input->post('edit_description');
-			$data['profile_image']=$image1;
+			$data['country_id']=231;
+			$data['state_id']=$this->input->post('state');
+			$data['city_id']=$this->input->post('city');
+			$data['address']=$this->input->post('address');
+			$data['latitude']=$this->input->post('lattitude');
+			$data['longitude']=$this->input->post('longitude');
 					
 
 		    $edit_profile=$this->Common_model->update('users',$con,$data);
@@ -504,10 +521,10 @@ class Welcome extends CI_Controller {
 
     public function contact($ref_id='')
 	{
-		if($ref_id!='')
+		/*if($ref_id!='')
 		{
 		$this->session->set_userdata('reffrence_id',$ref_id);
-	    }
+	    }*/
 		$data=array();
 		$this->form_validation->set_rules('firstname', 'FirstName', 'required');
     	$this->form_validation->set_rules('lastname', 'LastName', 'required');
@@ -653,6 +670,7 @@ class Welcome extends CI_Controller {
 			$course_id=$this->input->post('course_id');
 			$new_class_name=$this->input->post('new_class_name');
 			$description=$this->input->post('new_class_description');
+			$media_type=$this->input->post('course_media');
 
 			if(trim($course_id) &&  trim($new_class_name) && trim($description) )
             {

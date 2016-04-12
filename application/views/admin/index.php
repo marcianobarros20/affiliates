@@ -32,15 +32,21 @@
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="admin_support/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
+    
+    <style type="text/css">
+#map_canvas { width: 500px; height: 500px; }
+</style>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src='js/map.js'></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
- 
+
   </head>
-  <body class="hold-transition skin-blue sidebar-mini">
+  <body class="hold-transition skin-blue sidebar-mini" onload="initialize();">
     <div class="wrapper">
 
      <?php echo $header;?>
@@ -123,9 +129,16 @@
                       </div>
 
                   </div>
-                
+
             </div>
-        </section>  
+       
+        
+ </section>  
+
+     <!-- map -->
+        <div id="map_canvas"></div>
+        <!-- end map -->
+       
       </div>
      <!-- footer -->
      <?php echo $footer;?>

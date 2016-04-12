@@ -29,89 +29,9 @@
   <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="js/jquery.validate.js"></script>
-  <script type="text/javascript">
-  $(document ).ready(function() {
-   
-   $( "#reg_form" ).validate({
-  rules: {
-    password: "required",
-    password_confirm: {
-      equalTo: "#password"
-    }
-  }
-});
-
-   $( "#form-login" ).validate();
-});
-
-   function validate()
-   {
-    var err=0;
-    var email=$('#email').val();
-    var username=$('#username').val();
-
-    
-    if(email!='')
-    {
-      var res= $.ajax({
-    type : 'post',
-    url : '<?php echo base_url();?>Ajax/EmailExists',
-    data : 'email='+email,
-    async : false,
-    success : function(msg){ 
-    if(msg==1)
-           {
-
-            err=1;
-            $('#err_em').html('Email already exists');
-            return false;
-           }
-           else
-           {
-            err=0;
-           }
-        }
-    }); 
-  
-    
-    }
-
-    if(username!='')
-    {
-      var res= $.ajax({
-    type : 'post',
-    url : '<?php echo base_url();?>Ajax/UserExists',
-    data : 'username='+username,
-    async : false,
-    success : function(msg){ 
-    if(msg==1)
-           {
-            err=1;
-            $('#err_us').html('Username already exists');
-            return false;
-           }
-           else
-           {
-            err=0;
-           }
-        }
-    }); 
-  
-    
-    }
-if(err==1)
-    {
-      return false;
-    }
-else
-{
-  $('#err_em').html('');
-  $('#err_us').html('');
-}
-   
-
-   }
-    </script>
+ <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+  <script type="text/javascript" src='js/registration.js'></script>
+ 
 </head>
 
 <body>
@@ -146,9 +66,42 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
     <span id='err_us' class='error text-center'></span></div>
  </h4>
   <section id="registration-page" class="container">
- 
-    
-       
+ <?php if($this->input->cookie('reffrence_id')!='')
+    {?>
+   <div class="Information_div">
+  
+     <?php
+      $ref_id=$this->input->cookie('reffrence_id');
+      $get_explode=explode('-',$ref_id);
+      $parent_id=$get_explode[2];
+      $user_info=Parentstatus($parent_id);?>
+
+
+ Referent User Information:
+    <br>
+    <?php if($user_info['profile_image']!=''){ ?>
+    <img src='profile_img/thumb/<?php echo $user_info['profile_image'];?>' alt=''>
+   <?php }
+    else
+    {
+      ?>
+       <img src='images/sample/no_photo.png' alt=''>
+      <?php
+    }
+    ?>
+    <br>
+    Name: <?php echo ucfirst($user_info['fname']).' '.ucfirst($user_info['lname']);?>
+    <br>
+    Email: <?php echo $user_info['email'];?>
+    <br>
+    Referal code: <?php echo $user_info['refferalcode'];?>
+     </div>
+      <?php
+    }?>
+
+   
+   
+   
     <form class="center"  method="POST" id='reg_form' onsubmit="return validate();">
       <fieldset class="registration-form">
        <div class="control-group">
@@ -163,6 +116,62 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
             <input type="text" id="lname" name="lname" placeholder="Last Name" class="input-xlarge required">
           </div>
         </div>
+
+      <!--    <div class="control-group">
+          <!-- country -->
+         <!--  <div class="controls">
+         
+           <select name='country' class="input-xlarge required" id='country'>
+           <option value=''>Select Country</option>
+           <?php foreach($country as $cnt):?>
+            <option value='<?php echo $cnt['id'];?>'><?php echo $cnt['name'];?></option>
+
+           <?php endforeach;?>
+           </select>
+          </div> -->
+          <!-- end country -->
+        <!--</div> -->
+
+
+         <div class="control-group">
+          <!-- state -->
+          <div class="controls">
+          
+           <select name='state' class="input-xlarge required" id='state'>
+           <option value=''>Select State</option>
+           <?php foreach($states as $sts):?>
+            <option value='<?php echo $sts['id'];?>'><?php echo $sts['name'];?></option>
+           <?php endforeach;?>
+           </select>
+          </div>
+          <!-- end state -->
+        </div>
+
+
+            <div class="control-group">
+          <!-- state -->
+          <div class="controls">
+     
+           <select name='city' class="input-xlarge required" id='city'>
+           <option value=''>Select City</option>
+           
+           </select>
+          </div>
+          <!-- end state -->
+        </div>
+
+
+
+        <div class="control-group">
+          <!-- Username -->
+          <div class="controls">
+          <input id="address" type="text" size="50" name="address" class="input-xlarge">
+          </div>
+        </div>
+        <input type='hidden' id='lat' value='' name='lattitude'>
+        <input type='hidden' id='long' value='' name='longitude'>
+
+
         <div class="control-group">
           <!-- Username -->
           <div class="controls">
@@ -191,6 +200,8 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
           </div>
         </div>
 
+        
+
         <div class="control-group">
           <!-- Button -->
           <div class="controls">
@@ -199,11 +210,12 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
         </div>
       </fieldset>
     </form>
+
+    
   </section>
   <!-- /#registration-page -->
 
 <!--Bottom-->
-<?php echo $middle;?>
 
 <!--/bottom-->
 
