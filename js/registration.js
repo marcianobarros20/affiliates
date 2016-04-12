@@ -50,6 +50,7 @@
     async : false,
     success : function(msg){ 
           $('#city').html(msg);
+            $('#address').val('');
         }
     }); 
   
