@@ -4,10 +4,27 @@
        *  Simple image gallery. Uses default settings
        */
 
-      $('.fancybox').fancybox();
+     
+ $('#course_media').change(function(){
 
+if($(this).val()!='')
+ {
+    $('.media').addClass('required');
+  }
+  else
+  {
+    $('.media').removeClass('required');
+  }
+ });
+         
+   $('#button_showdiv').click(function(){
+
+      $('#add_course_div').toggle();
+
+    });
       
-
+    $('#add_course').validate();
+    $('#add_class').validate();
     
 
     });
@@ -341,4 +358,84 @@ function description(uid)
 
                    }
                   });
+}
+
+
+function change_course_status(action,courseid)
+{
+   if(action=="Not Available")
+   {
+       var conf=confirm("You sure you want to make it Not Available !");
+            if(conf)
+            {
+              var status=1;
+              var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/change_course_status',
+                  data : 'co_id='+courseid+'& status='+status,
+                  async : false,
+                  success : function(msg)
+                   {
+
+                       if(msg)
+                       {
+                        window.location.reload();
+                      }
+
+                   }
+                  });
+
+            }
+    }
+    else
+    {
+       var conf=confirm("You sure you want to make it Available !");
+            if(conf)
+            {
+              var status=0;
+              var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/change_course_status',
+                  data : 'co_id='+courseid+'& status='+status,
+                  async : false,
+                  success : function(msg)
+                   {
+
+                       if(msg)
+                       {
+                        window.location.reload();
+                      }
+
+                   }
+                  });
+
+            }
+
+    }
+}
+
+function delete_course(courseid)
+{
+   var conf=confirm("You sure you want to Delete !");
+            if(conf)
+            {
+              
+              var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/delete_course',
+                  data : 'co_id='+courseid,
+                  async : false,
+                  success : function(msg)
+                   {
+
+                       if(msg)
+                       {
+                        window.location.reload();
+                       }
+
+                   }
+                  });
+
+            }                                                                                                                                                                                                                                                                                                                                   
+
 }

@@ -485,6 +485,46 @@ public function Fnoldpasswordchk()
 			}
 		}
 
+
+		public function change_course_status()
+		{
+			if($_POST)
+			{
+               $course_id=$this->input->post('co_id');
+               $course_status=$this->input->post('status');
+			   $con=array('co_id'=>$course_id);
+			   $data['status']=$course_status;
+			   $update=$this->Common_model->update('courses',$con,$data);
+               if($update)
+				{
+					echo 2;
+				}
+				else
+				{
+					 echo "";
+				}
+			}
+
+		}
+
+	public function delete_course()
+	{
+		if($_POST)
+	    {
+	    	$course_id=$this->input->post('co_id');
+	    	$con=array('co_id'=>$course_id);
+            $delete=$this->Common_model->delete($con,'courses');
+
+            if($delete)
+				{
+					echo 1;
+				}
+				else
+				{
+					 echo "";
+				}
+	    }
 	
+	}
 }
 ?>

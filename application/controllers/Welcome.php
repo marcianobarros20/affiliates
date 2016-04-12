@@ -618,4 +618,68 @@ class Welcome extends CI_Controller {
         }     
 	}
 
+	public function add_course()
+	{
+		if($_POST)
+		{
+          
+            $new_course=$this->input->post('new_course_name');
+            $new_course_description=$this->input->post('new_course_description');
+            if(trim($new_course) &&  trim($new_course_description))
+            {
+            $data['courses_name']=$new_course;
+            $data['description']=$new_course_description;
+            $data['status']=0;
+            $insert=$this->Common_model->insert('courses',$data);
+            	if($insert)
+		        {
+		            $this->session->set_userdata('succ_msg',"Course Added Successfully");
+		            redirect(base_url().'admin/courses/add_class_and_course');
+		        }
+          		else
+         		{
+            	    $this->session->set_userdata('err_msg',"Try Again");
+                    redirect(base_url().'admin/courses/add_class_and_course');
+                }
+            }
+		}
+
+	}
+
+	public function add_class()
+	{
+		if($_POST)
+		{
+			$course_id=$this->input->post('course_id');
+			$new_class_name=$this->input->post('new_class_name');
+			$description=$this->input->post('new_class_description');
+
+			if(trim($course_id) &&  trim($new_class_name) && trim($description) )
+            {
+            	
+
+            $data['course_id']=$course_id;
+            $data['cl_name']=$new_class_name;
+            $data['description']=$description;
+            $data['status']=0;
+            $insert=$this->Common_model->insert('class',$data);
+            	if($insert)
+		        {
+		            $this->session->set_userdata('succ_msg',"Class Added Successfully");
+		            redirect(base_url().'admin/courses/add_class_and_course');
+		        }
+          		else
+         		{
+            	    $this->session->set_userdata('err_msg',"Try Again");
+                    redirect(base_url().'admin/courses/add_class_and_course');
+                }
+
+            }
+		}
+		else
+		{
+			redirect(base_url().'admin/courses/add_class_and_course');
+		}	
+	}
+
 }

@@ -190,6 +190,17 @@
 
       }
 
+      public function fetchallcources()
+      {
+
+        $this->db->select('*');
+        $this->db->where('status',0);
+        $this->db->or_where('status',1);
+        $res=$this->db->get('courses');
+        return $res->result_array();
+
+      }
+
 
       
 
