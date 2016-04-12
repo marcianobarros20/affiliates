@@ -129,7 +129,10 @@
             <div class="control-group">
           <!-- state -->
           <div class="controls">
-             <?php $city_info=Fncityinfo($fetch_allinfo['city_id']);?>
+             
+             <?php $city_info=Fncityinfo($fetch_allinfo['city_id']);
+             //echo '<pre>';print_r($city_info);
+             ?>
            <select name='city' class="input-xlarge required" id='city'>
            <?php if(!empty($city_info)):?>
             <option value='<?php echo $city_info['id'];?>'><?php echo $city_info['name'];?></option>
