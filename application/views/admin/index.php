@@ -37,7 +37,7 @@
 #map_canvas { width: 500px; height: 500px; }
 </style>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-    <script type="text/javascript" src='js/map.js'></script>
+    <!--<script type="text/javascript" src='js/map.js'></script>-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -45,8 +45,105 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+<script type="text/javascript">
+  
+
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+var map;
+<?php
+
+    $str='';
+   $min_long='';
+    $min_lat='';
+    $tot_long=0;
+    $tot_lang=0;
+  
+    foreach($users_info as $key=>$prop){
+     $info='address:'.$prop['address'];
+     $str.="['".addslashes($info)."',".$prop['latitude'].", ".$prop['longitude'].", ".($key+1)."],";
+        $tot_long+=$prop['longitude'];
+        $tot_lang+=$prop['latitude'];
+        $min_long=$tot_long/count($users_info);
+        $min_lat=$tot_lang/count($users_info);
+
+       
+    }
+    $str=substr($str,0,-1);
+
+?>
+var locations = 
+  [
+    <?=$str?>
+  ];
+
+var infowindow = new google.maps.InfoWindow();
+
+var marker, i;
+function initialize() {
+map = new google.maps.Map(document.getElementById('map_canvas'), {
+     zoom: 5,
+    scrollwheel: true,
+   navigationControl: true,
+    mapTypeControl: true,
+    scaleControl: true,
+    draggable: true,
+   // zoomControl: true , 
+
+  
+    center: new google.maps.LatLng(37.090240,-95.712891),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+});
+
+for (i = 0; i < locations.length; i++) {
+    marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+    });
+
+    google.maps.event.addListener(marker, 'click', (function (marker, i) {
+        return function () {
+            infowindow.setContent(locations[i][0]);
+            infowindow.open(map, marker);
+        }
+    })(marker, i));
+}
+//map.setZoom();
+}
+directionsDisplay = new google.maps.DirectionsRenderer();
+
+directionsDisplay.setMap(map);
+
+/*var start = new google.maps.LatLng(-33.890542, 151.274856);
+var end = new google.maps.LatLng(-34.028249, 151.157507);
+var request = {
+    origin: start,
+    destination: end,
+    travelMode: google.maps.DirectionsTravelMode.DRIVING
+};
+directionsService.route(request, function (response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+    }
+});
+}*/
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+
+</script>
+
   </head>
-  <body class="hold-transition skin-blue sidebar-mini" onload="initialize();">
+  <body class="hold-transition skin-blue sidebar-mini">
+
+
+
+<input type='hidden' name='arr_places' id='arr_places' value="<?php echo $str;?>">
+
+<input type='hidden' name='min_long' id='min_long' value='<?php echo $min_long;?>'>
+<input type='hidden' name='min_lat' id='min_lat' value='<?php echo $min_lat;?>'>
+
     <div class="wrapper">
 
      <?php echo $header;?>
@@ -131,13 +228,13 @@
                   </div>
 
             </div>
-       
+          <!-- map -->
+        <div id="map_canvas"></div>
+        <!-- end map -->
         
  </section>  
 
-     <!-- map -->
-        <div id="map_canvas"></div>
-        <!-- end map -->
+  
        
       </div>
      <!-- footer -->

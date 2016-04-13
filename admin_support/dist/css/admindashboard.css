@@ -26,3 +26,7 @@ background: rgb(210, 210, 209) none repeat scroll 0% 0%;
     color: white;
     text-decoration: underline;
 }
+#map_canvas
+{
+width: 100% !important;
+}

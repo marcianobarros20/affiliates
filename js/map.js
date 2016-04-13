@@ -1,44 +1,28 @@
-    
+/*   
     function initialize() {
 
-    /*var country = "United States";
-
-    var myOptions = {
-        zoom: 3,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    
-    var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
-
-    var geocoder = new google.maps.Geocoder();
-    geocoder.geocode( { 'address': country }, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-
-            map.setCenter(results[0].geometry.location);
-        } else {
-            alert("Could not find location: " + location);
-        }
-    });*/
 
 var country = "United States";
+var latlng = new google.maps.LatLng(37.0902,-95.7129);
         var map;
     var bounds = new google.maps.LatLngBounds();
     var mapOptions = {
         mapTypeId: 'roadmap',
-        center:country
+        center:latlng
     };
                     
     // Display a map on the page
     map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
     map.setTilt(45);
 
-    var array;
+    
 
        
     // Multiple Markers
     var markers = [
-        ['London Eye, London', 51.503454,-0.119562],
-        ['Palace of Westminster, London', 51.499633,-0.124755]
+        ['Portland', 43.66147100000001,-70.2553259],
+        ['Ohio', 40.4172871,-82.90712300000001],
+        ['organo', 43.8041334,-120.55420119999997],
     ];
                         
     // Info Window Content
@@ -73,11 +57,11 @@ var country = "United States";
             }
         })(marker, i));
 
-        // Automatically center the map fitting all markers on the screen
+        
         map.fitBounds(bounds);
     }
 
-    // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+   
     var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
         this.setZoom(14);
         google.maps.event.removeListener(boundsListener);
@@ -86,3 +70,61 @@ var country = "United States";
 
 
 }
+*/
+    var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+var map;
+
+function initialize() {
+
+
+var str=$('#arr_places').val();
+var min_lat=$('#min_lat').val();
+var min_long=$('#min_lat').val();
+alert(str);
+var locations = 
+    [
+       str
+    ];
+
+var infowindow = new google.maps.InfoWindow();
+
+var marker, i;
+   
+map = new google.maps.Map(document.getElementById('map_canvas'), {
+     zoom: 5,
+    /*scrollwheel: false,
+     navigationControl: false,
+    mapTypeControl: false,
+    scaleControl: false,
+    draggable: false,*/
+   zoomControl: true , 
+
+    
+    center: new google.maps.LatLng(40.7282239,-73.79485160000002),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+});
+
+alert(locations.length);
+console.log(locations);
+ 
+for (i = 0; i < locations.length; i++) {
+    alert(locations[i][0]);
+    marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+    });
+
+    google.maps.event.addListener(marker, 'click', (function (marker, i) {
+        return function () {
+            infowindow.setContent(locations[i][0]);
+            infowindow.open(map, marker);
+        }
+    })(marker, i));
+}
+//map.setZoom();
+}
+directionsDisplay = new google.maps.DirectionsRenderer();
+
+directionsDisplay.setMap(map);
+google.maps.event.addDomListener(window, 'load', initialize);

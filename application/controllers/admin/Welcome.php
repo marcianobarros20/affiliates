@@ -59,6 +59,8 @@ class Welcome extends CI_Controller {
 
 		$data['inactive_blog']=$this->Common_model->fetchinfo('blog',$con1,'count');
 
+		$data['users_info']=$this->Common_model->fetchinfo('users',$con1,'result');
+
 		$this->load->view('admin/index',$data);
 
 	}
