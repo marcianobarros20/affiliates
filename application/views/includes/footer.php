@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row-fluid">
             <div class="span5 cp">
-                &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
+                &copy; 2016 <a target="_blank" href="https://tier5.us/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">Tier5</a>. All Rights Reserved.
             </div>
             <!--/Copyright-->
 
@@ -17,8 +17,9 @@
                     <li><a href="#"><i class="icon-tumblr"></i></a></li>                        
                     <li><a href="https://dribbble.com/Tier5"><i class="icon-dribbble"></i></a></li>
                     <li><a href="#"><i class="icon-rss"></i></a></li>
-                    <li><a href="https://github.com/tier5"><i class="icon-github-alt"></i></a></li> -->
-                    <li><a href="#"><i class="icon-instagram"></i></a></li>                   
+                    
+                    <li><a href="#"><i class="icon-instagram"></i></a></li>   -->
+                    <li><a href="https://github.com/tier5"><i class="icon-github-alt"></i></a></li>                 
                 </ul>
             </div>
 
