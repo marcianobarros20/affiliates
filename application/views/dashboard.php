@@ -283,7 +283,7 @@
 </div>
 
 <!--Bottom-->
-  <?php echo $middle;?>
+  
 <!--/Bottom-->
 
 
