@@ -246,19 +246,19 @@ Why do you want to be a Tier5 Affiliate?
             <p>Tier5 currently has 3 Locations</p>
             
             <p>
-                <i class="icon-map-marker pull-left"></i> Main Office
+                <i class="icon-map-marker pull-left"></i> Main Office<br>
 Indiana, United States<br>
                 
             </p>
 
             <p>
-                <i class="icon-map-marker pull-left"></i> Branch Office
+                <i class="icon-map-marker pull-left"></i> Branch Office<br>
 Maryland, United States<br>
                 
             </p>
 
             <p>
-                <i class="icon-map-marker pull-left"></i>Development HQ
+                <i class="icon-map-marker pull-left"></i>Development HQ<br>
 Kolkata, India<br>
                 
             </p>
