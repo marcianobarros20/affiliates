@@ -8,6 +8,10 @@
 	display:none;
 
 }
+.addr_class
+{
+	width:94%;
+}
 .Information_div
 {
 	background: white none repeat scroll 0 0 !important;
@@ -15,7 +19,7 @@
     border-radius: 14px !important;
     padding: 10px;
 	text-align: center;
-	width: 30%;
+	width: 27%;
 	float: left;
 }
 

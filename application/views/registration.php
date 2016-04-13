@@ -45,11 +45,11 @@
     <div class="container">
       <div class="row-fluid">
         <div class="span6">
-          <h1>{Registration}</h1>
+          <h1>Registration</h1>
         </div>
         <div class="span6">
           <ul class="breadcrumb pull-right">
-            <li><a href="<?php echo base_url();?>">Home</a> <span class="divider">/</span></li>
+            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
             
             <li class="active">Registration</li>
           </ul>
@@ -68,7 +68,6 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
   <section id="registration-page" class="container">
  <?php if($this->input->cookie('reffrence_id')!='')
     {?>
-
    <div class="Information_div">
   
      <?php
@@ -76,7 +75,7 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
       $get_explode=explode('-',$ref_id);
       $parent_id=$get_explode[2];
       $user_info=Parentstatus($parent_id);?>
-<!-- box information -->
+
 
  Referent User Information:
     <br>
@@ -99,9 +98,9 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
      </div>
       <?php
     }?>
-  
+
    
-   <!-- box information -->
+   
    
     <form class="center"  method="POST" id='reg_form' onsubmit="return validate();">
       <fieldset class="registration-form">
@@ -109,30 +108,12 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
           <!-- Username -->
           <div class="controls">
             <input type="text" id="fname" name="fname" placeholder="First Name" class="input-xlarge required">
-          </div>
-        </div>
-         <div class="control-group">
-          <!-- Username -->
-          <div class="controls">
             <input type="text" id="lname" name="lname" placeholder="Last Name" class="input-xlarge required">
           </div>
         </div>
-
-      <!--    <div class="control-group">
-          <!-- country -->
-         <!--  <div class="controls">
          
-           <select name='country' class="input-xlarge required" id='country'>
-           <option value=''>Select Country</option>
-           <?php foreach($country as $cnt):?>
-            <option value='<?php echo $cnt['id'];?>'><?php echo $cnt['name'];?></option>
 
-           <?php endforeach;?>
-           </select>
-          </div> -->
-          <!-- end country -->
-        <!--</div> -->
-
+      
 
          <div class="control-group">
           <!-- state -->
@@ -144,29 +125,27 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
             <option value='<?php echo $sts['id'];?>'><?php echo $sts['name'];?></option>
            <?php endforeach;?>
            </select>
-          </div>
-          <!-- end state -->
-        
-
-
-            <div class="control-group">
-          <!-- state -->
-          <div class="controls">
-     
+           <!-- end state -->
            <select name='city' class="input-xlarge required" id='city'>
            <option value=''>Select City</option>
            
            </select>
+           <!--city-->
+           </div>
+           <div class="controls">
+           <input id="address" type="text" size="50" name="address" class="addr_class input-xlarge">
           </div>
-          <!-- end state -->
         </div>
+
 
 
 
         <div class="control-group">
           <!-- Username -->
           <div class="controls">
-          <input id="address" type="text" size="50" name="address" class="input-xlarge">
+         
+            <input type="text" id="username" name="username" placeholder="Username" class="input-xlarge required">
+             <input type="text" id="email" name="email" placeholder="E-mail" class="input-xlarge required email">
           </div>
         </div>
         <input type='hidden' id='lat' value='' name='lattitude'>
@@ -174,49 +153,29 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
 
 
         <div class="control-group">
-          <!-- Username -->
-          <div class="controls">
-            <input type="text" id="username" name="username" placeholder="Username" class="input-xlarge required">
-          </div>
-        </div>
-
-        <div class="control-group">
           <!-- E-mail -->
           <div class="controls">
-            <input type="text" id="email" name="email" placeholder="E-mail" class="input-xlarge required email">
-          </div>
-        </div>
-
-        <div class="control-group">
-          <!-- Password-->
-          <div class="controls">
-            <input type="password" id="password" name="password" placeholder="Password" class="input-xlarge required">
-          </div>
-        </div>
-
-        <div class="control-group">
-          <!-- Password -->
-          <div class="controls">
-            <input type="password" id="password_confirm" name="password_confirm" placeholder="Password (Confirm)" class="input-xlarge required equalTo">
+           
+             <input type="password" id="password" name="password" placeholder="Password" class="input-xlarge required">
+               <input type="password" id="password_confirm" name="password_confirm" placeholder="Password (Confirm)" class="input-xlarge required equalTo">
           </div>
         </div>
 
         
 
         <div class="control-group">
-          <!-- Button -->
+          <!-- Password -->
           <div class="controls">
-            <input type="submit" class="btn btn-success btn-large btn-block" value="Register" name="Register">
+           
+             <input type="submit" class="btn btn-success btn-large btn-block" value="Register" name="Register">
           </div>
         </div>
+
       </fieldset>
     </form>
-  
-  
   </section>
   <!-- /#registration-page -->
-
-<!--Bottom-->
+ 
 
 <!--/bottom-->
 
