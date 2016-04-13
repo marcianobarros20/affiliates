@@ -243,16 +243,30 @@ Why do you want to be a Tier5 Affiliate?
 
         <div class="span3">
             <h4>Our Address</h4>
+            <p>Tier5 currently has 3 Locations</p>
             
             <p>
-                <i class="icon-map-marker pull-left"></i> 2789 N Newman Rd, Lexington IN, 47138<br>
+                <i class="icon-map-marker pull-left"></i> Main Office
+Indiana, United States<br>
+                
+            </p>
+
+            <p>
+                <i class="icon-map-marker pull-left"></i> Branch Office
+Maryland, United States<br>
+                
+            </p>
+
+            <p>
+                <i class="icon-map-marker pull-left"></i>Development HQ
+Kolkata, India<br>
                 
             </p>
             <p>
                 <i class="icon-envelope"></i> &nbsp;hello@tier5.us
             </p>
             <p>
-                <i class="icon-phone"></i> &nbsp;+812 722 4722
+                <i class="icon-phone"></i> &nbsp; +1(812)-722-4722
             </p>
             <p>
                 <i class="icon-globe"></i> &nbsp;http://www.tier5.us
