@@ -68,6 +68,7 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
   <section id="registration-page" class="container">
  <?php if($this->input->cookie('reffrence_id')!='')
     {?>
+
    <div class="Information_div">
   
      <?php
@@ -75,7 +76,7 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
       $get_explode=explode('-',$ref_id);
       $parent_id=$get_explode[2];
       $user_info=Parentstatus($parent_id);?>
-
+<!-- box information -->
 
  Referent User Information:
     <br>
@@ -98,9 +99,9 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
      </div>
       <?php
     }?>
-
+  
    
-   
+   <!-- box information -->
    
     <form class="center"  method="POST" id='reg_form' onsubmit="return validate();">
       <fieldset class="registration-form">
@@ -145,7 +146,7 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
            </select>
           </div>
           <!-- end state -->
-        </div>
+        
 
 
             <div class="control-group">
@@ -210,8 +211,8 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
         </div>
       </fieldset>
     </form>
-
-    
+  
+  
   </section>
   <!-- /#registration-page -->
 
