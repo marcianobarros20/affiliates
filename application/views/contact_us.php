@@ -263,6 +263,42 @@ Why do you want to be a Tier5 Affiliate?
 
 </section>
 
+
+<section id="clients" class="main">
+<div class="container">
+<div class="row-fluid">
+<div class="span2">
+<div class="clearfix">
+<h4 class="pull-left"> Recent Affililates</h4>
+<div class="pull-right">
+<a class="prev" href="#myCarousel" data-slide="prev"><i class="icon-angle-left icon-large"></i></a> <a class="next" href="#myCarousel" data-slide="next"><i class="icon-angle-right icon-large"></i></a>
+</div>
+</div>
+<p>These are just a few of the recent Affilates to join the Tier5 Affiliate Program. Start your career in the Tech Industry and become an affiliate today.</p>
+</div>
+<div class="span10">
+<div id="myCarousel" class="carousel slide clients">
+ 
+<div class="carousel-inner">
+<div class="active item">
+<div class="row-fluid">
+<ul class="thumbnails">
+<li class="span3"><img src="images/sample/clients/client3.png"><h4>Robert Liews</h4></li>
+<li class="span3"><img src="images/sample/clients/client2.png"><h4>David Phaire</h4></li>
+<li class="span3"><img src="images/sample/clients/client4.png"><h4>Brandon Grindatti</h4></li>
+<li class="span3"><img src="images/sample/clients/client5.png"><h4>Colton Jenkins</h4></li>
+</ul>
+</div>
+</div>
+ 
+</div>
+ 
+</div>
+</div>
+</div>
+</div>
+</section>
+
 <!--Footer-->
  <?php //echo $middle;?>
 <!--/Footer-->
