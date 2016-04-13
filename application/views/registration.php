@@ -51,7 +51,7 @@
           <ul class="breadcrumb pull-right">
             <li><a href="index.html">Home</a> <span class="divider">/</span></li>
             
-            <li class="active">Registration</li>
+            <li class="active">{Registration}</li>
           </ul>
         </div>
       </div>
