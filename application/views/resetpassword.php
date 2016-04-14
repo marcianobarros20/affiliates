@@ -44,7 +44,7 @@
     <div class="container">
       <div class="row-fluid">
         <div class="span6">
-          <h1>Reset Password</h1>
+          <h1>{Reset Password}</h1>
         </div>
         <div class="span6">
           <ul class="breadcrumb pull-right">
@@ -62,7 +62,7 @@
   <section id="forget-password" class="container">
  
         <div class='text-center'><h4><?php if($this->session->userdata('err_msg')!=''){ echo '<span class="error">'.$this->session->userdata('err_msg').'</span>'; $this->session->set_userdata('err_msg','');} 
-if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg','');}?>
+if($this->session->userdata('succ_msg')!=''){ echo '<font color="green">'.$this->session->userdata('succ_msg').'</font>';$this->session->set_userdata('succ_msg','');}?>
 </h4></div>
        
     <form class="center"  method="POST" id='reset_form'>
@@ -104,7 +104,7 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
   <!-- /#registration-page -->
 
 <!--Bottom-->
-
+<br><br>
 <!--/bottom-->
 
 <!--Footer-->
