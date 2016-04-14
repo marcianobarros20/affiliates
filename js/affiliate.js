@@ -362,21 +362,6 @@ function show_child_tier0(uid)
 
 
 
-function description(uid)
-{
-   var res= $.ajax({
-                  type : 'post',
-                  url : 'Ajax/Fngetdetails',
-                  data : 'uid='+uid,
-                  async : false,
-                  success : function(msg)
-                   {
-                       //alert(msg);
-                       $('#chkline').html(msg);
-
-                   }
-                  });
-}
 
 
 function change_course_status(action,courseid)

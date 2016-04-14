@@ -26,3 +26,19 @@ $('.param_'+parent).html(' - ');
  
     
 });
+
+  function description(uid)
+{
+   var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/Fngetdetails',
+                  data : 'uid='+uid,
+                  async : false,
+                  success : function(msg)
+                   {
+                       //alert(msg);
+                       $('#chkline').html(msg);
+
+                   }
+                  });
+}
