@@ -52,27 +52,6 @@ class Courses extends CI_Controller {
 		}
 	}
 
-	public function manage_course()
-	{
-		if (!$this->session->userdata('adminid'))
-		{
-			redirect(base_url()."admin/welcome/login");
-			
-		}
-
-		else
-		{	
-			$data['header']=$this->load->view('admin/includes/header','',true);
-			$data['footer']=$this->load->view('admin/includes/footer','',true);
-			$data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
-			$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
-			
-         
- 
-			$data['course_list']=$this->Common_model->fetchallcources();
-			$this->load->view('admin/manage_course.php',$data);
-		}
-	}
 
 	public function edit_class_and_course()
 	{
@@ -118,6 +97,43 @@ class Courses extends CI_Controller {
 		}
 	}
 
+	public function show_class_according_course()
+    {
+    	
+
+
+    	if (!$this->session->userdata('adminid'))
+		{
+			redirect(base_url()."admin/welcome/login");
+			
+		}
+
+		else
+		{	
+			$class_info='';
+			if($_POST)
+			{
+			
+			if($this->input->post('course_id')!='')
+			{
+				$con=array('course_id'=>$this->input->post('course_id'));
+				$class_info=$this->Common_model->fetchinfo('class',$con,'result');
+			}
+			}
+
+			$data['header']=$this->load->view('admin/includes/header','',true);
+			$data['footer']=$this->load->view('admin/includes/footer','',true);
+			$data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
+			$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
+			$data['class_info']=$class_info;	
+         
+ 
+			$data['couse_list']=$this->Common_model->fetchallcources();
+			$this->load->view('admin/add_course',$data);
+		}
+    }
+
+    
 	
 }
 

@@ -18,7 +18,6 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="admin_support/dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="admin_support/dist/css/style.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="admin_support/plugins/iCheck/flat/blue.css">
     <!-- Morris chart -->
@@ -38,6 +37,9 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- jQuery 2.1.4 -->
+    <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/affiliate.js"></script>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
@@ -46,13 +48,15 @@
      <?php echo $header;?>
       <!-- Left side column. contains the logo and sidebar -->
       <?php echo $leftsidebar;?>
+      
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content">
-        <div class="row">
-            <div class="col-sm-6">
+            <div class="row">
+
+                <div class="col-sm-6">
                   <div class="box">
                     <div class="box-header">
                       <h3 class="box-title">List Of Courses </h3>
@@ -201,19 +205,20 @@
 
                   </div>
                 </div> 
-             
-          </div>
+
+
+            </div>
           </section>
       </div>
      <!-- footer -->
      <?php echo $footer;?>
      <!-- footer -->
 
-
+       <?php echo $rightsidebar;?>
 
       <!-- Control Sidebar -->
 
-      <?php echo $rightsidebar;?>
+
       <!-- /.control-sidebar -->
 
 
@@ -223,8 +228,7 @@
       <div class="control-sidebar-bg"></div>
     </div><!-- ./wrapper -->
 
-    <!-- jQuery 2.1.4 -->
-    <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
