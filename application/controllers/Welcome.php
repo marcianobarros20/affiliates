@@ -318,7 +318,7 @@ class Welcome extends CI_Controller
 	            	$msg.="<br><br>Thanks Tier5 Team";
 	            	$sub="Reset Password";
 					
-		           $mail=$this->utility->sendMail($to,$sub,$msg);
+		           $mail=$this->utility->sendMail($email,$sub,$msg);
 					if ($mail)
 					{
 						$this->session->set_userdata('succ_msg','Check Your Email Id To Reset Password');
