@@ -243,16 +243,30 @@ Why do you want to be a Tier5 Affiliate?
 
         <div class="span3">
             <h4>Our Address</h4>
+            <p>Tier5 currently has 3 Locations</p>
             
             <p>
-                <i class="icon-map-marker pull-left"></i> 2789 N Newman Rd, Lexington IN, 47138<br>
+                <i class="icon-map-marker pull-left"></i> Main Office<br>
+Indiana, United States<br>
+                
+            </p>
+
+            <p>
+                <i class="icon-map-marker pull-left"></i> Branch Office<br>
+Maryland, United States<br>
+                
+            </p>
+
+            <p>
+                <i class="icon-map-marker pull-left"></i>Development HQ<br>
+Kolkata, India<br>
                 
             </p>
             <p>
                 <i class="icon-envelope"></i> &nbsp;hello@tier5.us
             </p>
             <p>
-                <i class="icon-phone"></i> &nbsp;+812 722 4722
+                <i class="icon-phone"></i> &nbsp; +1(812)-722-4722
             </p>
             <p>
                 <i class="icon-globe"></i> &nbsp;http://www.tier5.us
@@ -261,6 +275,42 @@ Why do you want to be a Tier5 Affiliate?
 
     </div>
 
+</section>
+
+
+<section id="clients" class="main">
+<div class="container">
+<div class="row-fluid">
+<div class="span2">
+<div class="clearfix">
+<h4 class="pull-left"> Recent Affililates</h4>
+<div class="pull-right">
+<a class="prev" href="#myCarousel" data-slide="prev"><i class="icon-angle-left icon-large"></i></a> <a class="next" href="#myCarousel" data-slide="next"><i class="icon-angle-right icon-large"></i></a>
+</div>
+</div>
+<p>These are just a few of the recent Affilates to join the Tier5 Affiliate Program. Start your career in the Tech Industry and become an affiliate today.</p>
+</div>
+<div class="span10">
+<div id="myCarousel" class="carousel slide clients">
+ 
+<div class="carousel-inner">
+<div class="active item">
+<div class="row-fluid">
+<ul class="thumbnails">
+<li class="span3"><img src="images/sample/clients/client3.png"><h4>Robert Liews</h4></li>
+<li class="span3"><img src="images/sample/clients/client2.png"><h4>David Phaire</h4></li>
+<li class="span3"><img src="images/sample/clients/client4.png"><h4>Brandon Grindatti</h4></li>
+<li class="span3"><img src="images/sample/clients/client5.png"><h4>Colton Jenkins</h4></li>
+</ul>
+</div>
+</div>
+ 
+</div>
+ 
+</div>
+</div>
+</div>
+</div>
 </section>
 
 <!--Footer-->

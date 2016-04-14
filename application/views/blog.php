@@ -40,7 +40,7 @@
         <div class="container">
             <div class="row-fluid">
                 <div class="span6">
-                    <h1>Blog</h1>
+                    <h1>{Blog}</h1>
                 </div>
                 <div class="span6">
                     <ul class="breadcrumb pull-right">

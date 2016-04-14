@@ -8,12 +8,19 @@
 	display:none;
 
 }
+.addr_class
+{
+	width:94%;
+}
 .Information_div
 {
 	background: white none repeat scroll 0 0 !important;
     border: 2px solid rgba(0, 0, 0, 0.3) !important;
     border-radius: 14px !important;
-    width:28%;
+    padding: 10px;
+	text-align: center;
+	width: 27%;
+	float: left;
 }
 
 .team
