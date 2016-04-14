@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/sl-slide.css">
 
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="images/ico/favicon.ico">
@@ -26,125 +26,13 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.5"></script>
     <link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
-     <script type="text/javascript" src="js/affiliate.js"></script>
-<!-- jessore slider starts -->
-<script type="text/javascript" src="js/jssor.slider.min.js"></script>
-    <!-- use jssor.slider.debug.js instead for debug -->
-
-    <script>
-        jssor_1_slider_init = function() {
-            
-            var jssor_1_options = {
-              $AutoPlay: false,
-              $AutoPlaySteps: 4,
-              $SlideDuration: 160,
-              $SlideWidth: 200,
-              $SlideSpacing: 3,
-              $Cols: 4,
-              $ArrowNavigatorOptions: {
-                $Class: $JssorArrowNavigator$,
-                $Steps: 4
-              },
-              $BulletNavigatorOptions: {
-                $Class: $JssorBulletNavigator$,
-                $SpacingX: 1,
-                $SpacingY: 1
-              }
-            };
-            
-            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
-            
-            //responsive code begin
-            //you can remove responsive code if you don't want the slider scales while window resizing
-            function ScaleSlider() {
-                var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
-                if (refSize) {
-                    refSize = Math.min(refSize, 809);
-                    jssor_1_slider.$ScaleWidth(refSize);
-                }
-                else {
-                    window.setTimeout(ScaleSlider, 30);
-                }
-            }
-            ScaleSlider();
-            $Jssor$.$AddEvent(window, "load", ScaleSlider);
-            $Jssor$.$AddEvent(window, "resize", ScaleSlider);
-            $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
-            //responsive code end
-        };
-    </script>
-
-    <style>
-
-        
-        /* jssor slider bullet navigator skin 03 css */
-        /*
-        .jssorb03 div           (normal)
-        .jssorb03 div:hover     (normal mouseover)
-        .jssorb03 .av           (active)
-        .jssorb03 .av:hover     (active mouseover)
-        .jssorb03 .dn           (mousedown)
-        */
-        .jssorb03 {
-            position: absolute;
-        }
-        .jssorb03 div, .jssorb03 div:hover, .jssorb03 .av {
-            position: absolute;
-            /* size of bullet elment */
-            width: 21px;
-            height: 21px;
-            text-align: center;
-            line-height: 21px;
-            color: white;
-            font-size: 12px;
-            background: url('img/b03.png') no-repeat;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        .jssorb03 div { background-position: -5px -4px; }
-        .jssorb03 div:hover, .jssorb03 .av:hover { background-position: -35px -4px; }
-        .jssorb03 .av { background-position: -65px -4px; }
-        .jssorb03 .dn, .jssorb03 .dn:hover { background-position: -95px -4px; }
-
-        /* jssor slider arrow navigator skin 03 css */
-        /*
-        .jssora03l                  (normal)
-        .jssora03r                  (normal)
-        .jssora03l:hover            (normal mouseover)
-        .jssora03r:hover            (normal mouseover)
-        .jssora03l.jssora03ldn      (mousedown)
-        .jssora03r.jssora03rdn      (mousedown)
-        */
-        .jssora03l, .jssora03r {
-            display: block;
-            position: absolute;
-            /* size of arrow element */
-            width: 55px;
-            height: 55px;
-            cursor: pointer;
-            background: url('img/a03.png') no-repeat;
-            overflow: hidden;
-        }
-        .jssora03l { background-position: -3px -33px; }
-        .jssora03r { background-position: -63px -33px; }
-        .jssora03l:hover { background-position: -123px -33px; }
-        .jssora03r:hover { background-position: -183px -33px; }
-        .jssora03l.jssora03ldn { background-position: -243px -33px; }
-        .jssora03r.jssora03rdn { background-position: -303px -33px; }
+     
+     <script type="text/javascript" src="js/frame.js"></script>
 
 
-        .comment
-        {
-            width: 150px;
-           
-            
-        }
-    </style>
-
-<!-- jessore slider ends -->
 
 <script src="js/vendor/bootstrap.min.js"></script>
 </head>
@@ -290,10 +178,6 @@
 <!--Footer-->
   <?php echo $footer;?>
 <!--/Footer-->
-
- <script>
-        jssor_1_slider_init();
-    </script>
 
 
 
