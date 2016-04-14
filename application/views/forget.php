@@ -64,14 +64,16 @@
     </div>
   </section>
   <!-- / .title -->       
-
+ 
   <section id="forget-password" class="container">
  
-         
+         <div class='text-center'><h4><?php if($this->session->userdata('err_msg')!=''){ echo '<span class="error">'.$this->session->userdata('err_msg').'</span>'; $this->session->set_userdata('err_msg','');} 
+if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg','');}?>
+</h4></div>
        
     <form class="center"  method="POST" id='forget_form'>
       <fieldset class="registration-form">
-          <div><?php if($this->session->userdata('err_msg')!=" "){echo $this->session->userdata('err_msg'); $this->session->set_userdata('err_msg'," ");} ?></div>
+        
         <div class="control-group">
           <!-- E-mail -->
           <div class="controls">

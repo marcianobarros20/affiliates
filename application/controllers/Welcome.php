@@ -312,29 +312,21 @@ class Welcome extends CI_Controller
 	            	$token= md5($email);
 	            	$token.="-".$get_userid;
 	            	
-	            	$msg='Hi '. $name .'!! <br> You Want To Reset Your Password<br> ';
+	            	$msg='Hi '. $name .'!! <br>To Reset Your Password Please Click on The below Link.<br> ';
 	            	
 	            	$msg.="<a href='".base_url()."welcome/resetpassword/".$token."'>Click Here To Reset</a>";
 	            	$msg.="<br><br>Thanks Tier5 Team";
-	            	//echo $msg; 
-               
-	                $this->email->from('hello@tier5.us'); 
-			        $this->email->to($email); 
-			        
-			        $this->email->subject('Reset Password For Tier5 Affiliation Program');
-					$this->email->message($msg);
-			
-					$mail=$this->email->send();
+	            	$sub="Reset Password";
 					
-		           
+		           $mail=$this->utility->sendMail($to,$sub,$msg);
 					if ($mail)
 					{
 						$this->session->set_userdata('succ_msg','Check Your Email Id To Reset Password');
-						redirect(base_url().'welcome');
+						redirect(base_url().'welcome/forget');
 					}
 					else
 					{
-						$this->session->set_userdata('err_msg','Sorry! ');
+						$this->session->set_userdata('err_msg','Sorry! Mail Sending failed ');
 						redirect(base_url().'welcome/forget');
 					}
 	             	
@@ -587,11 +579,12 @@ class Welcome extends CI_Controller
 			        		$update_password=$this->Common_model->update('users',$con,$update);
 			        		if($update_password)
 			        		{
-			        			echo "done";
+			        			$this->session->set_userdata('succ_msg','Password Change Successfully.');
 			        		}
 			        		else
 			        		{
-			        			echo "Not Done";
+			        			
+			        			$this->session->set_userdata('err_msg','Error occured while changing password.');
 			        		}
 			        	}
 			        	else
