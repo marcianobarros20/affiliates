@@ -579,7 +579,7 @@ class Welcome extends CI_Controller
 			        		$update_password=$this->Common_model->update('users',$con,$update);
 			        		if($update_password)
 			        		{
-			        			$this->session->set_userdata('succ_msg','Password Change Successfully.');
+			        			$this->session->set_userdata('succ_msg','Reset Password Done Successfully.');
 			        		}
 			        		else
 			        		{
