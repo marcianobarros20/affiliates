@@ -119,14 +119,14 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
           <!-- state -->
           <div class="controls">
           
-           <select name='state' class="input-xlarge required" id='state'>
+           <select name='state' class="input-xlarge required wid_49" id='state'>
            <option value=''>Select State</option>
            <?php foreach($states as $sts):?>
             <option value='<?php echo $sts['id'];?>'><?php echo $sts['name'];?></option>
            <?php endforeach;?>
            </select>
            <!-- end state -->
-           <select name='city' class="input-xlarge required" id='city'>
+           <select name='city' class="input-xlarge required wid_50" id='city'>
            <option value=''>Select City</option>
            
            </select>

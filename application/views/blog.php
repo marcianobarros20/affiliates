@@ -302,7 +302,7 @@
 
 </section>
 <!--Bottom-->
-<?php echo $middle;?>
+
 <!--/Bottom-->
 
 
