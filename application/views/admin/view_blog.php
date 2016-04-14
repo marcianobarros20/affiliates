@@ -78,7 +78,7 @@
   if($single_blog['media_type']==1)
               {
                 ?>
-                 <img src="<?php echo base_url();?>blog_file/original/<?php echo $single_blog['media'];?>"  alt="blog_image" >
+                 <img src="<?php echo base_url();?>blog_file/original/<?php echo $single_blog['media'];?>" alt="blog_image" >
                 
                 <?php
               }
