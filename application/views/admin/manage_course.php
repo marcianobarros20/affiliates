@@ -66,7 +66,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach($course_list as $value) {?>
+                                        <?php foreach($course_list as $value) { ?>
                                         <tr>
                                             
                                             <td><?php echo $value['courses_name'] ?></td>
@@ -96,6 +96,7 @@
         <!-- footer -->
         <?php echo $footer;?>
         <!-- footer -->
+          <?php echo $rightsidebar;?>
         <div class="control-sidebar-bg"></div>
     </div><!-- ./wrapper -->
 

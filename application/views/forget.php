@@ -51,12 +51,12 @@
     <div class="container">
       <div class="row-fluid">
         <div class="span6">
-          <h1>Forgot Password</h1>
+          <h1>{Forgot Password}</h1>
         </div>
         <div class="span6">
           <ul class="breadcrumb pull-right">
-            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-            <li><a href="#">LOGIN FORM</a> <span class="divider">/</span></li>
+            <li><a href="<?php echo base_url();?>">Home</a> <span class="divider">/</span></li>
+            <li><a href="#loginForm" data-toggle="modal">LOGIN FORM</a> <span class="divider">/</span></li>
             <li class="active">Forgot your password?</li>
           </ul>
         </div>
@@ -93,7 +93,16 @@
   <!-- /#registration-page -->
 
 <!--Bottom-->
-<?php echo $middle;?>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 <!--/bottom-->
 
 <!--Footer-->
