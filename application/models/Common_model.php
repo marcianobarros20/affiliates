@@ -54,7 +54,7 @@
         if(count($result) > 0)
         {
           $this->session->set_userdata('adminid',1);
-          $this->session->set_userdata('username',$result['name']);
+          $this->session->set_userdata('admin_username',$result['name']);
           return count($result);
         }
         else

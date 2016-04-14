@@ -55,33 +55,55 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">View Blog Details </h3><br>
+                 
                   <div class="box-tools">
                     <div style="width: 150px;" class="input-group">
-                   <a href="<?php echo base_url();?>admin/blog">Back</a>
+                   <a href="<?php echo base_url();?>admin/blog">  Back</a>
                   </div>
                 </div><!-- /.box-header -->
-              <div>
-              <?php 
+             
+             
+              <!-- container -->
+              <div class="container-fluid bg-1 text-center">
+ <h3 class="box-title">View Blog Details </h3>
+  
+</div>
 
-              echo "Title: ".$single_blog['title'].'<br>';
-              echo "Description: ".$single_blog['description'].'<br>';
-              echo '<br>';
-              if($single_blog['media_type']==1)
+
+
+
+<div class="media">
+  <div class="media-left media-middle">
+    <?php
+  if($single_blog['media_type']==1)
               {
                 ?>
-
-                <img src="<?php echo base_url();?>blog_file/original/<?php echo $single_blog['media'];?>" alt="image">
+                 <img src="<?php echo base_url();?>blog_file/original/<?php echo $single_blog['media'];?>" class="img-rectangle img-responsive" alt="blog_image" >
+                
                 <?php
               }
               else
               {?>
-                <source src="<?php echo base_url();?>blog_file/video/<?php echo $single_blog['media'];?>" type="video/mp4">
+             <object class="embed-responsive-item">
+     <video width='320' height='240' controls>
+       <source src="<?php echo base_url();?>blog_file/video/<?php echo $single_blog['media'];?>" width="100" height="100"/>
+     </video>
+   </object>
+               
               <?php }
-              
-
-
               ?>
+ 
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading"><?php echo $single_blog['title'];?></h4>
+   <?php echo $single_blog['description'];?>
+  </div>
+</div>
+
+              <!-- container -->
+
+
+
               </div>
               </div><!-- /.box -->
             </div>

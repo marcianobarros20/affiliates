@@ -58,10 +58,18 @@
     </div>
   </section>
   <!-- / .title -->       
+<?php if($this->session->userdata('succ_msg')!=''){?>
+<div class="alert alert-success">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Success!</strong> <?php echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg','');?>
+</div>
+} if($this->session->userdata('err_msg')!=''){ ?>
+<div class="alert alert-danger">
+  <strong>Error!</strong> <?php echo $this->session->userdata('err_msg'); $this->session->set_userdata('succ_msg','');?>
+</div>
 
- <div class='text-center'><h4><?php if($this->session->userdata('err_msg')!=''){ echo '<span class="error">'.$this->session->userdata('err_msg').'</span>'; $this->session->set_userdata('err_msg','');} 
-if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg','');}?>
-</h4></div>
+<?php }?>
+ 
     <div class='text-center'><span id='err_em' class='error text-center'></span>
     <span id='err_us' class='error text-center'></span></div>
  </h4>

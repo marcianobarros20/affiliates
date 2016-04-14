@@ -205,14 +205,14 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="admin_support/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                  <span class="hidden-xs"><?php echo $this->session->userdata('username');?></span>
+                  <span class="hidden-xs"><?php echo $this->session->userdata('admin_username');?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <img src="admin_support/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     <p>
-                     <?php echo $this->session->userdata('username');?>
+                     <?php echo $this->session->userdata('admin_username');?>
                      
                     </p>
                   </li>

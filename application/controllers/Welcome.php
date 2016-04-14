@@ -239,7 +239,7 @@ class Welcome extends CI_Controller
 		if($this->session->userdata('user_id')!='')
 		{
 			$data=array();
-
+			
 			$u_id=$this->session->userdata('user_id');
 			$con=array('uid'=>$u_id);
 			$con1=array('parent_id'=>$u_id);

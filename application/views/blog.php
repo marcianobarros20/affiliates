@@ -79,11 +79,14 @@
 
                       <img src="blog_file/original/<?php echo $blog['media'];?>" width="100%" alt="" />
                       <?php } else { ?>
-                      <video src="<?php echo $blog['media'];?>" controls>
-    <object data="<?php echo $blog['media'];?>" type="application/x-shockwave-flash">
-      <param value="<?php echo $blog['media'];?>" name="movie"/>
-    </object>
-</video>
+                     
+
+
+ <object class="embed-responsive-item">
+     <video width="100%" height="100%" controls>
+       <source src="<?php echo base_url();?>blog_file/video/<?php echo $blog['media'];?>" />
+     </video>
+   </object>
 
                       <?php } ?>
 
