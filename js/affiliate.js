@@ -63,7 +63,7 @@ if($(this).val()!='')
 
 }
 
-    $('.fancybox').fancybox();
+   
 
     });
  function change_status(param, param1)
