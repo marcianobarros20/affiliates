@@ -38,6 +38,46 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+     #pricing_div
+{
+
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.pricing_box_head
+{
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: black;
+    color: white;
+    border-radius: 15px 15px 0px 0px;
+
+
+}
+
+
+.pricing_box_body
+{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #202020;
+    color: white;
+}
+
+
+
+.pricing_box_foot
+{
+    padding-top:0px;
+    padding-bottom:0px;
+    color: white;
+     background-color:red;
+}
+
+    </style>
     <script type="text/javascript" src="js/affiliate.js"></script>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
@@ -52,10 +92,28 @@
         <!-- Content Header (Page header) -->
         <section class="content">
             <div class="row">
-           
-            
+              <!--<?php
+                  //foreach ($course_list as $value)
+                  {
+                    //echo"<div>";
+                    //echo $value['courses_name']; 
+                    //echo "</div>";
+                  }
+              ?>-->
+              <div class="col-sm-6">
 
+                  <div class="pricing_box_head">Course Name</div>
+                  <div class="pricing_box_body">
+                         Description
+                  </div>
+                  <div class="pricing_box_foot">
+                 class DEtails
+                  </div>
+              </div>
             </div>
+
+
+
         </section>
       </div>
      <!-- footer -->
