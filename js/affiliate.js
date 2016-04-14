@@ -4,8 +4,20 @@
        *  Simple image gallery. Uses default settings
        */
 
+$('#course_id').change(function(){
 
-     
+$('#show_class_div').submit();
+});
+
+$('#course_id_name').change(function(){
+
+$('#manage_class_div').submit();
+});
+
+
+
+
+
  $('#course_media').change(function(){
 
 if($(this).val()!='')
@@ -462,7 +474,89 @@ function delete_course(courseid)
                    }
                   });
 
-            }                                                                                                                                                                                                                                                                                                                                   
+            }  
 
 }
 
+function edit_class(courseid)
+  {
+    alert(courseid);
+  }          
+
+function delete_class(courseid)
+  {
+    var conf=confirm("You sure you want to Delete !");
+            if(conf)
+            {
+              
+              var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/delete_class',
+                  data : 'co_id='+courseid,
+                  async : false,
+                  success : function(msg)
+                   {
+
+                       if(msg)
+                       {
+                        window.location.reload();
+                       }
+
+                   }
+                  });
+
+            } 
+  }
+
+  function change_class_status(action,courseid)
+{
+   if(action=="Not Available")
+   {
+       var conf=confirm("You sure you want to make it Not Available !");
+            if(conf)
+            {
+              var status=1;
+              var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/change_class_status',
+                  data : 'cl_id='+courseid+'& status='+status,
+                  async : false,
+                  success : function(msg)
+                   {
+
+                       if(msg)
+                       {
+                        window.location.reload();
+                      }
+
+                   }
+                  });
+
+            }
+    }
+    else
+    {
+       var conf=confirm("You sure you want to make it Available !");
+            if(conf)
+            {
+              var status=0;
+              var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/change_class_status',
+                  data : 'cl_id='+courseid+'& status='+status,
+                  async : false,
+                  success : function(msg)
+                   {
+
+                       if(msg)
+                       {
+                        window.location.reload();
+                      }
+
+                   }
+                  });
+
+            }
+
+    }
+}          

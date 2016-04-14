@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Welcome extends CI_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -18,7 +19,7 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	 	public function __construct()
+	public function __construct()
 	{
 		parent::__construct();
 		
@@ -29,10 +30,8 @@ class Welcome extends CI_Controller {
 		$this->load->library('utility');
 	}
 
-	
 	public function index()
 	{
-		
 		$data=array();
 		$referlcode=$this->input->get_post('aid');
 		if($referlcode)
@@ -46,12 +45,9 @@ class Welcome extends CI_Controller {
 		}
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
-		
-
 		$this->load->view('index',$data);
 	}
 
-	
 	public function signup()
 	{
 		$data=array();
@@ -81,74 +77,70 @@ class Welcome extends CI_Controller {
 			$this->form_validation->set_rules('password_confirm', 'Confirm Password', 'required');
 			if ($this->form_validation->run() == TRUE)
 			{
-			  $email=$this->input->post('email');
-			  $username=$this->input->post('username');
+				$email=$this->input->post('email');
+				$username=$this->input->post('username');
 
-			  $chk_email_exists=$this->Common_model->Fnemailexists($email);	
-			  $chk_user_exists=$this->Common_model->Fnuserxists($username);	
-			  if($chk_email_exists==0 && $chk_user_exists==0)
-			  {
-			  $ins['fname']=$this->input->post('fname');
-			  $ins['lname']=$this->input->post('lname');
-			  $ins['username']=$this->input->post('username');
-			  $ins['email']=$this->input->post('email');
-			  $ins['password']=md5($this->input->post('password'));
-			  $ins['country_id']=231;
-			  $ins['state_id']=$this->input->post('state');
-			  $ins['city_id']=$this->input->post('city');
-			  $ins['address']=$this->input->post('address');
-			  $ins['latitude']=$this->input->post('lattitude');
-			  $ins['longitude']=$this->input->post('longitude');
+				$chk_email_exists=$this->Common_model->Fnemailexists($email);	
+			    $chk_user_exists=$this->Common_model->Fnuserxists($username);	
+			    if($chk_email_exists==0 && $chk_user_exists==0)
+				{
+					$ins['fname']=$this->input->post('fname');
+					$ins['lname']=$this->input->post('lname');
+					$ins['username']=$this->input->post('username');
+					$ins['email']=$this->input->post('email');
+					$ins['password']=md5($this->input->post('password'));
+					$ins['country_id']=231;
+					$ins['state_id']=$this->input->post('state');
+					$ins['city_id']=$this->input->post('city');
+					$ins['address']=$this->input->post('address');
+					$ins['latitude']=$this->input->post('lattitude');
+					$ins['longitude']=$this->input->post('longitude');
 			  
-			  if($ref_id!='')
-			  {
-			  	$get_explode=explode('-',$ref_id);
-			  	$ins['parent_id']=$get_explode[2];
-			  	$ins['refferalparent']=$ref_id;
-			  	$ins['status']=1;
-			  	
-			  }
-			  else
-			  	{
-			  		$ins['status']=0;
-			 	}
-			  $ins['date_register']=date('Y-m-d');
-			  $insert=$this->Common_model->insert('users',$ins);
-			  if($insert)
-			  {
+					if($ref_id!='')
+			  		{
+			  			$get_explode=explode('-',$ref_id);
+			  			$ins['parent_id']=$get_explode[2];
+			  			$ins['refferalparent']=$ref_id;
+			  			$ins['status']=1;
+			  		}
+			  		else
+			  		{
+			  			$ins['status']=0;
+			 		}
+			 		$ins['date_register']=date('Y-m-d');
+			 		$insert=$this->Common_model->insert('users',$ins);
+			  		if($insert)
+			 	    {
 			  	//echo $insert;exit;
-			  		if($ref_id!='')
-			        {
-			        	$con2=array('uid'=>$insert);
-			        	$update['refferalcode']='Ref-'.time().'-'.$insert;
-			        	$this->Common_model->update('users',$con2,$update);
-			        }
-
-
-			  	$cookie_ref= array(
+			  			if($ref_id!='')
+			        	{
+				        	$con2=array('uid'=>$insert);
+				        	$update['refferalcode']='Ref-'.time().'-'.$insert;
+				        	$this->Common_model->update('users',$con2,$update);
+			        	}
+			  			$cookie_ref= array(
 						'name'   => 'reffrence_id',
 						'value'  => '',
 						'expire' => '604800',
 						);
-					$this->input->set_cookie($cookie_ref);			
-			  		$this->session->set_userdata('succ_msg','You Have successfully registered with us.please log in now.');
-			  		//redirect(base_url().'index.php/welcome/register');
-			  redirect(base_url().'welcome/register');
-			  }
-			 }
-			 else
-			 {
-			 	if($chk_email_exists>0)
+						$this->input->set_cookie($cookie_ref);			
+			  			$this->session->set_userdata('succ_msg','You Have successfully registered with us.please log in now.');
+			  			//redirect(base_url().'index.php/welcome/register');
+			  			redirect(base_url().'welcome/register');
+			  		}
+			 	}
+			 	else
 			 	{
-			 	$this->session->set_userdata('err_msg','Email Address Already Exists.');
-			    }
-			    if($chk_user_exists>0)
-			    {
-			    	$this->session->set_userdata('err_msg','Username Already Exists.');
-			    }
-				//redirect(base_url().'index.php/welcome/register');
-			redirect(base_url().'welcome/register');
-			 }
+			 		if($chk_email_exists>0)
+			 		{
+			 			$this->session->set_userdata('err_msg','Email Address Already Exists.');
+			   		}
+			    	if($chk_user_exists>0)
+			    	{
+			    		$this->session->set_userdata('err_msg','Username Already Exists.');
+			    	}
+					redirect(base_url().'welcome/register');
+			 	}
 			  
 			}
 			else
@@ -164,9 +156,9 @@ class Welcome extends CI_Controller {
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
 		//$data['middle']=$this->load->view('includes/middle','',true);
-		$this->load->view('registration',$data);
-		
+		$this->load->view('registration',$data);	
 	}
+
     public function login()
 	{
 		if($_POST)
@@ -246,19 +238,18 @@ class Welcome extends CI_Controller {
 	{
 		if($this->session->userdata('user_id')!='')
 		{
+			$data=array();
 
-		$data=array();
+			$u_id=$this->session->userdata('user_id');
+			$con=array('uid'=>$u_id);
+			$con1=array('parent_id'=>$u_id);
+			$data['fetch_child']=$this->Common_model->fetchinfo('users',$con1,'result');
+			$data['fetch_allinfo']=$this->Common_model->fetchinfo('users',$con,'row');
+			$data['header']=$this->load->view('includes/header','',true);
+			$data['footer']=$this->load->view('includes/footer','',true);
+			$data['middle']=$this->load->view('includes/middle','',true);
 
-		$u_id=$this->session->userdata('user_id');
-		$con=array('uid'=>$u_id);
-		$con1=array('parent_id'=>$u_id);
-		$data['fetch_child']=$this->Common_model->fetchinfo('users',$con1,'result');
-		$data['fetch_allinfo']=$this->Common_model->fetchinfo('users',$con,'row');
-		$data['header']=$this->load->view('includes/header','',true);
-		$data['footer']=$this->load->view('includes/footer','',true);
-		$data['middle']=$this->load->view('includes/middle','',true);
-
-		$this->load->view('dashboard',$data);
+			$this->load->view('dashboard',$data);
 		}
 		else
 		{
@@ -273,21 +264,21 @@ class Welcome extends CI_Controller {
 		$this->session->set_userdata('username','');
 		$this->session->set_userdata('succ_msg','You have successfully Logout.');
 		redirect();
-                exit();
+        exit();
 	}
 
     public function editprofile()
 	{
 		if($this->session->userdata('user_id'))
 		{
-		$u_id=$this->session->userdata('user_id');
-		$con=array('uid'=>$u_id);
-		$data['states']=$this->Common_model->fetchinfo('states',array('country_id'=>231),'result');
-		$data['fetch_allinfo']=$this->Common_model->fetchinfo('users',$con,'row');
-		$data['header']=$this->load->view('includes/header','',true);
-		$data['footer']=$this->load->view('includes/footer','',true);
-		$data['middle']=$this->load->view('includes/middle','',true);
-		$this->load->view('edit_profile',$data);
+			$u_id=$this->session->userdata('user_id');
+			$con=array('uid'=>$u_id);
+			$data['states']=$this->Common_model->fetchinfo('states',array('country_id'=>231),'result');
+			$data['fetch_allinfo']=$this->Common_model->fetchinfo('users',$con,'row');
+			$data['header']=$this->load->view('includes/header','',true);
+			$data['footer']=$this->load->view('includes/footer','',true);
+			$data['middle']=$this->load->view('includes/middle','',true);
+			$this->load->view('edit_profile',$data);
 		}
 		else
 		{
@@ -357,15 +348,10 @@ class Welcome extends CI_Controller {
 	            $this->session->set_userdata('err_msg','Please Enter A Proper Email Id.');
 	        }
         }
-        
-
 		$data['header']=$this->load->view('includes/header','',true);
 		$data['footer']=$this->load->view('includes/footer','',true);
 		$data['middle']=$this->load->view('includes/middle','',true);
-		$this->load->view('forget',$data);
-        
-       
-        
+		$this->load->view('forget',$data);       
 	}
 
 
@@ -407,21 +393,21 @@ class Welcome extends CI_Controller {
 					else
 					{
 					
-					$updata=array();//get the uploaded data details
-					$updata = $this->upload->data();				
-					$f_resize=$updata['file_name'];
+						$updata=array();//get the uploaded data details
+						$updata = $this->upload->data();				
+						$f_resize=$updata['file_name'];
+							
+						$config['image_library'] = 'gd2';
+						$config['thumb_marker']='';
+						$config['create_thumb'] = TRUE;
+						$config['maintain_ratio'] = False;
+						$config['height']=150;
+						$config['width']=220;
+						$config['new_image'] = './profile_img/thumb/'.$f_resize;
+						$config['source_image']="./profile_img/".$f_resize;
 						
-					$config['image_library'] = 'gd2';
-					$config['thumb_marker']='';
-					$config['create_thumb'] = TRUE;
-					$config['maintain_ratio'] = False;
-					$config['height']=150;
-					$config['width']=220;
-					$config['new_image'] = './profile_img/thumb/'.$f_resize;
-					$config['source_image']="./profile_img/".$f_resize;
-					
-					$this->image_lib->initialize($config);
-					$this->image_lib->resize();
+						$this->image_lib->initialize($config);
+						$this->image_lib->resize();
 					
 			           
 					}
@@ -429,12 +415,9 @@ class Welcome extends CI_Controller {
 				}
 				else
 				{
-				$this->session->set_userdata('err_msg','Profile updation failed due to violation of maintain of recomended image size');
-		    	redirect(base_url().'welcome/editprofile');
+					$this->session->set_userdata('err_msg','Profile updation failed due to violation of maintain of recomended image size');
+			    	redirect(base_url().'welcome/editprofile');
 				}
-	
-
-				
 			}
 /* image upload end */
 
@@ -673,10 +656,8 @@ class Welcome extends CI_Controller {
 			$description=$this->input->post('new_class_description');
 			$media_type=$this->input->post('course_media');
 			    
-					if(trim($course_id) &&  trim($new_class_name) && trim($description) && trim($media_type)!='')
-		            {
-		            	
-
+			if(trim($course_id) &&  trim($new_class_name) && trim($description) && trim($media_type)=='')
+		    {
 		            $data['course_id']=$course_id;
 		            $data['cl_name']=$new_class_name;
 		            $data['description']=$description;
@@ -692,14 +673,11 @@ class Welcome extends CI_Controller {
 		            	    $this->session->set_userdata('err_msg',"Try Again");
 		                    redirect(base_url().'admin/courses/add_class_and_course');
 		                }
-
-		            }
-				
-		}
-		else
-		{
-			redirect(base_url().'admin/courses/add_class_and_course');
-		}	
-	}
-
+		    }	
+			else
+			{
+				redirect(base_url().'admin/courses/add_class_and_course');
+			}	
+	    }
+    }
 }
