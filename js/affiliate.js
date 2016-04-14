@@ -9,10 +9,6 @@ $('#course_id').change(function(){
 $('#show_class_div').submit();
 });
 
-$('#course_id_name').change(function(){
-
-$('#manage_class_div').submit();
-});
 
 
 

@@ -113,7 +113,7 @@ class Courses extends CI_Controller {
 			$class_info='';
 			if($_POST)
 			{
-			
+		
 			if($this->input->post('course_id')!='')
 			{
 				$con=array('course_id'=>$this->input->post('course_id'));

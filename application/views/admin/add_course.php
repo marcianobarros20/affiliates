@@ -38,6 +38,7 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
     <script type="text/javascript" src="js/affiliate.js"></script>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
@@ -124,7 +125,7 @@
 
                     <div class="box-body">
                       <lebel>Select Course Name <lebel>
-                        <form role="form" method="post" action="admin/courses/show_class_according_course" name="show_class_div" id="show_class_div" enctype="multipart/form-data">
+                        <form role="form" method="post" action="admin/courses/show_class_according_course" name="show_class_div" id="show_class_div">
                             <select id="course_id" name="course_id" class="form-control required">
                                       <option value="">--Select--</option>
                                       <?php foreach($couse_list as $value)
@@ -224,7 +225,7 @@
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+        <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
