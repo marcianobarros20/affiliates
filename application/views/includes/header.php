@@ -33,17 +33,20 @@
                                 <li><a href="<?php echo base_url();?>index.php/Contents/terms">Terms of Use</a></li>
                             </ul>
                         </li>  -->
-                      <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='blog'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>Contents/blog"><?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='blog'){?> {Blog} <?php } else { ?> Blog <?php }?></a></li>
+                   <!--    <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='blog'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>Contents/blog"><?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='blog'){?> {Blog} <?php } else { ?> Blog <?php }?></a></li> -->
                         <?php } else { ?>
                         <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='dashboard'){ echo 'class="active"';} ?>><a href="<?php echo base_url()?>welcome/dashboard" > <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='dashboard'){?> {Dashboard} <?php } else { ?> Dashboard <?php }?> </a></li>
 
                         <?php } ?>
 
-                        
+                      
                         <li class="login">
-                        <?php if($this->session->userdata('user_id')==''){ ?>
-                 
+                      
+                    <?php if( $this->input->cookie('reffrence_id')!='' && $this->session->userdata('user_id')=='')
+                            { ?>
                         <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='register'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>welcome/register"><?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='register'){?>{Sign Up}<?php } else { ?> Sign Up <?php }?></a></li>
+                            <?php }?>  
+                             <?php if($this->session->userdata('user_id')==''){ ?>
                                <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='contact'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>welcome/contact"><?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='contact'){?>{Get Started}<?php } else { ?> Get Started <?php }?></a></li>
                             <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
                         <?php } else { ?>
