@@ -57,13 +57,14 @@
       </div>
     </div>
   </section>
-  <!-- / .title -->       
+  <!-- / .title -->  
+  <br>     
 <?php if($this->session->userdata('succ_msg')!=''){?>
 <div class="alert alert-success">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>Success!</strong> <?php echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg','');?>
 </div>
-} if($this->session->userdata('err_msg')!=''){ ?>
+<?php } if($this->session->userdata('err_msg')!=''){ ?>
 <div class="alert alert-danger">
   <strong>Error!</strong> <?php echo $this->session->userdata('err_msg'); $this->session->set_userdata('succ_msg','');?>
 </div>
