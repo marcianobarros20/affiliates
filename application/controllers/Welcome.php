@@ -34,6 +34,7 @@ class Welcome extends CI_Controller
 	{
 		$data=array();
 		$referlcode=$this->input->get_post('aid');
+		$data['set_code']='';
 		if($referlcode)
 		{
 						$cookie_ref= array(
@@ -41,9 +42,10 @@ class Welcome extends CI_Controller
 						'value'  => $referlcode,
 						'expire' => '604800',
 						);
-		$this->input->set_cookie($cookie_ref);			
+		$this->input->set_cookie($cookie_ref);	
+		$data['set_code']=$referlcode;		
 		}
-		$data['header']=$this->load->view('includes/header','',true);
+		$data['header']=$this->load->view('includes/header',$data,true);
 		$data['footer']=$this->load->view('includes/footer','',true);
 		$this->load->view('index',$data);
 	}
@@ -59,9 +61,11 @@ class Welcome extends CI_Controller
 	public function register()
 	{
 		$ref_id='';
+		$data['set_code']='';
 		if($this->input->cookie('reffrence_id')!='')
 		{
 			$ref_id=$this->input->cookie('reffrence_id');
+			$data['set_code']=$ref_id;
 		}
 		
 		if($_POST)
@@ -153,7 +157,7 @@ class Welcome extends CI_Controller
 		$data['country']=$this->Common_model->fetchinfo('countries','','result');
 		$data['states']=$this->Common_model->fetchinfo('states',array('country_id'=>231),'result');
 		
-		$data['header']=$this->load->view('includes/header','',true);
+		$data['header']=$this->load->view('includes/header',$data,true);
 		$data['footer']=$this->load->view('includes/footer','',true);
 		//$data['middle']=$this->load->view('includes/middle','',true);
 		$this->load->view('registration',$data);	
@@ -239,13 +243,13 @@ class Welcome extends CI_Controller
 		if($this->session->userdata('user_id')!='')
 		{
 			$data=array();
-			
+			$data['set_code']='';
 			$u_id=$this->session->userdata('user_id');
 			$con=array('uid'=>$u_id);
 			$con1=array('parent_id'=>$u_id);
 			$data['fetch_child']=$this->Common_model->fetchinfo('users',$con1,'result');
 			$data['fetch_allinfo']=$this->Common_model->fetchinfo('users',$con,'row');
-			$data['header']=$this->load->view('includes/header','',true);
+			$data['header']=$this->load->view('includes/header',$data,true);
 			$data['footer']=$this->load->view('includes/footer','',true);
 			$data['middle']=$this->load->view('includes/middle','',true);
 
@@ -271,11 +275,14 @@ class Welcome extends CI_Controller
 	{
 		if($this->session->userdata('user_id'))
 		{
+			$data['set_code']='';
+	
+		
 			$u_id=$this->session->userdata('user_id');
 			$con=array('uid'=>$u_id);
 			$data['states']=$this->Common_model->fetchinfo('states',array('country_id'=>231),'result');
 			$data['fetch_allinfo']=$this->Common_model->fetchinfo('users',$con,'row');
-			$data['header']=$this->load->view('includes/header','',true);
+			$data['header']=$this->load->view('includes/header',$data,true);
 			$data['footer']=$this->load->view('includes/footer','',true);
 			$data['middle']=$this->load->view('includes/middle','',true);
 			$this->load->view('edit_profile',$data);
@@ -289,6 +296,9 @@ class Welcome extends CI_Controller
 	public function forget()
 	{
 		$data=array();
+		$data['set_code']='';
+		
+		
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 
         if($_POST)
@@ -340,7 +350,7 @@ class Welcome extends CI_Controller
 	            $this->session->set_userdata('err_msg','Please Enter A Proper Email Id.');
 	        }
         }
-		$data['header']=$this->load->view('includes/header','',true);
+		$data['header']=$this->load->view('includes/header',$data,true);
 		$data['footer']=$this->load->view('includes/footer','',true);
 		$data['middle']=$this->load->view('includes/middle','',true);
 		$this->load->view('forget',$data);       
@@ -349,6 +359,8 @@ class Welcome extends CI_Controller
 
 	public function update_profile()
 	{
+		
+		
 		$u_id=$this->session->userdata('user_id');
 		$con=array('uid'=>$u_id);
 		if($_POST)
@@ -544,8 +556,10 @@ class Welcome extends CI_Controller
          // redirect(base_url().'index.php/welcome/contact');
         }
     	}
+		$data['set_code']='';
 		
-		$data['header']=$this->load->view('includes/header','',true);
+		
+		$data['header']=$this->load->view('includes/header',$data,true);
 		$data['footer']=$this->load->view('includes/footer','',true);
 		$data['middle']=$this->load->view('includes/middle','',true);
 		$this->load->view('contact_us',$data);
@@ -601,8 +615,10 @@ class Welcome extends CI_Controller
 		                //echo "Please Enter New Password && Confirm Password";
 		            }
 		    }
-
-			$data['header']=$this->load->view('includes/header','',true);
+		    $data['set_code']='';
+		
+		
+			$data['header']=$this->load->view('includes/header',$data,true);
 			$data['footer']=$this->load->view('includes/footer','',true);
 			$this->load->view('resetpassword',$data);      
         }

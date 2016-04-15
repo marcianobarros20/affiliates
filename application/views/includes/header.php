@@ -42,7 +42,7 @@
                       
                         <li class="login">
                       
-                    <?php if( $this->input->cookie('reffrence_id')!='' && $this->session->userdata('user_id')=='')
+                    <?php if( ($this->input->cookie('reffrence_id')!='' || $set_code!='') && $this->session->userdata('user_id')=='')
                             { ?>
                         <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='register'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>welcome/register"><?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='register'){?>{Sign Up}<?php } else { ?> Sign Up <?php }?></a></li>
                             <?php }?>  
