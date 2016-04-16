@@ -647,30 +647,85 @@ class Welcome extends CI_Controller
 			$course_id=$this->input->post('course_id');
 			$new_class_name=$this->input->post('new_class_name');
 			$description=$this->input->post('new_class_description');
-			$media_type=$this->input->post('course_media');
-			    
-			if(trim($course_id) &&  trim($new_class_name) && trim($description) && trim($media_type)=='')
-		    {
-		            $data['course_id']=$course_id;
-		            $data['cl_name']=$new_class_name;
-		            $data['description']=$description;
-		            $data['status']=0;
-		            $insert=$this->Common_model->insert('class',$data);
-		            	if($insert)
-				        {
-				            $this->session->set_userdata('succ_msg',"Class Added Successfully");
-				            redirect(base_url().'admin/courses/add_class_and_course');
-				        }
-		          		else
-		         		{
-		            	    $this->session->set_userdata('err_msg',"Try Again");
-		                    redirect(base_url().'admin/courses/add_class_and_course');
-		                }
-		    }	
-			else
-			{
-				redirect(base_url().'admin/courses/add_class_and_course');
-			}	
-	    }
-    }
+			$media_image=$this->input->post('files[]');
+
+           // echo "<pre>"; print_r($_FILES['user_file']) ;
+
+            	//echo count($_FILES['user_file']['name']);
+
+            // exit;
+
+                $data['course_id']=$course_id;
+		        $data['cl_name']=$new_class_name;
+		        $data['description']=$description;
+		        $data['status']=0;
+
+		        $insert=$this->Common_model->insert('class',$data);
+
+		        if($insert)
+		        {
+            
+
+
+$number_of_files = sizeof($_FILES['user_file']['tmp_name']);
+    // considering that do_upload() accepts single files, we will have to do a small hack so that we can upload multiple files. For this we will have to keep the data of uploaded files in a variable, and redo the $_FILE.
+$insert_material=0;
+if($number_of_files>0){
+$files = $_FILES['user_file'];
+$this->load->library('upload');
+$time=time();
+      // next we pass the upload path for the images
+			$config['upload_path'] = './tutorial/image/';
+			$config['file_name']=$time;
+			$config['overwrite']='TRUE';
+			$config['allowed_types']='jpg|jpeg|gif|png|PNG';
+			$config['max_size']='2000';
+			 for($i=0;$i<$number_of_files;$i++)
+				{ 
+		$_FILES['user_file']['name'] = $files['name'][$i];
+        $_FILES['user_file']['type'] = $files['type'][$i];
+        $_FILES['user_file']['tmp_name'] = $files['tmp_name'][$i];
+        $_FILES['user_file']['error'] = $files['error'][$i];
+        $_FILES['user_file']['size'] = $files['size'][$i];
+        //now we initialize the upload library
+        $this->upload->initialize($config);
+        // we retrieve the number of files that were uploaded
+        if ($this->upload->do_upload('user_file'))
+        {
+          $data['uploads'][$i] = $this->upload->data();
+
+		  $f_resize=$data['uploads'][$i]['file_name'];
+        }
+        else
+        {
+          $data['upload_errors'][$i] = $this->upload->display_errors();
+        }
+
+        		$data1['class_id']=$insert;
+		        $data1['media']=$f_resize;
+		        $data1['type']=1;
+		        $data1['status']=0;
+
+		        $insert_material=$this->Common_model->insert('training_material',$data1);
+				
+		        	
+				}
+
+          }
+
+          if($insert_material>0)
+		        	{
+		        		$this->session->set_userdata('succ_msg','class added successfully!!!');
+		        		redirect(base_url().'admin/courses/add_class_and_course');
+		        	}
+
+
+      }
+
+
+         }
+     }
+
+
+
 }

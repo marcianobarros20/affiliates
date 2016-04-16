@@ -438,7 +438,22 @@ function delete_course(courseid)
             }  
 
 }
+function view_course(courseid)
+{
+  //alert(courseid);
+    var res= $.ajax({
+        type : 'post',
+        url : 'admin/courses/view_course',
+        data : 'co_id='+courseid,
+        async : false,
+          success : function(msg)
+                   {
+                       alert(msg);
+                       
+                   }
+                  });
 
+}
 function edit_class(courseid)
   {
     alert(courseid);

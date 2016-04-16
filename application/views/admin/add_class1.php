@@ -30,15 +30,11 @@
     <link rel="stylesheet" href="admin_support/plugins/daterangepicker/daterangepicker-bs3.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="admin_support/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-    <link rel="stylesheet" href="admin_support/dist/css/style.css">
-  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
- 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <script src="js/jquery.validate.js"></script>
 
-
     <script type="text/javascript" src="js/affiliate.js"></script>
-   
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -112,29 +108,18 @@
                                 <textarea class="form-control required" placeholder="Enter Class Description" id="new_class_description" name='new_class_description'></textarea>
                             </div>
 
-                           <!--  <div class="form-group" id="select_class_media" name="select_class_media">
-                                <label>Select Media</label>
-                                 <select id="course_media" name="course_media">
-                                  <option value="">--Select--</option>
-                                  <option value="1">Video</option>
-                                  <option value="2">Audio</option>
-                                  <option value="3">Image</option>
-                                  <option value="4">Text</option>
-                                 </select>A
+                            <div class="form-group" id="select_class_media" name="select_class_media">
+                                <input type="file" id="class_image" name="class_image[]" class="media"><label>Upload Image</label>
+                               
+                                <input type="file" id="class_video" name="class_video" class="media"><label>Upload Video</label>
+                               
+                                <input type="file" id="class_audio" name="class_audio" class="media"> <label>Upload Audio</label> 
+                                
+                                <input type="file" id="class_text" name="class_text" class="media"><label>Upload Text File</label>
                             </div>
                             
-                            <div class="form-group">
-                                <label>Browse file</label>
-                                <input type="file" id="class_media" name="class_media" class="media">  
-                            </div> -->
+                            
 
-                            <div id="formdiv" class="form-group">
-                                <div id="filediv">
-                                  <input type="file" id="file" name="user_file[]" multiple="multiple" accept="image/*" title="Select Images To Be Uploaded">
-                                  <br>
-                                  
-                                </div>
-                            </div>
                             <div class="box-footer">
                                 <button class="btn btn-primary" type="submit">Submit</button>
                             </div>
@@ -154,84 +139,9 @@
         <div class="control-sidebar-bg"></div>
     </div><!-- ./wrapper -->
 
-  
-  <script type="text/javascript">
-            $('#add_more').click(function() {
-      "use strict";
-      $(this).before($("<div/>", {
-        id: 'filediv'
-      }).fadeIn('slow').append(
-        $("<input/>", {
-          name: 'file[]',
-          type: 'file',
-          id: 'file',
-          multiple: 'multiple',
-          accept: 'image/*'
-        })
-      ));
-    });
-
-    $('#upload').click(function(e) {
-      "use strict";
-      e.preventDefault();
-
-      if (window.filesToUpload.length === 0 || typeof window.filesToUpload === "undefined") {
-        alert("No files are selected.");
-        return false;
-      }
-
-      // Now, upload the files below...
-      // https://developer.mozilla.org/en-US/docs/Using_files_from_web_applications#Handling_the_upload_process_for_a_file.2C_asynchronously
-    });
-
-    function deletePreview(ele, i) {
-      "use strict";
-      try {
-        $(ele).parent().remove();
-        window.filesToUpload.splice(i, 1);
-      } catch (e) {
-        console.log(e.message);
-      }
-    }
-
-    $("#file").on('change', function() {
-      "use strict";
-
-      // create an empty array for the files to reside.
-      window.filesToUpload = [];
-
-      if (this.files.length >= 1) {
-        $("[id^=previewImg]").remove();
-        $.each(this.files, function(i, img) {
-          var reader = new FileReader(),
-            newElement = $("<div id='previewImg" + i + "' class='abcd'><img /></div>"),
-            deleteBtn = $("<span class='delete' onClick='deletePreview(this, " + i + ")'>delete</span>").prependTo(newElement),
-            preview = newElement.find("img");
-
-          reader.onloadend = function() {
-            preview.attr("src", reader.result);
-            preview.attr("alt", img.name);
-          };
-
-          try {
-            window.filesToUpload.push(document.getElementById("file").files[i]);
-          } catch (e) {
-            console.log(e.message);
-          }
-
-          if (img) {
-            reader.readAsDataURL(img);
-          } else {
-            preview.src = "";
-          }
-
-          newElement.appendTo("#filediv");
-        });
-      }
-    });
-    </script>
+    
     <!-- jQuery UI 1.11.4 -->
-   
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
       $.widget.bridge('uibutton', $.ui.button);
@@ -258,7 +168,7 @@
     <!-- Slimscroll -->
     <script src="admin_support/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
-    
+    <script src="admin_support/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
     <script src="admin_support/dist/js/app.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->

@@ -133,8 +133,49 @@ class Courses extends CI_Controller {
 		}
     }
 
-    
+    public function view_course($co_id)
+    {		
+			 $con=array('co_id'=>$co_id);
+			 $con1=array('course_id'=>$co_id);
+			 $data['header']=$this->load->view('admin/includes/header','',true);
+			 $data['footer']=$this->load->view('admin/includes/footer','',true);
+			 $data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
+			 $data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
+			 $data['course_details']=$this->Common_model->fetchinfo('courses',$con,'row');
+              
+             
+			 $data['class_details']=$this->Common_model->fetchinfo('class',$con1,'result');
+			 $this->load->view('admin/details_course',$data);
+    }
+
+    public function view_class($cl_id)
+    {		
+			 $con=array('cl_id'=>$cl_id);
+			 $data['class_details']=$this->Common_model->fetchinfo('class',$con,'row');
+			 $data['header']=$this->load->view('admin/includes/header','',true);
+			 $data['footer']=$this->load->view('admin/includes/footer','',true);
+			 $data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
+			 $data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
+			 
+             $this->load->view('admin/details_class',$data);	 
+    }
 	
 }
 
+
+
+
+
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
