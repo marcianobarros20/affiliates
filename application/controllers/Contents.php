@@ -29,22 +29,43 @@ class Contents extends CI_Controller {
 
 	public function about_us()
 	{
-		$data['header']=$this->load->view('includes/header.php','',true);
+		$data['set_code']='';
+		if($this->input->cookie('reffrence_id')!='')
+		{
+			$ref_id=$this->input->cookie('reffrence_id');
+			$data['set_code']=$ref_id;
+		}
+		
+		$data['header']=$this->load->view('includes/header.php',$data,true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
 		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('about.php',$data);
 	}
 	public function career()
 	{
+		$data['set_code']='';
+		if($this->input->cookie('reffrence_id')!='')
+		{
+			$ref_id=$this->input->cookie('reffrence_id');
+			$data['set_code']=$ref_id;
+		}
 		
-		$data['header']=$this->load->view('includes/header.php','',true);
+		
+		$data['header']=$this->load->view('includes/header.php',$data,true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
 		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('career.php',$data);
 	}
 	public function blog_item()
 	{
-		$data['header']=$this->load->view('includes/header.php','',true);
+		$data['set_code']='';
+		if($this->input->cookie('reffrence_id')!='')
+		{
+			$ref_id=$this->input->cookie('reffrence_id');
+			$data['set_code']=$ref_id;
+		}
+		
+		$data['header']=$this->load->view('includes/header.php',$data,true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
 		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('blog_item.php',$data);
@@ -52,7 +73,14 @@ class Contents extends CI_Controller {
 
 	public function services()
 	{
-		$data['header']=$this->load->view('includes/header.php','',true);
+		$data['set_code']='';
+		if($this->input->cookie('reffrence_id')!='')
+		{
+			$ref_id=$this->input->cookie('reffrence_id');
+			$data['set_code']=$ref_id;
+		}
+		
+		$data['header']=$this->load->view('includes/header.php',$data,true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
 		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('services.php',$data);
@@ -60,14 +88,28 @@ class Contents extends CI_Controller {
 	
 	public function portfolio()
 	{
-		$data['header']=$this->load->view('includes/header.php','',true);
+		$data['set_code']='';
+		if($this->input->cookie('reffrence_id')!='')
+		{
+			$ref_id=$this->input->cookie('reffrence_id');
+			$data['set_code']=$ref_id;
+		}
+		
+		$data['header']=$this->load->view('includes/header.php',$data,true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
 		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('portfolio.php',$data);
 	}
 	public function blog()
 	{
-		$data['header']=$this->load->view('includes/header.php','',true);
+		$data['set_code']='';
+		if($this->input->cookie('reffrence_id')!='')
+		{
+			$ref_id=$this->input->cookie('reffrence_id');
+			$data['set_code']=$ref_id;
+		}
+		
+		$data['header']=$this->load->view('includes/header.php',$data,true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
 		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$con=array('status'=>0);
@@ -95,49 +137,98 @@ class Contents extends CI_Controller {
 
 public function faq()
 	{
-		$data['header']=$this->load->view('includes/header.php','',true);
+		$data['set_code']='';
+		if($this->input->cookie('reffrence_id')!='')
+		{
+			$ref_id=$this->input->cookie('reffrence_id');
+			$data['set_code']=$ref_id;
+		}
+		
+		$data['header']=$this->load->view('includes/header.php',$data,true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
 		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('faq.php',$data);
 	}
 public function pricing()
 	{
-		$data['header']=$this->load->view('includes/header.php','',true);
+		$data['set_code']='';
+		if($this->input->cookie('reffrence_id')!='')
+		{
+			$ref_id=$this->input->cookie('reffrence_id');
+			$data['set_code']=$ref_id;
+		}
+		
+		$data['header']=$this->load->view('includes/header.php',$data,true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
 		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('pricing.php',$data);
 	}
 	public function error()
 	{
-		$data['header']=$this->load->view('includes/header.php','',true);
+		$data['set_code']='';
+		if($this->input->cookie('reffrence_id')!='')
+		{
+			$ref_id=$this->input->cookie('reffrence_id');
+			$data['set_code']=$ref_id;
+		}
+		
+		$data['header']=$this->load->view('includes/header.php',$data,true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
 		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('error.php',$data);
 	}
 	public function typography()
 	{
-		$data['header']=$this->load->view('includes/header.php','',true);
+		$data['set_code']='';
+		if($this->input->cookie('reffrence_id')!='')
+		{
+			$ref_id=$this->input->cookie('reffrence_id');
+			$data['set_code']=$ref_id;
+		}
+		
+		$data['header']=$this->load->view('includes/header.php',$data,true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
 		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('typography.php',$data);
 	}
 	public function privacy()
 	{
-		$data['header']=$this->load->view('includes/header.php','',true);
+		$data['set_code']='';
+		if($this->input->cookie('reffrence_id')!='')
+		{
+			$ref_id=$this->input->cookie('reffrence_id');
+			$data['set_code']=$ref_id;
+		}
+		
+		$data['header']=$this->load->view('includes/header.php',$data,true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
 		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('privacy.php',$data);
 	}
 	public function terms()
 	{
-		$data['header']=$this->load->view('includes/header.php','',true);
+		$data['set_code']='';
+		if($this->input->cookie('reffrence_id')!='')
+		{
+			$ref_id=$this->input->cookie('reffrence_id');
+			$data['set_code']=$ref_id;
+		}
+		
+		$data['header']=$this->load->view('includes/header.php',$data,true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
 		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('terms.php',$data);
 	}
 	public function how()
 	{
-		$data['header']=$this->load->view('includes/header.php','',true);
+		$data['set_code']='';
+		if($this->input->cookie('reffrence_id')!='')
+		{
+			$ref_id=$this->input->cookie('reffrence_id');
+			$data['set_code']=$ref_id;
+		}
+		
+		$data['header']=$this->load->view('includes/header.php',$data,true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
 		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('how_it_works.php',$data);
@@ -145,7 +236,14 @@ public function pricing()
 
 	public function payout()
 	{
-		$data['header']=$this->load->view('includes/header.php','',true);
+		$data['set_code']='';
+		if($this->input->cookie('reffrence_id')!='')
+		{
+			$ref_id=$this->input->cookie('reffrence_id');
+			$data['set_code']=$ref_id;
+		}
+		
+		$data['header']=$this->load->view('includes/header.php',$data,true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
 		$data['middle']=$this->load->view('includes/middle.php','',true);
 		$this->load->view('payouts.php',$data);
