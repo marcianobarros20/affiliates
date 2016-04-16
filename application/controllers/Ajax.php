@@ -469,6 +469,8 @@ public function Fnoldpasswordchk()
 				$uid=$this->input->post('uid');
 				$con=array('uid'=>$uid);
 				$info=$this->Common_model->fetchinfo('users',$con,'row');
+				$con1=array('uid'=>$info['parent_id']);
+				$parent_info=$this->Common_model->fetchinfo('users',$con1,'row');
 				if($info)
 				{
 					if($info['profile_image']!='')
@@ -480,8 +482,8 @@ public function Fnoldpasswordchk()
                     $img='images/sample/no_photo.png';
                 }
 
-				 echo "<div class='col-md-12 col-lg-12'><div class='col-md-6 col-lg-6'><h3>".$info['fname'].' '.$info['lname']."</h3>
-       			  </div><div class='col-md-6 col-lg-6'><img src='".$img."' alt=''></div></div><p>".$info['description']."</p>";
+				 echo "<div class='col-md-12 col-lg-12'><div class='col-md-6 col-lg-6'><h3>Name: ".$info['fname'].' '.$info['lname']."</h3>
+       			  </div><div class='col-md-6 col-lg-6'><img src='".$img."' alt=''></div></div><p><h4>Upper Tier:</h4> ".$parent_info['fname']." ".$parent_info['lname']."</p><p><h4>Description:</h4> ".$info['description']."</p>";
        			}
         
 			}
@@ -609,6 +611,28 @@ public function Fnoldpasswordchk()
 	    }
 
     }
+
+
+    public function findchild()
+        {
+        	if($_POST)
+			{
+        	
+				$parent_id=$this->input->post('parent_id');
+				//echo $parent_id;
+				$con=array('parent_id'=>$parent_id);
+				$info_child=$this->Common_model->fetchinfo('users',$con,'result');
+                //print_r($info_child) ;
+                $result='';
+                foreach ($info_child as $value) 
+                {
+                	//echo $value['fname'];
+               $result.="<div class='btn btn-primary child_".$value['uid']."' data-toggle='collapse' onclick='show_child_1(".$value['uid'].",".$value['parent_id'].")'><i class='fa fa-plus-circle' aria-hidden='true'></i></div><span class='fancybox fancy-class' href='#chkline' title='Referal Code: ".$value['refferalcode']."' onclick='description(".$value['uid'].")'>".$value['fname']."</span>&nbsp;&nbsp;";
+                   
+                }
+                echo $result;
+            }
+        }
 
 }
 ?>

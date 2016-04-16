@@ -124,5 +124,42 @@ function fetchCategoryTreeList1($parent = 0, $user_tree_array = '') {
   return $user_tree_array;
 }
 
+function fetchCategoryTreeList2($parent = 0, $user_tree_array = '') {
+ $CI=& get_instance();
+        $CI->load->database(); 
+    if (!is_array($user_tree_array))
+    $user_tree_array = array();
+
+        $CI->db->select('*');
+        $CI->db->where('uid',$parent);
+        $res1 = $CI->db->get('users');
+        $info1=$res1->row_array();
+
+        $CI->db->select('*');
+        $CI->db->where('parent_id',$parent);
+        $res = $CI->db->get('users');
+        $info=$res->result_array();
+  
+  if ($res->num_rows() > 0) {
+     $user_tree_array[] = "<div class='col-md-12 parent'>
+          <a class='btn btn-primary'>
+            ".$info1['fname']."
+          </a>
+        </div> <div class='col-md-12 parent' id='list1'>";
+    if ($res->result_array()) {
+        foreach($info as $ins)
+        {
+         //$child=children_info($ins['uid']);
+      $user_tree_array[] = '<a class="btn btn-primary param_'.$ins['uid'].'" href="javascript:void(0)" aria-expanded="false" aria-controls="collapseExample" data-target="#demo'.$ins['uid'].'" data-id="'.$ins['uid'].'"><i class="fa fa-plus-circle" aria-hidden="true"></i></a><span class="fancybox fancy-class" href="#inline1_'.$ins['uid'].'" title="Referal Code: '.$ins['refferalcode'].'">'.$ins['fname'].'</span>';
+        
+     // $user_tree_array = fetchCategoryTreeList3($ins['uid'], $user_tree_array);
+        }
+    }
+    $user_tree_array[] = "</div>";
+  }
+  return $user_tree_array;
+}
+
+
 
 ?>
