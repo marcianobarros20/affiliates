@@ -38,7 +38,9 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 
     <script type="text/javascript" src="js/affiliate.js"></script>
   </head>
@@ -93,7 +95,8 @@
                              ?>)">
                             <span class="glyphicon glyphicon-trash"></span>
                          </button>
-
+                         
+                             <button class="btn btn-default btn-sm"><a href="<?php echo base_url();?>admin/courses/view_course/<?php echo  $value['co_id']; ?>">View Details</a></button>
                           <?php if($value['status']==0)
                                              {
                                              ?>
@@ -106,6 +109,7 @@
                                              <button class="btn btn-default btn-sm" onclick="change_course_status('Available',<?php echo $value['co_id'];?>)" title='Make Avilable'>Avilable</button>
                                             <?php
                                             } ?>
+
                       </td>
                       
                     </tr>
@@ -126,7 +130,7 @@
 
                     <div class="box-body">
                       <lebel>Select Course Name <lebel>
-                        <form role="form" method="post" action="admin/courses/show_class_according_course" name="show_class_div" id="show_class_div" enctype="multipart/form-data">
+                        <form role="form" method="post" action="admin/courses/show_class_according_course" name="show_class_div" id="show_class_div">
                             <select id="course_id" name="course_id" class="form-control required">
                                       <option value="">--Select--</option>
                                       <?php foreach($couse_list as $value)
@@ -174,6 +178,7 @@
                               <!-- <button type="button" title='Delete' class="btn btn-default btn-sm" >
                                Not Available
                               </button> -->
+                              <a href="<?php echo base_url();?>admin/courses/view_class/<?php echo  $info['cl_id']; ?>">View Details</a>
                               <?php if( $info['status']==0)
                                  {
                                    ?> <button type="button" title="Make It Not Available" class="btn btn-default btn-sm" onclick="change_class_status('Not Available',<?php echo $info["cl_id"];?>)">Not Available</button>
@@ -226,7 +231,7 @@
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+        <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

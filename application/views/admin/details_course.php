@@ -38,102 +38,53 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>
-     #pricing_div
-{
-
-    padding-right: 50px;
-    padding-left: 50px;
-}
-
-.pricing_box_head
-{
-
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: black;
-    color: white;
-    border-radius: 15px 15px 0px 0px;
-
-
-}
-
-
-.pricing_box_body
-{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: #202020;
-    color: white;
-}
-
-
-
-.pricing_box_foot
-{
-    padding-top:0px;
-    padding-bottom:0px;
-    color: white;
-     background-color:red;
-}
-
-    </style>
+  
     <script type="text/javascript" src="js/affiliate.js"></script>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
-
-     <?php echo $header;?>
-      <!-- Left side column. contains the logo and sidebar -->
-      <?php echo $leftsidebar;?>
-
+    <?php echo $header;?>
+    <?php echo $leftsidebar;?>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content">
             <div class="row">
-              <!--<?php
-                  //foreach ($course_list as $value)
-                  {
-                    //echo"<div>";
-                    //echo $value['courses_name']; 
-                    //echo "</div>";
-                  }
-              ?>-->
-              <div class="col-sm-6">
-
-                  <div class="pricing_box_head">Course Name</div>
-                  <div class="pricing_box_body">
-                         Description
-                  </div>
-                  <div class="pricing_box_foot">
-                 class DEtails
-                  </div>
-              </div>
+                <div class="col-sm-10" align="center"><h2><?php echo $course_details['courses_name']; ?></h2></div>
+                <div class="col-sm-2"><h4><a href="<?php echo base_url();?>admin/courses/edit_class_and_course"><spam><<</span>Back</a><h4></div>
             </div>
-
-
-
+            <br>
+            <div class="row">
+                <div class="col-sm-2">Description</div>
+                <div class="col-sm-8"> <?php echo $course_details['description']; ?></div>
+                <div class="col-sm-2"></div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-2">Class</div>
+                <div class="col-sm-8"> 
+                    <?php foreach($class_details as $value){?>
+                   <div class="row">
+                       <div class="col-sm-4"><?php echo $value['cl_name'];?></div>
+                       <div class="col-sm-4"><?php echo $value['description'];?></div>
+                       <div class="col-sm-4"><a>Video</a>&nbsp;|&nbsp;<a>Audio</a>&nbsp;|&nbsp;<a>Image</a>&nbsp;|&nbsp;<a>Text</a></div>
+                   </div>
+                   <?php } ?>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
         </section>
       </div>
-     <!-- footer -->
-     <?php echo $footer;?>
-     <!-- footer -->
-
-
-
-      <!-- Control Sidebar -->
-
-      <?php echo $rightsidebar;?>
-      <!-- /.control-sidebar -->
 
 
 
       <!-- Add the sidebar's background. This div must be placed
            immediately after the control sidebar -->
       <div class="control-sidebar-bg"></div>
-    </div><!-- ./wrapper -->
 
+    </div><!-- ./wrapper -->
+ <?php echo $footer;?>
+    <?php echo $leftsidebar;?>
     <!-- jQuery 2.1.4 -->
     <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery UI 1.11.4 -->

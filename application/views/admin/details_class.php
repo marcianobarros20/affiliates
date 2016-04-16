@@ -38,46 +38,10 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>
-     #pricing_div
-{
 
-    padding-right: 50px;
-    padding-left: 50px;
-}
-
-.pricing_box_head
-{
-
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: black;
-    color: white;
-    border-radius: 15px 15px 0px 0px;
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 
-}
-
-
-.pricing_box_body
-{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: #202020;
-    color: white;
-}
-
-
-
-.pricing_box_foot
-{
-    padding-top:0px;
-    padding-bottom:0px;
-    color: white;
-     background-color:red;
-}
-
-    </style>
     <script type="text/javascript" src="js/affiliate.js"></script>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
@@ -91,30 +55,22 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content">
-            <div class="row">
-              <!--<?php
-                  //foreach ($course_list as $value)
-                  {
-                    //echo"<div>";
-                    //echo $value['courses_name']; 
-                    //echo "</div>";
-                  }
-              ?>-->
-              <div class="col-sm-6">
-
-                  <div class="pricing_box_head">Course Name</div>
-                  <div class="pricing_box_body">
-                         Description
-                  </div>
-                  <div class="pricing_box_foot">
-                 class DEtails
-                  </div>
-              </div>
+           <div class="row">
+                <div class="col-sm-10" align="center"><h2><?php echo $class_details['cl_name']; ?></h2></div>
+                <div class="col-sm-2"><h4><a href="<?php echo base_url();?>admin/courses/edit_class_and_course"><spam><<</span>Back</a><h4></div>
             </div>
-
-
-
-        </section>
+            <br>
+            <div class="row">
+                <div class="col-sm-2">Description</div>
+                <div class="col-sm-8"><?php echo $class_details['description']; ?></div>
+                <div class="col-sm-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">Study Material</div>
+                <div class="col-sm-8">Video<br>Audio<br>Image<br>Text</div>
+                <div class="col-sm-2"></div>
+            </div>
+          </section>
       </div>
      <!-- footer -->
      <?php echo $footer;?>
@@ -135,7 +91,7 @@
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+        <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

@@ -656,37 +656,7 @@ class Welcome extends CI_Controller
 
 	}
 
-	public function add_class()
-	{
-		if($_POST)
-		{
-			$course_id=$this->input->post('course_id');
-			$new_class_name=$this->input->post('new_class_name');
-			$description=$this->input->post('new_class_description');
-			$media_type=$this->input->post('course_media');
-			    
-			if(trim($course_id) &&  trim($new_class_name) && trim($description) && trim($media_type)=='')
-		    {
-		            $data['course_id']=$course_id;
-		            $data['cl_name']=$new_class_name;
-		            $data['description']=$description;
-		            $data['status']=0;
-		            $insert=$this->Common_model->insert('class',$data);
-		            	if($insert)
-				        {
-				            $this->session->set_userdata('succ_msg',"Class Added Successfully");
-				            redirect(base_url().'admin/courses/add_class_and_course');
-				        }
-		          		else
-		         		{
-		            	    $this->session->set_userdata('err_msg',"Try Again");
-		                    redirect(base_url().'admin/courses/add_class_and_course');
-		                }
-		    }	
-			else
-			{
-				redirect(base_url().'admin/courses/add_class_and_course');
-			}	
-	    }
-    }
+
+
+
 }
