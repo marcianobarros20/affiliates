@@ -535,25 +535,26 @@ public function Fnoldpasswordchk()
 
 		}
 
-	public function delete_course()
+	public function delete_course($course_id)
 	{
-		if($_POST)
-	    {
-	    	$course_id=$this->input->post('co_id');
+		
 	    	$con=array('co_id'=>$course_id);
+	    	$con1=array('course_id'=>$course_id);
+	    	$count=$this->Common_model->fetchinfo('class',$con1,'count');
+            if($count==0){
             $delete=$this->Common_model->delete($con,'courses');
-
-            if($delete)
-				{
-					echo 1;
-				}
-				else
-				{
-					 echo "";
-				}
-	    }
-
-    }
+        	if($delete)
+           {
+           	$this->session->set_userdata('del_succ_msg','course deleted successfully.');
+           	redirect('admin/courses/edit_class_and_course');
+           }
+        	}
+        	else
+        	{
+        		$this->session->set_userdata('del_err_msg','This course cannot be deleted as it already have class inside it.');
+           	redirect('admin/courses/edit_class_and_course');
+        	}
+      }
 		public function Fngetstates()
 		{
 			if($_POST)

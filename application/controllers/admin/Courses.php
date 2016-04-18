@@ -68,9 +68,10 @@ class Courses extends CI_Controller {
 			$data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
 			$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
 			
-         
+         $con=array('status'=>0);
  
 			$data['couse_list']=$this->Common_model->fetchallcources();
+			$data['couse_list1']=$this->Common_model->fetchinfo('courses',$con,'result');
 			$this->load->view('admin/add_course.php',$data);
 		}
 	}
@@ -173,15 +174,7 @@ $time=time();
 		        	
 				}
 
-				 if($insert_material>0)
-		        	{
-		        		$this->session->set_userdata('succ_msg','class added successfully!!!');
-		        		redirect(base_url().'admin/courses/add_class_and_course');
-		        	}
-		        	else
-		        	{
-		        		redirect(base_url().'admin/courses/add_class_and_course');
-		        	}
+				 
 
 
           }
@@ -235,15 +228,7 @@ $time=time();
 		        	
 				}
 
-				 if($insert_material>0)
-		        	{
-		        		$this->session->set_userdata('succ_msg','class added successfully!!!');
-		        		redirect(base_url().'admin/courses/add_class_and_course');
-		        	}
-		        	else
-		        	{
-		        		redirect(base_url().'admin/courses/add_class_and_course');
-		        	}
+				
 
          }
 
@@ -295,7 +280,10 @@ $time=time();
 		        	
 				}
 
-				 if($insert_material>0)
+				 
+
+         }
+         if($insert_material>0)
 		        	{
 		        		$this->session->set_userdata('succ_msg','class added successfully!!!');
 		        		redirect(base_url().'admin/courses/add_class_and_course');
@@ -304,8 +292,6 @@ $time=time();
 		        	{
 		        		redirect(base_url().'admin/courses/add_class_and_course');
 		        	}
-
-         }
 
       }
 
@@ -345,9 +331,10 @@ $time=time();
 			$data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
 			$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
 			$data['class_info']=$class_info;	
-         
+         	$con=array('status'=>0);
  
 			$data['couse_list']=$this->Common_model->fetchallcources();
+			$data['couse_list1']=$this->Common_model->fetchinfo('courses',$con,'result');
 			$this->load->view('admin/add_course',$data);
 		}
     }

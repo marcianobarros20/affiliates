@@ -62,7 +62,22 @@
                       <h3 class="box-title">List Of Courses </h3>
                     </div><!-- /.box-header -->
 
+                    <?php 
+if($this->session->userdata('del_succ_msg')!=''){?>
+                      <div class="alert alert-success alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <h4>  <i class="icon fa fa-check"></i> Success!</h4>
+                    <?php echo $this->session->userdata('del_succ_msg');$this->session->set_userdata('del_succ_msg','');?>
+                  </div>
 
+<?php } if($this->session->userdata('del_err_msg')!=''){ ?>
+
+<div class="alert alert-danger alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <h4><i class="icon fa fa-ban"></i> Sorry!</h4>
+                  <?php echo  $this->session->userdata('del_err_msg');$this->session->set_userdata('del_err_msg','');?>
+                  </div>
+<?php }?>
                     <table class="table table-hover">
                     <tbody><tr>
                       
@@ -88,11 +103,9 @@
                              <span class="glyphicon glyphicon-edit"></span>
                          </button></a>
                          
-                         <button type="button" title='Delete' class="btn btn-default btn-sm" onclick="delete_course(<?php 
-                            echo $value['co_id'];
-                             ?>)">
+<a href="<?php echo base_url();?>Ajax/delete_course/<?php echo  $value['co_id']; ?>"><button type="button" title='Delete' class="btn btn-default btn-sm">
                             <span class="glyphicon glyphicon-trash"></span>
-                         </button>
+                         </button></a>
                          
                             <a href="<?php echo base_url();?>admin/courses/view_course/<?php echo  $value['co_id']; ?>"> <button class="btn btn-default btn-sm">View Details</button></a>
                           <?php if($value['status']==0)
@@ -131,7 +144,7 @@
                         <form role="form" method="post" action="admin/courses/show_class_according_course" name="show_class_div" id="show_class_div">
                             <select id="course_id" name="course_id" class="form-control required">
                                       <option value="">--Select--</option>
-                                      <?php foreach($couse_list as $value)
+                                      <?php foreach($couse_list1 as $value)
                                       { ?>
                                       <option value="<?php echo $value['co_id'];?>" <?php if(!empty($this->input->post('course_id')) && $this->input->post('course_id')==$value['co_id']){ echo 'selected';}?>><?php echo $value['courses_name'];?></option>
                                       <?php }
