@@ -45,46 +45,55 @@
     <div class="wrapper">
     <?php echo $header;?>
     <?php echo $leftsidebar;?>
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
+    <?php echo $rightsidebar;?>
+     
+ <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content">
-            <div class="row">
-                <div class="col-sm-10" align="center"><h2><?php echo $course_details['courses_name']; ?></h2></div>
-                <div class="col-sm-2"><h4><a href="<?php echo base_url();?>admin/courses/edit_class_and_course"><spam><<</span>Back</a><h4></div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-sm-2">Description</div>
-                <div class="col-sm-8"> <?php echo $course_details['description']; ?></div>
-                <div class="col-sm-2"></div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-sm-2">Class</div>
-                <div class="col-sm-8"> 
-                    <?php foreach($class_details as $value){?>
-                   <div class="row">
-                       <div class="col-sm-4"><?php echo $value['cl_name'];?></div>
-                       <div class="col-sm-4"><?php echo $value['description'];?></div>
-                       <div class="col-sm-4"><a>Video</a>&nbsp;|&nbsp;<a>Audio</a>&nbsp;|&nbsp;<a>Image</a>&nbsp;|&nbsp;<a>Text</a></div>
-                   </div>
-                   <?php } ?>
-                </div>
-                <div class="col-sm-2"></div>
-            </div>
-        </section>
-      </div>
+            <section class="content">
+                <div class="row">
 
+<div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Course Details</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <strong><i class="fa fa-book margin-r-5"></i>  Name</strong>
+                  <p class="text-muted">
+                   <?php echo $course_details['courses_name'];?>
+                  </p>
 
+                  <hr>
 
-      <!-- Add the sidebar's background. This div must be placed
-           immediately after the control sidebar -->
+                 
+
+                 
+
+                  <strong><i class="fa fa-pencil margin-r-5"></i> Class</strong>
+                  <p>
+                   
+
+                    <?php $i=0;foreach($class_details as $cls): 
+
+                        if($i%2==0){ $cls_name="label-info";}else{ $cls_name="label-primary";}
+                    ?>
+                        <a href="<?php echo base_url();?>admin/courses/view_class/<?php echo $cls['cl_id'];?>"> <span class="label <?php echo $cls_name;?>"><?php echo $cls['cl_name'];?></span></a>
+                    <?php $i++;endforeach;?>
+                  </p>
+
+                  <hr>
+
+                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Description</strong>
+                  <p>  <?php echo $course_details['description'];?></p>
+                </div><!-- /.box-body -->
+              </div>
+              </div></section></div>
+ <?php echo $footer;?>
+
       <div class="control-sidebar-bg"></div>
 
     </div><!-- ./wrapper -->
- <?php echo $footer;?>
-    <?php echo $leftsidebar;?>
+
+
     <!-- jQuery 2.1.4 -->
     <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery UI 1.11.4 -->

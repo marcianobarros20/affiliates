@@ -621,7 +621,7 @@ public function Fnoldpasswordchk()
         	
 				$parent_id=$this->input->post('parent_id');
 				//echo $parent_id;
-				$con=array('parent_id'=>$parent_id);
+				$con=array('parent_id'=>$parent_id,'status'=>1);
 				$info_child=$this->Common_model->fetchinfo('users',$con,'result');
                 //print_r($info_child) ;
                 $result='';
