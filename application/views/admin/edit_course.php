@@ -51,58 +51,65 @@
       <!-- Left side column. contains the logo and sidebar -->
       <?php echo $leftsidebar;?>
 
+      <!-- Control Sidebar -->
+
+      <?php echo $rightsidebar;?>
+      <!-- /.control-sidebar -->
+
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content">
-          <form method="post">
-        <div class="row">
-            <div class="col-sm-2">
-              Course Name:</div>
-              <div class="col-sm-10">
-               <input type="text" value="<?php echo $course_details['courses_name'];?>" id="course_name" name="course_name">
+            <section class="content">
+                <div class="row">
+
+<?php 
+if($this->session->userdata('succ_crs')!=''){?>
+                      <div class="alert alert-success alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <h4>  <i class="icon fa fa-check"></i> Success!</h4>
+                    <?php echo $this->session->userdata('succ_crs');$this->session->set_userdata('succ_crs','');?>
+                  </div>
+
+<?php } if($this->session->userdata('err_crs')!=''){ ?>
+
+<div class="alert alert-danger alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <h4><i class="icon fa fa-ban"></i> Sorry!</h4>
+                  <?php echo  $this->session->userdata('err_crs');$this->session->set_userdata('err_crs','');?>
+                  </div>
+<?php }?>
+
+<div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Edit course</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" method="post">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Name</label>
+                      <input type="text"value="<?php echo $course_details['courses_name'];?>" id="course_name" class="form-control required" name="course_name">
+                    </div>
+                   <div class="form-group">
+                      <label>Description</label>
+                      <textarea rows="3" class="form-control required" name="course_description" id="course_description"><?php echo $course_details['description'];?></textarea>
+                    </div>
+                  </div><!-- /.box-body -->
+
+                  <div class="box-footer">
+                    <button class="btn btn-primary" type="submit">Update</button>
+                  </div>
+                </form>
               </div>
-               <div class="col-sm-2"></div>
-          </div>
-          <div class="row">
-             <div class="col-sm-2">Course Description:</div>
-             <div class="col-sm-10">
-              
 
-              <textarea id="course_description" name="course_description"><?php echo $course_details['description'];?></textarea>
+</div></section></div>
 
-
-
-
-
-
-
-
-             </div>
-             <div class="col-sm-2"></div>
-          </div>
-          <div class="row">
-             <div class="col-sm-2"></div>
-             <div class="col-sm-10">
-
-
-              <button type="submit" class="btn btn-info btn-xm" id="update_button" name="update_button" >Update</button>
-             </div>
-             <div class="col-sm-2"></div>
-          </div>
-          </form>
-          </section>
-      </div>
      <!-- footer -->
      <?php echo $footer;?>
      <!-- footer -->
 
 
 
-      <!-- Control Sidebar -->
-
-      <?php echo $rightsidebar;?>
-      <!-- /.control-sidebar -->
 
 
 

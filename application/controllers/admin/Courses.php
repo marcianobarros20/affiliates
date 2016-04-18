@@ -390,7 +390,18 @@ $time=time();
 	    		//print_r($_POST);exit;
 	    		$data1['courses_name']=$this->input->post('course_name');
 	    		$data1['description']=$this->input->post('course_description');
-	    		$this->Common_model->update('courses',$con,$data1);
+	    		$update=$this->Common_model->update('courses',$con,$data1);
+	    	 
+	    	  if($update>0)
+	    	  {
+	    	  	$this->session->set_userdata('succ_crs','Course updated successfully.');
+	    	  	redirect(base_url().'admin/courses/edit_course/'.$co_id);
+	    	  }
+	    	 /* else
+	    	  {
+	    	  	$this->session->set_userdata('err_crs','Error occurs while update.');
+	    	  	redirect(base_url().'admin/courses/edit_course/'.$co_id);
+	    	  }*/
 	    	  }
 	    	$data['course_details']=$this->Common_model->fetchinfo('courses',$con,'row');
 	    	$data['header']=$this->load->view('admin/includes/header','',true);
