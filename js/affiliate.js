@@ -535,4 +535,8 @@ function delete_class(courseid)
             }
 
     }
-}          
+} 
+
+
+
+?>

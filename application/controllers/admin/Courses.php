@@ -105,7 +105,7 @@ class Courses extends CI_Controller {
 			$course_id=$this->input->post('course_id');
 			$new_class_name=$this->input->post('new_class_name');
 			$description=$this->input->post('new_class_description');
-			$media_image=$this->input->post('files[]');
+			
 
            // echo "<pre>"; print_r($_FILES['user_file']) ;
 
@@ -261,15 +261,3 @@ $time=time();
 
 
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
