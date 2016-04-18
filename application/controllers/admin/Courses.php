@@ -253,6 +253,52 @@ $time=time();
 			 
              $this->load->view('admin/details_class',$data);	 
     }
+
+
+    public function edit_course($co_id)
+    {
+
+	    	$con=array('co_id'=>$co_id);
+	    	//print_r($con);
+	    	if($_POST)
+	    	{
+	    		//print_r($_POST);exit;
+	    		$data1['courses_name']=$this->input->post('course_name');
+	    		$data1['description']=$this->input->post('course_description');
+	    		$this->Common_model->update('courses',$con,$data1);
+	    	  }
+	    	$data['course_details']=$this->Common_model->fetchinfo('courses',$con,'row');
+	    	$data['header']=$this->load->view('admin/includes/header','',true);
+			$data['footer']=$this->load->view('admin/includes/footer','',true);
+			$data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
+			$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
+			 
+            $this->load->view('admin/edit_course',$data);
+	    
+      
+    }
+
+    public function edit_class($cl_id)
+    {
+    	$con=array('cl_id'=>$cl_id);
+         
+        $con1=array('class_id'=>$cl_id, 'type'=>1);
+        $con2=array('class_id'=>$cl_id, 'type'=>2); 
+        $con3=array('class_id'=>$cl_id, 'type'=>3); 
+        $data['training_image']=$this->Common_model->fetchinfo('training_material',$con1,'result');	
+        $data['training_audio_video']=$this->Common_model->fetchinfo('training_material',$con2,'result');
+        $data['training_file']=$this->Common_model->fetchinfo('training_material',$con3,'result');	
+    	$data['class_details']=$this->Common_model->fetchinfo('class',$con,'row');
+	    $data['header']=$this->load->view('admin/includes/header','',true);
+		$data['footer']=$this->load->view('admin/includes/footer','',true);
+		$data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
+		$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
+			 
+        $this->load->view('admin/edit_class',$data);
+    	
+    }
+
+
 	
 }
 

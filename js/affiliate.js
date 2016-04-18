@@ -454,10 +454,7 @@ function view_course(courseid)
                   });
 
 }
-function edit_class(courseid)
-  {
-    alert(courseid);
-  }          
+         
 
 function delete_class(courseid)
   {
@@ -535,8 +532,8 @@ function delete_class(courseid)
             }
 
     }
-} 
+}
 
 
 
-?>
+

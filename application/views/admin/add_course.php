@@ -84,11 +84,9 @@
                       </td>
                       <td <?php if($value['status']==0){?>title='Active' <?php } else {?>title='Inactive'<?php }?>> <?php if($value['status']==0){ echo '<span class="glyphicon glyphicon-ok"></span>';} else {echo '<span class="glyphicon glyphicon-ban-circle"></span>';}?></td>
                       <td>
-                         <button type="button" title='Edit' class="btn btn-default btn-sm" onclick="edit_course(<?php 
-                            echo $value['co_id'];
-                             ?>)">
-                              <span class="glyphicon glyphicon-edit"></span>
-                         </button>
+                         <a href='<?php echo base_url();?>admin/courses/edit_course/<?php echo  $value['co_id']; ?>'> <button type="button" title='Edit' class="btn btn-default btn-sm">
+                             <span class="glyphicon glyphicon-edit"></span>
+                         </button></a>
                          
                          <button type="button" title='Delete' class="btn btn-default btn-sm" onclick="delete_course(<?php 
                             echo $value['co_id'];
@@ -164,11 +162,11 @@
                                  }
                                ?></td>
                             <td>
-                              <button type="button" title='Edit' class="btn btn-default btn-sm" onclick="edit_class(<?php 
-                                echo $info['cl_id'];
-                                ?>)">
-                                <span class="glyphicon glyphicon-edit"></span>
-                             </button>
+                              <a href='<?php echo base_url();?>admin/courses/edit_class/<?php echo $info['cl_id']; ?>'>
+                                <button type="button" title='Edit' class="btn btn-default btn-sm">
+                                  <span class="glyphicon glyphicon-edit"></span>
+                                </button>
+                              </a>
                               
                               <button type="button" title='Delete' class="btn btn-default btn-sm" onclick="delete_class(<?php 
                                 echo $info['cl_id'];
