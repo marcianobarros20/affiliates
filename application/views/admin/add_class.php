@@ -132,13 +132,29 @@
 
 
 
-                            <div id="formdiv" class="form-group">
-                                <div id="filediv">
-                                  <input type="file" id="file" name="user_file[]" multiple="multiple" accept="image/*" title="Select Images To Be Uploaded">
-                                  <br>
-                                  
-                                </div>
-                            </div>
+                      Upload Image: <div id="formdiv" class="form-group">
+                      <div id="filediv">
+                      <input type="file" id="file" name="user_file[]" multiple="multiple" accept="image/*" title="Select Images To Be Uploaded">
+                      <br>
+
+                      </div>
+                      </div>
+
+                      Upload video/audio: <div id="formdiv" class="form-group">
+                      <div id="filediv">
+                      <input type="file" id="video" name="user_video[]" multiple="multiple" accept="image/*" title="Select Images To Be Uploaded">
+                      <br>
+
+                      </div>
+                      </div>
+
+                      Upload File: <div id="formdiv" class="form-group">
+                      <div id="filediv">
+                      <input type="file" id="text_file" name="text_file[]" multiple="multiple" accept="image/*" title="Select Images To Be Uploaded">
+                      <br>
+
+                      </div>
+                      </div>
 
                             <div class="box-footer">
                                 <button class="btn btn-primary" type="submit">Submit</button>
@@ -194,6 +210,7 @@
       try {
         $(ele).parent().remove();
         window.filesToUpload.splice(i, 1);
+         console.log(filesToUpload);
       } catch (e) {
         console.log(e.message);
       }

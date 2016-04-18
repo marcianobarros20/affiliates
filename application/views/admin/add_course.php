@@ -96,7 +96,7 @@
                             <span class="glyphicon glyphicon-trash"></span>
                          </button>
                          
-                             <button class="btn btn-default btn-sm"><a href="<?php echo base_url();?>admin/courses/view_course/<?php echo  $value['co_id']; ?>">View Details</a></button>
+                            <a href="<?php echo base_url();?>admin/courses/view_course/<?php echo  $value['co_id']; ?>"> <button class="btn btn-default btn-sm">View Details</button></a>
                           <?php if($value['status']==0)
                                              {
                                              ?>

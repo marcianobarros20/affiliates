@@ -50,7 +50,7 @@
                 </div>
                 <div class="span6">
                     <ul class="breadcrumb pull-right">
-                        <li><a href="<?php echo base_url();?>">Home</a> <span class="divider"></span></li>
+                        <li><a href="<?php echo base_url();?>">Home</a> /</li>
                         <li class="active">Dashboard</li>
                     </ul>
                 </div>
@@ -356,9 +356,6 @@
            
 </div>
 
-<!--Bottom-->
-  <?php echo $middle;?>
-<!--/Bottom-->
 
 
 <!--Footer-->

@@ -27,7 +27,7 @@ $('.param_'+parent).html(' - ');
     
 });*/
 
-  
+
 
 $(document).delegate('#list1 a','click',function(){
  //alert($(this).data("id"));
@@ -62,7 +62,10 @@ $(document).delegate('#list1 a','click',function(){
                     }
                     else
                     {
-
+                     if($('.btn').hasClass("color"))
+                      {
+                           $(".btn").removeClass("color");
+                      }
                        $('#tier4').find('div').first().remove(); 
                     }
                     }
