@@ -86,24 +86,84 @@
               <div class="col-sm-2">Training Material :</div>
               <div class="col-sm-10"> 
                 <div class="row">
-                     <div class="col-sm-4">Image
-                       
+                     <h3>Image</h3>
+                       <br>
                         <?php foreach ($training_image as $image)
                         { 
                           ?>
                           <div class="row">
 
-                            <div class="col-sm-6"><?php echo $image[''] ?></div>
-                            <div class="col-sm-6">ok</div>
+                            <div class="col-sm-6"><?php echo $image['media'] ?></div>
+                            <div class="col-sm-2">
+                             
+                             <?php 
+                             if( $image['status']==0)
+                             {
+                                    echo '<span class="glyphicon glyphicon-ok"></span>';
+                             }
+                             else
+                             {
+                                    echo  '<span class="glyphicon glyphicon-ban-circle"></span>';
+
+                             }
+
+                          
+
+
+                              ?>
+
+                            </div>
+                            <div class="col-sm-4"> 
+
+                             <?php 
+                             if( $image['status']==0)
+                             {
+                                    ?>
+
+                                    <button type="button" title="Make It Not Available" class="btn btn-default btn-sm" >Not Available</button>
+
+
+
+
+
+                                    <?php
+                             }
+                             else
+                             {
+                              ?>
+
+                                    <button type="button" title="Make It Available" class="btn btn-default btn-sm" >Available</button>
+
+
+
+
+
+                                    <?php
+                                    
+
+                             }
+
+                          
+
+
+                              ?>
+
+
+
+                            <button type="button" title="Delete" class="btn btn-default btn-sm" > <span class="glyphicon glyphicon-trash"></span></button>
+              
+
+
+
+
+                            </div>
                           </div>
                         <?php }
 
                         ?>
                          
                       
-                     </div>
-                     <div class="col-sm-4">Audio/Video</div>
-                     <div class="col-sm-4">Text File</div>
+                  
 
 
 

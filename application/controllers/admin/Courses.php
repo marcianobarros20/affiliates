@@ -199,7 +199,7 @@ $time=time();
 			$config['file_name']=$time;
 			$config['overwrite']='TRUE';
 			$config['allowed_types']='avi|flv|wmv|mp3|mp4|AVI|FLV|WMV|MP3|MP4|3gp|mkv';
-			$config['max_size']='2000';
+			//$config['max_size']='2000';
 			 for($i=0;$i<$number_of_media;$i++)
 				{ 
 		$_FILES['user_video']['name'] = $files['name'][$i];
