@@ -52,7 +52,26 @@
         <!-- Content Header (Page header) -->
             <section class="content">
                 <div class="row">
-                    <div class='text-center'><h4><?php if($this->session->userdata('err_msg')!=''){ echo '<span class="error">'.$this->session->userdata('err_msg').'</span>'; $this->session->set_userdata('err_msg','');} if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg','');}?></h4></div>
+                  
+
+
+<?php 
+if($this->session->userdata('succ_msg')!=''){?>
+                      <div class="alert alert-success alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <h4>  <i class="icon fa fa-check"></i> Success!</h4>
+                    <?php echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg','');?>
+                  </div>
+
+<?php } if($this->session->userdata('err_msg')!=''){ ?>
+
+<div class="alert alert-danger alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <h4><i class="icon fa fa-ban"></i> Sorry!</h4>
+                  <?php echo  $this->session->userdata('err_msg');$this->session->set_userdata('err_msg','');?>
+                  </div>
+<?php }?>
+
                     <div class="box"> 
                         <div class="box-header with-border">
                             <div class="form-group">

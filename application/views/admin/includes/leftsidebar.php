@@ -10,7 +10,7 @@
               
             </div>
             <div class="pull-left info">
-              <p><?php echo $this->session->userdata('username');?></p>
+              <p> <?php echo ucfirst($this->session->userdata('admin_username'));?></p>
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
