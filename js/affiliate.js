@@ -413,7 +413,7 @@ function change_course_status(action,courseid)
     }
 }
 
-function delete_course(courseid)
+/*function delete_course(courseid)
 {
    var conf=confirm("You sure you want to Delete !");
             if(conf)
@@ -437,7 +437,7 @@ function delete_course(courseid)
 
             }  
 
-}
+}*/
 function view_course(courseid)
 {
   //alert(courseid);

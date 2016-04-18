@@ -137,6 +137,7 @@ function fetchCategoryTreeList2($parent = 0, $user_tree_array = '') {
 
         $CI->db->select('*');
         $CI->db->where('parent_id',$parent);
+        $CI->db->where('status',1);
         $res = $CI->db->get('users');
         $info=$res->result_array();
   

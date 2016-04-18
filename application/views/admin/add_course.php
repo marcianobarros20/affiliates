@@ -62,7 +62,22 @@
                       <h3 class="box-title">List Of Courses </h3>
                     </div><!-- /.box-header -->
 
+                    <?php 
+if($this->session->userdata('del_succ_msg')!=''){?>
+                      <div class="alert alert-success alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <h4>  <i class="icon fa fa-check"></i> Success!</h4>
+                    <?php echo $this->session->userdata('del_succ_msg');$this->session->set_userdata('del_succ_msg','');?>
+                  </div>
 
+<?php } if($this->session->userdata('del_err_msg')!=''){ ?>
+
+<div class="alert alert-danger alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <h4><i class="icon fa fa-ban"></i> Sorry!</h4>
+                  <?php echo  $this->session->userdata('del_err_msg');$this->session->set_userdata('del_err_msg','');?>
+                  </div>
+<?php }?>
                     <table class="table table-hover">
                     <tbody><tr>
                       
@@ -84,27 +99,25 @@
                       </td>
                       <td <?php if($value['status']==0){?>title='Active' <?php } else {?>title='Inactive'<?php }?>> <?php if($value['status']==0){ echo '<span class="glyphicon glyphicon-ok"></span>';} else {echo '<span class="glyphicon glyphicon-ban-circle"></span>';}?></td>
                       <td>
-                         <a href='<?php echo base_url();?>admin/courses/edit_course/<?php echo  $value['co_id']; ?>'> <button type="button" title='Edit' class="btn btn-default btn-sm">
+                         <a href='<?php echo base_url();?>admin/courses/edit_course/<?php echo  $value['co_id']; ?>'> <button type="button" title='Edit' class="btn btn-info btn-sm">
                              <span class="glyphicon glyphicon-edit"></span>
                          </button></a>
                          
-                         <button type="button" title='Delete' class="btn btn-default btn-sm" onclick="delete_course(<?php 
-                            echo $value['co_id'];
-                             ?>)">
+<a href="<?php echo base_url();?>Ajax/delete_course/<?php echo  $value['co_id']; ?>"><button type="button" title='Delete' class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-trash"></span>
-                         </button>
+                         </button></a>
                          
-                            <a href="<?php echo base_url();?>admin/courses/view_course/<?php echo  $value['co_id']; ?>"> <button class="btn btn-default btn-sm">View Details</button></a>
+                            <a href="<?php echo base_url();?>admin/courses/view_course/<?php echo  $value['co_id']; ?>"> <button class="btn btn-info btn-sm">View Details</button></a>
                           <?php if($value['status']==0)
                                              {
                                              ?>
-                                             <button class="btn btn-default btn-sm" onclick="change_course_status('Not Available',<?php echo $value['co_id'];?>)" title='Make Not Avilable'>Not Avilable</button>
+                                             <button class="btn btn-info btn-sm" onclick="change_course_status('Not Available',<?php echo $value['co_id'];?>)" title='Make Not Avilable'>Not Avilable</button>
                                              <?php
                                              }
                                             else
                                             {
                                             ?>
-                                             <button class="btn btn-default btn-sm" onclick="change_course_status('Available',<?php echo $value['co_id'];?>)" title='Make Avilable'>Avilable</button>
+                                             <button class="btn btn-info btn-sm" onclick="change_course_status('Available',<?php echo $value['co_id'];?>)" title='Make Avilable'>Avilable</button>
                                             <?php
                                             } ?>
 
