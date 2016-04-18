@@ -534,6 +534,36 @@ function delete_class(courseid)
     }
 }
 
+function delete_image(id)
+{
+  var conf=confirm("You sure you want to delete this image !");
+            if(conf)
+            {
+              var status=0;
+              var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/delete_image',
+                  data : 'tr_id='+id,
+                  async : false,
+                  success : function(msg)
+                   {
 
+                       if(msg==1)
+                       {
+
+                        $('#img_'+id).hide();
+                         $('#msg').html('<font color="green">image deleted successfully</font>');
+                       }
+                       else
+                       {
+                         $('#msg').html('<font color="red">error occured while delete</font>');
+                       }
+
+                   }
+                  });
+
+            }
+
+}
 
 

@@ -176,7 +176,8 @@
                               <!-- <button type="button" title='Delete' class="btn btn-default btn-sm" >
                                Not Available
                               </button> -->
-                              <a href="<?php echo base_url();?>admin/courses/view_class/<?php echo  $info['cl_id']; ?>">View Details</a>
+                              <a href="<?php echo base_url();?>admin/courses/view_class/<?php echo  $info['cl_id']; ?>"> <button class="btn btn-default btn-sm">View Details</button></a>
+                              <!-- <a href="<?php echo base_url();?>admin/courses/view_class/<?php echo  $info['cl_id']; ?>">View Details</a> -->
                               <?php if( $info['status']==0)
                                  {
                                    ?> <button type="button" title="Make It Not Available" class="btn btn-default btn-sm" onclick="change_class_status('Not Available',<?php echo $info["cl_id"];?>)">Not Available</button>

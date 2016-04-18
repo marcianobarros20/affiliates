@@ -18,7 +18,6 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="admin_support/dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="admin_support/dist/css/style.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="admin_support/plugins/iCheck/flat/blue.css">
     <!-- Morris chart -->
@@ -31,172 +30,207 @@
     <link rel="stylesheet" href="admin_support/plugins/daterangepicker/daterangepicker-bs3.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="admin_support/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="admin_support/dist/css/style.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+ 
+    <script src="js/jquery.validate.js"></script>
 
 
     <script type="text/javascript" src="js/affiliate.js"></script>
+   
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
 
-     <?php echo $header;?>
-      <!-- Left side column. contains the logo and sidebar -->
-      <?php echo $leftsidebar;?>
+        <?php echo $header;?>
+        <?php echo $leftsidebar;?>
+        <?php echo $rightsidebar;?>
 
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content">
-            <div class="row">
-              <div class="col-sm-2">Class Name:</div>
-              <div class="col-sm-10"> 
-
-
-
-              <input type="text" value="<?php echo $class_details['cl_name'];?>" id="class_name" name="class_name">
-
-
-
-
-              </div>
-              <div class="col-sm-2"></div>
-           </div>
-
-
-           <div class="row">
-              <div class="col-sm-2">Class Description:</div>
-              <div class="col-sm-10"> 
-
-               <textarea id="class_description" name="class_description"><?php echo $class_details['description'];?></textarea>
-             
-
-              </div>
-              <div class="col-sm-2"></div>
-           </div>
-
-           <div class="row">
-              <div class="col-sm-2">Training Material :</div>
-              <div class="col-sm-10"> 
+            <section class="content">
                 <div class="row">
-                     <h3>Image</h3>
-                       <br>
-                        <?php foreach ($training_image as $image)
-                        { 
-                          ?>
-                          <div class="row">
-
-                            <div class="col-sm-6"><?php echo $image['media'] ?></div>
-                            <div class="col-sm-2">
-                             
-                             <?php 
-                             if( $image['status']==0)
-                             {
-                                    echo '<span class="glyphicon glyphicon-ok"></span>';
-                             }
-                             else
-                             {
-                                    echo  '<span class="glyphicon glyphicon-ban-circle"></span>';
-
-                             }
-
-                          
-
-
-                              ?>
-
-                            </div>
-                            <div class="col-sm-4"> 
-
-                             <?php 
-                             if( $image['status']==0)
-                             {
-                                    ?>
-
-                                    <button type="button" title="Make It Not Available" class="btn btn-default btn-sm" >Not Available</button>
-
-
-
-
-
-                                    <?php
-                             }
-                             else
-                             {
-                              ?>
-
-                                    <button type="button" title="Make It Available" class="btn btn-default btn-sm" >Available</button>
-
-
-
-
-
-                                    <?php
-                                    
-
-                             }
-
-                          
-
-
-                              ?>
-
-
-
-                            <button type="button" title="Delete" class="btn btn-default btn-sm" > <span class="glyphicon glyphicon-trash"></span></button>
-              
-
-
-
-
-                            </div>
-                          </div>
-                        <?php }
-
-                        ?>
-                         
-                      
                   
 
+
+<?php 
+if($this->session->userdata('succ_msg')!=''){?>
+                      <div class="alert alert-success alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <h4>  <i class="icon fa fa-check"></i> Success!</h4>
+                    <?php echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg','');?>
+                  </div>
+
+<?php } if($this->session->userdata('err_msg')!=''){ ?>
+
+<div class="alert alert-danger alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <h4><i class="icon fa fa-ban"></i> Sorry!</h4>
+                  <?php echo  $this->session->userdata('err_msg');$this->session->set_userdata('err_msg','');?>
+                  </div>
+<?php }?>
+
+                    
+<div id="msg"></div>
+
+                    <div class="box">
+                        <div class="box-header with-border">
+                              <div class="form-group">
+                                  <h3 class="box-title">Edit Class</h3>
+                              </div>
+                        </div>
+                        
+                        <div class="box-body">
+                          <form role="form" method="post" action="admin/courses/edit_class/<?php echo $class_details['cl_id'];?>" name="add_class" id="add_class" enctype="multipart/form-data" >
+                           
+                            <div class="form-group">
+                                <label>Class Name</label>
+                                <input type="text" id="new_class_name" name='new_class_name' value="<?php echo $class_details['cl_name'];?>" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                
+                                <textarea class="form-control required"  id="new_class_description" name='new_class_description'><?php echo $class_details['description'];?></textarea>
+                            </div>
+
+                          
+
+                      Upload Image: <div id="formdiv" class="form-group" style="margin-bottom:10px;">
+                      <div id="filediv">
+                      <input type="file" id="file" name="user_file[]" multiple="multiple" accept="image/*" title="Select Images To Be Uploaded">
+                     <br>
+                      <?php if(!empty($training_image)):foreach($training_image as $image):?>
+                      <div id="img_<?php echo $image['tr_id'];?>" class="col-md-2">
+                      <img src='tutorial/image/<?php echo $image['media'];?>' alt='' width='100' height='100'>
+                      <img src="images/cross_button.png" alt="" title="delete image" onclick="delete_image(<?php echo $image['tr_id'];?>)">
+                    </div>
+                    <?php endforeach;endif;?>
+                      </div>
+                      </div>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br> <br>
+                     
+                      <br>
+                      Upload video/audio: <div id="formdiv" class="form-group">
+                      <div id="filediv">
+                      <input type="file" id="video" name="user_video[]" multiple="multiple" accept="image/*" title="Select Images To Be Uploaded">
+                      <br>
+
+                      </div>
+                      </div>
+
+                      Upload File: <div id="formdiv" class="form-group">
+                      <div id="filediv">
+                      <input type="file" id="text_file" name="text_file[]" multiple="multiple" accept="image/*" title="Select Images To Be Uploaded">
+                      <br>
+
+                      </div>
+                      </div>
+
+                            <div class="box-footer">
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                            </div>
+                        </form> 
+                        </div>
+
+                    </div>
 
 
 
                 </div>
-
-              </div>
-              <div class="col-sm-2"></div>
-           </div>
-        </section>
-      </div>
-     <!-- footer -->
-     <?php echo $footer;?>
-     <!-- footer -->
-
-
-
-      <!-- Control Sidebar -->
-
-      <?php echo $rightsidebar;?>
-      <!-- /.control-sidebar -->
-
-
-
-      <!-- Add the sidebar's background. This div must be placed
-           immediately after the control sidebar -->
-      <div class="control-sidebar-bg"></div>
+            </section>
+        </div>
+        <!-- footer -->
+        <?php echo $footer;?>
+        <!-- footer -->
+        <div class="control-sidebar-bg"></div>
     </div><!-- ./wrapper -->
 
-    <!-- jQuery 2.1.4 -->
-        <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+  
+  <script type="text/javascript">
+            $('#add_more').click(function() {
+      "use strict";
+      $(this).before($("<div/>", {
+        id: 'filediv'
+      }).fadeIn('slow').append(
+        $("<input/>", {
+          name: 'file[]',
+          type: 'file',
+          id: 'file',
+          multiple: 'multiple',
+          accept: 'image/*'
+        })
+      ));
+    });
+
+    $('#upload').click(function(e) {
+      "use strict";
+      e.preventDefault();
+
+      if (window.filesToUpload.length === 0 || typeof window.filesToUpload === "undefined") {
+        alert("No files are selected.");
+        return false;
+      }
+
+      // Now, upload the files below...
+      // https://developer.mozilla.org/en-US/docs/Using_files_from_web_applications#Handling_the_upload_process_for_a_file.2C_asynchronously
+    });
+
+    function deletePreview(ele, i) {
+      "use strict";
+      try {
+        $(ele).parent().remove();
+        window.filesToUpload.splice(i, 1);
+         console.log(filesToUpload);
+      } catch (e) {
+        console.log(e.message);
+      }
+    }
+
+    $("#file").on('change', function() {
+      "use strict";
+
+      // create an empty array for the files to reside.
+      window.filesToUpload = [];
+
+      if (this.files.length >= 1) {
+        $("[id^=previewImg]").remove();
+        $.each(this.files, function(i, img) {
+          var reader = new FileReader(),
+            newElement = $("<div id='previewImg" + i + "' class='abcd'><img /></div>"),
+            deleteBtn = $("<span class='delete' onClick='deletePreview(this, " + i + ")'>delete</span>").prependTo(newElement),
+            preview = newElement.find("img");
+
+          reader.onloadend = function() {
+            preview.attr("src", reader.result);
+            preview.attr("alt", img.name);
+          };
+
+          try {
+            window.filesToUpload.push(document.getElementById("file").files[i]);
+          } catch (e) {
+            console.log(e.message);
+          }
+
+          if (img) {
+            reader.readAsDataURL(img);
+          } else {
+            preview.src = "";
+          }
+
+          newElement.appendTo("#filediv");
+        });
+      }
+    });
+    </script>
     <!-- jQuery UI 1.11.4 -->
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+   
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
       $.widget.bridge('uibutton', $.ui.button);
@@ -223,7 +257,7 @@
     <!-- Slimscroll -->
     <script src="admin_support/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
-    <script src="admin_support/plugins/fastclick/fastclick.min.js"></script>
+    
     <!-- AdminLTE App -->
     <script src="admin_support/dist/js/app.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
