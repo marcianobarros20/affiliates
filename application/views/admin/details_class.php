@@ -70,7 +70,7 @@
                   <hr>
   <strong><i class="fa fa-file-text-o margin-r-5"></i> Description</strong>
                   <p>  <?php echo $class_details['description']; ?></p>
-                  <hr>
+                
 
 
                   <?php if(!empty($image)){ ?>
@@ -86,6 +86,7 @@
                    <?php  foreach($audio as $ad):
 
                    $extract_get=explode('.',$ad['media']);
+                   if($extract_get[1]=='mp3' ||  $extract_get[1]=='ogg' ||  $extract_get[1]="wav"){
                    ?>
                   
    
@@ -93,7 +94,25 @@
   
   <source src="<?php echo base_url();?>tutorial/video_audio/<?php echo $ad['media'];?>" type="audio/<?php echo $extract_get[1];?>">
 </audio>
-                   <?php endforeach;} ?>
+
+<?php }else {?>
+<object class="embed-responsive-item">
+     <video width='320' height='240' controls>
+       <source src="<?php echo base_url();?>tutorial/video_audio/<?php echo $ad['media'];?>" width="100" height="100"/>
+     </video>
+   </object>
+
+                   <?php  } endforeach;} ?>
+
+
+                         <?php if(!empty($file)){ ?>
+                   <hr>
+                   <strong><i class="fa fa-file-text-o margin-r-5"></i> Text file</strong>
+                   <?php  foreach($file as $fl):?>
+                   <a href="<?php echo base_url();?>tutorial/text_file/<?php echo $fl['media'];?>" download> 
+                    <?php echo $fl['media'];?>
+                   </a>
+                   <?php   endforeach;} ?>
                 </div><!-- /.box-body -->
               </div>
               </div></section></div>
