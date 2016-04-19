@@ -656,5 +656,50 @@ public function Fnoldpasswordchk()
         	}
         }
 
+
+
+        public function delete_file()
+        {
+        	if($_POST)
+			{
+				$training_id=$this->input->post('tr_id');
+				$con=array('tr_id'=>$training_id);
+				$info_file=$this->Common_model->fetchinfo('training_material',$con,'row');
+				unlink('./tutorial/text_file/'.$info_file['media']);
+				$del=$this->Common_model->delete($con,'training_material');
+				if($del)
+				{
+					echo 1;
+				}
+				else
+				{
+					echo 2;
+				}
+        	}
+        }
+
+
+       
+
+        public function delete_media()
+        {
+        	if($_POST)
+			{
+				$training_id=$this->input->post('tr_id');
+				$con=array('tr_id'=>$training_id);
+				$info_file=$this->Common_model->fetchinfo('training_material',$con,'row');
+				unlink('./tutorial/video_audio/'.$info_file['media']);
+				$del=$this->Common_model->delete($con,'training_material');
+				if($del)
+				{
+					echo 1;
+				}
+				else
+				{
+					echo 2;
+				}
+        	}
+        }
+
 }
 ?>
