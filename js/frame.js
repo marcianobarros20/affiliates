@@ -67,7 +67,7 @@ $(document).delegate('#list1 a','click',function(){
                       {
                            $(".btn").removeClass("color");
                       }
-                       $('#tier4').find('div').first().remove(); 
+                       $('#tier4').find('div').remove(); 
                     }
                     }
                   });
@@ -123,6 +123,11 @@ function show_child_1(user_id,parent_id)
                       }
 
                       } 
+                      else
+                      {
+                        $(".btn").removeClass("color");
+                        $( "#tier5"+parent_id).find('div').remove();
+                      }
                    }
                   });
 }
