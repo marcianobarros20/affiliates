@@ -68,6 +68,7 @@ $(document).delegate('#list1 a','click',function(){
                            $(".btn").removeClass("color");
                       }
                        $('#tier4').find('div').remove(); 
+                       
                     }
                     }
                   });

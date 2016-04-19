@@ -99,25 +99,25 @@ if($this->session->userdata('del_succ_msg')!=''){?>
                       </td>
                       <td <?php if($value['status']==0){?>title='Active' <?php } else {?>title='Inactive'<?php }?>> <?php if($value['status']==0){ echo '<span class="glyphicon glyphicon-ok"></span>';} else {echo '<span class="glyphicon glyphicon-ban-circle"></span>';}?></td>
                       <td>
-                         <a href='<?php echo base_url();?>admin/courses/edit_course/<?php echo  $value['co_id']; ?>'> <button type="button" title='Edit' class="btn btn-info btn-sm">
+                         <a href='<?php echo base_url();?>admin/courses/edit_course/<?php echo  $value['co_id']; ?>'> <button type="button" title='Edit' class="btn btn-primary btn-xs">
                              <span class="glyphicon glyphicon-edit"></span>
                          </button></a>
                          
-<a href="<?php echo base_url();?>Ajax/delete_course/<?php echo  $value['co_id']; ?>"><button type="button" title='Delete' class="btn btn-danger btn-sm">
+<a href="<?php echo base_url();?>Ajax/delete_course/<?php echo  $value['co_id']; ?>"><button type="button" title='Delete' class="btn btn-danger btn-xs">
                             <span class="glyphicon glyphicon-trash"></span>
                          </button></a>
                          
-                            <a href="<?php echo base_url();?>admin/courses/view_course/<?php echo  $value['co_id']; ?>"> <button class="btn btn-info btn-sm">View Details</button></a>
+                            <a href="<?php echo base_url();?>admin/courses/view_course/<?php echo  $value['co_id']; ?>"> <button class="btn btn-primary btn-xs">View Details</button></a>
                           <?php if($value['status']==0)
                                              {
                                              ?>
-                                             <button class="btn btn-info btn-sm" onclick="change_course_status('Not Available',<?php echo $value['co_id'];?>)" title='Make Not Avilable'>Not Avilable</button>
+                                             <button class="btn btn-primary btn-xs" onclick="change_course_status('Not Available',<?php echo $value['co_id'];?>)" title='Make Not Avilable'>Not Avilable</button>
                                              <?php
                                              }
                                             else
                                             {
                                             ?>
-                                             <button class="btn btn-info btn-sm" onclick="change_course_status('Available',<?php echo $value['co_id'];?>)" title='Make Avilable'>Avilable</button>
+                                             <button class="btn btn-primary btn-xs" onclick="change_course_status('Available',<?php echo $value['co_id'];?>)" title='Make Avilable'>Avilable</button>
                                             <?php
                                             } ?>
 
