@@ -44,51 +44,117 @@
 
     <script type="text/javascript" src="js/affiliate.js"></script>
   </head>
-  <body class="hold-transition skin-blue sidebar-mini">
+
+
+<body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
-
-     <?php echo $header;?>
-      <!-- Left side column. contains the logo and sidebar -->
-      <?php echo $leftsidebar;?>
-
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
+    <?php echo $header;?>
+    <?php echo $leftsidebar;?>
+    <?php echo $rightsidebar;?>
+     
+ <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content">
-           <div class="row">
-                <div class="col-sm-10" align="center"><h2><?php echo $class_details['cl_name']; ?></h2></div>
-                <div class="col-sm-2"><h4><a href="<?php echo base_url();?>admin/courses/edit_class_and_course"><spam><<</span>Back</a><h4></div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-sm-2">Description</div>
-                <div class="col-sm-8"><?php echo $class_details['description']; ?></div>
-                <div class="col-sm-2"></div>
-            </div>
-            <div class="row">
-                <div class="col-sm-2">Study Material</div>
-                <div class="col-sm-8">Video<br>Audio<br>Image<br>Text</div>
-                <div class="col-sm-2"></div>
-            </div>
-          </section>
-      </div>
-     <!-- footer -->
-     <?php echo $footer;?>
-     <!-- footer -->
+            <section class="content">
+                <div class="row">
+
+<div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Class Details</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <strong><i class="fa fa-book margin-r-5"></i>  Name</strong>
+                  <p class="text-muted">
+                     <?php echo $class_details['cl_name']; ?>
+                  </p>
+
+                  <hr>
+  <strong><i class="fa fa-file-text-o margin-r-5"></i> Description</strong>
+                  <p>  <?php echo $class_details['description']; ?></p>
+                  <hr>
 
 
+                  <?php if(!empty($image)){ ?>
+                   <hr>
+                   <strong><i class="fa fa-file-text-o margin-r-5"></i> Image</strong>
+                   <?php  foreach($image as $img):?>
+                   <img src='tutorial/image/<?php echo $img['media'];?>' alt='' height='100' width='100'>
+                   <?php endforeach;} ?>
 
-      <!-- Control Sidebar -->
+                   <?php if(!empty($audio)){ ?>
+                   <hr>
+                   <strong><i class="fa fa-file-text-o margin-r-5"></i> Video/audio</strong>
+                   <?php  foreach($audio as $ad):
 
-      <?php echo $rightsidebar;?>
-      <!-- /.control-sidebar -->
+                   $extract_get=explode('.',$ad['media']);
+                   ?>
+                  
+   
+  <audio width='320' height='240' controls="controls" >
+  
+  <source src="<?php echo base_url();?>tutorial/video_audio/<?php echo $ad['media'];?>" type="audio/<?php echo $extract_get[1];?>">
+</audio>
+                   <?php endforeach;} ?>
+                </div><!-- /.box-body -->
+              </div>
+              </div></section></div>
+ <?php echo $footer;?>
 
-
-
-      <!-- Add the sidebar's background. This div must be placed
-           immediately after the control sidebar -->
       <div class="control-sidebar-bg"></div>
+
     </div><!-- ./wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- jQuery 2.1.4 -->
         <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>

@@ -357,7 +357,13 @@ $time=time();
     public function view_class($cl_id)
     {		
 			 $con=array('cl_id'=>$cl_id);
+			 $con1=array('class_id'=>$cl_id,'type'=>1);
+			 $con_audio=array('class_id'=>$cl_id,'type'=>2);
+			 $con_file=array('class_id'=>$cl_id,'type'=>3);
 			 $data['class_details']=$this->Common_model->fetchinfo('class',$con,'row');
+			 $data['image']=$this->Common_model->fetchinfo('training_material',$con1,'result');
+			 $data['audio']=$this->Common_model->fetchinfo('training_material',$con_audio,'result');
+			 $data['file']=$this->Common_model->fetchinfo('training_material',$con_file,'result');
 			 $data['header']=$this->load->view('admin/includes/header','',true);
 			 $data['footer']=$this->load->view('admin/includes/footer','',true);
 			 $data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
