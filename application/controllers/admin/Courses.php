@@ -331,10 +331,10 @@ $time=time();
 			$data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
 			$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
 			$data['class_info']=$class_info;	
-         	$con=array('status'=>0);
+         	$con1=array('status'=>0);
  
 			$data['couse_list']=$this->Common_model->fetchallcources();
-			$data['couse_list1']=$this->Common_model->fetchinfo('courses',$con,'result');
+			$data['couse_list1']=$this->Common_model->fetchinfo('courses',$con1,'result');
 			$this->load->view('admin/add_course',$data);
 		}
     }

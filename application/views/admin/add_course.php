@@ -144,7 +144,7 @@ if($this->session->userdata('del_succ_msg')!=''){?>
                         <form role="form" method="post" action="admin/courses/show_class_according_course" name="show_class_div" id="show_class_div">
                             <select id="course_id" name="course_id" class="form-control required">
                                       <option value="">--Select--</option>
-                                      <?php foreach($couse_list as $value)
+                                      <?php foreach($couse_list1 as $value)
                                       { ?>
                                       <option value="<?php echo $value['co_id'];?>" <?php if(!empty($this->input->post('course_id')) && $this->input->post('course_id')==$value['co_id']){ echo 'selected';}?>><?php echo $value['courses_name'];?></option>
                                       <?php }
