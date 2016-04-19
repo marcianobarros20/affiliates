@@ -635,5 +635,26 @@ public function Fnoldpasswordchk()
             }
         }
 
+
+        public function delete_image()
+        {
+        	if($_POST)
+			{
+				$training_id=$this->input->post('tr_id');
+				$con=array('tr_id'=>$training_id);
+				$info_image=$this->Common_model->fetchinfo('training_material',$con,'row');
+				unlink('./tutorial/image/'.$info_image['media']);
+				$del=$this->Common_model->delete($con,'training_material');
+				if($del)
+				{
+					echo 1;
+				}
+				else
+				{
+					echo 2;
+				}
+        	}
+        }
+
 }
 ?>
