@@ -176,12 +176,12 @@ if($this->session->userdata('del_succ_msg')!=''){?>
                                ?></td>
                             <td>
                               <a href='<?php echo base_url();?>admin/courses/edit_class/<?php echo $info['cl_id']; ?>'>
-                                <button type="button" title='Edit' class="btn btn-default btn-sm">
+                                <button type="button" title='Edit' class="btn btn-primary btn-xs">
                                   <span class="glyphicon glyphicon-edit"></span>
                                 </button>
                               </a>
                               
-                              <button type="button" title='Delete' class="btn btn-default btn-sm" onclick="delete_class(<?php 
+                              <button type="button" title='Delete' class="btn btn-danger btn-xs" onclick="delete_class(<?php 
                                 echo $info['cl_id'];
                                 ?>)">
                                 <span class="glyphicon glyphicon-trash"></span>
@@ -189,16 +189,16 @@ if($this->session->userdata('del_succ_msg')!=''){?>
                               <!-- <button type="button" title='Delete' class="btn btn-default btn-sm" >
                                Not Available
                               </button> -->
-                              <a href="<?php echo base_url();?>admin/courses/view_class/<?php echo  $info['cl_id']; ?>"> <button class="btn btn-default btn-sm">View Details</button></a>
+                              <a href="<?php echo base_url();?>admin/courses/view_class/<?php echo  $info['cl_id']; ?>"> <button class="btn btn-primary btn-xs">View Details</button></a>
                               <!-- <a href="<?php echo base_url();?>admin/courses/view_class/<?php echo  $info['cl_id']; ?>">View Details</a> -->
                               <?php if( $info['status']==0)
                                  {
-                                   ?> <button type="button" title="Make It Not Available" class="btn btn-default btn-sm" onclick="change_class_status('Not Available',<?php echo $info["cl_id"];?>)">Not Available</button>
+                                   ?> <button type="button" title="Make It Not Available" class="btn btn-primary btn-xs" onclick="change_class_status('Not Available',<?php echo $info["cl_id"];?>)">Not Available</button>
                                <?php
                                  }
                                  else
                                  {
-                                    ?> <button type="button" title="Make It Available" class="btn btn-default btn-sm" onclick="change_class_status('Available',<?php echo $info["cl_id"];?>)">Available</button>
+                                    ?> <button type="button" title="Make It Available" class="btn btn-primary btn-xs" onclick="change_class_status('Available',<?php echo $info["cl_id"];?>)">Available</button>
                                <?php
                                  }
                                ?>
