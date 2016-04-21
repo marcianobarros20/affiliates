@@ -18,13 +18,14 @@
     <link rel="stylesheet" href="css/sl-slide.css">
 
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-
+    <script src='js/video.js'></script>
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
 </head>
 
 <body>
@@ -44,8 +45,10 @@
                 <div class="sl-slide-inner">
                     <div class="container">
                         <img class="pull-right" src="images/sample/slider/img1.png" alt="" />
+
                         <h2>Start Your Career</h2>
                         <h3 class="gap">Sign Up Now To Get Started</h3>
+                        <a href="welcome/contact" style="cursor:pointer;"><h4 class="gap">Learn More<h3></a>
                        
                     </div>
                 </div>
@@ -59,6 +62,7 @@
                         <img class="pull-right" src="images/sample/slider/img2.png" alt="" />
                         <h2>Training &amp; Support</h2>
                         <h3 class="gap">Access to Success Training and Support</h3>
+                        <a href="welcome/contact" style="cursor:pointer;"><h4 class="gap">Learn More<h3></a>
                         
                     </div>
                 </div>
@@ -72,7 +76,7 @@
                     <img class="pull-right" src="images/sample/slider/img3.png" alt="" />
                     <h2>Get Paid</h2>
                     <h3 class="gap">Get paid for your hard work and the work of your network.</h3>
-                   
+                    <a href="welcome/contact" style="cursor:pointer;"><h4 class="gap">Learn More<h3></a>
                 </div>
             </div>
         </div>
@@ -300,82 +304,22 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
 
 </section>
 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        
+      </div>
+      <div class="modal-body" id="video_play">
+        ...
+      </div>
+      <div class="modal-footer">
 
-<!--Bottom
-<section id="bottom" class="main">
-    <!--Container
-    <div class="container">
-
-        <!--row-fluids
-        <div class="row-fluid">
-
-            <!--Contact Form
-            <div class="span3">
-                <h4>ADDRESS</h4>
-                <ul class="unstyled address">
-                    <li>
-                        <i class="icon-home"></i><strong>Address:</strong> Indiana<br>United States
-                    </li>
-                    <li>
-                        <i class="icon-envelope"></i>
-                        <strong>Email: </strong> hello@tier5.us
-                    </li>
-                    <li>
-                        <i class="icon-globe"></i>
-                        <strong>Website:</strong> www.tier5.us
-                    </li>
-                    <li>
-                        <i class="icon-phone"></i>
-                        <strong>Phone:</strong> 812 722 4722
-                    </li>
-                </ul>
-            </div>
-            <!--End Contact Form
-
-            <!--Important Links
-            <div id="tweets" class="span3">
-                <h4>OUR COMPANY</h4>
-                <div>
-                    <ul class="arrow">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Support</a></li>
-                        <li><a href="#">Terms of Use</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Copyright</a></li>
-                        <li><a href="#">We are hiring</a></li>
-                        <li><a href="#">Clients</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>  
-            </div>
-            <!--Important Links-->
-
-            <!--Archives
-            <div id="archives" class="span3">
-                <h4>Resources</h4>
-                <div>
-                    <ul class="arrow">
-                        <li><a href="#">December 2012 (1)</a></li>
-                        <li><a href="#">November 2012 (5)</a></li>
-                        <li><a href="#">October 2012 (8)</a></li>
-                        <li><a href="#">September 2012 (10)</a></li>
-                        <li><a href="#">August 2012 (29)</a></li>
-                        <li><a href="#">July 2012 (1)</a></li>
-                        <li><a href="#">June 2012 (31)</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!--End Archives
-
-           
-
+      </div>
     </div>
-    <!--/row-fluid
+  </div>
 </div>
-<!--/container
-
-</section>
-<!--/bottom-->
 
 <!--Footer-->
 <?php echo $footer;?>

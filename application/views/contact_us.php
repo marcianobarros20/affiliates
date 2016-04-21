@@ -269,7 +269,7 @@ Kolkata, India<br>
                 <i class="icon-phone"></i> &nbsp; +1(812)-722-4722
             </p>
             <p>
-                <i class="icon-globe"></i> &nbsp;http://www.tier5.us
+                <i class="icon-globe"></i> &nbsp;<a href="https://tier5.us/" target="_blank">http://www.tier5.us</a>
             </p>
         </div>
 

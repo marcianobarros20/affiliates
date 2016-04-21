@@ -19,8 +19,26 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 
+
+
+ <!-- tree css and js -->
+  
+    <link rel="stylesheet" href="css/jquery.jOrgChart.css"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+    <link href="css/prettify.css" type="text/css" rel="stylesheet" />
+
+    <script type="text/javascript" src="js/prettify.js"></script>
+    
+    <!-- jQuery includes -->
+   
+    
+    <script src="js/jquery.jOrgChart.js"></script>
+
+  
+ <!-- tree css and js -->
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
     <script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.5"></script>
     <link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
@@ -31,13 +49,12 @@
  
 </head>
 
-<body>
+<body onload="prettyPrint();">
 
     <!--Header-->
     <?php echo $header;?>
     <!-- /header -->
-   
-     
+
     <section class="title">
         <div class="container">
             <div class="row-fluid">
@@ -48,14 +65,13 @@
                     <ul class="breadcrumb pull-right">
                         <li><a href="<?php echo base_url();?>">Home</a> /</li>
                         <li class="active">Dashboard</li>
-                        <a href="<?php echo base_url()?>welcome/dashboard">HI !! <?php echo $this->session->userdata('username');?></a>
                     </ul>
                 </div>
             </div>
         </div>
-    </section> 
+    </section>
     <!-- / .title -->   
-      
+
     <section id="about-us" class="container main">
         <div class="row-fluid">
             <div class="span6">
@@ -107,7 +123,7 @@
 
               
  
-        <div class="row-fluid">
+        <div class="row">
             <hr>
              <h1 class="center">Meet the Team</h1>
 
@@ -120,21 +136,27 @@
 
                         
 <hr>
- 
 
-    <div class="container">
-       
+
+    <div class="chart_tree">
+   
+    <div id="chart" class="orgChart"></div>
+<?php $res = fetchCategoryTreeList5($this->session->userdata('user_id'));  if(!empty($res))
+ {
+?>
+        <ul id="org" style="display:none">  
+     <li><?php echo $fetch_allinfo['fname'].' '.$fetch_allinfo['lname'];?> 
    <?php
-  $res = fetchCategoryTreeList2($this->session->userdata('user_id'));
+  
+
   foreach ($res as $r) {
     echo  $r;
   }
+
 ?>
-
-
-
-
-
+</li>
+</ul>
+<?php }?>
     </div>
 
 
@@ -144,30 +166,23 @@
 
 
 
- <?php if(!empty($fetch_child)){ foreach ($fetch_child as $value) {
 
-    $parent_info=Parentstatus($value['parent_id']);
-                if($value['profile_image']!='')
-                {
-                    $img='profile_img/thumb/'.$value['profile_image'];
-                }
-                else
-                {
-                    $img='images/sample/no_photo.png';
-                }
 
-                            ?>
-<div id="inline1_<?php echo $value['uid'];?>" style="width:400px;display: none;">
-        <div class="col-md-12 col-lg-12"><div class="col-md-6 col-lg-6"><h3>Name: <?php echo $value['fname'].' '.$value['lname'];?></h3></div><div class="col-md-6 col-lg-6"><img src="<?php echo $img;?>" alt=""></div></div>
-        <p><h4>Upper Tier:</h4> <?php echo $parent_info['fname'].' '.$parent_info['lname'];?></p>
-        <p><h4>Description: </h4><?php echo $value['description'];?></p>
-        
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Basic Informations</h4>
+      </div>
+      <div class="modal-body" id="chkline">
+        ...
+      </div>
+      <div class="modal-footer">
+
+      </div>
     </div>
-<?php }}?>
-
-
-<div id="chkline" style="width:400px;">
-           
+  </div>
 </div>
 
 
@@ -176,9 +191,7 @@
   <?php echo $footer;?>
 <!--/Footer-->
     
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="js1/bootstrap.min.js"></script>
+     <script src="js1/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
-    
 </body>
 </html>

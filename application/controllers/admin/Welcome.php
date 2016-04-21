@@ -24,7 +24,7 @@ class Welcome extends CI_Controller {
 		parent::__construct();
 		
 		$this->load->model('Common_model');
-		
+		$this->load->helper('custom');
 
 	}
 

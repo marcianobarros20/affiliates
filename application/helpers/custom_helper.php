@@ -162,5 +162,84 @@ function fetchCategoryTreeList2($parent = 0, $user_tree_array = '') {
 }
 
 
+/* new child tree */
+
+
+function fetchCategoryTreeList4($parent = 0, $user_tree_array = '') {
+ $CI=& get_instance();
+        $CI->load->database(); 
+    if (!is_array($user_tree_array))
+    $user_tree_array = array();
+
+        $CI->db->select('*');
+        $CI->db->where('parent_id',$parent);
+        $res = $CI->db->get('users');
+        $info=$res->result_array();
+  
+  if ($res->num_rows() > 0) {
+     $user_tree_array[] = "<ul style='display:none;'>";
+    if ($res->result_array()) {
+        foreach($info as $ins)
+        {
+         $child=children_info($ins['uid']);
+         if(!empty($child))
+         {
+      $user_tree_array[] = "<li><a title='Referal Code: ".$ins['refferalcode']."' onclick='description(".$ins['uid'].")' style='cursor:pointer;color:#fff;'>". $ins['fname'].' '.$ins['lname'].'</a>';
+      $user_tree_array = fetchCategoryTreeList4($ins['uid'], $user_tree_array);
+      $user_tree_array[]="</li>";
+        }
+        else
+        {
+            $user_tree_array[] = "<li><a title='Referal Code: ".$ins['refferalcode']."' onclick='description(".$ins['uid'].")' style='cursor:pointer;color:#fff;'>". $ins['fname'].' '.$ins['lname']."</a></li>";
+        }
+      
+        }
+    }
+    $user_tree_array[] = "</ul>";
+  }
+  return $user_tree_array;
+}
+
+
+function fetchCategoryTreeList5($parent = 0, $user_tree_array = '') {
+ $CI=& get_instance();
+        $CI->load->database(); 
+    if (!is_array($user_tree_array))
+    $user_tree_array = array();
+
+        $CI->db->select('*');
+        $CI->db->where('parent_id',$parent);
+        $res = $CI->db->get('users');
+        $info=$res->result_array();
+  
+  if ($res->num_rows() > 0) {
+     $user_tree_array[] = "<ul>";
+    if ($res->result_array()) {
+        foreach($info as $ins)
+        {
+         $child=children_info($ins['uid']);
+         if(!empty($child))
+         {
+      $user_tree_array[] = "<li><a style='cursor:pointer; color:#fff;' title='Referal Code: ".$ins['refferalcode']."' onclick='description(".$ins['uid'].")'>". $ins['fname'].' '.$ins['lname'].'</a>';
+      $user_tree_array = fetchCategoryTreeList4($ins['uid'], $user_tree_array);
+      $user_tree_array[]="</li>";
+        }
+        else
+        {
+            $user_tree_array[] = "<li><a style='cursor:pointer;color:#fff;' title='Referal Code: ".$ins['refferalcode']."' onclick='description(".$ins['uid'].")'>". $ins['fname'].' '.$ins['lname']."</a></li>";
+        }
+      
+        }
+    }
+    $user_tree_array[] = "</ul>";
+  }
+  return $user_tree_array;
+}
+/* new child tree */
+
+
+
+
+
 
 ?>

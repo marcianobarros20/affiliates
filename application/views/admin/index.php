@@ -60,7 +60,9 @@ var map;
     $tot_lang=0;
   
     foreach($users_info as $key=>$prop){
-     $info='address:'.$prop['address'];
+      $parent_id=$prop['parent_id'];
+      $parent_info=Parentstatus($parent_id);
+     $info='address:'.$prop['address'].', Name: '.$prop['fname'].' '.$prop['lname'].'. Sponsorer: '.$parent_info['fname'].' '.$parent_info['lname'];
      $str.="['".addslashes($info)."',".$prop['latitude'].", ".$prop['longitude'].", ".($key+1)."],";
         $tot_long+=$prop['longitude'];
         $tot_lang+=$prop['latitude'];
