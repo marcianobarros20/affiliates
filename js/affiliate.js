@@ -631,3 +631,84 @@ var conf=confirm("You sure you want to delete this media !");
             }
 
 }
+
+function delete_popup(videoid)
+{
+  //alert(videoid);
+  var conf=confirm("You sure you want to delete this video !");
+            if(conf)
+            {
+                  var res= $.ajax({
+                  type : 'post',
+                  url : 'admin/courses/delete_popup',
+                  data : 'vid='+videoid,
+                  async : false,
+                  success : function(msg)
+                   {
+                      // alert(msg);
+                       if(msg)
+                       {
+                        window.location.reload();
+                      }
+                       
+
+                   }
+                  });
+
+            }
+}
+
+function change_status_popup(action,videoid)
+{
+
+  if(action=="Active")
+  {
+    var conf=confirm("You sure you want to Active this video !");
+            if(conf)
+            {   
+                var res= $.ajax({
+                  type : 'post',
+                  url : 'admin/courses/make_active',
+                  data : 'vid='+videoid,
+                  async : false,
+                  success : function(msg)
+                   {
+                      // alert(msg);
+                       if(msg)
+                       {
+                        window.location.reload();
+                      }
+                       
+
+                   }
+                  });
+
+            }
+  }
+  else
+  {
+    var conf=confirm("You sure you want to Active this video !");
+            if(conf)
+            {    var status=1;
+                 var res= $.ajax({
+                  type : 'post',
+                  url : 'admin/courses/change_status_popup',
+                  data : 'vid='+videoid+'& status='+status,
+                  async : false,
+                  success : function(msg)
+                   {
+                      
+                       if(msg)
+                       {
+                        window.location.reload();
+                      }
+                       
+
+                   }
+                  });
+
+            }
+  }
+  
+}
+

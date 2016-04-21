@@ -96,17 +96,17 @@
                                             ?></td>
                                         <td>
 
-                                          <button type="button" title='Delete' class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+                                          <button type="button" title='Delete' class="btn btn-danger btn-xs" onclick="delete_popup(<?php echo $video_show['vid'];?>)"><span class="glyphicon glyphicon-trash"></span></button>
                                           <?php if($video_show['status']==0)
                                              {
                                              ?>
-                                             <button class="btn btn-success btn-xs" title='Make It Inactive'>Inactive</button>
+                                             <button class="btn btn-success btn-xs" title='Make It Inactive' onclick="change_status_popup('Inactive','<?php echo $video_show['vid'];?>')">Inactive</button>
                                              <?php
                                              }
                                             else
                                             {
                                             ?>
-                                             <button class="btn btn-success btn-xs" title='Make It Active'>Active</button>
+                                             <button class="btn btn-success btn-xs" title='Make It Active' onclick="change_status_popup('Active','<?php echo $video_show['vid'];?>')">Active</button>
                                             <?php
                                             } ?>
 

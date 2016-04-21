@@ -672,6 +672,67 @@ $time=time();
         	redirect(base_url().'admin/courses/manage_popup');
         }
     }
+
+    public function delete_popup()
+    {
+        if($_POST)
+        {
+        	$video=$this->input->post('vid');
+           $con=array('vid'=>$video);
+           //print_r($con);
+           $delete=$this->Common_model->delete($con,'popup');
+           if($delete)
+           {
+           	 echo "1";
+           }
+        }
+    
+    }
+
+    public function change_status_popup()
+    { 
+    	if($_POST)
+    	{
+
+    		$video_id=$this->input->post('vid');
+    		$status=$this->input->post('status');
+    		$con=array('vid'=>$video_id);
+            $data['status']=$status;
+    		$update=$this->Common_model->update('popup',$con,$data);
+    		if($update)
+    		{
+    			echo 1;
+    		}
+
+    	}
+
+    }
+
+    public function make_active()
+    {
+    	if($_POST)
+    	{
+    		$video_id=$this->input->post('vid');
+    		$con['status']=0;
+
+    		$info=$this->Common_model->fetchinfo('popup',$con,'row');
+    		if(!empty($info))
+    		{
+    			$con1=array('vid'=>$info['vid']);
+    			$data['status']=1;
+                $update=$this->Common_model->update('popup',$con1,$data);
+
+    		}
+            $con2=array('vid'=>$video_id);
+    			$up['status']=0;
+                $update2=$this->Common_model->update('popup',$con2,$up);
+                if($update2){
+                	echo 1;
+                }
+
+    	}
+
+    }
    
 
 	

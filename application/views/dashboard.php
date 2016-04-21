@@ -28,115 +28,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"> 
      <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
      <script type="text/javascript" src="js/frame.js"></script>
- <style>
-     .parent{
-        text-align: center;
-        line-height: 100px;
-     }
-
-     #menu{
-    width:900px;
-    height: 50px;
-    clear:both;
-    background-color: #f7951e;
-    font-family: 'Exo 2', sans-serif;
-    text-align: center;
-
-}
-#menu ul{
-    font-family: 'Exo 2', sans-serif;
-    list-style:none;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    display:block;
-    float: left;
-    width: auto;
-}
-#menu ul li{
-    font-family: 'Exo 2', sans-serif;
-    list-style:none;
-    display:inline;
-    width:auto;
-    height:50px;
-    line-height:42px;
-    font-size:18px;
-}
-#menu ul li a{
-    font-family: 'Exo 2', sans-serif;
-    font-size: 18px;
-    height: auto;
-    width: auto;
-    float:next;
-    text-decoration: none;
-    color:#fff;
-    padding-left: 40px;
-    padding-right: 10px;
-}
-#menu ul li a:hover{
-    height:auto;
-    width: auto;
-    text-decoration:none;
-    color: #fff;
-}
-#menu ul li a.current{
-    height:auto;
-    width: auto;
-    text-decoration:none;
-    color: #fff;
-}
-
-#menu ul li:nth-of-type(1){
-
-    background:url(./images/iconza/house_32x32.png) no-repeat;
-    float: start;
-    padding-top: 5px;
-    padding-bottom: 10px;
-}
-
-#menu ul li:nth-of-type(2){
-
-    background:url(./images/iconza/Car.png) no-repeat;
-    float: start;
-    padding-top: 5px;
-    padding-bottom: 10px;
-
-}
-
-#menu ul li:nth-of-type(3){
-
-    background:url(./images/iconza/house.png) no-repeat;
-    float: start;
-    padding-top: 5px;
-    padding-bottom: 10px;
-}
-
-#menu ul li:nth-of-type(4){
-
-    background:url(./images/iconza/offer.png) no-repeat;
-    float: start;
-    padding-top: 5px;
-    padding-bottom: 10px;
-}
-#menu ul li:nth-of-type(5){
-
-    background:url(./images/iconza/mail_32x32.png) no-repeat;
-    float: start;
-    padding-top: 5px;
-    padding-bottom: 10px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-     </style>
+ 
 </head>
 
 <body>
@@ -163,30 +55,7 @@
         </div>
     </section> 
     <!-- / .title -->   
-    <section>
-
-
-              <div id="menu">
-                <ul>                                        
-                     <li><a class="current" href="home.html" title="">HOME</a></li>
-                     <li><a href="services.html" title="">TRANSPORT</a></li>
-                      <li><a href="#" title="">ACCOMODATION</a></li>
-                      <li><a href="#" title="">DEALS</a></li>
-                      <li><a href="contact.html" title="">CONTACT</a></li>
-                </ul>
-              </div>
-
-
-
-
-
-
-
-
-
-
-
-    </section>  
+      
     <section id="about-us" class="container main">
         <div class="row-fluid">
             <div class="span6">
