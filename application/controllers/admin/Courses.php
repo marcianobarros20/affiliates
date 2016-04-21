@@ -489,8 +489,8 @@ $time=time();
          if($video_audio_file >0)
          {
          	$files = $_FILES['user_video'];
-$this->load->library('upload');
-$time=time();
+            $this->load->library('upload');
+            $time=time();
       // next we pass the upload path for the images
 			$config['upload_path'] = './tutorial/video_audio/';
 			$config['file_name']=$time;
@@ -499,51 +499,45 @@ $time=time();
 			//$config['max_size']='2000';
 			 for($i=0;$i<$number_of_media;$i++)
 				{ 
-		$_FILES['user_video']['name'] = $files['name'][$i];
-        $_FILES['user_video']['type'] = $files['type'][$i];
-        $_FILES['user_video']['tmp_name'] = $files['tmp_name'][$i];
-        $_FILES['user_video']['error'] = $files['error'][$i];
-        $_FILES['user_video']['size'] = $files['size'][$i];
-        //now we initialize the upload library
-        $this->upload->initialize($config);
-        // we retrieve the number of files that were uploaded
-        if ($this->upload->do_upload('user_video'))
-        {
-          $data['uploads'][$i] = $this->upload->data();
+					$_FILES['user_video']['name'] = $files['name'][$i];
+			        $_FILES['user_video']['type'] = $files['type'][$i];
+			        $_FILES['user_video']['tmp_name'] = $files['tmp_name'][$i];
+			        $_FILES['user_video']['error'] = $files['error'][$i];
+			        $_FILES['user_video']['size'] = $files['size'][$i];
+        			//now we initialize the upload library
+        			$this->upload->initialize($config);
+       				 // we retrieve the number of files that were uploaded
+				        if ($this->upload->do_upload('user_video'))
+				        {
+				          $data['uploads'][$i] = $this->upload->data();
 
-		  $f_resize=$data['uploads'][$i]['file_name'];
-        }
-        else
-        {
+						  $f_resize=$data['uploads'][$i]['file_name'];
+				        }
+				        else
+				        {
 
-        	$this->Common_model->delete($con_del,'class');
-          $data['upload_errors'][$i] = $this->upload->display_errors();
-           $this->session->set_userdata('err_msg',$this->upload->display_errors());
-		  redirect(base_url().'admin/courses/edit_class/'.$cl_id);
-        }
+				        	$this->Common_model->delete($con_del,'class');
+				          	$data['upload_errors'][$i] = $this->upload->display_errors();
+				          	$this->session->set_userdata('err_msg',$this->upload->display_errors());
+						 	redirect(base_url().'admin/courses/edit_class/'.$cl_id);
+        				}
 
-        		$data1['class_id']=$cl_id;
-		        $data1['media']=$f_resize;
-		        $data1['type']=2;
-		        $data1['status']=0;
+        		    $data1['class_id']=$cl_id;
+		            $data1['media']=$f_resize;
+		            $data1['type']=2;
+		            $data1['status']=0;
 
-		        $insert_material=$this->Common_model->insert('training_material',$data1);
-				
-		        	
-				}
-
-				
+		            $insert_material=$this->Common_model->insert('training_material',$data1);
+				}	
          }
-
-
          $text_file = $_FILES['text_file']['size'][0];
          $number_of_text_file=sizeof($_FILES['text_file']['tmp_name']);//exit;
          if($text_file >0)
          {
          	$files = $_FILES['text_file'];
-$this->load->library('upload');
-$time=time();
-      // next we pass the upload path for the images
+            $this->load->library('upload');
+            $time=time();
+            // next we pass the upload path for the images
 			$config['upload_path'] = './tutorial/text_file/';
 			$config['file_name']=$time;
 			$config['overwrite']='TRUE';
@@ -551,53 +545,51 @@ $time=time();
 			$config['max_size']='2000';
 			 for($i=0;$i<$number_of_text_file;$i++)
 				{ 
-		$_FILES['text_file']['name'] = $files['name'][$i];
-        $_FILES['text_file']['type'] = $files['type'][$i];
-        $_FILES['text_file']['tmp_name'] = $files['tmp_name'][$i];
-        $_FILES['text_file']['error'] = $files['error'][$i];
-        $_FILES['text_file']['size'] = $files['size'][$i];
-        //now we initialize the upload library
-        $this->upload->initialize($config);
-        // we retrieve the number of files that were uploaded
-        if ($this->upload->do_upload('text_file'))
-        {
-          $data['uploads'][$i] = $this->upload->data();
+					$_FILES['text_file']['name'] = $files['name'][$i];
+			        $_FILES['text_file']['type'] = $files['type'][$i];
+			        $_FILES['text_file']['tmp_name'] = $files['tmp_name'][$i];
+			        $_FILES['text_file']['error'] = $files['error'][$i];
+			        $_FILES['text_file']['size'] = $files['size'][$i];
+			        //now we initialize the upload library
+			        $this->upload->initialize($config);
+        			// we retrieve the number of files that were uploaded
+				        if ($this->upload->do_upload('text_file'))
+				        {
+				          $data['uploads'][$i] = $this->upload->data();
 
-		  $f_resize=$data['uploads'][$i]['file_name'];
-        }
-        else
-        {
-        	$this->Common_model->delete($con_del,'class');
-          $data['upload_errors'][$i] = $this->upload->display_errors();
-           $this->session->set_userdata('err_msg',$this->upload->display_errors());
-		  redirect(base_url().'admin/courses/edit_class/'.$cl_id);
-        }
+						  $f_resize=$data['uploads'][$i]['file_name'];
+				        }
+				        else
+				        {
+				        	$this->Common_model->delete($con_del,'class');
+				          $data['upload_errors'][$i] = $this->upload->display_errors();
+				           $this->session->set_userdata('err_msg',$this->upload->display_errors());
+						  redirect(base_url().'admin/courses/edit_class/'.$cl_id);
+				        }
 
-        		$data1['class_id']=$cl_id;
-		        $data1['media']=$f_resize;
-		        $data1['type']=3;
-		        $data1['status']=0;
+	        		$data1['class_id']=$cl_id;
+			        $data1['media']=$f_resize;
+			        $data1['type']=3;
+			        $data1['status']=0;
 
-		        $insert_material=$this->Common_model->insert('training_material',$data1);
-				
-		        	
+			        $insert_material=$this->Common_model->insert('training_material',$data1);	
 				}
 
 				
          }
- if($insert_material>0)
-		        	{
-		        		$this->session->set_userdata('succ_msg','class updated successfully!!!');
-		        		redirect(base_url().'admin/courses/edit_class/'.$cl_id);
-		        	}
-		        	else
-		        	{
-		        		if($update)
-		        		{
-		        			$this->session->set_userdata('succ_msg','class updated successfully!!!');
-		        		}
-		        		redirect(base_url().'admin/courses/edit_class/'.$cl_id);
-		        	}
+         if($insert_material>0)
+		 {
+		       $this->session->set_userdata('succ_msg','class updated successfully!!!');
+		       redirect(base_url().'admin/courses/edit_class/'.$cl_id);
+		 }
+		 else
+		 {
+		    if($update)
+		    {
+		        $this->session->set_userdata('succ_msg','class updated successfully!!!');
+		    }
+		    redirect(base_url().'admin/courses/edit_class/'.$cl_id);
+		 }
 
       
 
@@ -618,6 +610,69 @@ $time=time();
     	
     }
 
+
+    public function manage_popup()
+    {		
+        $data['video']=$this->Common_model->fetchallpopvideo();
+
+	    $data['header']=$this->load->view('admin/includes/header','',true);
+	    $data['footer']=$this->load->view('admin/includes/footer','',true);
+	    $data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
+		$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
+			 
+	    $this->load->view('admin/manage_popup',$data);
+    }
+    
+    public function add_popup()
+    {
+    	if($_FILES['popup_video']['size']!=0)
+        {
+        	//echo "Hi";
+        	    $this->load->library('image_lib');
+				$time=time();
+			    $config['upload_path'] ='./popup_video/';
+				$config['file_name']=$time;
+				$config['overwrite']='TRUE';
+				$config['allowed_types']='avi|flv|wmv|mp3|mp4|AVI|FLV|WMV|MP3|MP4';
+				$config['max_size']='200000';
+								
+				$this->load->library('upload', $config);
+				if( ! $this->upload->do_upload('popup_video'))//initialize
+				{
+				
+					$this->session->set_userdata('err_msg',$this->upload->display_errors());
+					echo $this->upload->display_errors();
+					die();
+				}
+				else
+				{
+				
+				$updata=array();//get the uploaded data details
+				$updata = $this->upload->data();				
+				//echo '<pre>';print_r($updata);
+				$f_resize=$updata['file_name'];
+
+				}
+				$ins['media']=$f_resize;
+				$ins['status']=1;
+		  
+		        $insert=$this->Common_model->insert('popup',$ins);
+		        if($insert)
+		        {
+                    $this->session->set_userdata('succ_msg','Video Uploaded Successfully!!!');
+		        }
+		        else
+		        {
+                   $this->session->set_userdata('err_msg',$this->upload->display_errors());
+		        }
+		        redirect(base_url().'admin/courses/manage_popup');
+        }
+        else
+        {
+        	redirect(base_url().'admin/courses/manage_popup');
+        }
+    }
+   
 
 	
 }

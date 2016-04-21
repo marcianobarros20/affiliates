@@ -200,6 +200,16 @@
 
       }
 
+      public function fetchallpopvideo()
+      {
+
+        $this->db->select('*');
+        
+        $res=$this->db->get('popup');
+        return $res->result_array();
+
+      }
+
 
       
 

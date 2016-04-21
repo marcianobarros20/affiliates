@@ -34,6 +34,7 @@ if($(this).val()!='')
       
     $('#add_course').validate();
     $('#add_class').validate();
+    $('#add_popup').validate();
       
 
       function initialize() {

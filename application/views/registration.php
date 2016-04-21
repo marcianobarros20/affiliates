@@ -86,7 +86,7 @@
       $user_info=Parentstatus($parent_id);?>
 
 
- Referent User Information:
+ Your Affiliate Sponsor
     <br>
     <?php if($user_info['profile_image']!=''){ ?>
     <img src='profile_img/thumb/<?php echo $user_info['profile_image'];?>' alt=''>
@@ -128,17 +128,17 @@
           <!-- state -->
           <div class="controls">
           
-           <select name='state' class="input-xlarge required wid_49" id='state'>
+           <!-- <select name='state' class="input-xlarge required wid_49" id='state'>
            <option value=''>Select State</option>
            <?php foreach($states as $sts):?>
             <option value='<?php echo $sts['id'];?>'><?php echo $sts['name'];?></option>
            <?php endforeach;?>
-           </select>
+           </select> -->
            <!-- end state -->
-           <select name='city' class="input-xlarge required wid_50" id='city'>
+           <!-- <select name='city' class="input-xlarge required wid_50" id='city'>
            <option value=''>Select City</option>
            
-           </select>
+           </select> -->
            <!--city-->
            </div>
            <div class="controls">

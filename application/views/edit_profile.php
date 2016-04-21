@@ -115,12 +115,12 @@
           <!-- state -->
           <div class="controls">
           <?php $state_info=Fnstateinfo($fetch_allinfo['state_id']);?>
-           <select name='state' class="input-xlarge required" id='state'>
+           <!-- <select name='state' class="input-xlarge required" id='state'>
            <?php foreach($states as $sts):?>
             <option value='<?php echo $sts['id'];?>' <?php if($sts['id']==$fetch_allinfo['state_id']){ echo 'selected';}?>><?php echo $sts['name'];?></option>
 
            <?php endforeach;?>
-           </select>
+           </select> -->
           </div>
           <!-- end state -->
         </div>
@@ -130,14 +130,13 @@
           <!-- state -->
           <div class="controls">
              
-             <?php $city_info=Fncityinfo($fetch_allinfo['city_id']);
+           <?php $city_info=Fncityinfo($fetch_allinfo['city_id']);
              //echo '<pre>';print_r($city_info);
-             ?>
-           <select name='city' class="input-xlarge required" id='city'>
+             ?>             <!-- <select name='city' class="input-xlarge required" id='city'>
            <?php if(!empty($city_info)):?>
             <option value='<?php echo $city_info['id'];?>'><?php echo $city_info['name'];?></option>
            <?php endif;?>
-           </select>
+           </select> -->
           </div>
           <!-- end state -->
         </div>

@@ -50,7 +50,6 @@
                                <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='contact'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>welcome/contact"><?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='contact'){?>{Get Started}<?php } else { ?> Get Started <?php }?></a></li>
                             <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
                         <?php } else { ?>
-                        <a href="<?php echo base_url()?>welcome/dashboard">HI !! <?php echo $this->session->userdata('username');?></a>
                         <a href="<?php echo base_url();?>welcome/logout">Logout</a>
                         <?php }?>
                         </li>
