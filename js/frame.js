@@ -3,6 +3,12 @@
        *  Simple image gallery. Uses default settings
        */
  $('.fancybox').fancybox();
+
+
+  $("#org").jOrgChart({
+            chartElement : '#chart',
+            dragAndDrop  : true
+        });
 });
 /*
   $(document).delegate('#list a','click',function(){
@@ -27,8 +33,32 @@ $('.param_'+parent).html(' - ');
     
 });*/
 
-
-
+/* tree js */
+  $("#show-list").click(function(e){
+                e.preventDefault();
+                
+                $('#list-html').toggle('fast', function(){
+                    if($(this).is(':visible')){
+                        $('#show-list').text('Hide underlying list.');
+                        $(".topbar").fadeTo('fast',0.9);
+                    }else{
+                        $('#show-list').text('Show underlying list.');
+                        $(".topbar").fadeTo('fast',1);                  
+                    }
+                });
+            });
+            
+            $('#list-html').text($('#org').html());
+            
+            $("#org").bind("DOMSubtreeModified", function() {
+                $('#list-html').text('');
+                
+                $('#list-html').text($('#org').html());
+                
+                prettyPrint();                
+            });
+/* tree js */
+/*
 $(document).delegate('#list1 a','click',function(){
  //alert($(this).data("id"));
  var parent=$(this).data("id");
@@ -75,12 +105,13 @@ $(document).delegate('#list1 a','click',function(){
 
     
 });
-
+*/
 
 
 
   function description(uid)
 {
+$('#myModal').modal('show');
    var res= $.ajax({
                   type : 'post',
                   url : 'Ajax/Fngetdetails',

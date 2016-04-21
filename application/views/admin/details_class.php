@@ -95,7 +95,7 @@
   <source src="<?php echo base_url();?>tutorial/video_audio/<?php echo $ad['media'];?>" type="audio/<?php echo $extract_get[1];?>">
 </audio>
 
-<?php }else {?>
+<?php } else {?>
 <object class="embed-responsive-item">
      <video width='320' height='240' controls>
        <source src="<?php echo base_url();?>tutorial/video_audio/<?php echo $ad['media'];?>" width="100" height="100"/>
