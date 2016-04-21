@@ -136,7 +136,8 @@ if($this->session->userdata('del_succ_msg')!=''){?>
                 <div class="col-sm-6">
                   <div class="box">
                     <div class="box-header">
-                      <h3 class="box-title">List Of Class </h3>
+                      <h3 class="box-title">List Of Class1
+                      </h3>
                     </div><!-- /.box-header -->
 
                     <div class="box-body">

@@ -567,4 +567,67 @@ function delete_image(id)
 
 }
 
+function delete_file(id)
+{
+  
+var conf=confirm("You sure you want to delete this file !");
+            if(conf)
+            {
+              var status=0;
+              var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/delete_file',
+                  data : 'tr_id='+id,
+                  async : false,
+                  success : function(msg)
+                   {
 
+                       if(msg==1)
+                       {
+
+                        $('#file_'+id).hide();
+                         $('#msg').html('<font color="green">file deleted successfully</font>');
+                       }
+                       else
+                       {
+                         $('#msg').html('<font color="red">error occured while delete</font>');
+                       }
+
+                   }
+                  });
+
+            }
+
+}
+
+function delete_media(id)
+{
+var conf=confirm("You sure you want to delete this media !");
+            if(conf)
+            {
+              var status=0;
+              var res= $.ajax({
+                  type : 'post',
+                  url : 'Ajax/delete_media',
+                  data : 'tr_id='+id,
+                  async : false,
+                  success : function(msg)
+                   {
+
+                       if(msg==1)
+                       {
+
+                        $('#video_'+id).hide();
+                         $('#msg').html('<font color="green">media deleted successfully</font>');
+                       }
+                       else
+                       {
+                         $('#msg').html('<font color="red">error occured while delete</font>');
+                       }
+
+                   }
+                  });
+
+            }
+
+}

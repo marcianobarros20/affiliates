@@ -73,7 +73,7 @@ if($this->session->userdata('succ_msg')!=''){?>
 <?php }?>
 
                     
-<div id="msg"></div>
+
 
                     <div class="box">
                         <div class="box-header with-border">
@@ -100,6 +100,8 @@ if($this->session->userdata('succ_msg')!=''){?>
                       Upload Image: <div id="formdiv" class="form-group" style="margin-bottom:10px;">
                       <div id="filediv">
                       <input type="file" id="file" name="user_file[]" multiple="multiple" accept="image/*" title="Select Images To Be Uploaded">
+                     <br><br>
+                     <div id="msg"></div>
                      <br>
                       <?php if(!empty($training_image)):foreach($training_image as $image):?>
                       <div id="img_<?php echo $image['tr_id'];?>" class="col-md-2">
@@ -121,10 +123,38 @@ if($this->session->userdata('succ_msg')!=''){?>
                       <div id="filediv">
                       <input type="file" id="video" name="user_video[]" multiple="multiple" accept="image/*" title="Select Images To Be Uploaded">
                       <br>
+                      <?php if(!empty($training_audio_video)){foreach($training_audio_video as $video){?>
+                    
+                      <?php 
+                      $extract_get=explode('.',$video['media']);
+                      if($extract_get[1]=='mp3' ||  $extract_get[1]=='ogg' ||  $extract_get[1]="wav")
+                      {
+                   ?>
+                  
+     <div id="video_<?php echo $video['tr_id'];?>">
+  <audio width='320' height='240' controls="controls" >
+  
+  <source src="<?php echo base_url();?>tutorial/video_audio/<?php echo $video['media'];?>" type="audio/<?php echo $extract_get[1];?>">
+</audio>
+<img src="images/cross_button.png" alt="" style="cursor:pointer;" title="delete image" onclick="delete_image(<?php echo $video['tr_id'];?>)">
+</div>
+<?php }else { ?>
+<div id="video_<?php echo $video['tr_id'];?>">
+<object class="embed-responsive-item">
+     <video width='320' height='240' controls>
+       <source src="<?php echo base_url();?>tutorial/video_audio/<?php echo $video['media'];?>" width="100" height="100"/>
+     </video>
+   </object><img src="images/cross_button.png" alt="" style="cursor:pointer;" title="delete video/audio" onclick="delete_media(<?php echo $video['tr_id'];?>)">
+</div>
+                   <?php  }?>
 
+                   <?php }}?>
+                     
+
+                     
                       </div>
                       </div>
-
+ <br><br><br><br><br><br><br><br>
                       Upload File: <div id="formdiv" class="form-group">
                       <div id="filediv">
                       <input type="file" id="text_file" name="text_file[]" multiple="multiple" accept="image/*" title="Select Images To Be Uploaded">
@@ -132,6 +162,12 @@ if($this->session->userdata('succ_msg')!=''){?>
 
                       </div>
                       </div>
+
+<?php if(!empty($training_file)){foreach($training_file as $files){?>
+<div id="file_<?php echo $files['tr_id']?>">
+<?php echo $files['media'];?>&nbsp;&nbsp;<img src="images/cross_button.png" alt="" style="cursor:pointer;" title="delete File" onclick="delete_file(<?php echo $files['tr_id'];?>)">
+</div>
+<?php }}?>
 
                             <div class="box-footer">
                                 <button class="btn btn-primary" type="submit">Submit</button>
