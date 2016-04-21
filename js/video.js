@@ -7,18 +7,22 @@ setInterval(function() {
 
 function hello()
 {
-
-$('#myModal').modal('show');
-/*  var res= $.ajax({
+//alert('hi');
+  var res= $.ajax({
                   type : 'post',
-                  url : 'Ajax/Fngetdetails',
-                  data : 'uid='+uid,
+                  url : 'Ajax/Fngetvideo',
+                  
                   async : false,
                   success : function(msg)
                    {
                        //alert(msg);
-                       $('#chkline').html(msg);
+                       if(msg!='')
+                       {
+                       $('#video_play').html(msg);
+                       $('#myModal').modal('show');
+
+                        }
 
                    }
-                  });*/
+                  });
 }

@@ -115,13 +115,6 @@
                                   }
                                 ?>
                                 
-
-                                <!--  <input type="button" onclick="change_status('Approve','<?php echo $users['uid'];?>');" value="Approve">
-                           
-       
-                             
-                                <input type="button" onclick="change_status('Reject','<?php echo $users['uid'];?>');" value="Reject" ><br>  -->
-                               
                                 
                                 
                                 

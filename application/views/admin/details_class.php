@@ -68,7 +68,7 @@
                   </p>
 
                   <hr>
-  <strong><i class="fa fa-file-text-o margin-r-5"></i> Description</strong>
+                     <strong><i class="fa fa-file-text-o margin-r-5"></i> Description</strong>
                   <p>  <?php echo $class_details['description']; ?></p>
                 
 
@@ -113,6 +113,9 @@
                     <?php echo $fl['media'];?>
                    </a>
                    <?php   endforeach;} ?>
+
+                  <hr>
+
                 </div><!-- /.box-body -->
               </div>
               </div></section></div>

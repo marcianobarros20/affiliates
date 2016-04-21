@@ -593,6 +593,22 @@ public function Fnoldpasswordchk()
 			}
 		}
 
+		function Fngetvideo()
+		{
+			$con=array('status'=>0);
+			$info_video=$this->Common_model->fetchinfo('popup',$con,'row');
+			$result='';
+			if(!empty($info_video))
+			{
+				$result.="<object class='embed-responsive-item'>
+     <video width='100%' height='100%' controls autoplay>
+       <source src='".base_url()."popup_video/".$info_video['media']."'/>
+     </video>
+   </object>";
+			}
+			echo $result;
+		}
+
 		public function delete_class()
 	    {
 		if($_POST)

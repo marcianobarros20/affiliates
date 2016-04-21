@@ -94,8 +94,8 @@ class Welcome extends CI_Controller
 					$ins['email']=$this->input->post('email');
 					$ins['password']=md5($this->input->post('password'));
 					$ins['country_id']=231;
-					$ins['state_id']=$this->input->post('state');
-					$ins['city_id']=$this->input->post('city');
+					//$ins['state_id']=$this->input->post('state');
+					//$ins['city_id']=$this->input->post('city');
 					$ins['address']=$this->input->post('address');
 					$ins['latitude']=$this->input->post('lattitude');
 					$ins['longitude']=$this->input->post('longitude');
@@ -252,6 +252,7 @@ class Welcome extends CI_Controller
 			$data['header']=$this->load->view('includes/header',$data,true);
 			$data['footer']=$this->load->view('includes/footer','',true);
 			$data['middle']=$this->load->view('includes/middle','',true);
+			
 
 			$this->load->view('dashboard',$data);
 		}
@@ -452,8 +453,8 @@ class Welcome extends CI_Controller
 			$data['lname']=$this->input->post('edit_last_name');
 		    $data['description']=$this->input->post('edit_description');
 			$data['country_id']=231;
-			$data['state_id']=$this->input->post('state');
-			$data['city_id']=$this->input->post('city');
+			//$data['state_id']=$this->input->post('state');
+			//$data['city_id']=$this->input->post('city');
 			$data['address']=$this->input->post('address');
 			$data['latitude']=$this->input->post('lattitude');
 			$data['longitude']=$this->input->post('longitude');

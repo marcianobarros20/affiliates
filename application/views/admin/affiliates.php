@@ -70,8 +70,6 @@
                     </tr>
                     <?php if(!empty($list_users)):
                       foreach($list_users as $users):
-
-
                         ?>
                     <tr>
                       
@@ -101,8 +99,6 @@
                                   <input type="button" value="Click To Assign" id="assign_code_button_'.$users['uid'].'" onclick="assign_uppertier('.$users['uid'].')">
                                   </div>';
                           }
-
-
                         ?>
 
                       </td>
@@ -120,8 +116,6 @@
 
                             <?php
                           }
-
-
                         ?>
 
 

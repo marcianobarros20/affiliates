@@ -69,6 +69,21 @@
             </li> 
 
 
+            <li class="<?php if($this->uri->segment(2)=='courses'){ echo 'active';}?> treeview">
+              <a href="<?php echo base_url();?>admin/welcome">
+                <i class="fa fa-dashboard"></i> <span>Manage Pop Up Video</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+
+                <li  <?php if($this->uri->segment(2)=='courses' && $this->uri->segment(3)=='manage_popup'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/courses/manage_popup"><i class="fa fa-circle-o"></i>Pop Up Video</a></li>
+                
+              </ul>
+            </li> 
+            
+
+            
+
+
 
             
 
