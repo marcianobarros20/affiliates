@@ -10,6 +10,91 @@ $('#show_class_div').submit();
 });
 
 
+$('#quize_course_id').change(function(){
+if($(this).val()!='')
+{
+$('#question_div').show();
+$('#select_option_div').show();
+
+}
+else
+{
+  $('#question_div').hide();
+  $('#select_option_div').hide();
+
+}
+});
+
+
+
+
+$('#answer_option').change(function(){
+  var ans_opt=$('#answer_option').val();
+if($(this).val()!='')
+{
+$('#insert_answer_div').show();
+$('#correct_answer_div').show();
+$('#subit_div').show();
+  var result="";
+  //alert(ans_opt);
+  for(i=0; i<=ans_opt-1; i++)
+  {
+
+    var serial=i+1;
+    
+    result+=serial+'.&nbsp;'+'<input type="text" placeholder="Enter Option" name="option_value[]" style="width: 120px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+    
+  }
+  $('#print').html(result);
+  $('#correct-ans').html('<select name="cor_ans" id="corr-ans"><option value="">--Select--</option></select>');
+}
+else
+{
+  $('#insert_answer_div').hide();
+  $('#correct_answer_div').hide();
+  $('#subit_div').hide();
+  
+
+}
+});
+
+$(document).delegate("input[type=text][name='option_value[]']", 'keyup', function(){
+           //option = '';
+           option ='<option value="">--Select--</option>';
+           $("input[type=text][name='option_value[]']").each(function(){
+               if($(this).val() != ''){
+                  //option +='<option>--Select--</option>'
+                   option += '<option value="' + $(this).val() + '">' + $(this).val() + '</option>';
+               }
+           });
+           $('#corr-ans').html(option);
+       });
+
+
+/*<script>
+   $(document).ready(function(){
+       $('#opt_no').change(function(){
+           $('#print').empty();
+           $('#correct-ans').empty();
+           var opt_no = $(this).val();
+           for(var i = 1; i <= opt_no; i++){
+               $('#print').append('<input type="text" name="opt[]">');
+           }
+           $('#correct-ans').html('<select name="cor_ans" id="corr-ans"><option value="">--- Select One ---</option></select>');
+       });
+       var option = '<option value="">--- Select One ---</option>';
+       
+       $(document).delegate("input[type=text][name='opt[]']", 'keyup', function(){
+           option = '';
+           $("input[type=text][name='opt[]']").each(function(){
+               if($(this).val() != ''){
+                   option += '<option value="' + $(this).val() + '">' + $(this).val() + '</option>';
+               }
+           });
+           $('#corr-ans').html(option);
+       });
+   });
+</script>*/
 
 
 
