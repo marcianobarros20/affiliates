@@ -249,5 +249,23 @@ public function pricing()
 		$this->load->view('payouts.php',$data);
 	}
 
+
+	public function Allcourses()
+	{
+		if($this->session->userdata('user_id')=='')
+		{
+			redirect(base_url().'welcome');
+		}
+		else
+		{
+		$data['set_code']='';
+		$con=array('status'=>0);
+		$data['all_courses']=$this->Common_model->fetchinfo('courses',$con,'result');
+		$data['header']=$this->load->view('includes/header.php',$data,true);
+		$data['footer']=$this->load->view('includes/footer.php','',true);
+		$this->load->view('all_course',$data);
+		}
+	}
+
 }
 ?>

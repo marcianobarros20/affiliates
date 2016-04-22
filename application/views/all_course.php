@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Dashboard | Tier5</title>
+    <title>My Course | Tier5</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <base href="<?php echo base_url();?>">
@@ -46,7 +46,17 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"> 
      <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
      <script type="text/javascript" src="js/frame.js"></script>
- 
+
+
+<!-- full scrren video -->
+<style>
+div#video_player_box{ width:550px; background:#000; margin:0px auto;}
+div#video_controls_bar{ background: #333; padding:10px; color:#CCC;}
+input#seekslider{ width:180px; }
+input#volumeslider{ width: 80px;}
+</style>
+
+<!-- full scrren video --> 
 </head>
 
 <body onload="prettyPrint();">
@@ -59,7 +69,7 @@
         <div class="container">
             <div class="row-fluid">
                 <div class="span6">
-                    <h1>{Dashboard}</h1>
+                    <h1>{All Course}</h1>
                 </div>
                 <div class="span6">
                     <ul class="breadcrumb pull-right">
@@ -73,91 +83,58 @@
     <!-- / .title -->   
 
     <section id="about-us" class="container main">
-        <div class="row-fluid">
-            <div class="span6">
-                <h2>Personal Information</h2>
-                <p>Name: <?php echo $fetch_allinfo['fname'].' '.$fetch_allinfo['lname'];?>
-                
-                <p>Email: <?php echo $fetch_allinfo['email']?></p>
-                <p>Description: <?php echo $fetch_allinfo['description'];?></p> 
-                 
-                <p>Refferal Code: <?php echo $fetch_allinfo['refferalcode'];?></p>
-                <a href="<?php echo base_url();?>Welcome/editprofile">Edit Profile</a>
-                <br>
-                In Order To Affiliate People, Please forword the below link.
-                
-                <br>
-                <?php echo base_url();?>?aid=<?php echo $fetch_allinfo['refferalcode'];?>
-            </div>
-            <div class="span6">
-
-                
-                <div>
-                     <?php if( $fetch_allinfo['profile_image'])
-                      {
-                     ?>
-                    <p><img src="profile_img/thumb/<?php echo $fetch_allinfo['profile_image'];?>" alt="images/sample/no_photo.png" ></p>
-                     <?php
-                     }
-                    else
-                    {
-                      
-
-                     ?> 
-                               <img src="images/sample/no_photo.png" alt="images/sample/no_photo.png" >
-
-
-                     <?php
-
-                    }
-                      
-
-                     ?>
-            </div>
-        </div>
-
-        <hr>
-      </div>
+       
         <!-- Meet the team -->
        
 
-              
- 
-        <div class="row">
-            <hr>
-             <h1 class="center">Meet the Team</h1>
+   <div class="row">
+   <?php foreach($all_courses as $courses):
 
-        
+        $show_video=FngetvideoFirstclass($courses['co_id']);
+   ?>
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-aqua">
+                <!-- <div class="inner">
+                  <h3>150</h3>
+                  <p>New Orders</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-bag"></i>
+                </div>
+                <a class="small-box-footer" href="#">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+             
+                        <div class="card card--learning">
+                       
+                        <!-- ngIf: thumbnail_redirection --><div>
+                       <!--  <img src="images/sample/team4.jpg" id="image"> -->
+                        <object class="embed-responsive-item">
+     <video  controls id="image">
+       <source src="<?php echo base_url();?>tutoroal/audio_video/<?php echo $show_video['media'];?>" width="100" height="100"/>
+     </video>
+   </object>
+                        <div class="play-button"></div>        
+                        </div>
+                    
+
+                        <div class="card__details">
+                        <strong class="details__name">
+                        <?php echo $courses['courses_name'];?>
+                        </strong>
+                        <div class="details__instructor">
+                       <?php echo $courses['description'];?>
+                        </div>
+                        <a href="">Take Classes</a>
+                        </div>
+                        </div>
+              </div>
+            </div><!-- ./col -->
             
-<div class="comment_div text-center">
-   (Click on name to view the description)
-</div>
+            <?php endforeach;?>
+           
+          </div>
 
-
-                        
-<hr>
-
-
-    <div class="chart_tree">
-   
-    <div id="chart" class="orgChart"></div>
-<?php $res = fetchCategoryTreeList5($this->session->userdata('user_id'));  if(!empty($res))
- {
-?>
-        <ul id="org" style="display:none">  
-     <li><?php echo $fetch_allinfo['fname'].' '.$fetch_allinfo['lname'];?> 
-   <?php
-  
-
-  foreach ($res as $r) {
-    echo  $r;
-  }
-
-?>
-</li>
-</ul>
-<?php }?>
-    </div>
+ 
 
 
 </section>

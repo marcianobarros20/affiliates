@@ -211,7 +211,23 @@
       }
 
 
-      
+      public function fetchinfocourses($tbl,$con)
+      {
+        $this->db->select('*');
+        $this->db->join('class','class.course_id=courses.co_id');
+        $this->db->join('training_material','training_material.class_id=class.cl_id');
+        if($con)
+        {
+          $this->db->where($con);
+          $this->db->order_by('class.cl_id','asc');
+          $this->db->limit(0,1);
+        }
+        
+
+        $res=$this->db->get($tbl);
+        $result=$res->result_array();
+        echo '<pre>';print_r($result);exit;
+      }
 
 
 

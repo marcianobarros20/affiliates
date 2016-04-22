@@ -1,9 +1,16 @@
- 
+    $(document).ready(function() {
+      /*
+       *  Simple image gallery. Uses default settings
+       */
+
+      $('.fancybox').fancybox();
+}); 
   
       
 setInterval(function() {
+
     hello();
-}, 10000);
+}, 5000);
 
 function hello()
 {
@@ -15,14 +22,26 @@ function hello()
                   async : false,
                   success : function(msg)
                    {
+                    var con=$('#video_open').val();
                        //alert(msg);
-                       if(msg!='')
+                       
+                       if(msg!='' && con!=1)
                        {
-                       $('#video_play').html(msg);
-                       $('#myModal').modal('show');
+                        $('#various1').click();
+                       $('#inline1').html(msg);
+                       $('#video_open').val(1);
+                       //$('#myModal').modal('show');
 
+                        }
+                        else if($('.fancybox-overlay').length==0){
+                         $('#video_open').val(0);
                         }
 
                    }
                   });
 }
+
+
+
+
+
