@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/sl-slide.css">
 
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-    <script src='js/video.js'></script>
+
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
@@ -26,6 +26,17 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 
+<script src="js/jquery-1.10.1.min.js"></script>
+
+    <script src='js/video.js'></script>
+
+<!-- fancybox -->
+ <script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.5"></script>
+    <link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+
+
+<!-- fancybox -->
 </head>
 
 <body>
@@ -33,7 +44,7 @@
     <!--Header-->
    <?php echo $header;?>
     <!-- /header -->
-
+<input type='hidden' id="video_open" value='0'>
     <!--Slider-->
     <section id="slide-show">
      <div id="slider" class="sl-slider-wrapper">
@@ -99,6 +110,7 @@
  <div class='text-center'><h4><?php if($this->session->userdata('err_msg')!=''){ echo '<span class="error">'.$this->session->userdata('err_msg').'</span>'; $this->session->set_userdata('err_msg','');} 
 if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg','');}?>
 </h4></div>
+<a id="various1" href="#inline1" class="fancybox" title="Lorem ipsum dolor sit amet" style="display:none;">Inline - auto detect width / height</a>
 <section class="main-info">
     <div class="container">
         <div class="row-fluid">
@@ -112,6 +124,10 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
         </div>
     </div>
 </section>
+
+<div id="inline1" height="200px" width="400px">
+   
+</div>
 
 <!--Services-->
 <section id="services" >
@@ -304,7 +320,7 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
 
 </section>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -319,7 +335,7 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!--Footer-->
 <?php echo $footer;?>
@@ -327,7 +343,6 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
 
 
 
-<script src="js/vendor/jquery-1.9.1.min.js"></script>
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <!-- Required javascript files for Slider -->

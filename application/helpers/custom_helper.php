@@ -239,7 +239,20 @@ function fetchCategoryTreeList5($parent = 0, $user_tree_array = '') {
 
 
 
+function FngetvideoFirstclass($co_id)
+{
+        $CI=& get_instance();
+        $CI->load->database(); 
 
+        $CI->db->select('*');
+        $CI->db->where('course_id',$co_id);
+        $CI->db->join('training_material','training_material.class_id=class.cl_id');
+        $CI->db->where('training_material.type',2);
+        $CI->db->where('training_material.status',0);
+        $CI->db->order_by('class.cl_id','asc');
+        $res = $CI->db->get('class');
+        return $return = $res->row_array();
+}
 
 
 ?>

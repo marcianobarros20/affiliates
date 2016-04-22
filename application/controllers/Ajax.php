@@ -601,7 +601,7 @@ public function Fnoldpasswordchk()
 			if(!empty($info_video))
 			{
 				$result.="<object class='embed-responsive-item'>
-     <video width='100%' height='100%' controls autoplay>
+     <video width='600px' height='500px' controls autoplay>
        <source src='".base_url()."popup_video/".$info_video['media']."'/>
      </video>
    </object>";
