@@ -91,5 +91,127 @@ class Welcome extends CI_Controller {
 		$this->session->set_userdata('username','');
 		redirect(base_url().'admin/welcome');
 	}
+	public function manage_popup()
+    {		
+        $data['video']=$this->Common_model->fetchallpopvideo();
+
+	    $data['header']=$this->load->view('admin/includes/header','',true);
+	    $data['footer']=$this->load->view('admin/includes/footer','',true);
+	    $data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
+		$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
+			 
+	    $this->load->view('admin/manage_popup',$data);
+    }
+    
+    public function add_popup()
+    {
+    	if($_FILES['popup_video']['size']!=0)
+        {
+        	//echo "Hi";
+        	    $this->load->library('image_lib');
+				$time=time();
+			    $config['upload_path'] ='./popup_video/';
+				$config['file_name']=$time;
+				$config['overwrite']='TRUE';
+				$config['allowed_types']='avi|flv|wmv|mp3|mp4|AVI|FLV|WMV|MP3|MP4';
+				$config['max_size']='200000';
+								
+				$this->load->library('upload', $config);
+				if( ! $this->upload->do_upload('popup_video'))//initialize
+				{
+				
+					$this->session->set_userdata('err_msg',$this->upload->display_errors());
+					echo $this->upload->display_errors();
+					die();
+				}
+				else
+				{
+				
+				$updata=array();//get the uploaded data details
+				$updata = $this->upload->data();				
+				//echo '<pre>';print_r($updata);
+				$f_resize=$updata['file_name'];
+
+				}
+				$ins['media']=$f_resize;
+				$ins['status']=1;
+		  
+		        $insert=$this->Common_model->insert('popup',$ins);
+		        if($insert)
+		        {
+                    $this->session->set_userdata('succ_msg','Video Uploaded Successfully!!!');
+		        }
+		        else
+		        {
+                   $this->session->set_userdata('err_msg',$this->upload->display_errors());
+		        }
+		        redirect(base_url().'admin/welcome/manage_popup');
+        }
+        else
+        {
+        	redirect(base_url().'admin/welcome/manage_popup');
+        }
+    }
+
+    public function delete_popup()
+    {
+        if($_POST)
+        {
+        	$video=$this->input->post('vid');
+           $con=array('vid'=>$video);
+           //print_r($con);
+           $delete=$this->Common_model->delete($con,'popup');
+           if($delete)
+           {
+           	 echo "1";
+           }
+        }
+    
+    }
+
+    public function change_status_popup()
+    { 
+    	if($_POST)
+    	{
+
+    		$video_id=$this->input->post('vid');
+    		$status=$this->input->post('status');
+    		$con=array('vid'=>$video_id);
+            $data['status']=$status;
+    		$update=$this->Common_model->update('popup',$con,$data);
+    		if($update)
+    		{
+    			echo 1;
+    		}
+
+    	}
+
+    }
+
+    public function make_active()
+    {
+    	if($_POST)
+    	{
+    		$video_id=$this->input->post('vid');
+    		$con['status']=0;
+
+    		$info=$this->Common_model->fetchinfo('popup',$con,'row');
+    		if(!empty($info))
+    		{
+    			$con1=array('vid'=>$info['vid']);
+    			$data['status']=1;
+                $update=$this->Common_model->update('popup',$con1,$data);
+
+    		}
+            $con2=array('vid'=>$video_id);
+    			$up['status']=0;
+                $update2=$this->Common_model->update('popup',$con2,$up);
+                if($update2){
+                	echo 1;
+                }
+
+    	}
+
+    }
 }
 ?>
