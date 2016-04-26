@@ -124,7 +124,7 @@ input#volumeslider{ width: 80px;}
                         <div class="details__instructor">
                        <?php echo $courses['description'];?>
                         </div>
-                        <a href="">Take Classes</a>
+                        <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>">Take Classes</a>
                         </div>
                         </div>
               </div>
