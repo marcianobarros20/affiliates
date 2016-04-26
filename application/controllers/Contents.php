@@ -278,7 +278,10 @@ public function pricing()
 		{
 		$data['set_code']='';
 		$con=array('status'=>0,'course_id'=>$co_id);
+
 		$data['all_class']=$this->Common_model->fetchinfo('class',$con,'result');
+		//$data['training_material']=$this->Common_model->fetchinfo('training_material',$con1,'result');
+		
 		$data['header']=$this->load->view('includes/header.php',$data,true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
 		$this->load->view('class',$data);

@@ -19,47 +19,10 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-
-
-
- <!-- tree css and js -->
-  
-    <link rel="stylesheet" href="css/jquery.jOrgChart.css"/>
-    <link rel="stylesheet" href="css/custom.css"/>
-    <link href="css/prettify.css" type="text/css" rel="stylesheet" />
-
-    <script type="text/javascript" src="js/prettify.js"></script>
-    
-    <!-- jQuery includes -->
-   
-    
-    <script src="js/jquery.jOrgChart.js"></script>
-
-  
- <!-- tree css and js -->
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-    <script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.5"></script>
-    <link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
- <link href="css/bootstrap.min.css" rel="stylesheet"> 
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"> 
-     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-     <script type="text/javascript" src="js/frame.js"></script>
-
-
-<!-- full scrren video -->
-<style>
-div#video_player_box{ width:550px; background:#000; margin:0px auto;}
-div#video_controls_bar{ background: #333; padding:10px; color:#CCC;}
-input#seekslider{ width:180px; }
-input#volumeslider{ width: 80px;}
-</style>
-
-<!-- full scrren video --> 
+      <link href="<?php echo base_url();?>source1/css/modal-videos.css" rel="stylesheet">
 </head>
 
-<body onload="prettyPrint();">
+<body>
 
     <!--Header-->
     <?php echo $header;?>
@@ -87,10 +50,15 @@ input#volumeslider{ width: 80px;}
         <!-- Meet the team -->
        
 
+
     <div class="row">
+
+
    <?php foreach($all_courses as $courses):
 
         $show_video=FngetvideoFirstclass($courses['co_id']);
+
+      // echo $this->db->last_query();
    ?>
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
@@ -108,11 +76,14 @@ input#volumeslider{ width: 80px;}
                        
                         <!-- ngIf: thumbnail_redirection --><div>
                        <!--  <img src="images/sample/team4.jpg" id="image"> -->
-                        <object class="embed-responsive-item">
-     <video  controls id="image">
-       <source src="<?php echo base_url();?>tutoroal/audio_video/<?php echo $show_video['media'];?>" width="100" height="100"/>
-     </video>
-   </object>
+                      <!--   <object class="embed-responsive-item">
+                           <video  controls class="image" id="video_<?php echo $show_video['tr_id'];?>">
+                             <source src="<?php echo base_url();?>tutoroal/audio_video/<?php echo $show_video['media'];?>" width="100" height="100"/>
+                           </video>
+                         </object> -->
+
+
+                          <a href="<?php echo base_url();?>tutoroal/audio_video/<?php echo $show_video['media'];?>"><img class="img-thumbnail" src="images/videoIcon.png"/></a>
                         <div class="play-button"></div>        
                         </div>
                     
@@ -131,6 +102,9 @@ input#volumeslider{ width: 80px;}
             </div><!-- ./col -->
             
             <?php endforeach;?>
+
+
+
            
           </div>
  
@@ -144,30 +118,38 @@ input#volumeslider{ width: 80px;}
 
 
 
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Basic Informations</h4>
-      </div>
-      <div class="modal-body" id="chkline">
-        ...
-      </div>
-      <div class="modal-footer">
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
 <!--Footer-->
   <?php echo $footer;?>
 <!--/Footer-->
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="<?php echo base_url();?>source1/js/modal-videos.js"></script>
+  
+  <script>
+    "use strict";
+
+    $(document).ready(function () {
     
+      //each video has need its own instance of modalVideoOptions  
+      $('a[href]').each(function(){
+        $(this).modalvideo(new ModalVideoOptions());
+      });
+    });
+  </script>
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
      <script src="js1/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
 </body>
