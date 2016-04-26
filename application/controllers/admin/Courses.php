@@ -733,6 +733,51 @@ $time=time();
     	}
 
     }
+
+    public function add_quize()
+    {
+    	$data['allcoruse_list']=$this->Common_model->fetchallcources();
+    	$data['header']=$this->load->view('admin/includes/header','',true);
+	    $data['footer']=$this->load->view('admin/includes/footer','',true);
+	    $data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
+		$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
+			 
+	    $this->load->view('admin/add_quize',$data);
+    }
+
+    public function question_add()
+    {
+    	if($_POST)
+    	{
+    		
+    		/*$course_id=$this->input->post('quize_course_id');
+    		$question=$this->input->post('quize_ques');
+    		$No_Of_option=$this->input->post('answer_option');
+    		$currect_option=$this->input->post('cor_ans');
+*/
+        
+            $data['course_id']=$this->input->post('quize_course_id');
+    		$data['question']=$this->input->post('quize_ques');
+    		$data['numberofoption']=$this->input->post('answer_option');
+    		$data['correct_answer']=$this->input->post('cor_ans');
+
+
+            $insert=$this->Common_model->insert('quize_ques',$data);
+            if($insert)
+            {
+            	$count=count($this->input->post('option_value'));
+            	for($i=0;$i<$count;$i++)
+            	{
+            		$insert1['option']=$this->input->post('option_value')[$i];
+            		$insert1['question_id']=$insert;
+            		$this->Common_model->insert('answer_quize',$insert1);
+            	}
+            }
+            
+
+    	}
+
+    }
    
 
 	

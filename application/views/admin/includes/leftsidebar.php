@@ -59,11 +59,12 @@
                 <i class="fa fa-dashboard"></i> <span>Manage Training</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-               <!-- <li  <?php if($this->uri->segment(2)=='courses' && $this->uri->segment(3)==''){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/courses"><i class="fa fa-circle-o"></i>View Training Details</a></li>-->
+                <!-- <li  <?php if($this->uri->segment(2)=='courses' && $this->uri->segment(3)==''){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/courses"><i class="fa fa-circle-o"></i>View Training Details</a></li> -->
 
                 <li  <?php if($this->uri->segment(2)=='courses' && $this->uri->segment(3)=='edit_class_and_course'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/courses/edit_class_and_course"><i class="fa fa-circle-o"></i>Manage Course/Class</a></li>
 
                 <li  <?php if($this->uri->segment(2)=='courses' && $this->uri->segment(3)=='add_class_and_course'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/courses/add_class_and_course"><i class="fa fa-circle-o"></i>Add Course/Class</a></li>
+                <li  <?php if($this->uri->segment(2)=='courses' && $this->uri->segment(3)=='add_quize'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/courses/add_quize"><i class="fa fa-circle-o"></i>Manage Quize</a></li>
                 
               </ul>
             </li> 
