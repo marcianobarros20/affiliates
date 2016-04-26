@@ -22,20 +22,22 @@
      
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 
+<script src="js/jquery-1.10.1.min.js"></script>
+
+    <script src='js/video.js'></script>
+
+<!-- fancybox -->
+ <script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.5"></script>
+    <link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+
+
+<!-- fancybox -->
  
 
-<!-- full scrren video -->
-<style>
-div#video_player_box{ width:550px; background:#000; margin:0px auto;}
-div#video_controls_bar{ background: #333; padding:10px; color:#CCC;}
-input#seekslider{ width:180px; }
-input#volumeslider{ width: 80px;}
-</style>
-
-<!-- full scrren video --> 
+ 
 </head>
 
 <body>
@@ -69,9 +71,9 @@ input#volumeslider{ width: 80px;}
    <div class="row">
   
 <div class="container">
-  <h2>Collapse</h2>
+  <h2>Class Info</h2>
   
-  <div class="panel-group" id="accordion">
+  <div class="panel-group">
 
     <?php
       $i=0;
@@ -81,18 +83,20 @@ input#volumeslider{ width: 80px;}
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $class['cl_id'];?>"><?php echo $class['cl_name'];?></a>
+          <a <?php if($i!=0){?>onclick="open_new_class(<?php echo $class['cl_id'];?>,<?php echo $class['course_id'];?>);"<?php }?> style='cursor:pointer;'><?php echo $class['cl_name'];?></a>
         </h4>
       </div>
-      <div id="collapse<?php echo $class['cl_id'];?>" class="panel-collapse collapse <?php if($i==0){?>in<?php }?>">
+      <div <?php if($i!=0){?>style='display:none;'<?php }?> id="class_<?php echo $class['cl_id'];?>">
         <div class="panel-body"><?php echo $class['description'];?></div>
          <br>
         <div>
          
            <?php foreach($show_video as $result_video)
             {
-              echo $result_video['media'];
-            }
+             // echo $result_video['media'];
+              ?>
+              <a id="various2"  href="#inline2" class="fancybox btn btn-success btn-large" title="Lorem ipsum dolor sit amet" onclick="show_video(<?php echo $result_video['tr_id'];?>,<?php echo $class['cl_id'];?>,<?php echo $class['course_id'];?>)" style="cursor:pointer;">Preview</a>
+           <?php }
 
            ?>
 
@@ -103,30 +107,17 @@ input#volumeslider{ width: 80px;}
     <?php $i++;endforeach;?>
   </div> 
 </div>
+</div>
 </section>
 
 
 
-
-
-
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Basic Informations</h4>
-      </div>
-      <div class="modal-body" id="chkline">
-        ...
-      </div>
-      <div class="modal-footer">
-
-      </div>
-    </div>
-  </div>
+<div id="inline2" height="200px" width="400px">
+   
 </div>
+
+
+
 
 
 
