@@ -483,7 +483,7 @@ public function Fnoldpasswordchk()
                 }
 
 				 echo "<div class='col-md-12 col-lg-12'><div class='col-md-6 col-lg-6'><h3>Name: ".$info['fname'].' '.$info['lname']."</h3>
-       			  </div><div class='col-md-6 col-lg-6'><img src='".$img."' alt=''></div></div><p><h4>Upper Tier:</h4> ".$parent_info['fname']." ".$parent_info['lname']."</p><p><h4>Description:</h4> ".$info['description']."</p>";
+       			  </div><div class='col-md-6 col-lg-6'><img src='".$img."' alt=''></div></div><p><h4>Sponsor Name:</h4> ".$parent_info['fname']." ".$parent_info['lname']."</p><p><h4>Description:</h4> ".$info['description']."</p>";
        			}
         
 			}

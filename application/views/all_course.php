@@ -51,7 +51,9 @@
        
 
 
-   <div class="row">
+    <div class="row">
+
+
    <?php foreach($all_courses as $courses):
 
         $show_video=FngetvideoFirstclass($courses['co_id']);
@@ -105,11 +107,11 @@
 
            
           </div>
-
+ 
  
 
 
-</section>
+</section> 
 
 
 

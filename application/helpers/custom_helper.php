@@ -257,4 +257,21 @@ function FngetvideoFirstclass($co_id)
 }
 
 
+function Fngetvideo($cl_id)
+{
+   $CI=& get_instance();
+        $CI->load->database(); 
+
+        $CI->db->select('*');
+        $CI->db->where('class_id',$cl_id);
+        
+        $CI->db->where('type',2);
+        $CI->db->where('status',0);
+        $CI->db->order_by('tr_id','asc');
+        $CI->db->limit(1);
+        $res = $CI->db->get('training_material');
+       // echo $CI->db->last_query();
+        return $return = $res->result_array();
+}
+
 ?>

@@ -36,6 +36,7 @@
                    <!--    <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='blog'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>Contents/blog"><?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='blog'){?> {Blog} <?php } else { ?> Blog <?php }?></a></li> -->
                         <?php } else { ?>
                         <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='dashboard'){ echo 'class="active"';} ?>><a href="<?php echo base_url()?>welcome/dashboard" > <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='dashboard'){?> {Dashboard} <?php } else { ?> Dashboard <?php }?> </a></li>
+                        <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='profile'){ echo 'class="active"';} ?>><a href="<?php echo base_url()?>welcome/profile" > <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='profile'){?> {Profile} <?php } else { ?> Profile <?php }?> </a></li>
                         <li id="menu1" data-toggle="dropdown"><a style="cursor:pointer;">Tutorials <span class="caret"></span></a> </li>
                         <ul class="dropdown-menu1 dropdown-menu" role="menu" aria-labelledby="menu1">
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="contents/Allcourses">All Course</a></li>
@@ -54,7 +55,7 @@
                             <?php }?>  
                              <?php if($this->session->userdata('user_id')==''){ ?>
                                <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='contact'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>welcome/contact"><?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='contact'){?>{Get Started}<?php } else { ?> Get Started <?php }?></a></li>
-                            <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
+                            <li><a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a></li>
                         <?php } else { ?>
                         <a href="<?php echo base_url();?>welcome/logout">Logout</a>
                         <?php }?>

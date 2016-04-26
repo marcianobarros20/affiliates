@@ -75,7 +75,9 @@ input#volumeslider{ width: 80px;}
 
     <?php
       $i=0;
-     foreach($all_class as $class):?>
+     foreach($all_class as $class):
+ $show_video=Fngetvideo($class['cl_id']);
+      ?>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
@@ -84,6 +86,17 @@ input#volumeslider{ width: 80px;}
       </div>
       <div id="collapse<?php echo $class['cl_id'];?>" class="panel-collapse collapse <?php if($i==0){?>in<?php }?>">
         <div class="panel-body"><?php echo $class['description'];?></div>
+         <br>
+        <div>
+         
+           <?php foreach($show_video as $result_video)
+            {
+              echo $result_video['media'];
+            }
+
+           ?>
+
+        </div>
       </div>
     </div>
     

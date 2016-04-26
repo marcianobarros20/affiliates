@@ -81,7 +81,7 @@
                               </td>
                               <td><?php echo $users['refferalcode'];?></td>
                               <td>
-                                <input type="button" onclick="approve('<?php echo $users['uid'];?>');" value="Active">
+                                <input type="button" class="btn btn-success btn-xs" onclick="approve('<?php echo $users['uid'];?>');" value="Active">
                            
                  
                                

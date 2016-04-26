@@ -99,8 +99,8 @@
                                   {
                                     ?>
 
-                                       <input type="button" onclick="change_status('Active','<?php echo $users['uid'];?>');" value="Active">
-                                       <input type="button" onclick="change_status('Reject','<?php echo $users['uid'];?>');" value="Reject" >
+                                       <input type="button" class="btn btn-success btn-xs" onclick="change_status('Active','<?php echo $users['uid'];?>');" value="Active">
+                                       <input type="button" class="btn btn-danger btn-xs" onclick="change_status('Reject','<?php echo $users['uid'];?>');" value="Reject" >
 
                                     <?php
                                   }
@@ -108,7 +108,7 @@
                                   {
                                     ?>
 
-                                       <input type="button" onclick="change_status('Approve','<?php echo $users['uid'];?>');" value="Approve">
+                                       <input type="button" class="btn btn-success btn-xs" onclick="change_status('Approve','<?php echo $users['uid'];?>');" value="Approve">
                                        
 
                                     <?php
