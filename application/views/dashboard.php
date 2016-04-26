@@ -73,7 +73,7 @@
     <!-- / .title -->   
 
     <section id="about-us" class="container main">
-        <div class="row-fluid">
+        <!-- <div class="row-fluid">
             <div class="span6">
                 <h2>Personal Information</h2>
                 <p>Name: <?php echo $fetch_allinfo['fname'].' '.$fetch_allinfo['lname'];?>
@@ -117,25 +117,22 @@
         </div>
 
         <hr>
-      </div>
+      </div> -->
         <!-- Meet the team -->
        
 
               
  
         <div class="row">
-            <hr>
+          
              <h1 class="center">Meet the Team</h1>
-
-        
-            
 <div class="comment_div text-center">
-   (Click on name to view the description)
+   ('Click' On <strong>Name</strong> To View The Details Of Affiliates)
 </div>
 
 
                         
-<hr>
+
 
 
     <div class="chart_tree">

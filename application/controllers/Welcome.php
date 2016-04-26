@@ -262,6 +262,30 @@ class Welcome extends CI_Controller
 			redirect();exit();
 		}
 	}
+	public function profile()
+	{
+		if($this->session->userdata('user_id')!='')
+		{
+			$data=array();
+			$data['set_code']='';
+			$u_id=$this->session->userdata('user_id');
+			$con=array('uid'=>$u_id);
+			$con1=array('parent_id'=>$u_id);
+			//$data['fetch_child']=$this->Common_model->fetchinfo('users',$con1,'result');
+			$data['fetch_allinfo']=$this->Common_model->fetchinfo('users',$con,'row');
+			$data['header']=$this->load->view('includes/header',$data,true);
+			$data['footer']=$this->load->view('includes/footer','',true);
+			$data['middle']=$this->load->view('includes/middle','',true);
+			
+
+			$this->load->view('profile',$data);
+		}
+		else
+		{
+			$this->session->set_userdata('err_msg','You are Not Yet Logged In.');
+			redirect();exit();
+		}
+	}
 	
 	public function logout()
 	{
