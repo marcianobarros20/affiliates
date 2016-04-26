@@ -707,7 +707,7 @@ function delete_popup(videoid)
             {
                   var res= $.ajax({
                   type : 'post',
-                  url : 'admin/courses/delete_popup',
+                  url : 'admin/welcome/delete_popup',
                   data : 'vid='+videoid,
                   async : false,
                   success : function(msg)
@@ -735,7 +735,7 @@ function change_status_popup(action,videoid)
             {   
                 var res= $.ajax({
                   type : 'post',
-                  url : 'admin/courses/make_active',
+                  url : 'admin/welcome/make_active',
                   data : 'vid='+videoid,
                   async : false,
                   success : function(msg)
@@ -759,7 +759,7 @@ function change_status_popup(action,videoid)
             {    var status=1;
                  var res= $.ajax({
                   type : 'post',
-                  url : 'admin/courses/change_status_popup',
+                  url : 'admin/welcome/change_status_popup',
                   data : 'vid='+videoid+'& status='+status,
                   async : false,
                   success : function(msg)

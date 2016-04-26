@@ -125,7 +125,7 @@
                             </div>
                             
                             <div class="box-body">
-                        <form role="form" method="post" action="admin/courses/add_popup" name="add_popup" id="add_popup" enctype="multipart/form-data" >
+                        <form role="form" method="post" action="admin/welcome/add_popup" name="add_popup" id="add_popup" enctype="multipart/form-data" >
                                 <div class="form-group">
                                       <label >Upload Video</label>
                                       <div id="formdiv" class="form-group">

@@ -611,7 +611,7 @@ $time=time();
     }
 
 
-    public function manage_popup()
+    /*public function manage_popup()
     {		
         $data['video']=$this->Common_model->fetchallpopvideo();
 
@@ -732,7 +732,7 @@ $time=time();
 
     	}
 
-    }
+    }*/
 
     public function add_quize()
     {
