@@ -208,6 +208,7 @@ $time=time();
           $data['uploads'][$i] = $this->upload->data();
 
 		  $f_resize=$data['uploads'][$i]['file_name'];
+		  
         }
         else
         {
