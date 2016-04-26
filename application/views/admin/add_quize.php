@@ -52,6 +52,37 @@
         <!-- Content Header (Page header) -->
             <section class="content">
                <div class="row">
+
+<?php 
+if($this->session->userdata('succ_msg')!=''){?>
+                      <div class="alert alert-success alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <h4>  <i class="icon fa fa-check"></i> Success!</h4>
+                    <?php echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg','');?>
+                  </div>
+
+<?php } if($this->session->userdata('err_msg')!=''){ ?>
+
+<div class="alert alert-danger alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <h4><i class="icon fa fa-ban"></i> Sorry!</h4>
+                  <?php echo  $this->session->userdata('err_msg');$this->session->set_userdata('err_msg','');?>
+                  </div>
+<?php }?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <div  class="box">
                           <div class="box-title">
                               <h3>Add Quize</h3>
@@ -94,7 +125,7 @@
                             <div class="form-group" id="insert_answer_div" style="display:none">
                                 <label>Insert Option</label>
                                 
-                                <div id="print"></div>
+                                <div id="print"  class="form-control required"></div>
        
                                 
                               
@@ -103,7 +134,7 @@
 
                             <div  class="form-group" style="display:none" id="correct_answer_div">
                                 <label>Currect Option</label>
-                                    <div id="correct-ans"></div>
+                                    <div id="correct-ans"  class="form-control required"></div>
                                      <!-- <select id="currect_option" name="currect_option" class="form-control required">
                                         <option value="">--Select--</option>
                                        

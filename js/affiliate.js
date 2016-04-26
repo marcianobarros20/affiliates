@@ -71,30 +71,7 @@ $(document).delegate("input[type=text][name='option_value[]']", 'keyup', functio
        });
 
 
-/*<script>
-   $(document).ready(function(){
-       $('#opt_no').change(function(){
-           $('#print').empty();
-           $('#correct-ans').empty();
-           var opt_no = $(this).val();
-           for(var i = 1; i <= opt_no; i++){
-               $('#print').append('<input type="text" name="opt[]">');
-           }
-           $('#correct-ans').html('<select name="cor_ans" id="corr-ans"><option value="">--- Select One ---</option></select>');
-       });
-       var option = '<option value="">--- Select One ---</option>';
-       
-       $(document).delegate("input[type=text][name='opt[]']", 'keyup', function(){
-           option = '';
-           $("input[type=text][name='opt[]']").each(function(){
-               if($(this).val() != ''){
-                   option += '<option value="' + $(this).val() + '">' + $(this).val() + '</option>';
-               }
-           });
-           $('#corr-ans').html(option);
-       });
-   });
-</script>*/
+
 
 
 
@@ -120,6 +97,11 @@ if($(this).val()!='')
     $('#add_course').validate();
     $('#add_class').validate();
     $('#add_popup').validate();
+    $('#add_quize').validate();
+    //$('#quize_ques').validate();
+    //$('#print').validate();
+    //$('#correct-ans').validate();
+
       
 
       function initialize() {
