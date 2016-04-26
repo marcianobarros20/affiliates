@@ -267,5 +267,23 @@ public function pricing()
 		}
 	}
 
+
+	public function classinfo($co_id)
+	{
+		if($this->session->userdata('user_id')=='')
+		{
+			redirect(base_url().'welcome');
+		}
+		else
+		{
+		$data['set_code']='';
+		$con=array('status'=>0,'course_id'=>$co_id);
+		$data['all_class']=$this->Common_model->fetchinfo('class',$con,'result');
+		$data['header']=$this->load->view('includes/header.php',$data,true);
+		$data['footer']=$this->load->view('includes/footer.php','',true);
+		$this->load->view('class',$data);
+		}
+	}
+
 }
 ?>
