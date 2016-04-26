@@ -770,7 +770,11 @@ $time=time();
             	{
             		$insert1['option']=$this->input->post('option_value')[$i];
             		$insert1['question_id']=$insert;
-            		$this->Common_model->insert('answer_quize',$insert1);
+            		$ins_que=$this->Common_model->insert('answer_quize',$insert1);
+            		if($ins_que)
+            		{
+            		 $this->session->set_userdata('succ_msg','Question Added Successfully!!!');
+            		}
             	}
             }
             
