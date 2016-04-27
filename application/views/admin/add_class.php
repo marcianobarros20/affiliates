@@ -151,15 +151,15 @@ if($this->session->userdata('succ_msg')!=''){?>
 
 
 
-                      Upload Image: <div id="formdiv" class="form-group">
+                      <!-- Upload Image: <div id="formdiv" class="form-group">
                       <div id="filediv">
                       <input type="file" id="file" name="user_file[]" multiple="multiple" accept="image/*" title="Select Images To Be Uploaded">
                       <br>
 
                       </div>
-                      </div>
-
-                      Upload video/audio: <div id="formdiv" class="form-group">
+                      </div> -->
+                      <label>Upload Video</label>
+                       <div id="formdiv" class="form-group">
                       <div id="filediv">
                       <input type="file" id="video" name="user_video[]" multiple="multiple" accept="image/*" title="Select video/audio To Be Uploaded">
                       <br>
@@ -167,13 +167,13 @@ if($this->session->userdata('succ_msg')!=''){?>
                       </div>
                       </div>
 
-                      Upload File: <div id="formdiv" class="form-group">
+                     <!--  Upload File: <div id="formdiv" class="form-group">
                       <div id="filediv">
                       <input type="file" id="text_file" name="text_file[]" multiple="multiple" accept="image/*" title="Select file To Be Uploaded">
                       <br>
 
                       </div>
-                      </div>
+                      </div> -->
 
                             <div class="box-footer">
                                 <button class="btn btn-primary" type="submit">Submit</button>

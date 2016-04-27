@@ -35,17 +35,7 @@
    <script type="text/javascript" src="js/registration.js"></script>
 
 
-    <script type="text/javascript"><!--
-google_ad_client = "ca-pub-2783044520727903";
-/* jQuery_demo */
-google_ad_slot = "2780937993";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
+
 
 </head>
 
@@ -72,110 +62,102 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
     <!-- /header -->
   
       <section id="about-us" class="container main">
-         <h2 align="center"> Edit Personal Information </h2>
+         <!-- <h2 align="center"> Edit Personal Information </h2> -->
         <div class="row-fluid">
-            <div class="span6" >
-               <?php if( $fetch_allinfo['profile_image'])
-                       { ?>
-                        <img src="profile_img/thumb/<?php echo $fetch_allinfo['profile_image'];?>" alt="Image">
-                         
-                <?php  } 
-                       else
-                       { ?>
-                          <img src="images/sample/no_photo.png" alt="images/sample/no_photo.png">
-
-                <?php                 
-                       }                 
-                ?>
-            </div>
-
-            <div><?php if($this->session->userdata('err_msg')!=' '){ echo "<font color='red'>".$this->session->userdata('err_msg').'</font>';$this->session->set_userdata('err_msg',' ');} if($this->session->userdata('succ_msg')!=' '){ echo "<font color='green'>".$this->session->userdata('succ_msg').'</font>';$this->session->set_userdata('succ_msg',' ');}?></div>
-            <div class="span6" >
-               
-              
-                    <div class="box">
-                         <form method="post" action="welcome/update_profile" enctype="multipart/form-data">
-                        First Name: <input type="text" placeholder="First Name" id="edit_first_name" name="edit_first_name" value="<?php echo $fetch_allinfo['fname'];?>">
-                        <br>
-                        Last Name: <input type="text" placeholder="Last Name" id="edit_last_name" name="edit_last_name" value="<?php echo $fetch_allinfo['lname'];?>">
-                        <br>
-                        
-                        Description:
-                         <textarea   placeholder="Enter Descriptions Here" class="form-control" id="edit_description" name="edit_description"><?php echo $fetch_allinfo['description'];?></textarea>
-                         
-                               <br>
-
-                               <div class="control-group">
-          <!-- country -->
-        <!--   <div class="controls">
-         
-           <select name='country' class="input-xlarge required" id='country'>
-           <option value=''>Select Country</option>
-           <?php foreach($country as $cnt):?>
-            <option value='<?php echo $cnt['id'];?>' <?php if($fetch_allinfo['country_id']==$cnt['id']){ echo 'selected';}?>><?php echo $cnt['name'];?></option>
-
-           <?php endforeach;?>
-           </select>
-          </div>
-          <!-- end country -->
-       <!-- </div>
- -->
-
-         <div class="control-group">
-          <!-- state -->
-          <div class="controls">
-          <?php $state_info=Fnstateinfo($fetch_allinfo['state_id']);?>
-           <!-- <select name='state' class="input-xlarge required" id='state'>
-           <?php foreach($states as $sts):?>
-            <option value='<?php echo $sts['id'];?>' <?php if($sts['id']==$fetch_allinfo['state_id']){ echo 'selected';}?>><?php echo $sts['name'];?></option>
-
-           <?php endforeach;?>
-           </select> -->
-          </div>
-          <!-- end state -->
-        </div>
-
-
-            <div class="control-group">
-          <!-- state -->
-          <div class="controls">
-             
-           <?php $city_info=Fncityinfo($fetch_allinfo['city_id']);
-             //echo '<pre>';print_r($city_info);
-             ?>             <!-- <select name='city' class="input-xlarge required" id='city'>
-           <?php if(!empty($city_info)):?>
-            <option value='<?php echo $city_info['id'];?>'><?php echo $city_info['name'];?></option>
-           <?php endif;?>
-           </select> -->
-          </div>
-          <!-- end state -->
-        </div>
-
-
-
-        <div class="control-group">
-          <!-- Username -->
-          <div class="controls">
-          <input id="address" type="text" size="50" name="address" class="input-xlarge" value="<?php echo $fetch_allinfo['address'];?>">
-          </div>
-        </div>
-        <input type='hidden' id='lat' name='lattitude' value="<?php echo $fetch_allinfo['latitude'];?>">
-        <input type='hidden' id='long' name='longitude' value="<?php echo $fetch_allinfo['longitude'];?>">
-        <br>
-                         Select image to upload ( Minimum Size 220x150)
-                                <input type="file" name="fileToUpload" id="fileToUpload"><br>
-
-                         <button type="submit" class="btn btn-default btn-xm" id="update_button" name="update_button" >Update</button>
-                         </form>
+                   <?php 
+                    if($this->session->userdata('succ_msg')!=''){?>
+                    <div class="alert alert-success alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <h4>  <i class="icon fa fa-check"></i> Success!</h4>
+                    <?php echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg','');?>
                     </div>
-                    <br>
-                    <div class="box" > 
-                         Change Password 
-                         <button type="button" class="btn btn-default btn-sm" id="edit_password_button" name="edit_password_button">
-                             <span class="glyphicon glyphicon-edit"></span> Edit
-                         </button>
-                         <br>
-                         <div style="display:none;" id="edit_password_div" name="edit_password_div">
+
+                    <?php } if($this->session->userdata('err_msg')!=''){ ?>
+
+                    <div class="alert alert-danger alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <h4><i class="icon fa fa-ban"></i> Sorry!</h4>
+                    <?php echo  $this->session->userdata('err_msg');$this->session->set_userdata('err_msg','');?>
+                    </div>
+                    <?php }?>
+
+
+
+
+
+
+
+           <div class="box">
+            <table>
+               <tr>
+                 <td rowspan="2">
+                         <?php if( $fetch_allinfo['profile_image']) { ?><img src="profile_img/thumb/<?php echo $fetch_allinfo['profile_image'];?>" alt="Image"><?php  } else{ ?><img src="images/sample/no_photo.png" alt="images/sample/no_photo.png"> <?php } ?>
+                  </td>
+                  <form method="post" action="welcome/update_profile" enctype="multipart/form-data">
+                  <td>
+                  
+                        First Name: <input type="text" placeholder="First Name" id="edit_first_name" name="edit_first_name" value="<?php echo $fetch_allinfo['fname'];?>">
+
+                  </td>
+                  <td>
+                          Last Name: <input type="text" placeholder="Last Name" id="edit_last_name" name="edit_last_name" value="<?php echo $fetch_allinfo['lname'];?>">
+
+                  </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                        Description:
+                         <textarea rows="4"  placeholder="Enter Descriptions Here" class="form-control" id="edit_description" name="edit_description"><?php echo $fetch_allinfo['description'];?></textarea>
+
+                    </td>
+                  </tr>
+                   <tr>
+                    <td> Select image to upload <br>( Minimum Size 220x150)
+                      <br><br>
+                                <input type="file" name="fileToUpload" id="fileToUpload">
+                    </td>
+                    <td>
+
+                        <div class="control-group">
+                                  
+                                  <div class="controls">
+                                    Address<br>
+                                  <input id="address" type="text" size="50" name="address" class="input-xlarge" value="<?php echo $fetch_allinfo['address'];?>">
+                                  </div>
+                         </div>
+                  
+                    </td>
+                   </tr>
+                   <tr>
+                   <td colspan="2"> </td>
+                   <td> 
+
+ <button type="submit" class="btn btn-primary" id="update_button" name="update_button" >Update</button>
+                         </form>
+
+
+
+
+
+
+
+
+
+                   </td>
+                   
+                   </tr>
+            </table>
+
+
+            
+
+           </div>
+           <div class="box">
+            <div class="row">
+            <div class="span8">
+              Change Password 
+                 <br><br>
+                   <div style="display:none;" id="edit_password_div" name="edit_password_div">
                             <form method="post" action="welcome/change_password" id="change_password">
                             <div><div><input type="password" placeholder="Old Password" id="old_password" name="old_password" onblur="old_password_chk();"></div><div id="msg_pass"></div></div>
                             <br>
@@ -186,10 +168,21 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
                             <input type="submit" value="Change Password" class="btn btn-default btn-xm" id="update_password_button" name="update_password_button" >
                             </form>
                          </div>
-                    </div>
-                    <br>
-            
-            </div>
+
+
+
+
+
+            </div><div class="span4">
+                         <button type="button" class="btn btn-default btn-sm" id="edit_password_button" name="edit_password_button">
+                             <span class="glyphicon glyphicon-edit"></span> Edit
+                         </button>
+                  
+                        
+                       </div>
+                     </div>
+          </div>
+           
         </div>
 
 

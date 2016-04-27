@@ -97,7 +97,7 @@ if($this->session->userdata('succ_msg')!=''){?>
 
                           
 
-                      Upload Image: <div id="formdiv" class="form-group" style="margin-bottom:10px;">
+                      <!-- Upload Image: <div id="formdiv" class="form-group" style="margin-bottom:10px;">
                       <div id="filediv">
                       <input type="file" id="file" name="user_file[]" multiple="multiple" accept="image/*" title="Select Images To Be Uploaded">
                      <br><br>
@@ -118,8 +118,10 @@ if($this->session->userdata('succ_msg')!=''){?>
                       <br>
                       <br> <br>
                      
-                      <br>
-                      Upload video/audio: <div id="formdiv" class="form-group">
+                      <br> -->
+             
+                       <label>Upload Video</label>
+                       <div id="formdiv" class="form-group">
                       <div id="filediv">
                       <input type="file" id="video" name="user_video[]" multiple="multiple" accept="image/*" title="Select Images To Be Uploaded">
                       <br>
@@ -154,14 +156,14 @@ if($this->session->userdata('succ_msg')!=''){?>
                      
                       </div>
                       </div>
- <br><br><br><br><br><br><br><br>
+<!--  <br><br><br><br><br><br><br><br>
                       Upload File: <div id="formdiv" class="form-group">
                       <div id="filediv">
                       <input type="file" id="text_file" name="text_file[]" multiple="multiple" accept="image/*" title="Select Images To Be Uploaded">
                       <br>
 
                       </div>
-                      </div>
+                      </div> -->
 
 <?php if(!empty($training_file)){foreach($training_file as $files){?>
 <div id="file_<?php echo $files['tr_id']?>">

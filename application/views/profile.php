@@ -86,7 +86,7 @@
                       <div class="span8">
 
                            <div class="row-fluid">
-                               <div class="span6">
+                               <div class="span4">
                                     <?php if( $fetch_allinfo['profile_image'])
                                     {
                                      ?>
@@ -104,12 +104,12 @@
                                </div>
 
                                
-                               <div class="span6">
+                               <div class="span8">
 
                                <h3><?php echo $fetch_allinfo['fname'].' '.$fetch_allinfo['lname'];?></h3>
                                
-                               <table>
-                                <tr><td>Description:</td><td><?php echo $fetch_allinfo['description'];?></td></tr>
+                               <table valign="bottom">
+                                <tr><td valign="top">Description:</td><td><?php echo $fetch_allinfo['description'];?></td></tr>
                                 <tr><td>Email:</td><td><?php echo $fetch_allinfo['email']?></td></tr>
                                 <tr><td>Refferal Code:</td><td><?php echo $fetch_allinfo['refferalcode'];?></td></tr>
                                 <tr><td colspan="2"><a href="<?php echo base_url();?>Welcome/editprofile">Edit Profile</a></td></tr>
@@ -153,54 +153,18 @@
 
 
                 
-            <!-- <div class="span6">
-                <h2>Personal Information</h2>
-                <p>Name: <?php echo $fetch_allinfo['fname'].' '.$fetch_allinfo['lname'];?>
-                
-                <p>Email: <?php echo $fetch_allinfo['email']?></p>
-                <p>Description: <?php echo $fetch_allinfo['description'];?></p> 
-                 
-                <p>Refferal Code: <?php echo $fetch_allinfo['refferalcode'];?></p>
-                <a href="<?php echo base_url();?>Welcome/editprofile">Edit Profile</a>
-                <br>
-                In Order To Affiliate People, Please forword the below link.
-                
-                <br>
-                <?php echo base_url();?>?aid=<?php echo $fetch_allinfo['refferalcode'];?>
-            </div>
-            <div class="span6">
-
-                
-                <div>
-                     <?php if( $fetch_allinfo['profile_image'])
-                      {
-                     ?>
-                    <p><img src="profile_img/thumb/<?php echo $fetch_allinfo['profile_image'];?>" alt="images/sample/no_photo.png" ></p>
-                     <?php
-                     }
-                    else
-                    {
-                      
-
-                     ?> 
-                               <img src="images/sample/no_photo.png" alt="images/sample/no_photo.png" >
-
-
-                     <?php
-
-                    }
-                      
-
-                     ?>
-            </div>
-        </div>
-
-      </div> -->
+            
        </div>
       </div>
                
      </div>
-        
+     <br>
+      <div class="box"> 
+               <div class="box-header with-border">
+                   <h3 class="box-title">Training Status</h3>
+              </div>
+
+      </div>   
 
 
 </section>

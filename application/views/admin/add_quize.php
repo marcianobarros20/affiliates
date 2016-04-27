@@ -101,7 +101,16 @@ if($this->session->userdata('succ_msg')!=''){?>
                                     </select> 
                             </div>
                          
-                    
+                             <div class="form-group" id="ans_opt_div" style="display:none">
+                                <label>Select Answer Type</label>
+                                  <select  id="ans_opt" name="ans_opt" class="form-control required">
+                                        <option value="">--Select--</option>
+                                        <option value="1">MCQ</option>
+                                        <option value="2">True/False</option>
+                                        
+                                    </select>  
+                                
+                            </div>
 
                    
                         
@@ -109,6 +118,20 @@ if($this->session->userdata('succ_msg')!=''){?>
                             <div class="form-group" id="question_div" style="display:none">
                                 <label>Add Question</label>
                                 <input type="text" id="quize_ques" name="quize_ques" class="form-control required">    
+                            </div>
+                            
+                            <div class="form-group" id="statement_div" style="display:none">
+                                <label>Add Statement</label>
+                                <input type="text" id="quize_statement" name="quize_statement" class="form-control required">    
+                            </div>
+                           
+
+                            <div class="form-group" id="true_false_div" style="display:none">
+                                <label>Currect Answer</label><br>
+                                     <input type="radio" name="true_false" value="True" class="required"> True<br>
+                                     <input type="radio" name="true_false" value="False" class="required"> False<br>
+                                       
+       
                             </div>
 
                             <div class="form-group" id="select_option_div" style="display:none">

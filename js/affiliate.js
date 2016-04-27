@@ -11,21 +11,51 @@ $('#show_class_div').submit();
 
 
 $('#quize_course_id').change(function(){
-if($(this).val()!='')
-{
-$('#question_div').show();
-$('#select_option_div').show();
-
-}
-else
-{
-  $('#question_div').hide();
-  $('#select_option_div').hide();
-
-}
+    if($(this).val()!='')
+    {
+        $('#ans_opt_div').show();
+    }
+    else
+    { 
+      $('#ans_opt_div').hide();
+    }
 });
 
+$('#ans_opt').change(function(){
+  if($(this).val()!='')
+  {
+    var ansval=$('#ans_opt').val();
+    if(ansval==1)
+    {
+       
+        $('#question_div').show();
+         $('#select_option_div').show();
+          $('#subit_div').hide();
+           $('#true_false_div').hide();
+            $('#statement_div').hide();
+    }
+    else
+    {
+      //alert('Hii');
+      $('#statement_div').show();
+       $('#true_false_div').show();
+      $('#select_option_div').hide();
+      $('#subit_div').show();
+      $('#insert_answer_div').hide();
+      $('#correct_answer_div').hide();
+      $('#question_div').hide();
+    }
+  }
+  else
+  {
 
+     $('#true_false_div').hide();
+      $('#select_option_div').hide();
+      $('#subit_div').hide();
+      $('#question_div').hide();
+      $('#statement_div').hide();
+  }
+});
 
 
 $('#answer_option').change(function(){
