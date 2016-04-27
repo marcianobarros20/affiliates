@@ -125,6 +125,17 @@
         return $this->db->affected_rows(); 
       }
 
+      public function conditionchk($cl_id,$co_id)
+      {
+        $this->db->select('*');
+        $this->db->where('cl_id <',$cl_id);
+        $this->db->where('course_id',$co_id);
+        $this->db->where('status',0);
+        $res=$this->db->get('class');
+       // echo $this->db->last_query();
+        return $result=$res->result_array();
+      }
+
       public function fetchinfoBlog($type,$con=null,$limit=null,$start=null)
       {
        // echo $start;       

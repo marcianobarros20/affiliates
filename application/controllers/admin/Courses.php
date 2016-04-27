@@ -181,6 +181,7 @@ class Courses extends CI_Controller {
         {
           $data['uploads'][$i] = $this->upload->data();
 		  $f_resize=$data['uploads'][$i]['file_name'];
+		  
         }
         else
         {
@@ -655,6 +656,7 @@ $time=time();
     	if($_POST)
     	{
 
+
     
            $answer_type=$this->input->post('ans_opt');
            if($answer_type==1)
@@ -671,6 +673,7 @@ $time=time();
 	            if($insert)
 	            {
 	            	$count=count($this->input->post('option_value'));
+	            	$msg='';
 	            	for($i=0;$i<$count;$i++)
 	            	{
 	            		$insert1['option']=$this->input->post('option_value')[$i];
@@ -719,40 +722,12 @@ $time=time();
            	 	        $this->session->set_userdata('err_msg','All Fields Are Needed!!!');
 	            		 redirect(base_url().'admin/courses/add_quize');
 
-           	 }
-           }
-            /*$data['course_id']=$this->input->post('quize_course_id');
-    		$data['question']=$this->input->post('quize_ques');
-    		$data['numberofoption']=$this->input->post('answer_option');
-    		$data['correct_answer']=$this->input->post('cor_ans');
-            if($data['course_id'] && $data['question'] && $data['numberofoption'] && $data['correct_answer'])
-            {
-	            $insert=$this->Common_model->insert('quize_ques',$data);
-	            if($insert)
-	            {
-	            	$count=count($this->input->post('option_value'));
-	            	for($i=0;$i<$count;$i++)
-	            	{
-	            		$insert1['option']=$this->input->post('option_value')[$i];
-	            		$insert1['question_id']=$insert;
-	            		$ins_que=$this->Common_model->insert('answer_quize',$insert1);
-	            		if($ins_que)
-	            		{
-	            		 $this->session->set_userdata('succ_msg','Question Added Successfully!!!');
-	            		 redirect(base_url().'admin/courses/add_quize');
-	            		}
-	            	}
-	            }
-            
-            }
-            else
-            {
-            	$this->session->set_userdata('err_msg','All Fields Are Needed!!!');
-	            redirect(base_url().'admin/courses/add_quize');
-            }*/
+
     	}
     }
    
 	
-}
+    }
+   }
+  }
 ?>

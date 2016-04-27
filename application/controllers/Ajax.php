@@ -609,6 +609,74 @@ public function Fnoldpasswordchk()
 			echo $result;
 		}
 
+		function Fngetvideoclass()
+		{
+			$id=$this->input->post('id');
+			$cl_id=$this->input->post('cl_id');
+			$co_id=$this->input->post('co_id');
+			$u_id=$this->session->userdata('user_id');
+			$con1=array('tr_id'=>$id,'co_id'=>$co_id,'cl_id'=>$cl_id,'u_id'=>$u_id);
+			$training_info=$this->Common_model->fetchinfo('training_details',$con1,'row');
+			if(count($training_info)==0)
+			{
+				$ins['tr_id']=$id;
+				$ins['co_id']=$co_id;
+				$ins['cl_id']=$cl_id;
+				$ins['u_id']=$u_id;
+				$ins['status']=0;
+				$insert=$this->Common_model->insert('training_details',$ins);
+			}
+			$con=array('tr_id'=>$id);
+			$info_video=$this->Common_model->fetchinfo('training_material',$con,'row');
+			$result='';
+			if(!empty($info_video))
+			{
+				$result.="<object class='embed-responsive-item'>
+     <video width='600px' height='500px' controls autoplay id='myVideo'>
+       <source src='".base_url()."tutorial/video_audio/".$info_video['media']."'/>
+     </video>
+   </object>";
+		    }
+		echo $result;
+	}
+
+
+	function Fncompletevideoclass()
+	{
+			$id=$this->input->post('id');
+			$cl_id=$this->input->post('cl_id');
+			$co_id=$this->input->post('co_id');
+			$u_id=$this->session->userdata('user_id');
+			$con1=array('tr_id'=>$id,'co_id'=>$co_id,'cl_id'=>$cl_id,'u_id'=>$u_id);
+			$up['status']=1;
+			$up=$this->Common_model->update('training_details',$con1,$up);
+	}
+
+	function Fnchktrainingstatus()
+	{
+		$cl_id=$this->input->post('cl_id');
+		$co_id=$this->input->post('co_id');
+		$u_id=$this->session->userdata('user_id');
+		$info=$this->Common_model->conditionchk($cl_id,$co_id);
+		$val=0;
+		foreach ($info as $value) {
+
+			$con=array('class_id'=>$value['cl_id'],'type'=>2,'status'=>0);
+			$get_count=$this->Common_model->fetchinfo('training_material',$con,'count');
+			$con1=array('co_id'=>$co_id,'cl_id'=>$value['cl_id'],'u_id'=>$u_id,'status'=>1);
+			$new_count=$this->Common_model->fetchinfo('training_details',$con1,'count');
+			if($get_count==$new_count)
+			{
+				$val=0;
+			}
+			else
+			{
+				$val=1;
+			}
+		}
+		echo $val;
+	}
+
 		public function delete_class()
 	    {
 		if($_POST)
