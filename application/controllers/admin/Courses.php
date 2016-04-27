@@ -723,7 +723,7 @@ $time=time();
 	            		 redirect(base_url().'admin/courses/add_quize');
 
 
-    	}
+    		}
     }
    
 	

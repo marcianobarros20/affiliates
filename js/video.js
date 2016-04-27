@@ -98,3 +98,7 @@ function open_new_class(cl_id,co_id)
 }
 
 
+function fnchkTraining(co_id)
+{
+ alert(co_id);
+}
