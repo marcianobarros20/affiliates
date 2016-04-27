@@ -765,6 +765,7 @@ $time=time();
 	            if($insert)
 	            {
 	            	$count=count($this->input->post('option_value'));
+	            	$msg='';
 	            	for($i=0;$i<$count;$i++)
 	            	{
 	            		$insert1['option']=$this->input->post('option_value')[$i];
@@ -773,9 +774,14 @@ $time=time();
 	            		if($ins_que)
 	            		{
 
-	            		 $this->session->set_userdata('succ_msg','Question Added Successfully!!!');
-	            		 redirect(base_url().'admin/courses/add_quize');
+	            		
+	            		$msg=$ins_que;
 	            		}
+	            	}
+	            	if($msg!='')
+	            	{
+	            		  $this->session->set_userdata('succ_msg','Question Added Successfully!!!');
+	            		 redirect(base_url().'admin/courses/add_quize');
 	            	}
 	            }
             

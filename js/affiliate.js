@@ -62,11 +62,15 @@ $(document).delegate("input[type=text][name='option_value[]']", 'keyup', functio
            //option = '';
            option ='<option value="">--Select--</option>';
            $("input[type=text][name='option_value[]']").each(function(){
+            var str=$(this).val();
+           str=str.replace(/</g,'&lt;');
+           str=str.replace(/>/g,'&gt;');
                if($(this).val() != ''){
                   //option +='<option>--Select--</option>'
-                   option += '<option value="' + $(this).val() + '">' + $(this).val() + '</option>';
+                   option += '<option value="' + str + '">'+str+'</option>';
                }
            });
+
            $('#corr-ans').html(option);
        });
 

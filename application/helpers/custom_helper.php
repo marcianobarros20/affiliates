@@ -274,4 +274,29 @@ function Fngetvideo($cl_id)
         return $return = $res->result_array();
 }
 
+
+function Fnchktrainingstatus($cl_id,$co_id,$u_id)
+  {
+    $CI=& get_instance();
+    $CI->load->database(); 
+
+    
+    $val=0;
+   
+
+      $con=array('class_id'=>$cl_id,'type'=>2,'status'=>0);
+      $get_count=$CI->Common_model->fetchinfo('training_material',$con,'count');
+      $con1=array('co_id'=>$co_id,'cl_id'=>$cl_id,'u_id'=>$u_id,'status'=>1);
+      $new_count=$CI->Common_model->fetchinfo('training_details',$con1,'count');
+      if($get_count==$new_count)
+      {
+        $val=0;
+      }
+      else
+      {
+        $val=1;
+      }
+        return $val;
+  }
+
 ?>

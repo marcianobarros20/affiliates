@@ -85,8 +85,13 @@ function open_new_class(cl_id,co_id)
                    {
                     if(msg==0)
                     {
+                       $('.err').html('');     
+                       $('#class_'+cl_id).show();
 
-                 $('#class_'+cl_id).show();
+                     }
+                     else
+                     {
+                      $('#err_msg_'+cl_id).html('Sorry! your previous trainings are still left.');
                      }
                    }
                   });

@@ -54,7 +54,7 @@
                 </div>
                 <div class="span6">
                     <ul class="breadcrumb pull-right">
-                        <li><a href="<?php echo base_url();?>">Home</a> /</li>
+                        <li><a href="<?php echo base_url();?>">Home</a></li>
                         <li class="active">Dashboard</li>
                     </ul>
                 </div>
@@ -79,7 +79,9 @@
       $i=0;
      foreach($all_class as $class):
  $show_video=Fngetvideo($class['cl_id']);
+ $condition=Fnchktrainingstatus($class['cl_id'],$class['course_id'],$this->session->userdata('user_id'));
       ?>
+      <div style='color:red;' id="err_msg_<?php echo $class['cl_id'];?>" class="err"></div>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
@@ -89,6 +91,9 @@
       <div <?php if($i!=0){?>style='display:none;'<?php }?> id="class_<?php echo $class['cl_id'];?>">
         <div class="panel-body"><?php echo $class['description'];?></div>
          <br>
+         <div><?php if($condition==0){ echo 'Completed full training';} else { echo 'Need To Complete This Training.';};?></div>
+         <br>
+
         <div>
          
            <?php foreach($show_video as $result_video)
