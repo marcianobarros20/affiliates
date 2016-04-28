@@ -465,13 +465,13 @@ public function pricing()
 				//echo "<pre>";
 				$con2=array('class_id'=>$value['cl_id']);
 				$total_training_material=$this->Common_model->fetchinfo('training_material',$con2,'count');
-				print_r($total_training_material);
+				//print_r($total_training_material);
 				$con3=array('u_id'=>$user_id,'cl_id'=>$value['cl_id']);
 				$training_completed_user=$this->Common_model->fetchinfo('training_details',$con3,'count');
-				echo "<pre>";
+				//echo "<pre>";
 				
-				//$a=($training_completed_user/$total_training_material)*100;
-			    // print_r($a);
+				$a=($total_training_material-$training_completed_user);
+			    print_r($a);
                 // $count=$count+$a;
 			   // print_r($count);
 
