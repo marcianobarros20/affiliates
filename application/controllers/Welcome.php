@@ -271,7 +271,9 @@ class Welcome extends CI_Controller
 			$u_id=$this->session->userdata('user_id');
 			$con=array('uid'=>$u_id);
 			$con1=array('parent_id'=>$u_id);
+			$con2=array('status'=>0);
 			//$data['fetch_child']=$this->Common_model->fetchinfo('users',$con1,'result');
+			$data['course']=$this->Common_model->fetchinfo('courses',$con2,'result');
 			$data['fetch_allinfo']=$this->Common_model->fetchinfo('users',$con,'row');
 			$data['header']=$this->load->view('includes/header',$data,true);
 			$data['footer']=$this->load->view('includes/footer','',true);

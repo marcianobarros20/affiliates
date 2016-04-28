@@ -163,6 +163,21 @@
                <div class="box-header with-border">
                    <h3 class="box-title">Training Status</h3>
               </div>
+              <div>
+                <?php foreach ($course as $value)
+
+                { ?>
+                    <div>
+                         <?php echo $value['courses_name'];
+
+                          $count =fetchcourseinfo($fetch_allinfo['uid'],$value['co_id']);
+
+                         ?>
+
+                    </div>
+               <?php }?>
+               
+              </div>
 
       </div>   
 

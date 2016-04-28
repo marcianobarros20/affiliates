@@ -34,7 +34,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
   <script src="js/jquery.validate.js"></script>
- 
+
 
  
 
@@ -68,7 +68,10 @@
       <section id="about-us" class="container main">
         <div class="row-fluid">
            <?php foreach ($fetch_child as $value)
-             {?>
+
+             {
+
+              ?>
                
 
                  <div class="panel panel-default">
@@ -77,16 +80,37 @@
                          <a>  <?php echo $value['fname']." ".$value['lname'];?> </a>
                         </div>
                         <div class="panel-body" id="details_<?php echo $value['uid']?>">
-                         <table>
-                          <?php foreach ($fetch_course as $course){?>
-                            <tr>
-                              <td><h4><?php echo $course['courses_name']?></h4> </td>
-                              <td><button onclick="now(<?php echo $course['co_id']?>,<?php echo $value['uid']?>)">click Me</button></td>
-                              <td></td>
+                         
+             
+                         <div class="row">
+                         
 
-                            </tr>  
-                          <?php } ?>
-                        </table>
+
+                               <?php foreach ($fetch_course as $course){ ?>
+                            <div class="col-md-3">
+                           <div class="box">
+                                <div class="box-header with-border" align="Center">
+                                  <h5> <?php echo $course['courses_name']?></h5>
+                                </div>
+                                <div class="box-body with-border" align="Center">
+                                  <a> <?php $count =fetchcourseinfo($value['uid'],$course['co_id']); ?></a>
+                                    
+                                   
+                                </div>
+                           </div>
+                           </div>
+                         <?php }?>
+
+
+
+
+
+
+
+
+
+                         
+                         </div>
                         </div>
                  </div>
 

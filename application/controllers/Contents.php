@@ -431,7 +431,7 @@ public function pricing()
 	}
 
 
-	
+
 
 }
 ?>
