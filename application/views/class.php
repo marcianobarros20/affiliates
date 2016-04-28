@@ -71,7 +71,7 @@
    <div class="row">
   
 <div class="container">
-  <h2>Class Info</h2>
+  <h2>Classified</h2>
   
   <div class="panel-group">
 
