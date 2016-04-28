@@ -40,7 +40,7 @@
                         <li id="menu1" data-toggle="dropdown"><a style="cursor:pointer;">Tutorials <span class="caret"></span></a> </li>
                         <ul class="dropdown-menu1 dropdown-menu" role="menu" aria-labelledby="menu1">
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="contents/Allcourses">All Course</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Affiliates training Details</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="contents/affiliate_training">Affiliates training Details</a></li>
                         
                         </ul>
 

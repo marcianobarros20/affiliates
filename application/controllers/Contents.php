@@ -267,6 +267,24 @@ public function pricing()
 		}
 	}
 
+	public function affiliate_training()
+	{
+		if($this->session->userdata('user_id')=='')
+		{
+			redirect(base_url().'welcome');
+		}
+		else
+		{    $data['set_code']='';
+		    $u_id=$this->session->userdata('user_id');
+			$con=array('parent_id'=>$u_id);
+			$data['fetch_child']=$this->Common_model->fetchinfo('users',$con,'result');
+		
+		$data['header']=$this->load->view('includes/header.php',$data,true);
+		$data['footer']=$this->load->view('includes/footer.php','',true);
+		$this->load->view('affiliate_training',$data);
+		}
+	}
+
 
 	public function classinfo($co_id)
 	{
