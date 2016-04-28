@@ -651,12 +651,41 @@ $time=time();
 			 
 	    $this->load->view('admin/add_quize',$data);
     }
+
+    public function add_course()
+	{
+		if($_POST)
+		{
+          
+            $new_course=$this->input->post('new_course_name');
+            $new_course_description=$this->input->post('new_course_description');
+            if(trim($new_course) &&  trim($new_course_description))
+            {
+            $data['courses_name']=$new_course;
+            $data['description']=$new_course_description;
+            $data['status']=1;
+            $insert=$this->Common_model->insert('courses',$data);
+            	if($insert)
+		        {
+		            $this->session->set_userdata('succ_msg',"Course Added Successfully.Add quiz under this course to make this course active");
+		            redirect(base_url().'admin/courses/add_class_and_course');
+		        }
+          		else
+         		{
+            	    $this->session->set_userdata('err_msg',"Try Again");
+                    redirect(base_url().'admin/courses/add_class_and_course');
+                }
+            }
+		}
+
+	}
+
     public function question_add()
     {
     	if($_POST)
     	{
 
-
+    		$final_insert='';
     
            $answer_type=$this->input->post('ans_opt');
            if($answer_type==1)
@@ -681,13 +710,20 @@ $time=time();
 	            		$ins_que=$this->Common_model->insert('answer_quize',$insert1);
 	            		if($ins_que)
 	            		{
-	            			$msg=$ins_que;
+
+	            		 $msg=$ins_que;
+	            		 $final_insert=$ins_que;
 	            		 $this->session->set_userdata('succ_msg','Question Added Successfully!!!');
 	            		 
 	            		}
 	            	}
 	            	if($msg!="")
 	            	{
+	            	  if($final_insert!='')
+						{
+						$update_course['status']=0;
+						$this->Common_model->update('courses',array('co_id'=>$this->input->post('quize_course_id')),$update_course);
+						}	
                       redirect(base_url().'admin/courses/add_quize');
 	            	}
 	            }
@@ -711,8 +747,14 @@ $time=time();
            	 if($data['question'] && $data['correct_answer'])
            	 {
            	 	$insert=$this->Common_model->insert('quize_ques',$data);
+           	 	$final_insert=$insert;
            	 	if($insert)
 	            {
+						if($final_insert!='')
+						{
+						$update_course['status']=0;
+						$this->Common_model->update('courses',array('co_id'=>$this->input->post('quize_course_id')),$update_course);
+						}
 	            		 $this->session->set_userdata('succ_msg','Question Added Successfully!!!');
 	            		 redirect(base_url().'admin/courses/add_quize');
 	            }
@@ -725,7 +767,7 @@ $time=time();
 
     		}
     }
-   
+
 	
     }
    }

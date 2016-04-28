@@ -79,7 +79,7 @@ if($this->session->userdata('succ_msg')!=''){?>
                             </div>
                         </div>
                          
-                        <form role="form" method="post" action="welcome/add_course" name="add_course" id="add_course" enctype="multipart/form-data">
+                        <form role="form" method="post" action="admin/courses/add_course" name="add_course" id="add_course" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="form-group">
                                 <label>Course Name</label>
