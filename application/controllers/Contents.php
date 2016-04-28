@@ -457,6 +457,8 @@ public function pricing()
 			$class_under_course=$this->Common_model->fetchinfo('class',$con1,'count');
 			//print_r($completion_status);
 			//print_r($class_under_course);
+			$per_class=80/$class_under_course;
+			//print_r($per_class);
 			$class_under_course=$this->Common_model->fetchinfo('class',$con1,'result');
 			foreach ($class_under_course as $value) 
 			{
@@ -470,14 +472,25 @@ public function pricing()
 				$training_completed_user=$this->Common_model->fetchinfo('training_details',$con3,'count');
 				//echo "<pre>";
 				
-				$a=($total_training_material-$training_completed_user);
-			    print_r($a);
+				$left_course=($total_training_material-$training_completed_user);
+				if($left_course>0)
+				{
+
+                   $count=$count+$per_class;
+
+				}
+				else
+				{
+                   $x=(($training_completed_user/$total_training_material)*$per_class);
+                   $count=$count+$x;
+				}
+			    //print_r($a);
                 // $count=$count+$a;
 			   // print_r($count);
 
 			}
 			
-
+             echo $count;
 		}
 	}
 
