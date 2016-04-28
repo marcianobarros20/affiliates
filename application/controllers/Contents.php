@@ -340,26 +340,11 @@ public function pricing()
 
 		if($_POST)
 		{
+			//echo '<pre>';print_r($_POST);exit;
 			$con_time_info=array('co_id'=>$co_id,'u_id'=>$this->session->userdata('user_id'));
 			$get_time_info=$this->Common_model->fetchinfo('time',$con_time_info,'row');
 			$t_diff=(time()-$get_time_info['time']);
-			/*if($t_diff>=3600)
-			{
-				$hr=($t_diff/3600);
-				$min_test=($t_diff%3600);
-				if($min_test!=0)
-				{
-					$min=$min_test;
-				}
-				else
-				{
-					$min=0;
-				}
-			}
-			else
-			{
-				$min=
-			}*/
+			
 			$final_time=$t_diff;
 			$cur_ans=$this->input->post('to_currect_ans');
 
@@ -372,7 +357,9 @@ public function pricing()
 		$data['serial_no']=$this->input->post('serl_no')+1;
 		$con2=array('course_id'=>$co_id,'qid >'=>$this->input->post('qnumber'));
 		$data['info_ques']=$this->Common_model->fetchinfo('quize_ques',$con2,'row');	
-		
+		//echo '<pre>';print_r($data['info_ques']);
+		//echo $this->db->last_query(); 
+		//exit;
 		if(!empty($data['info_ques']))
 		{
 		if($data['info_ques']['type']==1)

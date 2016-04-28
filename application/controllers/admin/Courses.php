@@ -60,7 +60,7 @@ class Courses extends CI_Controller {
 			$data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
 			$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
 			
-         $con=array('status'=>0);
+        	$con=array('status'=>0);
  
 			$data['couse_list']=$this->Common_model->fetchallcources();
 			$data['couse_list1']=$this->Common_model->fetchinfo('courses',$con,'result');
