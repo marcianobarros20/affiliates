@@ -34,8 +34,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
   <script src="js/jquery.validate.js"></script>
-   <script type="text/javascript" src="js/training.js"></script>
-   <script type="text/javascript" src="js/registration.js"></script>
+ 
 
  
 
