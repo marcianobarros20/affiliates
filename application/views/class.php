@@ -113,6 +113,12 @@
   </div> 
 </div>
 </div>
+<?php if($tr_status==0)
+{?>
+<h2>Start the Quiz</h2>
+<p>Good luck!</p>
+<a class="w3-btn w3-orange w3-text-white w3-large" href="contents/quiz/<?php echo $this->uri->segment(3);?>">Start the Quiz</a>
+<?php }?>
 </section>
 
 

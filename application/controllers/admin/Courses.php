@@ -751,7 +751,7 @@ class Courses extends CI_Controller {
 	            		 redirect(base_url().'admin/courses/add_quize');
 
 
-    	}
+    		}
     }
    
 	

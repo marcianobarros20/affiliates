@@ -240,6 +240,43 @@
         echo '<pre>';print_r($result);exit;
       }
 
+      public function fnchktrainingcompleted($co_id)
+      {
+        $this->db->select('*');
+        $this->db->where('course_id',$co_id);
+        $this->db->where('status',0);
+        $res=$this->db->get('class');
+        $result=$res->result_array();
+        $val=0;
+        foreach($result as $r)
+        {
+          $this->db->select('*');
+        $this->db->where('class_id',$r['cl_id']);
+        $this->db->where('status',0);
+        $res1=$this->db->get('training_material');
+        $result1=$res1->num_rows();
+
+        $this->db->select('*');
+        $this->db->where('cl_id',$r['cl_id']);
+        $this->db->where('u_id',$this->session->userdata('user_id'));
+        $this->db->where('co_id',$co_id);
+        $this->db->where('status',1);
+        $res2=$this->db->get('training_details');
+        $result2=$res2->num_rows();
+        if($result1==$result2)
+        {
+          $val=0;
+         
+        }
+        else
+        {
+          $val=1;
+
+        }
+
+        }
+         return $val;
+      }
 
 
   }
