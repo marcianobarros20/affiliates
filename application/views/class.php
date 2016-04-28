@@ -113,7 +113,7 @@
   </div> 
 </div>
 </div>
-<?php if($tr_status==0)
+<?php if($tr_status==0 && !empty($all_class))
 {?>
 <h2>Start the Quiz</h2>
 <p>Good luck!</p>
