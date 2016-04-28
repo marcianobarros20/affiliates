@@ -65,7 +65,10 @@
   <div class="panel-group">
 
   <div class="w3-padding-jumbo w3-light-grey">
-  <?php if(empty($test_result_final)){ ?>
+  <?php if(empty($test_result_final)){
+
+      if(!empty($info_ques)):
+   ?>
   <p style="margin-bottom:30px;" class="w3-large"> <?php echo $serial_no.'. '.$info_ques['question'];?></p>
   <form method="post" action="contents/quiz/21" name="quizform" role="form">
  
@@ -87,7 +90,7 @@
    <div class="radio"><label>
   <input type="radio" value="false" id="1" name="quiz">False</label>
   </div>
-  <?php }?>
+  <?php } endif;?>
   
   <input type="submit" value=" Next " class="w3-btn w3-orange w3-large w3-text-white">  
   </form>
