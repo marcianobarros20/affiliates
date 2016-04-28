@@ -377,7 +377,16 @@ function Fnchktrainingstatus($cl_id,$co_id,$u_id)
 
       }
       
-             echo round($count);
+             //echo round($count);
+            $count=round($count);
+            if($count>0)
+            {
+               echo $count."% Completed";
+            }
+            else
+            {
+                echo "Need To Start The Training";
+            }
     
   }
 

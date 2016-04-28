@@ -80,19 +80,37 @@
                          <a>  <?php echo $value['fname']." ".$value['lname'];?> </a>
                         </div>
                         <div class="panel-body" id="details_<?php echo $value['uid']?>">
-                         <table>
-                          <?php foreach ($fetch_course as $course){
+                         
+             
+                         <div class="row">
+                         
 
-                            $count =fetchcourseinfo($value['uid'],$course['co_id']);
-                            ?>
-                            <tr>
-                              <td><h4><?php echo $course['courses_name']?></h4> </td>
-                             
-                              <td><?php echo $count;?></td>
 
-                            </tr>  
-                          <?php } ?>
-                        </table>
+                               <?php foreach ($fetch_course as $course){ ?>
+                            <div class="col-md-3">
+                           <div class="box">
+                                <div class="box-header with-border" align="Center">
+                                  <h5> <?php echo $course['courses_name']?></h5>
+                                </div>
+                                <div class="box-body with-border" align="Center">
+                                  <a> <?php $count =fetchcourseinfo($value['uid'],$course['co_id']); ?></a>
+                                    
+                                   
+                                </div>
+                           </div>
+                           </div>
+                         <?php }?>
+
+
+
+
+
+
+
+
+
+                         
+                         </div>
                         </div>
                  </div>
 
