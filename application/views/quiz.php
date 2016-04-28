@@ -70,7 +70,7 @@
       if(!empty($info_ques)):
    ?>
   <p style="margin-bottom:30px;" class="w3-large"> <?php echo $serial_no.'. '.$info_ques['question'];?></p>
-  <form method="post" action="contents/quiz/21" name="quizform" role="form">
+  <form method="post" action="contents/quiz/<?php echo $CourseName['co_id'];?>" name="quizform" role="form">
  
   <input type="hidden" value="<?php echo $serial_no;?>" id="serl_no" name="serl_no">
   <input type="hidden" size="25" value="<?php echo $info_ques['correct_answer'];?>" name="answers">

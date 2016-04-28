@@ -87,7 +87,11 @@ if($this->session->userdata('del_succ_msg')!=''){?>
 
                         <?php 
                             foreach ($couse_list as $value)
-                             { ?>
+                             { 
+
+                              $ifexists=Fnchkquizundercourse($value['co_id']);
+
+                              ?>
                  
                     <tr>
                       
@@ -108,7 +112,7 @@ if($this->session->userdata('del_succ_msg')!=''){?>
                          </button></a>
                          
                             <a href="<?php echo base_url();?>admin/courses/view_course/<?php echo  $value['co_id']; ?>"> <button class="btn btn-primary btn-xs">View Details</button></a>
-                          <?php if($value['status']==0)
+                          <?php if($ifexists >0){if($value['status']==0)
                                              {
                                              ?>
                                              <button class="btn btn-primary btn-xs" onclick="change_course_status('Not Available',<?php echo $value['co_id'];?>)" title='Make Not Avilable'>Not Avilable</button>
@@ -119,7 +123,9 @@ if($this->session->userdata('del_succ_msg')!=''){?>
                                             ?>
                                              <button class="btn btn-primary btn-xs" onclick="change_course_status('Available',<?php echo $value['co_id'];?>)" title='Make Avilable'>Avilable</button>
                                             <?php
-                                            } ?>
+                                            } } else { ?>
+                                            <a class="btn btn-primary btn-xs" href="<?php echo base_url();?>admin/courses/add_quize">Add Quiz</a>
+                                            <?php } ?>
 
                       </td>
                       
@@ -136,7 +142,7 @@ if($this->session->userdata('del_succ_msg')!=''){?>
                 <div class="col-sm-6">
                   <div class="box">
                     <div class="box-header">
-                      <h3 class="box-title">List Of Class1
+                      <h3 class="box-title">List Of Class
                       </h3>
                     </div><!-- /.box-header -->
 

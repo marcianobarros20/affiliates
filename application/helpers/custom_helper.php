@@ -24,6 +24,18 @@
 
     }
 
+
+    function Fnchkquizundercourse($co_id)
+    {
+       $CI=& get_instance();
+        $CI->load->database(); 
+
+        $CI->db->select('*');
+        $CI->db->where('course_id',$co_id);
+        $res = $CI->db->get('quize_ques');
+        return $return = $res->num_rows();     
+    }
+
     function category($cat_id)
     {
         $CI=& get_instance();
