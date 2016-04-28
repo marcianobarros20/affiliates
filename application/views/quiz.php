@@ -90,11 +90,12 @@
    <div class="radio"><label>
   <input type="radio" value="false" id="1" name="quiz">False</label>
   </div>
-  <?php } endif;?>
+  <?php } ?>
   
   <input type="submit" value=" Next " class="w3-btn w3-orange w3-large w3-text-white">  
   </form>
-<?php } else {
+  
+<?php endif;} else {
 
 $percentage=round(($test_result_final['curr_ans']/$test_result_final['tot_ques'])*100);
  ?>

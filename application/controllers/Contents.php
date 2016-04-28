@@ -448,45 +448,67 @@ public function pricing()
 	{
 		if($_POST)
 		{
-            $count="";
+            $count=""; 
 			$user_id=$this->input->post('u_id');
 			$course_id=$this->input->post('co_id');
 			$con=array('u_id'=>$user_id,'co_id'=>$course_id);
+			//
 			$completion_status=$this->Common_model->fetchinfo('training_details',$con,'result');
             $con1=array('course_id'=>$course_id);
+			//how many classes under a course
 			$class_under_course=$this->Common_model->fetchinfo('class',$con1,'count');
-			//print_r($completion_status);
-			//print_r($class_under_course);
+			$quize=$this->Common_model->fetchinfo('quiz_test_result',$con,'row');
+			if($quize)
+			{
+				$passmarks=$quize['tot_ques']-$quize['curr_ans'];
+				if($passmarks>0)
+				{
+	               $marks=($quize['curr_ans']/$quize['tot_ques'])*100;
+	               if($marks>70)
+	               {
+	                  $count=20;
+	               }
+	               else
+	               {
+	               	 $count=0;
+	               }
+				}
+				else
+				{
+					$count=20;
+				}
+			}
+			else
+			{
+				$count=0;
+			}
 			$per_class=80/$class_under_course;
-			//print_r($per_class);
+			
 			$class_under_course=$this->Common_model->fetchinfo('class',$con1,'result');
 			foreach ($class_under_course as $value) 
 			{
-				//echo $value['cl_id'];
 				
-				//echo "<pre>";
 				$con2=array('class_id'=>$value['cl_id']);
 				$total_training_material=$this->Common_model->fetchinfo('training_material',$con2,'count');
-				//print_r($total_training_material);
+				
 				$con3=array('u_id'=>$user_id,'cl_id'=>$value['cl_id']);
 				$training_completed_user=$this->Common_model->fetchinfo('training_details',$con3,'count');
-				//echo "<pre>";
+			
 				
 				$left_course=($total_training_material-$training_completed_user);
 				if($left_course>0)
 				{
 
-                   $count=$count+$per_class;
+                   $x=(($training_completed_user/$total_training_material)*$per_class);
+                   $count=$count+$x;
 
 				}
 				else
 				{
-                   $x=(($training_completed_user/$total_training_material)*$per_class);
-                   $count=$count+$x;
+                   
+					$count=$count+$per_class;
 				}
-			    //print_r($a);
-                // $count=$count+$a;
-			   // print_r($count);
+			    
 
 			}
 			
