@@ -311,4 +311,75 @@ function Fnchktrainingstatus($cl_id,$co_id,$u_id)
         return $val;
   }
 
+  function fetchcourseinfo($user_id,$course_id)
+  {
+      $count=""; 
+      $CI=& get_instance();
+      $CI->load->database(); 
+      $con=array('u_id'=>$user_id,'co_id'=>$course_id);
+      //
+      $completion_status=$CI->Common_model->fetchinfo('training_details',$con,'result');
+            $con1=array('course_id'=>$course_id);
+      //how many classes under a course
+      $class_under_course=$CI->Common_model->fetchinfo('class',$con1,'count');
+      $quize=$CI->Common_model->fetchinfo('quiz_test_result',$con,'row');
+      if($quize)
+      {
+        $passmarks=$quize['tot_ques']-$quize['curr_ans'];
+        if($passmarks>0)
+        {
+                 $marks=($quize['curr_ans']/$quize['tot_ques'])*100;
+                 if($marks>70)
+                 {
+                    $count=20;
+                 }
+                 else
+                 {
+                   $count=0;
+                 }
+        }
+        else
+        {
+          $count=20;
+        }
+      }
+      else
+      {
+        $count=0;
+      }
+      $per_class=80/$class_under_course;
+      
+      $class_under_course=$CI->Common_model->fetchinfo('class',$con1,'result');
+      foreach ($class_under_course as $value) 
+      {
+        
+        $con2=array('class_id'=>$value['cl_id']);
+        $total_training_material=$CI->Common_model->fetchinfo('training_material',$con2,'count');
+        
+        $con3=array('u_id'=>$user_id,'cl_id'=>$value['cl_id']);
+        $training_completed_user=$CI->Common_model->fetchinfo('training_details',$con3,'count');
+      
+        
+        $left_course=($total_training_material-$training_completed_user);
+        if($left_course>0)
+        {
+
+                   $x=(($training_completed_user/$total_training_material)*$per_class);
+                   $count=$count+$x;
+
+        }
+        else
+        {
+                   
+          $count=$count+$per_class;
+        }
+          
+
+      }
+      
+             echo round($count);
+    
+  }
+
+
 ?>
