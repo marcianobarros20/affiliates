@@ -329,15 +329,38 @@ public function pricing()
 		{
 
 		$cur_ans=0;
-		$time=time();
-		$time1=0;
+		
 		$data['test_result_final']='';
 		$con=array('co_id'=>$co_id);
 		$con1=array('course_id'=>$co_id);
 		$data['CourseName']=$this->Common_model->fetchinfo('courses',$con,'row');
 		$data['tot_ques']=$this->Common_model->fetchinfo('quize_ques',$con1,'count');
+		
+		
+
 		if($_POST)
 		{
+			$con_time_info=array('co_id'=>$co_id,'u_id'=>$this->session->userdata('user_id'));
+			$get_time_info=$this->Common_model->fetchinfo('time',$con_time_info,'row');
+			$t_diff=(time()-$get_time_info['time']);
+			/*if($t_diff>=3600)
+			{
+				$hr=($t_diff/3600);
+				$min_test=($t_diff%3600);
+				if($min_test!=0)
+				{
+					$min=$min_test;
+				}
+				else
+				{
+					$min=0;
+				}
+			}
+			else
+			{
+				$min=
+			}*/
+			$final_time=$t_diff;
 			$cur_ans=$this->input->post('to_currect_ans');
 
 			if(strtoupper($this->input->post('answers'))==strtoupper($this->input->post('quiz')))
@@ -388,7 +411,13 @@ public function pricing()
 	    }
 	    else
 	    {
-		
+	    $final_time=0;
+		$ins_time['time']=time();
+		$ins_time['u_id']=$this->session->userdata('user_id');
+		$ins_time['co_id']=$co_id;
+		$con_time_info=array('co_id'=>$co_id,'u_id'=>$this->session->userdata('user_id'));
+		$this->Common_model->delete($con_time_info,'time');
+		$time_ins_id=$this->Common_model->insert('time',$ins_time);
 		$data['serial_no']=1;	
 		$data['info_ques']=$this->Common_model->fetchinfo('quize_ques',$con1,'row');	
 		if($data['info_ques']['type']==1)
@@ -402,7 +431,7 @@ public function pricing()
 		}
 
 		}
-		$data['time']=$time1;
+		$data['time']=$final_time;
 		$data['to_currect_ans']=$cur_ans;
 		$data['header']=$this->load->view('includes/header.php',$data,true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
