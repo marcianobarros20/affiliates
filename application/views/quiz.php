@@ -60,7 +60,7 @@
    <div class="row">
   
 <div class="container">
-  <h2>Start Quiz of <?php echo $CourseName['courses_name'];?></h2>
+  <h2>Quiz of <?php echo $CourseName['courses_name'];?></h2>
   
   <div class="panel-group">
 
@@ -91,8 +91,16 @@
   
   <input type="submit" value=" Next " class="w3-btn w3-orange w3-large w3-text-white">  
   </form>
-<?php } else { ?>
-Congratulation
+<?php } else {
+
+$percentage=round(($test_result_final['curr_ans']/$test_result_final['tot_ques'])*100);
+ ?>
+<center><h2>Result:</h2><?php echo $test_result_final['curr_ans'];?> of <?php echo $test_result_final['tot_ques'];?><p><b><?php echo $percentage; ?> %</b></p><p><?php if($percentage <70){ ?> Well, you have to study alot to Pass this course! (Minimum Pass Marks 70%)<?php } elseif($percentage>=70 && $percentage<90){?>Welldone! you have done pretty good.<?php } else { ?>Congratulation! Excellent performance you have given!<?php }?></p><p><b>Time Spent</b><br><?php echo gmdate("H:i:s", $time);?></p></center>
+
+<table width="100%"><tbody><tr>
+<td><a href="<?php echo base_url();?>contents/Allcourses" class="w3-btn w3-orange w3-text-white w3-large">Go Back To Course</a></td>
+<td align="right"><a href="<?php echo base_url();?>contents/quiz/<?php echo $this->uri->segment(3);?>" class="w3-btn w3-orange w3-text-white w3-large">Try again</a></td>
+</tr></tbody></table>
 <?php }?>
 </div>
   
@@ -101,9 +109,12 @@ Congratulation
   <div class="w3-container w3-padding-hor-16">
   <div class="w3-row">
     <div class="w3-col s6">Total <?php echo $tot_ques;?> questions</div>
-    <div style="text-align:right;" class="w3-col s6">Time spent 0:00 <?php echo $time;?></div>
+    <div style="text-align:right;" class="w3-col s6">Time spent <?php echo gmdate("H:i:s", $time);?></div>
   </div>
 </div>
+
+
+
 </div>
 </div>
 
