@@ -26,6 +26,7 @@ $('#add_blog').validate();
  	
 
 });
+   
 
    function old_password_chk()
 {

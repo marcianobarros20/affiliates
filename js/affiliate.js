@@ -138,6 +138,7 @@ if($(this).val()!='')
 
       
 
+
       function initialize() {
 
     var country = "United States"
@@ -227,7 +228,7 @@ if($(this).val()!='')
                 var status=0;
                 var res= $.ajax({
                   type : 'post',
-                  url : 'index.php/Ajax/delete_users',
+                  url : 'Ajax/delete_users',
                   data : 'uid='+param1+'& status='+status,
                   async : false,
                   success : function(msg)

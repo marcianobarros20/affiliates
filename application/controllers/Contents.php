@@ -274,14 +274,18 @@ public function pricing()
 			redirect(base_url().'welcome');
 		}
 		else
-		{    $data['set_code']='';
+		{   $data['set_code']='';
 		    $u_id=$this->session->userdata('user_id');
 			$con=array('parent_id'=>$u_id);
 			$data['fetch_child']=$this->Common_model->fetchinfo('users',$con,'result');
-		
-		$data['header']=$this->load->view('includes/header.php',$data,true);
-		$data['footer']=$this->load->view('includes/footer.php','',true);
-		$this->load->view('affiliate_training',$data);
+		    $con1=array('status'=>0);
+		    $data['fetch_course']=$this->Common_model->fetchinfo('courses',$con1,'result');
+
+		    
+			$data['header']=$this->load->view('includes/header.php',$data,true);
+			$data['footer']=$this->load->view('includes/footer.php','',true);
+			
+			$this->load->view('affiliate_training',$data);
 		}
 	}
 
@@ -306,7 +310,7 @@ public function pricing()
 		}
 	}
 
-	function quiz($co_id)
+	public function quiz($co_id)
 	{
 
 		if($this->session->userdata('user_id')=='')
@@ -407,6 +411,44 @@ public function pricing()
 
 
 		}
+		}
+	}
+
+
+	public function fetchcourseinfo()
+	{
+		if($_POST)
+		{
+            $count="";
+			$user_id=$this->input->post('u_id');
+			$course_id=$this->input->post('co_id');
+			$con=array('u_id'=>$user_id,'co_id'=>$course_id);
+			$completion_status=$this->Common_model->fetchinfo('training_details',$con,'result');
+            $con1=array('course_id'=>$course_id);
+			$class_under_course=$this->Common_model->fetchinfo('class',$con1,'count');
+			//print_r($completion_status);
+			//print_r($class_under_course);
+			$class_under_course=$this->Common_model->fetchinfo('class',$con1,'result');
+			foreach ($class_under_course as $value) 
+			{
+				//echo $value['cl_id'];
+				
+				//echo "<pre>";
+				$con2=array('class_id'=>$value['cl_id']);
+				$total_training_material=$this->Common_model->fetchinfo('training_material',$con2,'count');
+				print_r($total_training_material);
+				$con3=array('u_id'=>$user_id,'cl_id'=>$value['cl_id']);
+				$training_completed_user=$this->Common_model->fetchinfo('training_details',$con3,'count');
+				echo "<pre>";
+				
+				//$a=($training_completed_user/$total_training_material)*100;
+			    // print_r($a);
+                // $count=$count+$a;
+			   // print_r($count);
+
+			}
+			
+
 		}
 	}
 

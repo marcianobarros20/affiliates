@@ -34,7 +34,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
   <script src="js/jquery.validate.js"></script>
-   <script type="text/javascript" src="js/edit_prof.js"></script>
+   <script type="text/javascript" src="js/training.js"></script>
    <script type="text/javascript" src="js/registration.js"></script>
 
  
@@ -78,7 +78,16 @@
                          <a>  <?php echo $value['fname']." ".$value['lname'];?> </a>
                         </div>
                         <div class="panel-body" id="details_<?php echo $value['uid']?>">
-                          Under Construction
+                         <table>
+                          <?php foreach ($fetch_course as $course){?>
+                            <tr>
+                              <td><h4><?php echo $course['courses_name']?></h4> </td>
+                              <td><button onclick="now(<?php echo $course['co_id']?>,<?php echo $value['uid']?>)">click Me</button></td>
+                              <td></td>
+
+                            </tr>  
+                          <?php } ?>
+                        </table>
                         </div>
                  </div>
 

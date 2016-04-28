@@ -157,9 +157,7 @@ class Courses extends CI_Controller {
          $video_audio_file = $_FILES['user_video']['size'][0];   
          $number_of_media=sizeof($_FILES['user_video']['tmp_name']);//exit;
          
-          //thumb path should be added in the below code
-          //test for thumb
-          
+        
 
 
 
@@ -751,7 +749,7 @@ class Courses extends CI_Controller {
 	            		 redirect(base_url().'admin/courses/add_quize');
 
 
-    		}
+    	}
     }
    
 	
