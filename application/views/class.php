@@ -107,7 +107,7 @@
         <div>
          
            <?php foreach($show_video as $result_video)
-            {
+              {
              // echo $result_video['media'];
               ?>
               <a id="various2"  href="#inline2" class="fancybox btn btn-success btn-large" title="Click To Watch The Tutorial" onclick="show_video(<?php echo $result_video['tr_id'];?>,<?php echo $class['cl_id'];?>,<?php echo $class['course_id'];?>)" style="cursor:pointer;">Preview</a>

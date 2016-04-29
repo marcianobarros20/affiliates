@@ -124,18 +124,20 @@
                         <div class="details__instructor">
                        <?php echo $courses['description'];?>
                         </div>
-                        <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>">Take Classes</a>
+                        
                             <div id="myProgress">
                               <div id="myBar" style="width:<?php echo $count;?>%"></div>
                             </div>
                             <?php if($count>0)
-                              {
-                                echo $count.'% Complete';
-                              }
+                              { ?>
+                                
+                              <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>"><?php echo $count.'% Complete';?></a>
+                              <?php }
                               else
-                              {
-                                 echo "Start Course";
-                              }
+                              { ?>
+                                
+                                 <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>">Start Course</a>
+                             <?php }
 
                             ?>
                         </div>
