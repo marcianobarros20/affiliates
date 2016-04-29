@@ -215,62 +215,11 @@ class Courses extends CI_Controller {
 			}
 				
          }
-         //$text_file = $_FILES['text_file']['size'][0];
-        // $number_of_text_file=sizeof($_FILES['text_file']['tmp_name']);//exit;
-         /*if($text_file >0)
-         {
-         	$files = $_FILES['text_file'];
-            $this->load->library('upload');
-            $time=time();
-      // next we pass the upload path for the images
-			$config['upload_path'] = './tutorial/text_file/';
-			$config['file_name']=$time;
-			$config['overwrite']='TRUE';
-			$config['allowed_types']='txt|TXT|doc|DOC|pdf|PDF|docx|DOCX|xls|XLS';
-			$config['max_size']='2000';
-			 for($i=0;$i<$number_of_text_file;$i++)
-				{ 
-		$_FILES['text_file']['name'] = $files['name'][$i];
-        $_FILES['text_file']['type'] = $files['type'][$i];
-        $_FILES['text_file']['tmp_name'] = $files['tmp_name'][$i];
-        $_FILES['text_file']['error'] = $files['error'][$i];
-        $_FILES['text_file']['size'] = $files['size'][$i];
-        //now we initialize the upload library
-        $this->upload->initialize($config);
-        // we retrieve the number of files that were uploaded
-        if ($this->upload->do_upload('text_file'))
-        {
-          $data['uploads'][$i] = $this->upload->data();
-		  $f_resize=$data['uploads'][$i]['file_name'];
-        }
-        else
-        {
-        	$this->Common_model->delete($con_del,'class');
-          $data['upload_errors'][$i] = $this->upload->display_errors();
-           $this->session->set_userdata('err_msg',$this->upload->display_errors());
-		  redirect(base_url().'admin/courses/add_class_and_course');
-        }
-        		$data1['class_id']=$insert;
-		        $data1['media']=$f_resize;
-		        $data1['type']=3;
-		        $data1['status']=0;
-		        $insert_material=$this->Common_model->insert('training_material',$data1);
-				
-		        	
-				}
-				 
-         }*/
+         
          if($insert_material>0)
 		 {
 
-               //$video_url=base_url('/tutorial/video_audio/$f_resize');
-
-
-               //shell_exec("ffmpeg -i ".$video_url." -y -an -sameq -f image2 -s 400x270 ./tutorial/video_audio/$f_resize.jpg");
-
-
-
-
+             
 		        $this->session->set_userdata('succ_msg','class added successfully!!!');
 		     
 
@@ -557,116 +506,7 @@ class Courses extends CI_Controller {
         $this->load->view('admin/edit_class',$data);
     	
     }
-    /*public function manage_popup()
-    {		
-        $data['video']=$this->Common_model->fetchallpopvideo();
-	    $data['header']=$this->load->view('admin/includes/header','',true);
-	    $data['footer']=$this->load->view('admin/includes/footer','',true);
-	    $data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
-		$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
-			 
-	    $this->load->view('admin/manage_popup',$data);
-    }
-    
-    public function add_popup()
-    {
-    	if($_FILES['popup_video']['size']!=0)
-        {
-        	//echo "Hi";
-        	    $this->load->library('image_lib');
-				$time=time();
-			    $config['upload_path'] ='./popup_video/';
-				$config['file_name']=$time;
-				$config['overwrite']='TRUE';
-				$config['allowed_types']='avi|flv|wmv|mp3|mp4|AVI|FLV|WMV|MP3|MP4';
-				$config['max_size']='200000';
-								
-				$this->load->library('upload', $config);
-				if( ! $this->upload->do_upload('popup_video'))//initialize
-				{
-				
-					$this->session->set_userdata('err_msg',$this->upload->display_errors());
-					echo $this->upload->display_errors();
-					die();
-				}
-				else
-				{
-				
-				$updata=array();//get the uploaded data details
-				$updata = $this->upload->data();				
-				//echo '<pre>';print_r($updata);
-				$f_resize=$updata['file_name'];
-				}
-				$ins['media']=$f_resize;
-				$ins['status']=1;
-		  
-		        $insert=$this->Common_model->insert('popup',$ins);
-		        if($insert)
-		        {
-                    $this->session->set_userdata('succ_msg','Video Uploaded Successfully!!!');
-		        }
-		        else
-		        {
-                   $this->session->set_userdata('err_msg',$this->upload->display_errors());
-		        }
-		        redirect(base_url().'admin/courses/manage_popup');
-        }
-        else
-        {
-        	redirect(base_url().'admin/courses/manage_popup');
-        }
-    }
-    public function delete_popup()
-    {
-        if($_POST)
-        {
-        	$video=$this->input->post('vid');
-           $con=array('vid'=>$video);
-           //print_r($con);
-           $delete=$this->Common_model->delete($con,'popup');
-           if($delete)
-           {
-           	 echo "1";
-           }
-        }
-    
-    }
-    public function change_status_popup()
-    { 
-    	if($_POST)
-    	{
-    		$video_id=$this->input->post('vid');
-    		$status=$this->input->post('status');
-    		$con=array('vid'=>$video_id);
-            $data['status']=$status;
-    		$update=$this->Common_model->update('popup',$con,$data);
-    		if($update)
-    		{
-    			echo 1;
-    		}
-    	}
-    }
-    public function make_active()
-    {
-    	if($_POST)
-    	{
-    		$video_id=$this->input->post('vid');
-    		$con['status']=0;
-    		$info=$this->Common_model->fetchinfo('popup',$con,'row');
-    		if(!empty($info))
-    		{
-    			$con1=array('vid'=>$info['vid']);
-    			$data['status']=1;
-                $update=$this->Common_model->update('popup',$con1,$data);
-    		}
-            $con2=array('vid'=>$video_id);
-    			$up['status']=0;
-                $update2=$this->Common_model->update('popup',$con2,$up);
-                if($update2){
-                	echo 1;
-                }
-    	}
-    }*/
+   
     public function add_quize()
     {
     	$data['allcoruse_list']=$this->Common_model->fetchallcources();
@@ -687,13 +527,47 @@ class Courses extends CI_Controller {
             $new_course_description=$this->input->post('new_course_description');
             if(trim($new_course) &&  trim($new_course_description))
             {
-            $data['courses_name']=$new_course;
-            $data['description']=$new_course_description;
-
-            $data['status']=1;
+            $insert_crs['courses_name']=$new_course;
+            $insert_crs['description']=$new_course_description;
+			$insert_crs['status']=1;
       
+      			/* add introductor video */
+
+		$this->load->library('upload');
+		$time=time();
+
+		// next we pass the upload path for the images 
+		$config['upload_path'] = './tutorial/video/';
+		$config['file_name']=$time;
+		$config['overwrite']='TRUE';
+		$config['allowed_types']='avi|flv|wmv|mp4|AVI|FLV|WMV|MP4|mkv';
+
+		$this->upload->initialize($config);
+		
+ 
+      if ($this->upload->do_upload('intro_video'))
+				        {
+							$upload_data= $this->upload->data();
+							$data['uploads'] = $this->upload->data();
+						    $f_resize=$data['uploads']['file_name'];
+							$video_path = $config['upload_path'];
+							
+							$insert_crs['video']=$f_resize;
+							exec("ffmpeg -i ".$upload_data['full_path']." ".$upload_data['file_path'].$upload_data['raw_name'].".jpeg");
+				        }
+				        else
+				        {
+				        	
+				          
+				          $this->session->set_userdata('err_msg',$this->upload->display_errors());
+						  redirect(base_url().'admin/courses/add_course');
+				        }
+
+
+
+      			/* end introductor video */
             
-            $insert=$this->Common_model->insert('courses',$data);
+            $insert=$this->Common_model->insert('courses',$insert_crs);
             	if($insert)
 		        {
 		            $this->session->set_userdata('succ_msg',"Course Added Successfully.Add quiz under this course to make this course active");

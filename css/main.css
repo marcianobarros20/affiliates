@@ -36,7 +36,11 @@
     width:100%;
 }
 
-
+.OverlayIcon {
+    left: 126px;
+    position: absolute;
+    top: 67px;
+}
 .panel-group {
     margin-bottom: 20px;
 }

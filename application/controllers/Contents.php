@@ -300,7 +300,8 @@ public function pricing()
 		{
 		$data['set_code']='';
 		$con=array('status'=>0,'course_id'=>$co_id);
-
+		$con1=array('status'=>0,'co_id'=>$co_id);
+		$data['courseInfo']=$this->Common_model->fetchinfo('courses',$con1,'row');
 		$data['all_class']=$this->Common_model->fetchinfo('class',$con,'result');
 		//$data['training_material']=$this->Common_model->fetchinfo('training_material',$con1,'result');
 		$data['tr_status']=$this->Common_model->fnchktrainingcompleted($co_id);

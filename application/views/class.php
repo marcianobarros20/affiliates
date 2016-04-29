@@ -69,8 +69,19 @@
        <?php if(!empty($all_class)):?>
 
    <div class="row">
+
+            <div class="container">
+
+            <object class='embed-responsive-item'>
+     <video style="width:auto;" height='500px' controls autoplay>
+       <source src='<?php echo base_url();?>tutorial/video/<?php echo $courseInfo['video']?>'/>
+     </video>
+   </object>
+            </div>
   
 <div class="container">
+
+
   <h2>Classified</h2>
   
   <div class="panel-group">
@@ -120,7 +131,7 @@
 <a class="w3-btn w3-orange w3-text-white w3-large" href="contents/quiz/<?php echo $this->uri->segment(3);?>">Start the Quiz</a>
 <?php } endif;?>
 
-
+  
 </section>
 
 

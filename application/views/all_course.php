@@ -51,62 +51,37 @@
        
 
 
-    <div class="row">
+      <div class="row">
+      <?php foreach($all_courses as $courses):
+
+      $show_video=FngetvideoFirstclass($courses['co_id']);
+      $get_exp=explode('.',$courses['video']);
 
 
-   <?php foreach($all_courses as $courses):
+      ?>
+      <div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-aqua">
+      <div class="card card--learning">
+      <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>"><img class="img-thumbnail" src="tutorial/video/<?php echo $get_exp[0].'.jpeg'?>"/>
+       <img class="OverlayIcon" src="images/play.png" alt="" />
+      </a>
+      </div>
+      <div class="card__details">
+      <strong class="details__name">
+      <?php echo $courses['courses_name'];?>
+      </strong>
+      <div class="details__instructor">
+      <?php echo $courses['description'];?>
+      </div>
+      <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>">Take Classes</a>
+      </div>
+      </div>
+      </div>
+      </div><!-- ./col -->
 
-        $show_video=FngetvideoFirstclass($courses['co_id']);
-
-      // echo $this->db->last_query();
-   ?>
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-aqua">
-                <!-- <div class="inner">
-                  <h3>150</h3>
-                  <p>New Orders</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-bag"></i>
-                </div>
-                <a class="small-box-footer" href="#">More info <i class="fa fa-arrow-circle-right"></i></a> -->
-             
-                        <div class="card card--learning">
-                       
-                        <!-- ngIf: thumbnail_redirection --><div>
-                       <!--  <img src="images/sample/team4.jpg" id="image"> -->
-                      <!--   <object class="embed-responsive-item">
-                           <video  controls class="image" id="video_<?php echo $show_video['tr_id'];?>">
-                             <source src="<?php echo base_url();?>tutoroal/audio_video/<?php echo $show_video['media'];?>" width="100" height="100"/>
-                           </video>
-                         </object> -->
-
-
-                          <a href="<?php echo base_url();?>tutoroal/audio_video/<?php echo $show_video['media'];?>"><img class="img-thumbnail" src="images/videoIcon.png"/></a>
-                        <div class="play-button"></div>        
-                        </div>
-                    
-
-                        <div class="card__details">
-                        <strong class="details__name">
-                        <?php echo $courses['courses_name'];?>
-                        </strong>
-                        <div class="details__instructor">
-                       <?php echo $courses['description'];?>
-                        </div>
-                        <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>">Take Classes</a>
-                        </div>
-                        </div>
-              </div>
-            </div><!-- ./col -->
-            
-            <?php endforeach;?>
-
-
-
-           
-          </div>
+      <?php endforeach;?>
+      </div>
  
  
 
