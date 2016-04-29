@@ -76,6 +76,7 @@
        
 
 
+
     <div class="row">
 
 
@@ -84,6 +85,7 @@
         $show_video=FngetvideoFirstclass($courses['co_id']);
         $count =fetchcoursestatus($this->session->userdata('user_id'),$courses['co_id']);
       // echo $this->db->last_query();
+        $get_exp=explode('.',$courses['video']);
    ?>
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
@@ -108,8 +110,10 @@
                          </object> -->
                         
 
-                          <a href="<?php echo base_url();?>tutoroal/audio_video/<?php echo $show_video['media'];?>"><img class="img-thumbnail" src="images/videoIcon.png"/></a>
-                        <div class="play-button"></div>        
+                         <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>"><img class="img-thumbnail" src="tutorial/video/<?php echo $get_exp[0].'.jpeg'?>"/>
+       <img class="OverlayIcon" src="images/play.png" alt="" />
+      </a>
+                             
                         </div>
                     
 
@@ -145,6 +149,9 @@
 
            
           </div>
+
+      
+
  
  
 

@@ -90,6 +90,10 @@ if($this->session->userdata('succ_msg')!=''){?>
                                 <label>Description</label>
                                 <textarea class="form-control required" placeholder="Enter Course Description" id="new_course_description" name='new_course_description'></textarea>
                             </div>
+                             <div class="form-group">
+                                <label>Upload introductory Video</label>
+                                <input type="file" name="intro_video" id="intro_video" class="required">
+                            </div>
                         </div>
                         <div class="box-footer">
                             <button class="btn btn-primary" type="submit">Submit</button>

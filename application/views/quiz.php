@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>My Course | Tier5</title>
     <meta name="description" content="">
@@ -68,8 +69,13 @@
   <?php if(empty($test_result_final)){
 
       if(!empty($info_ques)):
+        $str=$info_ques['question'];
+        
+           $str=str_replace("<","&lt;",$str);
+           $str=str_replace(">","&gt;",$str);
+
    ?>
-  <p style="margin-bottom:30px;" class="w3-large"> <?php echo $serial_no.'. '.$info_ques['question'];?></p>
+  <p style="margin-bottom:30px;" class="w3-large"> <?php echo $serial_no.'. '.$str;?></p>
   <form method="post" action="contents/quiz/<?php echo $CourseName['co_id'];?>" name="quizform" role="form">
  
   <input type="hidden" value="<?php echo $serial_no;?>" id="serl_no" name="serl_no">
