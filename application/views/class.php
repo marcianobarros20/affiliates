@@ -78,11 +78,23 @@
      </video>
    </object>
             </div>
+
+            <div class="container">
+
+            Total Number of material completed (<?php echo $completed;?>/<?php echo $tot_training_material;?>)
+            <?php
+              $comp_percentage=($completed/$tot_training_material)*100;
+            ?>
+              <br>
+            <div id="myProgress">
+            <div id="myBar" style="width:<?php echo $comp_percentage;?>%"></div>
+            </div>
+            </div>
   
 <div class="container">
 
 
-  <h2>Classified</h2>
+  <h2>Classified: </h2>
   
   <div class="panel-group">
 
@@ -100,7 +112,7 @@
         </h4>
       </div>
       <div <?php if($i!=0){?>style='display:none;'<?php }?> id="class_<?php echo $class['cl_id'];?>">
-        <div class="panel-body"><?php echo $class['description'];?></div>
+        <div class="panel-body">Description: <?php echo $class['description'];?></div>
          
          <br>
 
@@ -110,14 +122,14 @@
               {
              // echo $result_video['media'];
               ?>
-              <a id="various2"  href="#inline2" class="fancybox btn btn-success btn-large" title="Click To Watch The Tutorial" onclick="show_video(<?php echo $result_video['tr_id'];?>,<?php echo $class['cl_id'];?>,<?php echo $class['course_id'];?>)" style="cursor:pointer;">Preview</a>
+              <a id="various2"  href="#inline2" class="fancybox btn btn-success btn-large" title="Click To Watch The Tutorial" onclick="show_video(<?php echo $result_video['tr_id'];?>,<?php echo $class['cl_id'];?>,<?php echo $class['course_id'];?>)" style="cursor:pointer;">Preview</a>&nbsp;&nbsp;
            <?php }
 
            ?>
 
         </div>
         <br>
-         <div><?php if($condition==0){ echo 'Completed full training';} else { echo 'Need To Complete This Training.';};?></div>
+         <div id="status"><?php if($condition==0){ echo 'Status: Completed full training';} else { echo 'Status: Need To Complete This Training.';};?></div>
       </div>
     </div>
     

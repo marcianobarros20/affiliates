@@ -221,6 +221,37 @@
 
       }
 
+      public function fetchinfocourse($con)
+      {
+        $this->db->select('*');
+        $this->db->where($con);
+        $this->db->join('class','class.course_id=courses.co_id');
+        $res=$this->db->get('courses');
+       return $result=$res->result_array();
+       
+      }
+
+      public function Fntotaltrainingmaterial($co_id)
+      {
+        $this->db->select('*');
+        
+        $this->db->where('course_id',$co_id);
+        $this->db->where('status',0);
+        $res=$this->db->get('class');
+        $result=$res->result_array();
+        $tot_count=0;
+        foreach($result as $rest)
+        {
+          $this->db->select('*');
+        
+        $this->db->where('class_id',$rest['cl_id']);
+        $this->db->where('status',0);
+        $res1=$this->db->get('training_material');
+        $result1=$res1->num_rows();
+        $tot_count=$tot_count+$result1;
+        }
+        return $tot_count;
+      }
 
       public function fetchinfocourses($tbl,$con)
       {

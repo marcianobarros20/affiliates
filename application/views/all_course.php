@@ -22,28 +22,7 @@
     <link href="<?php echo base_url();?>source1/css/modal-videos.css" rel="stylesheet">
      
 
-     <style>
-      #myProgress {
-        position: relative;
-        width: 90%;
-        height: 5px;
-        background-color: #ddd;
-      }
-
-      #myBar {
-        position: absolute;
-        
-        height: 100%;
-        background-color: #4CAF50;
-      }
-</style>
-
-
-
-
-
-
-
+   
 
 </head>
 
@@ -122,22 +101,26 @@
                         <?php echo $courses['courses_name'];?>
                         </strong>
                         <div class="details__instructor">
-                       <?php echo $courses['description'];?>
+                        <?php echo $courses['description'];?>
                         </div>
                         
                             <div id="myProgress">
                               <div id="myBar" style="width:<?php echo $count;?>%"></div>
                             </div>
                             <?php if($count>0)
-                              { ?>
+                              {
                                 
-                              <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>"><?php echo $count.'% Complete';?></a>
-                              <?php }
+
+                               ?>
+                               <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>"><?php echo $count.'% Complete';?></a>
+                               <?php
+                              }
                               else
-                              { ?>
-                                
-                                 <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>">Start Course</a>
-                             <?php }
+                              {
+                               ?>
+                                <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>">Start Course</a>
+                               <?php
+                              }
 
                             ?>
                         </div>
