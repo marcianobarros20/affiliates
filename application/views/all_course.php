@@ -20,6 +20,31 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">   
     <link href="<?php echo base_url();?>source1/css/modal-videos.css" rel="stylesheet">
+     
+
+     <style>
+      #myProgress {
+        position: relative;
+        width: 90%;
+        height: 5px;
+        background-color: #ddd;
+      }
+
+      #myBar {
+        position: absolute;
+        
+        height: 100%;
+        background-color: #4CAF50;
+      }
+</style>
+
+
+
+
+
+
+
+
 </head>
 
 <body>
@@ -57,7 +82,7 @@
    <?php foreach($all_courses as $courses):
 
         $show_video=FngetvideoFirstclass($courses['co_id']);
-
+        $count =fetchcoursestatus($this->session->userdata('user_id'),$courses['co_id']);
       // echo $this->db->last_query();
    ?>
             <div class="col-lg-3 col-xs-6">
@@ -81,7 +106,7 @@
                              <source src="<?php echo base_url();?>tutoroal/audio_video/<?php echo $show_video['media'];?>" width="100" height="100"/>
                            </video>
                          </object> -->
-
+                        
 
                           <a href="<?php echo base_url();?>tutoroal/audio_video/<?php echo $show_video['media'];?>"><img class="img-thumbnail" src="images/videoIcon.png"/></a>
                         <div class="play-button"></div>        
@@ -96,6 +121,19 @@
                        <?php echo $courses['description'];?>
                         </div>
                         <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>">Take Classes</a>
+                            <div id="myProgress">
+                              <div id="myBar" style="width:<?php echo $count;?>%"></div>
+                            </div>
+                            <?php if($count>0)
+                              {
+                                echo $count.'% Complete';
+                              }
+                              else
+                              {
+                                 echo "Start Course";
+                              }
+
+                            ?>
                         </div>
                         </div>
               </div>

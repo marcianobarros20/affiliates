@@ -164,77 +164,79 @@ google.maps.event.addDomListener(window, 'load', initialize);
                 <li class="active">Dashboard</li>
             </ol>
         </section>
+
+
         <section class="content">
-            <div class="col-lg-12">
-                <h3>Dashboard</h3>
-            </div>
-            
-            <div id="Dispaly_Div" class="col-sm-12 col-md-12 col-xs-12">
-                  <div class="col-sm-4">
-                      <div class="box">
-                        Active Affiliate
-                        <br>
-                        
-                        <?php echo $active_users;?>
-                        <br>
-                        <br><br>
-                        <a id="link_index" href="<?php echo base_url();?>admin/users">Click</a>
-                      </div>
 
-                  </div>
-                   
-                  <div class="col-sm-4">
-                      <div class="box">
-                        Non-Affiliate User
-                         &nbsp;&nbsp;&nbsp;
-                        <?php
-                         echo ($pending_approval+$rejected_approval);
-                        ?>
-                        <br><br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        Pending Approval&nbsp;&nbsp;&nbsp;<?php echo $pending_approval?>
-                         <br>
-                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         Rejected Approval &nbsp;&nbsp;&nbsp;<?php echo $rejected_approval ?>
-                         <br>
-                         <a id="link_index" href="<?php echo base_url();?>admin/users/non_aff">Click</a>
-                      </div>
-                  </div>
-
-                  <div class="col-sm-4">
-                      <div class="box">
-                        Deleted User
-                         <br>
-                        <?php echo $deleted_users?>
-                        <br>
-                        <br><br>
-                        <a id="link_index" href="<?php echo base_url();?>admin/users/delete_affiliate">Click</a>
-                      </div>
-                  </div>
+            <div class="row">
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-aqua">
+                <div class="inner">
+                  <h3><?php echo $active_users;?></h3> Active Affiliate
+                   <h3><?php echo $pending_approval?></h3>Affiliates Pending Approval
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+                </div>
+                <a href="<?php echo base_url();?>admin/users" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-green">
+                <div class="inner">
+                  <h3><?php echo $active_blog;?></h3>
+                  Active Bloge
+                  <h3><?php echo $inactive_blog;?></h3>
+                  Inactive Bloge
+                </div>
+                <div class="icon">
+                  <i class="ion ion-chatbox"></i>
+                </div>
+                <a href="<?php echo base_url();?>admin/blog" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
                   
-                 
-                  <div class="col-sm-4">
-                      <div class="box">
-                        Blog Status
-                        <br><br>
-                        Active Bloge
-                        &nbsp;&nbsp;&nbsp;
-                        <?php echo $active_blog;?>
-                        <br>
-                        Inctive Bloge
-                        &nbsp;&nbsp;&nbsp;
-                        <?php echo $inactive_blog;?>
-                        
-                      </div>
+                  <h3><?php echo $active_courses;?></h3>
+                  Active Course
+                  <h3><?php echo $inactive_courses;?></h3>
+                  Inactive Course
+                </div>
+                <div class="icon">
+                  <i class="ion ion-ribbon-a"></i>
+                </div>
+                <a href="<?php echo base_url();?>admin/courses/edit_class_and_course" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-red">
+                <div class="inner">
+                  <h3>Under</h3>
+                  <p>Construction</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+          </div>
+    </section> 
 
-                  </div>
 
-            </div>
+        <section class="content">
+         
           <!-- map -->
-        <div id="map_canvas"></div>
-        <!-- end map -->
+            <div id="map_canvas"></div>
+           <!-- end map -->
         
- </section>  
+       </section>  
 
   
        
