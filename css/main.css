@@ -193,7 +193,7 @@ box-shadow: -2px -1px 41px -9px rgba(0,0,0,0.75);}
 }
 
  #inline1 video{width: 500px; height: auto}
-
+.modal button{margin-left: 0; margin-top: 10px;}
 
 
 @media only screen and (max-width: 990px) {
@@ -207,7 +207,7 @@ box-shadow: -2px -1px 41px -9px rgba(0,0,0,0.75);}
     
     .card--learning{min-height: 220px;}
 
-    .modal button{margin-left: 0; margin-top: 10px;}
+    
 
 
 
