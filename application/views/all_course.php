@@ -66,7 +66,7 @@
       // echo $this->db->last_query();
         $get_exp=explode('.',$courses['video']);
    ?>
-            <div class="col-lg-3 col-xs-6">
+            <div class="col-lg-3  col-xs-6">
               <!-- small box -->
               <div class="small-box bg-aqua">
                 <!-- <div class="inner">
@@ -180,7 +180,7 @@
   })();
 
 </script>
-     <script src="js1/bootstrap.min.js"></script>
+     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

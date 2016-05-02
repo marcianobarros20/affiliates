@@ -139,7 +139,10 @@ box-shadow: -2px -1px 41px -9px rgba(0,0,0,0.75);}
 .training-box h5{background: #097684; color: #fff; display: inline-block; padding: 28px 5px 5px 5px; border-radius: 50%; width: 70px; height: 70px; vertical-align: middle;}
 .details__instructor{word-break: break-all;}
 
-.card--learning{border:1px solid #ccc; padding: 3px}
+.card--learning{border:1px solid #ccc; padding: 3px; min-height: 257px;}
+
+.card__details strong{padding: 5px 0; display: inline-block;}
+
 .card--learning a{position: relative;}
 
 .OverlayIcon {
@@ -155,14 +158,28 @@ box-shadow: -2px -1px 41px -9px rgba(0,0,0,0.75);}
 .blue-btn1{background-color: #28a0cc; color: #fff ; padding: 4px; display: inline-block; margin: 5px 0}
 .blue-btn1:hover{background: #1480a8; color: #fff}
 
+.coursedetails {margin-top: 10px; margin-bottom: 10px;}
+.coursedetails h5{padding: 0; display: block; color: #1480a8; font-size: 14px;}
+.progress-bar{margin-top: 10px; margin-bottom: 10px;}
+.coursedetails video{width: 100% !important; height: auto}
+.clearfix{clear: both}
 
 
 @media only screen and (max-width: 990px) {
 
     body{padding-top: 0px !important}
+    .header-width{width: 90%; margin: 0 auto}
+    .header-width .pull-right{float: none;}
+
 
 }
 
+
+@media only screen and (max-width: 480px) {
+
+    .col-xs-6{width: 100%; float: none;}
+
+}
 
 
 

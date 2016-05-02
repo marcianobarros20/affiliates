@@ -212,7 +212,7 @@
   <?php echo $footer;?>
 <!--/Footer-->
     
-     <script src="js1/bootstrap.min.js"></script>
+     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

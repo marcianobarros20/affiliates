@@ -85,14 +85,14 @@
                     <div class="box-body">
                     <div class="row-fluid">
                       <form method="post" action="welcome/update_profile" enctype="multipart/form-data">
-                      <div class="span4 profile-pic">
+                      <div class="span3 profile-pic">
                         <?php if( $fetch_allinfo['profile_image']) { ?><img src="profile_img/thumb/<?php echo $fetch_allinfo['profile_image'];?>" alt="Image"><?php  } else{ ?><img src="images/sample/no_photo.png" alt="images/sample/no_photo.png"> <?php } ?>
                         <p>Select image to upload <br>( Minimum Size 220x150)</p>
                       <br><br>
                       <input type="file" name="fileToUpload" id="fileToUpload">
 
                       </div>  
-                      <div class="span8 personal-info">
+                      <div class="span9 personal-info">
                         <div class="row">
                           <div class="width50">
                             <label>First Name:</label>
@@ -136,7 +136,7 @@
 
 
 
-
+                    <br>
 
            <div class="box">
             <div class="row">
