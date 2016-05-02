@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/custom.css"/>
     <link rel="stylesheet" href="css/sl-slide.css">
 
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
@@ -38,7 +39,7 @@
 
 </head>
 
-<body>
+<body >
 <section class="title">
         <div class="container">
             <div class="row-fluid">
@@ -62,6 +63,7 @@
   
       <section id="about-us" class="container main">
          <!-- <h2 align="center"> Edit Personal Information </h2> -->
+         
         <div class="row-fluid">
                    <?php 
                     if($this->session->userdata('succ_msg')!=''){?>
@@ -81,7 +83,53 @@
                     <?php }?>
 
 
+                    <div class="box-body">
+                    <div class="row-fluid">
+                      <form method="post" action="welcome/update_profile" enctype="multipart/form-data">
+                      <div class="span4 profile-pic">
+                        <?php if( $fetch_allinfo['profile_image']) { ?><img src="profile_img/thumb/<?php echo $fetch_allinfo['profile_image'];?>" alt="Image"><?php  } else{ ?><img src="images/sample/no_photo.png" alt="images/sample/no_photo.png"> <?php } ?>
+                        Select image to upload <br>( Minimum Size 220x150)
+                      <br><br>
+                      <input type="file" name="fileToUpload" id="fileToUpload">
 
+                      </div>  
+                      <div class="span8 personal-info">
+                        <div class="row">
+                          <div class="width50">
+                            <label>First Name:</label>
+                            <input type="text" placeholder="First Name" id="edit_first_name" name="edit_first_name" value="<?php echo $fetch_allinfo['fname'];?>">
+                          </div>
+                          <div class="width50">
+                            <label>Last Name:</label>
+                            <input type="text" placeholder="Last Name" id="edit_last_name" name="edit_last_name" value="<?php echo $fetch_allinfo['lname'];?>">
+                          </div>
+                          <div class="span12">
+                            <label>Description:</label>
+                            <textarea rows="4"  placeholder="Enter Descriptions Here" class="form-control" id="edit_description" name="edit_description"><?php echo $fetch_allinfo['description'];?></textarea>
+                          </div>
+                          <div class="span12">
+                            <div class="control-group">
+                                  
+                                  <div class="controls">
+                                    Address<br>
+                                  <input id="address" type="text" size="50" name="address" class="input-xlarge" value="<?php echo $fetch_allinfo['address'];?>">
+                                  </div>
+                            </div>
+
+                          </div> 
+                          <div class="span12">
+                            <button type="submit" class="btn btn-primary" id="update_button" name="update_button" >Update</button>
+
+                          </div>  
+
+                        </div>
+
+                       
+                      </div> 
+                       </form>
+
+                    </div>
+                    </div>  
 
 
 
@@ -139,18 +187,14 @@
 
 
 
-
-
-
                    </td>
                    
                    </tr>
             </table>
 
-
-            
-
            </div>
+
+
            <div class="box">
             <div class="row">
             <div class="span8">
@@ -198,7 +242,8 @@
   <?php echo $footer;?>
 <!--/Footer-->
 
- 
+ <script src="js1/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
 
 
 
