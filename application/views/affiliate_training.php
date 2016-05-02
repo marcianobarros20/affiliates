@@ -26,18 +26,14 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 
+
    <!--  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
 
-   
+
+    
 
    
 
-
-
-
-
-  
-  
 
 </head>
 
@@ -124,8 +120,7 @@
               
         </div>       
       </section>
-    
-
+     
 
 <!--Bottom-->
 <!--/Bottom-->

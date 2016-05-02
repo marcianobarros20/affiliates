@@ -184,7 +184,7 @@ class Welcome extends CI_Controller
 						
 						$cookie2= array(
 						'name'   => 'password',
-						'value'  => $pass,
+						'value'  => base64_encode($pass),
 						'expire' => '86500',
 						);
 						$cookie= array(
