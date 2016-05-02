@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>My Course | Tier5</title>
+    <title>All Courses | Tier5</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <base href="<?php echo base_url();?>">
@@ -19,7 +19,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">   
-    <link href="<?php echo base_url();?>source1/css/modal-videos.css" rel="stylesheet">
+   
      
 
    
@@ -98,7 +98,7 @@
 
                         <div class="card__details">
                         <strong class="details__name">
-                        <?php echo $courses['courses_name'];?>
+                        <?php echo ucfirst($courses['courses_name']);?>
                         </strong>
                         <div class="details__instructor">
                         <?php echo substr($courses['description'],0,50);?>
@@ -153,33 +153,8 @@
 <!--/Footer-->
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="<?php echo base_url();?>source1/js/modal-videos.js"></script>
   
-  <script>
-    "use strict";
-
-    $(document).ready(function () {
-    
-      //each video has need its own instance of modalVideoOptions  
-      $('a[href]').each(function(){
-        $(this).modalvideo(new ModalVideoOptions());
-      });
-    });
-  </script>
-  <script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-36251023-1']);
-  _gaq.push(['_setDomainName', 'jqueryscript.net']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+  
      <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
 </body>

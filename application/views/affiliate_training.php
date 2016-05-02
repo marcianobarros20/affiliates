@@ -7,7 +7,7 @@
     <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Dashboard | Tier5</title>
+    <title>Affiliates Training Progress | Tier5</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <base href="<?php echo base_url();?>">
@@ -25,17 +25,15 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+   <!--  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
    
 
-    <script src="js/vendor/jquery-1.9.1.min.js"></script>
-<script src="js/vendor/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+
+
+<script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
-  <script src="js/jquery.validate.js"></script>
-
-
  
 
   
