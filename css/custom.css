@@ -139,9 +139,18 @@ a.edit-btn:hover{color: #000; text-decoration: none;}
 
 
 
+
+
+
+
+
 @media only screen and (max-width: 1920px) {
 
 	.profile-pic img {max-width: 180px;}
+
+
+
+
 
 
 }
@@ -153,6 +162,7 @@ a.edit-btn:hover{color: #000; text-decoration: none;}
 
 	.change-password-section input[type="text"]{width: 100%;}
 	
+	.personal-info{box-sizing:border-box; padding: 0 15px;}
 
 
 }
@@ -160,6 +170,7 @@ a.edit-btn:hover{color: #000; text-decoration: none;}
 
 	.width50{padding: 0}
 .change-password-section input[type="password"]{width: 100%;}
+.personal-info textarea{width: 80%}
 
 }
 
