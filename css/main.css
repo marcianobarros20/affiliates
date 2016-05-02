@@ -148,11 +148,11 @@ box-shadow: -2px -1px 41px -9px rgba(0,0,0,0.75);}
 .OverlayIcon {
     left: 0;
     position: absolute;
-    top: 0;
+    top: -17px;
     right: 0;
     bottom: 0;
     margin: 0 auto;
-    width: 28px;
+    width: 49px;
 
 }
 .blue-btn1{background-color: #28a0cc; color: #fff ; padding: 4px; display: inline-block; margin: 5px 0}
@@ -192,6 +192,8 @@ box-shadow: -2px -1px 41px -9px rgba(0,0,0,0.75);}
     margin-left: -15px;
 }
 
+ #inline1 video{width: 500px; height: auto}
+
 
 
 @media only screen and (max-width: 990px) {
@@ -202,18 +204,46 @@ box-shadow: -2px -1px 41px -9px rgba(0,0,0,0.75);}
 
     .modal-footer{padding: 0 !important}
 
+    
+    .card--learning{min-height: 220px;}
 
-
+    .modal button{margin-left: 0; margin-top: 10px;}
 
 
 
 }
+
+@media only screen and (max-width: 768px) {
+
+    .card--learning{min-height: 214px;}
+
+     
+
+
+
+}
+
+@media only screen and (max-width: 766px) {
+
+    #inline1 video{width: 300px; height: auto}
+
+
+}
+
+
+
 
 
 @media only screen and (max-width: 480px) {
 
     .col-xs-6{width: 100%; float: none;}
     .modal input[type="text"], .modal input[type="password"]{width: 90%; margin-bottom: 10px;}
+
+    .small-box{margin-left: 0}
+
+    img.img-thumbnail{width: 100%;}
+
+
 
 }
 
