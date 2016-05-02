@@ -151,7 +151,9 @@ box-shadow: -2px -1px 41px -9px rgba(0,0,0,0.75);}
     margin: 0 auto;
     width: 28px;
 
-
+}
+.blue-btn1{background-color: #28a0cc; color: #fff ; padding: 4px; display: inline-block; margin: 5px 0}
+.blue-btn1:hover{background: #1480a8; color: #fff}
 
 
 
