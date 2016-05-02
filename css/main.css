@@ -108,6 +108,35 @@
 
 }
 
+
+
+
+/*Arindams css*/
+
+
+.training-box{border:1px solid #12DFFD; margin-bottom: 10px;}
+.training-box:hover{border:1px solid #ccc; -webkit-box-shadow: -2px -1px 41px -9px rgba(0,0,0,0.75);
+-moz-box-shadow: -2px -1px 41px -9px rgba(0,0,0,0.75);
+box-shadow: -2px -1px 41px -9px rgba(0,0,0,0.75);}
+
+.training-box h5{background: #097684; color: #fff; display: inline-block; padding: 18px 5px 5px 5px; border-radius: 50%; width: 50px; height: 50px; vertical-align: middle;}
+.details__instructor{word-break: break-all;}
+
+
+
+
+@media only screen and (max-width: 990px) {
+
+    body{padding-top: 0}
+
+}
+
+
+
+
+
+
+
   #myProgress {
         position: relative;
         width: 90%;
@@ -121,3 +150,4 @@
         height: 100%;
         background-color: #4CAF50;
       }
+

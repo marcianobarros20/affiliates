@@ -88,7 +88,7 @@
 
                                <?php foreach ($fetch_course as $course){ ?>
                             <div class="col-md-3">
-                           <div class="box">
+                           <div class="box training-box">
                                 <div class="box-header with-border" align="Center">
                                   <h5> <?php echo ucfirst($course['courses_name']);?></h5>
                                 </div>

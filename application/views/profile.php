@@ -86,7 +86,7 @@
                       <div class="span8">
 
                            <div class="row-fluid">
-                               <div class="span4">
+                               <div class="span4 profile-pic">
                                     <?php if( $fetch_allinfo['profile_image'])
                                     {
                                      ?>
@@ -104,18 +104,49 @@
                                </div>
 
                                
-                               <div class="span8">
+                               <div class="span8 personal-info">
 
                                <h3><?php echo $fetch_allinfo['fname'].' '.$fetch_allinfo['lname'];?></h3>
                                
-                               <table valign="bottom">
+                               <!-- <table valign="bottom">
                                 <tr><td valign="top">Description:</td><td><?php echo $fetch_allinfo['description'];?></td></tr>
                                 <tr><td>Email:</td><td><?php echo $fetch_allinfo['email']?></td></tr>
                                 <tr><td>Refferal Code:</td><td><?php echo $fetch_allinfo['refferalcode'];?></td></tr>
                                 <tr><td colspan="2"><a href="<?php echo base_url();?>Welcome/editprofile">Edit Profile</a></td></tr>
 
-                               </table>
-                              
+                               </table>  -->
+
+
+                               <div class="description-block">
+                                <h5>Description:</h5>
+                                  <p>
+                                  <?php echo $fetch_allinfo['description'];?>
+
+                                  </p>
+                                </div>
+
+                                 <div class="description-block">
+                                  <h5>Email:</h5>
+                                  <p>
+                                    <?php echo $fetch_allinfo['email']?>
+                                  </p>  
+                                 </div> 
+
+                                 <div class="description-block">  
+                                  <h5>Refferal Code:</h5>
+                                  <p>
+                                    <?php echo $fetch_allinfo['refferalcode'];?>
+                                  </p>  
+                                 </div>
+
+                                 <div class="description-block">
+                                  <h5></h5>
+                                  <p>
+                                      <a class="edit-btn" href="<?php echo base_url();?>Welcome/editprofile">Edit Profile</a>
+                                  </p>  
+                                 </div> 
+
+
 
                               </div>
 
@@ -125,34 +156,19 @@
                       </div>
 
                        <div class="span4">
+                        <div class="link-section">
 
                        <h5>To Affiliate People, Please forword the below link.
                         </h5>
                        <br>
+                       <div class="border-area">
                        <?php echo base_url();?>?aid=<?php echo $fetch_allinfo['refferalcode'];?>
-
-
+                      </div>
+                        </div>
                        </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
+    
             
        </div>
       </div>
@@ -167,7 +183,7 @@
                 <?php foreach ($course as $value)
 
                 { ?>
-                    <div>
+                    <div class="training-status">
                          <?php echo $value['courses_name'];
 
                           $count =fetchcourseinfo($fetch_allinfo['uid'],$value['co_id']);
