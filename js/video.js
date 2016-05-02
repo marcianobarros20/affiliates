@@ -86,7 +86,20 @@ function open_new_class(cl_id,co_id)
                     if(msg==0)
                     {
                        $('.err').html('');     
-                       $('#class_'+cl_id).show();
+                      
+                       if($('.class_'+cl_id).hasClass('inactive'))
+                       {
+                         $('#class_'+cl_id).show();
+                         $('.class_'+cl_id).removeClass('inactive');
+                         $('.class_'+cl_id).addClass('showactive');
+
+                       }
+                       else
+                       {
+                         $('#class_'+cl_id).hide();
+                         $('.class_'+cl_id).removeClass('showactive');
+                         $('.class_'+cl_id).addClass('inactive');
+                       }
 
                      }
                      else

@@ -223,7 +223,8 @@
 
       public function fetchinfocourse($con)
       {
-        $this->db->select('*');
+        $this->db->distinct();
+        $this->db->select('courses.*');
         $this->db->where($con);
         $this->db->join('class','class.course_id=courses.co_id');
         $res=$this->db->get('courses');

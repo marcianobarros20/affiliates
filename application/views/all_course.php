@@ -41,7 +41,7 @@
                 <div class="span6">
                     <ul class="breadcrumb pull-right">
                         <li><a href="<?php echo base_url();?>">Home</a> /</li>
-                        <li class="active">Dashboard</li>
+                        <li class="active">Course List</li>
                     </ul>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                         <?php echo $courses['courses_name'];?>
                         </strong>
                         <div class="details__instructor">
-                        <?php echo $courses['description'];?>
+                        <?php echo substr($courses['description'],0,50);?>
                         </div>
                         
                             <div id="myProgress">
