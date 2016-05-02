@@ -297,11 +297,56 @@ class Courses extends CI_Controller {
     }
     public function edit_course($co_id)
     {
+
 	    	$con=array('co_id'=>$co_id);
 	    	//print_r($con);
 	    	if($_POST)
 	    	{
-	    		//print_r($_POST);exit;
+	    		
+
+	    		if($_FILES['intro_video']['size']!=0)
+	    		{
+	    	$this->load->library('upload');		
+		$time=time();
+
+		// next we pass the upload path for the images 
+		$config['upload_path'] = './tutorial/video/';
+		$config['file_name']=$time;
+		$config['overwrite']='TRUE';
+		$config['allowed_types']='avi|flv|wmv|mp4|AVI|FLV|WMV|MP4|mkv';
+
+		$this->upload->initialize($config);
+		
+ 
+      if ($this->upload->do_upload('intro_video'))
+				        {
+				        	$get_explode=explode('.',$this->input->post('prev_video'));
+				        	$name=$get_explode[0].'.jpeg';
+				        	unlink('./tutorial/video/'.$name);
+				        	unlink('./tutorial/video/'.$this->input->post('prev_video'));
+							$upload_data= $this->upload->data();
+							$data['uploads'] = $this->upload->data();
+						    $f_resize=$data['uploads']['file_name'];
+							$video_path = $config['upload_path'];
+							
+							$data1['video']=$f_resize;
+							exec("ffmpeg -i ".$upload_data['full_path']." ".$upload_data['file_path'].$upload_data['raw_name'].".jpeg");
+				        }
+				        else
+				        {
+				        	
+				          
+				          $this->session->set_userdata('err_msg',$this->upload->display_errors());
+						  redirect(base_url().'admin/courses/edit_course/'.$co_id);
+				        }
+				       
+	    		}
+	    		else
+	    		{
+	    			$data1['video']=$this->input->post('prev_video');	
+	    		}
+
+
 	    		$data1['courses_name']=$this->input->post('course_name');
 	    		$data1['description']=$this->input->post('course_description');
 	    		$update=$this->Common_model->update('courses',$con,$data1);
@@ -311,11 +356,7 @@ class Courses extends CI_Controller {
 	    	  	$this->session->set_userdata('succ_crs','Course updated successfully.');
 	    	  	redirect(base_url().'admin/courses/edit_course/'.$co_id);
 	    	  }
-	    	 /* else
-	    	  {
-	    	  	$this->session->set_userdata('err_crs','Error occurs while update.');
-	    	  	redirect(base_url().'admin/courses/edit_course/'.$co_id);
-	    	  }*/
+	    	
 	    	  }
 	    	$data['course_details']=$this->Common_model->fetchinfo('courses',$con,'row');
 	    	$data['header']=$this->load->view('admin/includes/header','',true);

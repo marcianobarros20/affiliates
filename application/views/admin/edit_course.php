@@ -84,7 +84,7 @@ if($this->session->userdata('succ_crs')!=''){?>
                   <h3 class="box-title">Edit course</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" method="post">
+                <form role="form" method="post" enctype="multipart/form-data">
                   <div class="box-body">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Name</label>
@@ -94,6 +94,20 @@ if($this->session->userdata('succ_crs')!=''){?>
                       <label>Description</label>
                       <textarea rows="3" class="form-control required" name="course_description" id="course_description"><?php echo $course_details['description'];?></textarea>
                     </div>
+
+                    <div class="form-group">
+                                <label>Upload introductory Video</label>
+                                <input type="file" name="intro_video" id="intro_video">
+                    </div>
+
+                            <div id="video">
+                            <object class="embed-responsive-item">
+     <video width='320' height='240' controls>
+       <source src="<?php echo base_url();?>tutorial/video/<?php echo $course_details['video'];?>" width="100" height="100"/>
+     </video>
+   </object>
+                            </div>
+                            <input type="hidden" name="prev_video" value="<?php echo $course_details['video'];?>">
                   </div><!-- /.box-body -->
 
                   <div class="box-footer">

@@ -125,7 +125,7 @@ if($this->session->userdata('succ_msg')!=''){?>
                       <div id="filediv">
                       <input type="file" id="video" name="user_video[]" multiple="multiple" accept="image/*" title="Select Images To Be Uploaded">
                       <br>
-                      <?php if(!empty($training_audio_video)){foreach($training_audio_video as $video){?>
+                      <?php /*if(!empty($training_audio_video)){foreach($training_audio_video as $video){?>
                     
                       <?php 
                       $extract_get=explode('.',$video['media']);
@@ -150,26 +150,31 @@ if($this->session->userdata('succ_msg')!=''){?>
 </div>
                    <?php  }?>
 
-                   <?php }}?>
+                   <?php }}*/?>
                      
 
+
+<?php foreach($training_audio_video as $video){?>
+<div id="video_<?php echo $video['tr_id'];?>">
+<object class="embed-responsive-item">
+     <video width='320' height='240' controls>
+       <source src="<?php echo base_url();?>tutorial/video_audio/<?php echo $video['media'];?>" width="100" height="100"/>
+     </video>
+   </object>
+<img src="images/cross_button.png" alt="" style="cursor:pointer;" title="delete video/audio" onclick="delete_media(<?php echo $video['tr_id'];?>)">
+   </div>
+
+<?php }?>
                      
                       </div>
                       </div>
-<!--  <br><br><br><br><br><br><br><br>
-                      Upload File: <div id="formdiv" class="form-group">
-                      <div id="filediv">
-                      <input type="file" id="text_file" name="text_file[]" multiple="multiple" accept="image/*" title="Select Images To Be Uploaded">
-                      <br>
 
-                      </div>
-                      </div> -->
 
-<?php if(!empty($training_file)){foreach($training_file as $files){?>
+<?php /* if(!empty($training_file)){foreach($training_file as $files){?>
 <div id="file_<?php echo $files['tr_id']?>">
 <?php echo $files['media'];?>&nbsp;&nbsp;<img src="images/cross_button.png" alt="" style="cursor:pointer;" title="delete File" onclick="delete_file(<?php echo $files['tr_id'];?>)">
 </div>
-<?php }}?>
+<?php }} */?>
 
                             <div class="box-footer">
                                 <button class="btn btn-primary" type="submit">Submit</button>
