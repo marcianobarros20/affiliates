@@ -27,8 +27,7 @@
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="js/vendor/jquery-1.9.1.min.js"></script>
-<script src="js/vendor/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
   <script src="js/jquery.validate.js"></script>
@@ -88,7 +87,7 @@
                       <form method="post" action="welcome/update_profile" enctype="multipart/form-data">
                       <div class="span4 profile-pic">
                         <?php if( $fetch_allinfo['profile_image']) { ?><img src="profile_img/thumb/<?php echo $fetch_allinfo['profile_image'];?>" alt="Image"><?php  } else{ ?><img src="images/sample/no_photo.png" alt="images/sample/no_photo.png"> <?php } ?>
-                        Select image to upload <br>( Minimum Size 220x150)
+                        <p>Select image to upload <br>( Minimum Size 220x150)</p>
                       <br><br>
                       <input type="file" name="fileToUpload" id="fileToUpload">
 
@@ -103,15 +102,17 @@
                             <label>Last Name:</label>
                             <input type="text" placeholder="Last Name" id="edit_last_name" name="edit_last_name" value="<?php echo $fetch_allinfo['lname'];?>">
                           </div>
+                          <br>
                           <div class="span12">
                             <label>Description:</label>
                             <textarea rows="4"  placeholder="Enter Descriptions Here" class="form-control" id="edit_description" name="edit_description"><?php echo $fetch_allinfo['description'];?></textarea>
                           </div>
+                          <br>
                           <div class="span12">
                             <div class="control-group">
-                                  
+                                  <br>
                                   <div class="controls">
-                                    Address<br>
+                                    <label>Address</label>
                                   <input id="address" type="text" size="50" name="address" class="input-xlarge" value="<?php echo $fetch_allinfo['address'];?>">
                                   </div>
                             </div>
@@ -134,81 +135,21 @@
 
 
 
-           <div class="box">
-            <table>
-               <tr>
-                 <td rowspan="2">
-                         <?php if( $fetch_allinfo['profile_image']) { ?><img src="profile_img/thumb/<?php echo $fetch_allinfo['profile_image'];?>" alt="Image"><?php  } else{ ?><img src="images/sample/no_photo.png" alt="images/sample/no_photo.png"> <?php } ?>
-                  </td>
-                  <form method="post" action="welcome/update_profile" enctype="multipart/form-data">
-                  <td>
-                  
-                        First Name: <input type="text" placeholder="First Name" id="edit_first_name" name="edit_first_name" value="<?php echo $fetch_allinfo['fname'];?>">
-
-                  </td>
-                  <td>
-                          Last Name: <input type="text" placeholder="Last Name" id="edit_last_name" name="edit_last_name" value="<?php echo $fetch_allinfo['lname'];?>">
-
-                  </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                        Description:
-                         <textarea rows="4"  placeholder="Enter Descriptions Here" class="form-control" id="edit_description" name="edit_description"><?php echo $fetch_allinfo['description'];?></textarea>
-
-                    </td>
-                  </tr>
-                   <tr>
-                    <td> Select image to upload <br>( Minimum Size 220x150)
-                      <br><br>
-                                <input type="file" name="fileToUpload" id="fileToUpload">
-                    </td>
-                    <td>
-
-                        <div class="control-group">
-                                  
-                                  <div class="controls">
-                                    Address<br>
-                                  <input id="address" type="text" size="50" name="address" class="input-xlarge" value="<?php echo $fetch_allinfo['address'];?>">
-                                  </div>
-                         </div>
-                  
-                    </td>
-                   </tr>
-                   <tr>
-                   <td colspan="2"> </td>
-                   <td> 
-
- <button type="submit" class="btn btn-primary" id="update_button" name="update_button" >Update</button>
-                         </form>
-
-
-
-
-
-
-                   </td>
-                   
-                   </tr>
-            </table>
-
-           </div>
-
 
            <div class="box">
             <div class="row">
             <div class="span8">
-              Change Password 
+              <label>Change Password </label>
                  <br><br>
-                   <div style="display:none;" id="edit_password_div" name="edit_password_div">
+                   <div style="display:none;" id="edit_password_div" name="edit_password_div" class="change-password-section">
                             <form method="post" action="welcome/change_password" id="change_password">
-                            <div><div><input type="password" placeholder="Old Password" id="old_password" name="old_password" onblur="old_password_chk();"></div><div id="msg_pass"></div></div>
+                            <div><div ><input type="password" placeholder="Old Password" id="old_password" name="old_password" onblur="old_password_chk();"></div><div id="msg_pass"></div></div>
                             <br>
                             <input type="password" placeholder="New Password" id="new_password" name="new_password">
                             <br>
                             <input type="password" placeholder="Confirm Password" id="conf_password" name="conf_password">
                             <br>
-                            <input type="submit" value="Change Password" class="btn btn-default btn-xm" id="update_password_button" name="update_password_button" >
+                            <input type="submit" value="Change Password" class="btn btn-default btn-xm blue-btn" id="update_password_button" name="update_password_button" >
                             </form>
                          </div>
 

@@ -102,11 +102,16 @@ a:hover{
 .personal-info h3{border-bottom: 1px solid #ccc;}
 .personal-info h5{color: #000}
 .profile-pic img{border: 1px solid #ccc; padding: 2px}
-.profile-pic img {border: 1px solid #12DFFD;padding: 2px;max-width: 127px; -webkit-box-shadow: 0 8px 6px -6px #999;
+.profile-pic img {border: 1px solid #12DFFD;padding: 2px;max-width: 200px; -webkit-box-shadow: 0 8px 6px -6px #999;
 	   -moz-box-shadow: 0 8px 6px -6px #999;
 	        box-shadow: 0 8px 6px -6px #999;}
 
+.personal-info textarea{width: 95%;}
+
+
 .profile-pic img:hover{opacity:0.7;} 
+.profile-pic p{font-size: 12px; margin-top: 15px;}
+
 
 .training-status{border: 1px solid #ccc; margin-bottom: 10px; padding: 4px;}
 .training-status:hover{-webkit-box-shadow: 2px -2px 35px -8px rgba(0,0,0,0.75);
@@ -126,7 +131,7 @@ a.edit-btn:hover{color: #000; text-decoration: none;}
 	        box-shadow: 0 8px 6px -6px #999;}
 
 .profile-pic1 img:hover{opacity:0.7;} 
-
+.blue-btn{background-color: #28a0cc !important; color: #fff !important}
 
 
 
@@ -136,7 +141,7 @@ a.edit-btn:hover{color: #000; text-decoration: none;}
 
 @media only screen and (max-width: 1920px) {
 
-	.profile-pic img {max-width: 180px;}
+	.profile-pic img {max-width: 200px;}
 
 
 }
@@ -144,11 +149,28 @@ a.edit-btn:hover{color: #000; text-decoration: none;}
 
 @media only screen and (max-width: 990px) {
 
-	.profile-pic img {max-width: 127px;}
+	.profile-pic img {max-width: 200px;}
+
+	.change-password-section input[type="text"]{width: 100%;}
+	
 
 
 }
+@media only screen and (max-width: 768px) {
 
+	.width50{padding: 0}
+.change-password-section input[type="password"]{width: 100%;}
+
+}
+
+@media only screen and (max-width: 470px) {
+
+	.width50{width: 100%;}
+	.width50 label{display: block;}
+	
+
+
+}
 
 
 

@@ -175,7 +175,7 @@
                
      </div>
      <br>
-      <div class="box"> 
+    <!--   <div class="box"> 
                <div class="box-header with-border">
                    <h3 class="box-title">Training Status</h3>
               </div>
@@ -195,7 +195,7 @@
                
               </div>
 
-      </div>   
+      </div> -->   
 
 
 </section>
