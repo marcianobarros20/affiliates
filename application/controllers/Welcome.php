@@ -480,8 +480,7 @@ class Welcome extends CI_Controller
 		    $data['description']=$this->input->post('edit_description');
 		    $data['profile_image']=$image1;
 			$data['country_id']=231;
-			//$data['state_id']=$this->input->post('state');
-			//$data['city_id']=$this->input->post('city');
+			
 			$data['address']=$this->input->post('address');
 			$data['latitude']=$this->input->post('lattitude');
 			$data['longitude']=$this->input->post('longitude');
