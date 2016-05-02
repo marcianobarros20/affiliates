@@ -118,6 +118,8 @@
                             </div>
 
                           </div> 
+                          <input type ="hidden" name="lattitude" id="lat" value="<?php echo $fetch_allinfo['latitude'];?>">
+                          <input type ="hidden" name="longitude" id="long" value="<?php echo $fetch_allinfo['longitude'];?>">
                           <div class="span12">
                             <button type="submit" class="btn btn-primary" id="update_button" name="update_button" >Update</button>
 
