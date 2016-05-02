@@ -70,7 +70,7 @@
 
    <div class="row">
 
-            <div class="container">
+            <div class="container coursedetails">
 
             <object class='embed-responsive-item'>
      <video style="width:auto;" height='500px' controls autoplay>
@@ -79,21 +79,21 @@
    </object>
             </div>
 
-            <div class="container">
+            <div class="container coursedetails">
 
-            Total Number of material completed (<?php echo $completed;?>/<?php echo $tot_training_material;?>)
+            <h5>Total Number of material completed:</h5> (<?php echo $completed;?>/<?php echo $tot_training_material;?>)
             <?php
               $comp_percentage=($completed/$tot_training_material)*100;
             ?>
               <br>
-            <div id="myProgress">
+            <div id="myProgress" class="progress-bar">
             <div id="myBar" style="width:<?php echo $comp_percentage;?>%"></div>
             </div>
             </div>
 
-            <div class="container">
+            <div class="container coursedetails">
               
-            Course Details: <?php echo $courseInfo['description'];?>
+           <h5> Course Details:</h5> <?php echo $courseInfo['description'];?>
 
             </div>
   

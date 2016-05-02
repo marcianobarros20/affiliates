@@ -1,6 +1,8 @@
+<div>
  <header class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
+                <div class="header-width">
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -62,6 +64,11 @@
                         </li>
                     </ul>        
                 </div><!--/.nav-collapse -->
+
+                <div class="clearfix"></div>
+            </div>
             </div>
         </div>
     </header>
+
+</div> 
