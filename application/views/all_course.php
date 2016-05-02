@@ -118,7 +118,7 @@
                               else
                               {
                                ?>
-                                <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>">Start Course</a>
+                                <a class="blue-btn1" href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>">Start Course</a>
                                <?php
                               }
 
