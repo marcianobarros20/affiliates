@@ -90,11 +90,17 @@
             <div id="myBar" style="width:<?php echo $comp_percentage;?>%"></div>
             </div>
             </div>
+
+            <div class="container">
+              
+            Course Details: <?php echo $courseInfo['description'];?>
+
+            </div>
   
 <div class="container">
 
 
-  <h2>Classified: </h2>
+  <h2>List of <u><?php echo ucfirst($courseInfo['courses_name']);?></u> Classes: </h2>
   
   <div class="panel-group">
 
@@ -111,7 +117,7 @@
           <a <?php if($i!=0){?>onclick="open_new_class(<?php echo $class['cl_id'];?>,<?php echo $class['course_id'];?>);"<?php }?> style='cursor:pointer;'><?php echo $class['cl_name'];?></a>
         </h4>
       </div>
-      <div <?php if($i!=0){?>style='display:none;'<?php }?> id="class_<?php echo $class['cl_id'];?>">
+      <div <?php if($i!=0){?>style='display:none;'<?php }?> id="class_<?php echo $class['cl_id'];?>" class="class_<?php echo $class['cl_id']; if($i!=0){ echo ' inactive'; }?>" >
         <div class="panel-body">Description: <?php echo $class['description'];?></div>
          
          <br>
