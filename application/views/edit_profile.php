@@ -140,7 +140,7 @@
 
            <div class="box">
             <div class="row">
-            <div class="span8">
+            <div class="span8 change-password-sec">
               <label>Change Password </label>
                  <br><br>
                    <div style="display:none;" id="edit_password_div" name="edit_password_div" class="change-password-section">
@@ -185,7 +185,7 @@
   <?php echo $footer;?>
 <!--/Footer-->
 
- <script src="js1/bootstrap.min.js"></script>
+ <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
 
 
