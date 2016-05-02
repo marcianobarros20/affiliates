@@ -259,8 +259,9 @@ public function pricing()
 		else
 		{
 		$data['set_code']='';
-		$con=array('status'=>0);
-		$data['all_courses']=$this->Common_model->fetchinfo('courses',$con,'result');
+		$con=array('courses.status'=>0);
+		//$data['all_courses']=$this->Common_model->fetchinfo('courses',$con,'result');
+		$data['all_courses']=$this->Common_model->fetchinfocourse($con);
 		$data['header']=$this->load->view('includes/header.php',$data,true);
 		$data['footer']=$this->load->view('includes/footer.php','',true);
 		$this->load->view('all_course',$data);
@@ -300,8 +301,12 @@ public function pricing()
 		{
 		$data['set_code']='';
 		$con=array('status'=>0,'course_id'=>$co_id);
-
+		$con1=array('status'=>0,'co_id'=>$co_id);
+		$con2=array('status'=>1,'co_id'=>$co_id);
+		$data['courseInfo']=$this->Common_model->fetchinfo('courses',$con1,'row');
 		$data['all_class']=$this->Common_model->fetchinfo('class',$con,'result');
+		$data['tot_training_material']=$this->Common_model->Fntotaltrainingmaterial($co_id);
+		$data['completed']=$this->Common_model->fetchinfo('training_details',$con2,'count');
 		//$data['training_material']=$this->Common_model->fetchinfo('training_material',$con1,'result');
 		$data['tr_status']=$this->Common_model->fnchktrainingcompleted($co_id);
 		$data['header']=$this->load->view('includes/header.php',$data,true);

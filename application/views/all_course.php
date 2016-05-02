@@ -20,6 +20,10 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">   
     <link href="<?php echo base_url();?>source1/css/modal-videos.css" rel="stylesheet">
+     
+
+   
+
 </head>
 
 <body>
@@ -51,14 +55,16 @@
        
 
 
+
     <div class="row">
 
 
    <?php foreach($all_courses as $courses):
 
         $show_video=FngetvideoFirstclass($courses['co_id']);
-
+        $count =fetchcoursestatus($this->session->userdata('user_id'),$courses['co_id']);
       // echo $this->db->last_query();
+        $get_exp=explode('.',$courses['video']);
    ?>
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
@@ -81,10 +87,12 @@
                              <source src="<?php echo base_url();?>tutoroal/audio_video/<?php echo $show_video['media'];?>" width="100" height="100"/>
                            </video>
                          </object> -->
+                        
 
-
-                          <a href="<?php echo base_url();?>tutoroal/audio_video/<?php echo $show_video['media'];?>"><img class="img-thumbnail" src="images/videoIcon.png"/></a>
-                        <div class="play-button"></div>        
+                         <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>"><img class="img-thumbnail" src="tutorial/video/<?php echo $get_exp[0].'.jpeg'?>"/>
+       <img class="OverlayIcon" src="images/play.png" alt="" />
+      </a>
+                             
                         </div>
                     
 
@@ -93,9 +101,28 @@
                         <?php echo $courses['courses_name'];?>
                         </strong>
                         <div class="details__instructor">
-                       <?php echo $courses['description'];?>
+                        <?php echo $courses['description'];?>
                         </div>
-                        <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>">Take Classes</a>
+                        
+                            <div id="myProgress">
+                              <div id="myBar" style="width:<?php echo $count;?>%"></div>
+                            </div>
+                            <?php if($count>0)
+                              {
+                                
+
+                               ?>
+                               <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>"><?php echo $count.'% Complete';?></a>
+                               <?php
+                              }
+                              else
+                              {
+                               ?>
+                                <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>">Start Course</a>
+                               <?php
+                              }
+
+                            ?>
                         </div>
                         </div>
               </div>
@@ -107,6 +134,9 @@
 
            
           </div>
+
+      
+
  
  
 

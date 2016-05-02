@@ -35,8 +35,19 @@
 {
     width:100%;
 }
-
-
+#status
+{
+   
+    margin-bottom: 10px;
+    font-size:17px;
+    margin-left:5px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.OverlayIcon {
+    left: 126px;
+    position: absolute;
+    top: 67px;
+}
 .panel-group {
     margin-bottom: 20px;
 }
@@ -94,6 +105,7 @@
 }
 .w3-padding-jumbo {
     padding: 32px 64px !important;
+
 }
 
 
@@ -125,8 +137,17 @@ box-shadow: -2px -1px 41px -9px rgba(0,0,0,0.75);}
 
 
 
+  #myProgress {
+        position: relative;
+        width: 90%;
+        height: 5px;
+        background-color: #ddd;
+      }
 
-
-
-
+      #myBar {
+        position: absolute;
+        
+        height: 100%;
+        background-color: #4CAF50;
+      }
 
