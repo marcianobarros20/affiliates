@@ -90,10 +90,13 @@
                             <div class="col-md-3">
                            <div class="box training-box">
                                 <div class="box-header with-border" align="Center">
-                                  <h5> <?php echo $course['courses_name']?></h5>
+                                  <h5> <?php echo ucfirst($course['courses_name']);?></h5>
                                 </div>
                                 <div class="box-body with-border" align="Center">
-                                  <a> <?php $count =fetchcourseinfo($value['uid'],$course['co_id']); ?></a>
+                                  <?php $count =fetchcourseinfo($value['uid'],$course['co_id']);
+
+                                 echo '<br>'.$count;
+                                   ?>
                                     
                                    
                                 </div>

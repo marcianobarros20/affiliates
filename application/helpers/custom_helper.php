@@ -381,11 +381,11 @@ function Fnchktrainingstatus($cl_id,$co_id,$u_id)
             $count=round($count);
             if($count>0)
             {
-               echo $count."% Completed";
+               return $count."% Completed";
             }
             else
             {
-                echo "Need To Start The Training";
+                return "Not Yet Strated Training";
             }
     
   }

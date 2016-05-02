@@ -52,7 +52,7 @@
             <section class="content">
                 <div class="row">
 
-<div class="box box-primary">
+                <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Course Details</h3>
                 </div><!-- /.box-header -->
@@ -63,15 +63,8 @@
                   </p>
 
                   <hr>
-
-                 
-
-                 
-
-                  <strong><i class="fa fa-pencil margin-r-5"></i> Class</strong>
+                    <strong><i class="fa fa-pencil margin-r-5"></i> Class</strong>
                   <p>
-                   
-
                     <?php $i=0;foreach($class_details as $cls): 
 
                         if($i%2==0){ $cls_name="label-info";}else{ $cls_name="label-primary";}
