@@ -171,18 +171,32 @@ a.edit-btn:hover{color: #000; text-decoration: none;}
 @media only screen and (max-width: 768px) {
 
 	.width50{padding: 0}
-.change-password-section input[type="password"]{width: 100%;}
+.change-password-section input[type="password"]{width: 84%;}
 .personal-info textarea{width: 80%}
+.personal-info{text-align: center; margin-bottom: 15px;}
+.profile-pic{text-align: center;}
+.left{text-align: left}
 
 }
 
+@media only screen and (max-width: 511px) {
+
+	.width50{width: 100% !important; float: none;}
+	
+
+}
+
+
+
 @media only screen and (max-width: 470px) {
 
-	.width50{width: 100%;}
+	
 	.width50 label{display: block;}
 
 
-	
+
+h1{font-size: 28px;}
+h2{font-size: 21px;}	
 
 
 }

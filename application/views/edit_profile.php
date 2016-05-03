@@ -93,7 +93,7 @@
                       <input type="file" name="fileToUpload" id="fileToUpload">
 
                       </div>  
-                      <div class="span9 personal-info">
+                      <div class="span9 personal-info left">
                         <div class="row">
                           <div class="width50">
                             <label>First Name:</label>

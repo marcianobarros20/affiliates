@@ -375,6 +375,11 @@
 
 }
 
+@media screen and (max-width: 370px) {
+
+	.sl-slider-wrapper{height: 400px;}
+
+}
 
 .comment_div {
     background:white; 

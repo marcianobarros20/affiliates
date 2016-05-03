@@ -242,6 +242,8 @@ box-shadow: -2px -1px 41px -9px rgba(0,0,0,0.75);}
 
     body > section {padding: 50px 17px;}
 
+    .box{margin: 10px 15px}
+
 
 }
 
@@ -258,6 +260,12 @@ body > section {padding: 50px 17px;text-align: center;}
     width: 100%;
 }
 
+#contact-page{text-align: left}
+
+h1{font-size: 28px;}
+h2{font-size: 21px;}
+
+.width50 input[type="text"]{width: 140px !important;}
 
 }
 
