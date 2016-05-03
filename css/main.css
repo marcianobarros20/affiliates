@@ -227,6 +227,15 @@ box-shadow: -2px -1px 41px -9px rgba(0,0,0,0.75);}
 
     #inline1 video{width: 300px; height: auto}
 
+    body > section {padding: 50px 17px;}
+
+
+}
+
+
+@media only screen and (max-width: 550px) {
+
+body > section {padding: 50px 17px;text-align: center;}
 
 }
 
@@ -242,6 +251,8 @@ box-shadow: -2px -1px 41px -9px rgba(0,0,0,0.75);}
     .small-box{margin-left: 0}
 
     img.img-thumbnail{width: 100%;}
+
+        
 
 
 
