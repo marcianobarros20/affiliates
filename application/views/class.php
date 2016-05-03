@@ -24,7 +24,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 
-<script src="js/jquery-1.10.1.min.js"></script>
+<!-- <script src="js/jquery-1.10.1.min.js"></script> -->
 
     <script src='js/video.js'></script>
 
@@ -55,7 +55,7 @@
                 <div class="span6">
                     <ul class="breadcrumb pull-right">
                         <li><a href="<?php echo base_url();?>">Home</a></li>
-                        <li class="active">Class Information</li>
+                        <li class="active">/ Class Information</li>
                     </ul>
                 </div>
             </div>
