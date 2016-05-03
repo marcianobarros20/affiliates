@@ -104,7 +104,7 @@
     color: #000 !important;
 }
 .w3-padding-jumbo {
-    padding: 32px 64px !important;
+    padding: 32px 16px !important;
 
 }
 
@@ -195,6 +195,15 @@ box-shadow: -2px -1px 41px -9px rgba(0,0,0,0.75);}
  #inline1 video{width: 500px; height: auto}
 .modal button{margin-left: 0; margin-top: 10px;}
 
+#inline2 video{width: 100%; height: auto}
+
+.quiz-total{font-size: 14px; background: #097684; color: #fff; padding: 4px 7px; display: inline-block; margin-bottom: 10px;}
+.w3-row{text-align: center;}
+
+.w3-padding-jumbo .radio, .checkbox{text-align: left;}
+
+
+
 
 @media only screen and (max-width: 990px) {
 
@@ -208,7 +217,11 @@ box-shadow: -2px -1px 41px -9px rgba(0,0,0,0.75);}
     .card--learning{min-height: 220px;}
 
     
+    #footer{text-align: center;}
+    #footer .span6 .pull-right{float: none;}
 
+    .gap {margin-bottom: 13px;}
+    .sl-slider h2{font-size: 35px;}
 
 
 }
@@ -237,6 +250,15 @@ box-shadow: -2px -1px 41px -9px rgba(0,0,0,0.75);}
 
 body > section {padding: 50px 17px;text-align: center;}
 
+
+.result-table table tr td {
+    float: left;
+    margin: 5px 0;
+    text-align: center;
+    width: 100%;
+}
+
+
 }
 
 
@@ -252,7 +274,7 @@ body > section {padding: 50px 17px;text-align: center;}
 
     img.img-thumbnail{width: 100%;}
 
-        
+    .custom-btn{display: block; margin: 0 10px}    
 
 
 

@@ -20,7 +20,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="js/jquery-1.10.1.min.js"></script>
     <script src='js/video.js'></script>
@@ -45,7 +45,7 @@
                 <div class="span6">
                     <ul class="breadcrumb pull-right">
                         <li><a href="<?php echo base_url();?>">Home</a></li>
-                        <li class="active">Dashboard</li>
+                        <li class="active">Quiz</li>
                     </ul>
                 </div>
             </div>
@@ -97,7 +97,7 @@
   <input type="radio" value="false" id="1" name="quiz">False</label>
   </div>
   <?php } ?>
-  
+  <br>
   <input type="submit" value=" Next " class="w3-btn w3-orange w3-large w3-text-white">  
   </form>
   
@@ -107,10 +107,13 @@ $percentage=round(($test_result_final['curr_ans']/$test_result_final['tot_ques']
  ?>
 <center><h2>Result:</h2><?php echo $test_result_final['curr_ans'];?> of <?php echo $test_result_final['tot_ques'];?><p><b><?php echo $percentage; ?> %</b></p><p><?php if($percentage <70){ ?> Well, you have to study alot to Pass this course! (Minimum Pass Marks 70%)<?php } elseif($percentage>=70 && $percentage<90){?>Welldone! you have done pretty good.<?php } else { ?>Congratulation! Excellent performance you have given!<?php }?></p><p><b>Time Spent</b><br><?php echo gmdate("H:i:s", $time);?></p></center>
 
+<div class="result-table">
 <table width="100%"><tbody><tr>
 <td><a href="<?php echo base_url();?>contents/Allcourses" class="w3-btn w3-orange w3-text-white w3-large">Go Back To Course</a></td>
 <td align="right"><a href="<?php echo base_url();?>contents/quiz/<?php echo $this->uri->segment(3);?>" class="w3-btn w3-orange w3-text-white w3-large">Try again</a></td>
 </tr></tbody></table>
+</div>
+
 <?php }?>
 </div>
   
@@ -118,8 +121,8 @@ $percentage=round(($test_result_final['curr_ans']/$test_result_final['tot_ques']
 
   <div class="w3-container w3-padding-hor-16">
   <div class="w3-row">
-    <div class="w3-col s6">Total <?php echo $tot_ques;?> questions</div>
-    <div style="text-align:right;" class="w3-col s6">Time spent <?php echo gmdate("H:i:s", $time);?></div>
+    <div class="w3-col s6 quiz-total">Total <?php echo $tot_ques;?> questions</div>
+    <div  class="w3-col s6 quiz-total">Time spent <?php echo gmdate("H:i:s", $time);?></div>
   </div>
 </div>
 
@@ -142,7 +145,7 @@ $percentage=round(($test_result_final['curr_ans']/$test_result_final['tot_ques']
   <?php echo $footer;?>
 <!--/Footer-->
     
-     <script src="js1/bootstrap.min.js"></script>
+     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
