@@ -42,9 +42,9 @@
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
     <script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.5"></script>
     <link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
- <link href="css/bootstrap.min.css" rel="stylesheet"> 
+ 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"> 
-     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    
      <script type="text/javascript" src="js/frame.js"></script>
  
 </head>
@@ -82,9 +82,9 @@
         <div class="row">
           
              <h1 class="center">Meet the Team</h1>
-<div class="comment_div text-center">
+<center><div class="comment_div">
    ('Click' On <strong>Name</strong> To View The Details Of Affiliates)
-</div>
+</div></center>
 
 
                         
@@ -145,6 +145,6 @@
 <!--/Footer-->
     
      <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+  
 </body>
 </html>

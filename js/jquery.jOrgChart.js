@@ -11,6 +11,22 @@
  * Dual licensed under the MIT and GPL licenses.
  *
  */
+
+
+
+ $(document).ready(function(){
+  
+  //Check to see if the window is top if not then display button
+  $('.gototop').click(function(event) {
+     event.preventDefault();
+     $('html, body').animate({
+       scrollTop: $("body").offset().top
+     }, 500);
+  }); 
+  
+});
+
+ 
 (function($) {
 
   $.fn.jOrgChart = function(options) {

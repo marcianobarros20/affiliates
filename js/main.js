@@ -1,3 +1,5 @@
+
+
 jQuery(function($) {
 
 	//Ajax contact
@@ -18,5 +20,8 @@ jQuery(function($) {
 		 }, 500);
 	});	
 	//End goto top		
+
+
+
 
 });
