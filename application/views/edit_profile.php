@@ -51,7 +51,7 @@
                 <div class="span6">
                     <ul class="breadcrumb pull-right">
                         <li><a href="<?php echo base_url();?>">Home</a></li>
-                        <li class="active">Edit Profile</li>
+                        <li class="active"> / Edit Profile</li>
                     </ul>
                 </div>
             </div>

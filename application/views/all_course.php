@@ -10,6 +10,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <base href="<?php echo base_url();?>">
+    
    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -18,9 +19,8 @@
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">   
-   
-     
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
    
 
@@ -112,7 +112,7 @@
                                 
 
                                ?>
-                               <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>"><?php echo $count.'% Complete';?></a>
+                               <a href="<?php echo base_url();?>contents/classinfo/<?php echo $courses['co_id'];?>"><?php echo $count.'% Completed';?></a>
                                <?php
                               }
                               else
@@ -152,10 +152,8 @@
   <?php echo $footer;?>
 <!--/Footer-->
 
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  
-  
-     <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

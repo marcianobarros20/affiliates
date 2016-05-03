@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <base href="<?php echo base_url();?>">
-   <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
@@ -20,7 +20,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
      <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+
 
 
 
@@ -42,14 +42,23 @@
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
     <script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.5"></script>
     <link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
- <link href="css/bootstrap.min.css" rel="stylesheet"> 
+ 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"> 
-     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    
      <script type="text/javascript" src="js/frame.js"></script>
+   
+    <link rel="stylesheet" href="css/custom.css"/>
+
+
+    
+    
+
+  
+
  
 </head>
 
-<body onload="prettyPrint();">
+<body>
 
     <!--Header-->
     <?php echo $header;?>
@@ -212,7 +221,7 @@
   <?php echo $footer;?>
 <!--/Footer-->
     
-     <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+
 </body>
 </html>
