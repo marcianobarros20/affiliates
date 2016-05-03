@@ -78,7 +78,7 @@
         <hr>
 
         <!-- Meet the team -->
-        <h1 class="center">Understading the Tier[s]</h1>
+        <h1 class="center">Understanding the Tier[s]</h1>
         <h5 class="text-center">Everyone Starts at Tier[5], they are at Tier[4 - 0] only in respect to you.</h5>
         <h6 class="text-center">Click on any of the Tier[s] to better understand your down stream at that phase in time.</h6>
 
@@ -91,7 +91,7 @@
                     <p><img src="images/sample/tier5.jpg" alt="" ></p>
                     <h5>You -- Tier[5]</h5>
                     <h3>You joined Tier5</h3>
-                    <p>When you join the Tier5 Affiliate Program you start at Tier[5]. You may be considered someones Tier[4 - 0] depending on who recruited you and how you joined Tier5. It is possile that you are no one's Tier[4], but it's also possilbe you are someone's Tier[4] and someone elses Tier[0].</p>
+                    <p>When you join the Tier5 Affiliate Program you start at Tier[5]. You may be considered someone Tier[4 - 0] depending on who recruited you and how you joined Tier5. It is possible that you are no one's Tier[4], but it's also possible you are someone's Tier[4] and someone else’s Tier[0].</p>
                                     </div>
             </div>
 
@@ -100,7 +100,7 @@
                     <p><img src="images/sample/tier4.jpg" alt="" ></p>
                     <h5>Jon -- Tier[5]</h5>
                     <h3>You recruited Jon</h3>
-                    <p>As a Tier5 Affiliate you have two goals. One is to sell development hours and the other is to build your down stream by recruiting Tier5 Affiliates. At this point you recurit Jon. Jon comes in at Tier[5], but Jon is also your Tier[4]. If you were recruited by someone then Jon is their Tier[3]. You make 15% of all Jon's sales since he is your Tier[4].</p>
+                    <p>As a Tier5 Affiliate you have two goals. One is to sell development hours and the other is to build your down stream by recruiting Tier5 Affiliates. At this point you recruit Jon. Jon comes in at Tier[5], but Jon is also your Tier[4]. If you were recruited by someone then Jon is their Tier[3]. You make 15% of all Jon's sales since he is your Tier[4].</p>
                     
                 </div>
             </div>
@@ -110,7 +110,7 @@
                     <p><img src="images/sample/tier3.jpg" alt="" ></p>
                     <h5>David -- Tier[5]</h5>
                     <h3>Jon recruited David</h3>
-                    <p>You've done good recruiting Jon. You've helped him and shown him the ropes. Jon has now recruited David. David comes in at Tier[5], but David is also Jon's Tier[4] and your Tier[3]. Jon get's 15% of all of David's sales and you get 10% of all of David's sales.</p>
+                    <p>You've done good recruiting Jon. You've helped him and shown him the ropes. Jon has now recruited David. David comes in at Tier[5], but David is also Jon's Tier[4] and your Tier[3]. Jon gets 15% of all of David's sales and you get 10% of all of David's sales.</p>
                     
                 </div>
             </div>
@@ -120,7 +120,7 @@
                     <p><img src="images/sample/tier2.jpg" alt="" ></p>
                     <h5>Amy -- Tier[5]</h5>
                     <h3>David recurited Amy</h3>
-                    <p>You're filling up your down stream. You're helping your Tier[s]. Now David has recurited Amy. Amy comes in at Tier[5], but she is David's Tier[4], Jon's Tier[3], and your Tier[2]. You will get 10% of all Amy's sales, Jon will also get 10% of all Amy's sales, and David will get 15% of all Amy's sales.</p>
+                    <p>You're filling up your down stream. You're helping your Tier[s]. Now David has recruited Amy. Amy comes in at Tier[5], but she is David's Tier[4], Jon's Tier[3], and your Tier[2]. You will get 10% of all Amy's sales, Jon will also get 10% of all Amy's sales, and David will get 15% of all Amy's sales.</p>
                    
                 </div>
             </div>
@@ -138,7 +138,7 @@
                     <p><img src="images/sample/tier1.jpg" alt="" ></p>
                     <h5>Mark -- Tier[5]</h5>
                     <h3>Amy recuited Mark</h3>
-                    <p>Your down stream is almost filled. Now Amy has recurited Mark. Mark comes in at Tier[5] but is Amy's Tier[4], David's Tier[3], Jon's Tier[2], and your Tier[1]. You get 10% of all Mark's sales, Jon and David also get 10% of all Mark's sales, and Amy gets 15% of all David's sales.</p>
+                    <p>Your down stream is almost filled. Now Amy has recruited Mark. Mark comes in at Tier[5] but is Amy's Tier[4], David's Tier[3], Jon's Tier[2], and your Tier[1]. You get 10% of all Mark's sales, Jon and David also get 10% of all Mark's sales, and Amy gets 15% of all David's sales.</p>
                     
                 </div>
             </div>
@@ -200,7 +200,9 @@
           </div>
           <div id="collapseTwo" class="accordion-body collapse">
             <div class="accordion-inner">
-              You are Tier[0] of some Tier[5]. You have 5 Tiers above you. This means you didn’t start at the top but someone that was already working for Tier5 brought you onboard at some point. Considering the same as above, our minimum cost is $15/hr and you sell 1 development hour for $25/hr, you would get 50% of (25-15) or you would get $5. The person right above you who recruited you (you are their Tier[4]) would get 15% of of (25-15) or they would get $1.50. The person right above them (you are their Tier[3]) would get 10% of (25-15), or they would get $1.00. The person at the top (you are their Tier[0]) would get 5% of (25-15), or they would get $0.50. 
+              
+      You are Tier[0] of some Tier[5]. You have 5 Tiers above you. This means you didn’t start at the top but someone that was already working for Tier5 brought you inboard at some point. Considering the same as above, our minimum cost is $15/hr and you sell 1 development hour for $25/hr, you would get 50% of (25-15) or you would get $5. The person right above you who recruited you (you are their Tier[4]) would get 15% of of (25-15) or they would get $1.50. The person right above them (you are their Tier[3]) would get 10% of (25-15), or they would get $1.00. The person at the top (you are their Tier[0]) would get 5% of (25-15), or they would get $0.50.
+ 
           </div>
       </div>
   </div>
@@ -212,7 +214,7 @@
   </div>
   <div id="collapseThree" class="accordion-body collapse">
     <div class="accordion-inner">
-      You are someones Tier[0], but you also have your own Tier[0]. Let's assume you sell 1 development hour at $25 and the Tier5 cost is $15, this means the total payout for 1 development hour is $10. Since you are someones Tier[0] you get 50% of the payout. You get paid $5 for selling one development hour at $25. Let's assume that your Tier[4] down to your Tier[0] also each sell one development hour with the same selling price, Tier5 cost, and Payout. You get 15% of the payout for your Tier[4], 10% of the payout for your Tier[3] - Tier[1], and 5% of the payout for your Tier[0]. This means you make a total of $5 + $1.50 + $1 + $1 + $1 + $0.50, you make $10 when you and your downstream all sell just one development hour that has a payout of <strong>$10</strong>.
+      You are someone’s Tier[0], but you also have your own Tier[0]. Let's assume you sell 1 development hour at $25 and the Tier5 cost is $15, this means the total payout for 1 development hour is $10. Since you are someone’s Tier[0] you get 50% of the payout. You get paid $5 for selling one development hour at $25. Let's assume that your Tier[4] down to your Tier[0] also each sell one development hour with the same selling price, Tier5 cost, and Payout. You get 15% of the payout for your Tier[4], 10% of the payout for your Tier[3] - Tier[1], and 5% of the payout for your Tier[0]. This means you make a total of $5 + $1.50 + $1 + $1 + $1 + $0.50, you make $10 when you and your downstream all sell just one development hour that has a payout of <strong>$10</strong>.
   </div>
 </div>
 </div>

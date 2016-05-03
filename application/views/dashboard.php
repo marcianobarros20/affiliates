@@ -20,7 +20,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
      <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+
 
 
 
@@ -74,52 +74,7 @@
     
 
     <section id="about-us" class="container main">
-        <!-- <div class="row-fluid">
-            <div class="span6">
-                <h2>Personal Information</h2>
-                <p>Name: <?php echo $fetch_allinfo['fname'].' '.$fetch_allinfo['lname'];?>
-                
-                <p>Email: <?php echo $fetch_allinfo['email']?></p>
-                <p>Description: <?php echo $fetch_allinfo['description'];?></p> 
-                 
-                <p>Refferal Code: <?php echo $fetch_allinfo['refferalcode'];?></p>
-                <a href="<?php echo base_url();?>Welcome/editprofile">Edit Profile</a>
-                <br>
-                In Order To Affiliate People, Please forword the below link.
-                
-                <br>
-                <?php echo base_url();?>?aid=<?php echo $fetch_allinfo['refferalcode'];?>
-            </div>
-            <div class="span6">
-
-                
-                <div>
-                     <?php if( $fetch_allinfo['profile_image'])
-                      {
-                     ?>
-                    <p><img src="profile_img/thumb/<?php echo $fetch_allinfo['profile_image'];?>" alt="images/sample/no_photo.png" ></p>
-                     <?php
-                     }
-                    else
-                    {
-                      
-
-                     ?> 
-                               <img src="images/sample/no_photo.png" alt="images/sample/no_photo.png" >
-
-
-                     <?php
-
-                    }
-                      
-
-                     ?>
-            </div>
-        </div>
-
-        <hr>
-      </div> -->
-        <!-- Meet the team -->
+      
        
 
               

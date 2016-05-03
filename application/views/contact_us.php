@@ -224,7 +224,7 @@ Kolkata, India<br>
 <a class="prev" href="#myCarousel" data-slide="prev"><i class="icon-angle-left icon-large"></i></a> <a class="next" href="#myCarousel" data-slide="next"><i class="icon-angle-right icon-large"></i></a>
 </div>
 </div>
-<p>These are just a few of the recent Affilates to join the Tier5 Affiliate Program. Start your career in the Tech Industry and become an affiliate today.</p>
+<p>These are just a few of the recent Affiliates to join the Tier5 Affiliate Program. Start your career in the Technical Industry and become an affiliate today.</p>
 </div>
 <div class="span10">
 <div id="myCarousel" class="carousel slide clients">

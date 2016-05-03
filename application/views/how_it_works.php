@@ -57,9 +57,9 @@
       <p>The Tier5 Affiliate Program puts you in the position to sell low to high level development, design, and digital marketing services from Tier5. Tier5 is an established company with a proven track record in this domain.</p>
     </div>
     <hr>
-    <p>Once you sign up to become a Tier5 Affilate we will schedule a breif phone and skype interview. After this we activate your account so you can begin your success training. During training you are given constant support to help you learn all the things you will need to know to excel as an Affiliate.</p>
+    <p>Once you sign up to become a Tier5 Affiliate we will schedule a brief phone and Skype interview. After this we activate your account so you can begin your success training. During training you are given constant support to help you learn all the things you will need to know to excel as an Affiliate.</p>
     
-    <p>Once you complete your success training you are ready to start making sales. Tier5 management and other Tier5 Affiliates are readily avilable to help you druing this transition until you are comfortable doing everything on your own. Our system is tried and proven to work.</p>
+    <p>Once you complete your success training you are ready to start making sales. Tier5 management and other Tier5 Affiliates are readily available to help you during this transition until you are comfortable doing everything on your own. Our system is tried and proven to work.</p>
     
     <hr>
 
@@ -67,7 +67,7 @@
       <!-- Left Column -->
       <div class="span6">
         <h3>1. Become an Affiliate</h3>
-        <p>The first step is to become a Tier5 Affilate. You can do this by registering on the Tier5 Affiliate Portal that you can find here!</p>
+        <p>The first step is to become a Tier5 Affiliate. You can do this by registering on the Tier5 Affiliate Portal that you can find here!</p>
         <h4>Requirements</h4>
         <ul class="arrow">
          <li>Willingness to learn.</li>
@@ -78,7 +78,7 @@
        <hr>
 
        <h3>3. Sell Tier5 Services</h3>
-       <p>After completing your Tier5 Success Training you are ready to start selling Tier5 services so you can begin to earn income. You will find that it is very easy to sell Tier5 services as every buisness is in need of them. You sell our services by the hour or by package and you get paid for every sale.</p>
+       <p>After completing your Tier5 Success Training you are ready to start selling Tier5 services so you can begin to earn income. You will find that it is very easy to sell Tier5 services as every business is in need of them. You sell our services by the hour or by package and you get paid for every sale.</p>
        <h4>Requirements</h4>
        <ul class="arrow">
          <li>Tier5 Affilaite Account.</li>
@@ -107,8 +107,8 @@
 
      <hr>
 
-     <h3>4. Recurit Affiliates</h3>
-     <p>If you want to start making even more income then your next step is to start recuriting Tier5 Affiliates and building your down stream. They have access to everything you have access to, you can give them unique training and support to help them become a successful affiliate. After all, you do make money for each hour of Tier5 services that they sell.</p>
+     <h3>4. Recruit Affiliates</h3>
+     <p>If you want to start making even more income then your next step is to start recruiting Tier5 Affiliates and building your down stream. They have access to everything you have access to, you can give them unique training and support to help them become a successful affiliate. After all, you do make money for each hour of Tier5 services that they sell.</p>
      <h4>Requirements</h4>
      <ul class="arrow">
        <li>Tier5 Affiliate Account.</li>

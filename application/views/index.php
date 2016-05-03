@@ -110,13 +110,13 @@
  <div class='text-center'><h4><?php if($this->session->userdata('err_msg')!=''){ echo '<span class="error">'.$this->session->userdata('err_msg').'</span>'; $this->session->set_userdata('err_msg','');} 
 if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg','');}?>
 </h4></div>
-<a id="various1" href="#inline1" class="fancybox" title="Lorem ipsum dolor sit amet" style="display:none;">Inline - auto detect width / height</a>
+<a id="various1" href="#inline1" class="fancybox" title="Watch This Video" style="display:none;">Inline - auto detect width / height</a>
 <section class="main-info">
     <div class="container">
         <div class="row-fluid">
             <div class="span9">
                 <h4>Tier5 introduces the <strong>Tier5 Affiliate Program</strong></h4>
-                <p class="no-margin">With the Tier5 Affiliate Program we provide all the training and materials you need to make a more than successful living working remotly in the Tech Industry.</p>
+                <p class="no-margin">With the Tier5 Affiliate Program we provide all the training and materials you need to make a more than successful living working mostly in the Technical Industry.</p>
             </div>
             <div class="span3">
                 <a class="btn btn-success btn-large pull-right" href="<?php echo base_url();?>Tier5.docx" download="Tier5.docx">Get The Packet</a>
@@ -134,7 +134,7 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
     <div class="container">
         <div class="center gap">
             <h3>What We Offer</h3>
-            <p class="lead">There are so many benifits of being a Tier5 Affiliate</p>
+            <p class="lead">There are so many benefits of being a Tier5 Affiliate</p>
         </div>
 
         <div class="row-fluid">
@@ -145,7 +145,7 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">Great Pay</h4>
-                        <p>As a Tier5 Affilate you enjoy 50% - 100% of the payout. You also get paid on 5 Tiers of your down stream. You can make $2,000 a week being a Tier5 Affiliate.</p>
+                        <p>As a Tier5 Affiliate you enjoy 50% - 100% of the payout. You also get paid on 5 Tiers of your down stream. You can make $2,000 a week being a Tier5 Affiliate.</p>
                     </div>
                 </div>
             </div>            
@@ -185,7 +185,7 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">Industry Experience</h4>
-                        <p>Get hands on real world experience in the technology industry. You can get real world experience in design, development, digital marketing, quality auditing, project managment, sales, marketing, and client retention.</p>
+                        <p>Get hands on real world experience in the technology industry. You can get real world experience in design, development, digital marketing, quality auditing, project management, sales, marketing, and client retention.</p>
                     </div>
                 </div>
             </div>            
