@@ -58,6 +58,42 @@ $('#ans_opt').change(function(){
 });
 
 
+$('#change_curr_op').change(function(){
+
+
+$('#curr_answer').val($(this).val());
+
+});
+
+$('#change_prev_op').change(function(){
+
+if($(this).val()==2)
+{
+  
+  $('#select_option_div1').show();
+  $('#select_option_div').hide();
+}
+else
+{
+    $('#select_option_div').show();
+    $('#select_option_div1').hide();
+}
+
+});
+
+
+
+
+$('input[type="radio"]').click(function() {
+        if ($(this).is(':checked')) {
+    $('#curr_answer').val($(this).val());
+   }
+});
+
+
+
+
+
 $('#answer_option').change(function(){
   var ans_opt=$('#answer_option').val();
 if($(this).val()!='')
@@ -76,7 +112,7 @@ $('#subit_div').show();
     
   }
   $('#print').html(result);
-  $('#correct-ans').html('<select name="cor_ans" id="corr-ans"><option value="">--Select--</option></select>');
+  $('#correct-ans').html('<select name="cor_ans" id="corr-ans" class="required"><option value="">--Select--</option></select>');
 }
 else
 {

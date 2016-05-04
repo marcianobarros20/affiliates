@@ -464,5 +464,18 @@ function Fnchktrainingstatus($cl_id,$co_id,$u_id)
   }
 
 
+   function FngetOptions($q_id)
+  {
+
+        $CI=& get_instance();
+        $CI->load->database(); 
+
+        $CI->db->select('*');
+        $CI->db->where('question_id',$q_id);
+        $res = $CI->db->get('answer_quize');
+        return $return = $res->result_array();     
+  }
+
+
 
 ?>
