@@ -135,7 +135,7 @@
 
         </div>
         <br>
-         <div id="status"><?php if($condition==0){ echo 'Status: Completed full training';} else { echo 'Status: Need To Complete This Training.';};?></div>
+         <div id="status" class="status_<?php echo $class['cl_id'];?>"><?php if($condition==0){ echo 'Status: Completed full training';} else { echo 'Status: Need To Complete This Training.';};?></div>
       </div>
     </div>
     

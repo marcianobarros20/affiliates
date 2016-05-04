@@ -1,3 +1,5 @@
+
+
 <div>
  <header class="navbar navbar-fixed-top">
         <div class="navbar-inner">
@@ -33,19 +35,25 @@
 
                         <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='dashboard'){ echo 'class="active"';} ?>><a href="<?php echo base_url()?>welcome/dashboard" > <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='dashboard'){?> {Dashboard} <?php } else { ?> Dashboard <?php }?> </a></li>
                         <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='profile'){ echo 'class="active"';} ?>><a href="<?php echo base_url()?>welcome/profile" > <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='profile'){?> {Profile} <?php } else { ?> Profile <?php }?> </a></li>
-                        <li class ="dropdown"><a style="cursor:pointer;"><?php if($this->uri->segment(2)!='' && ($this->uri->segment(2)=='Allcourses' || $this->uri->segment(2)=='affiliate_training' || $this->uri->segment(2)=="classinfo")){ ?> {Tutorials} <?php } else { ?>Tutorials<?php }?> <span class="caret"></span></a>
 
-                                                        <ul class="sub-menu">
-                                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="contents/Allcourses">All Course</a></li>
+                        <li class ="dropdown"><a style="cursor:pointer;"><?php if($this->uri->segment(2)!='' && ($this->uri->segment(2)=='Allcourses' || $this->uri->segment(2)=='affiliate_training' || $this->uri->segment(2)=="classinfo")){ ?> {Tutorials} <?php } else { ?>Tutorials<?php }?> <span class="caret"></span></a>
+                        <ul class="sub-menu">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="contents/Allcourses">All Course</a></li>
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="contents/affiliate_training">Affiliates training Details</a></li>
-                                                        </ul>
+                        </ul>
                         </li>                                
                                                 <?php }?>
 
                         
 
-                        <?php if( ($this->input->cookie('reffrence_id')!='' || $set_code!='') && $this->session->userdata('user_id')=='')
-                        { ?>
+
+                     
+
+                
+                      
+                    <?php if( ($this->input->cookie('reffrence_id')!='' || $set_code!='') && $this->session->userdata('user_id')=='')
+                            { ?>
+
                         <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='register'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>welcome/register"><?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='register'){?>{Sign Up}<?php } else { ?> Sign Up <?php }?></a></li>
                         <?php }?>  
                         <?php if($this->session->userdata('user_id')==''){ ?>
@@ -64,6 +72,12 @@
                     <!-- This part need to be dynamic -->
 
 
+
+
+                
+
+                <div class="clearfix"></div>
+            </div>
 
             </div>
         </div>

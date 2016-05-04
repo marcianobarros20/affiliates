@@ -25,3 +25,22 @@ jQuery(function($) {
 
 
 });
+
+/*$( document ).ready(function() {
+
+$('#menu1').on('click touchstart', function () {
+	if($('.menu').hasClass('inactive'))
+	{
+		$('.menu').show();
+		$('.menu').removeClass('inactive');
+		$('.menu').addClass('showul');
+	}
+	else
+	{
+		$('.menu').hide();
+		$('.menu').removeClass('showul');
+		$('.menu').addClass('inactive');
+	}
+
+});
+});*/
