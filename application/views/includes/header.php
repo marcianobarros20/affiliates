@@ -1,3 +1,5 @@
+
+
 <div>
  <header class="navbar navbar-fixed-top">
         <div class="navbar-inner">
@@ -39,6 +41,10 @@
                         <?php } else { ?>
                         <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='dashboard'){ echo 'class="active"';} ?>><a href="<?php echo base_url()?>welcome/dashboard" > <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='dashboard'){?> {Dashboard} <?php } else { ?> Dashboard <?php }?> </a></li>
                         <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='profile'){ echo 'class="active"';} ?>><a href="<?php echo base_url()?>welcome/profile" > <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='profile'){?> {Profile} <?php } else { ?> Profile <?php }?> </a></li>
+
+
+
+
                         <li id="menu1" data-toggle="dropdown"  <?php if($this->uri->segment(2)!='' && ($this->uri->segment(2)=='Allcourses' || $this->uri->segment(2)=='affiliate_training' || $this->uri->segment(2)=="classinfo")){ echo 'class="active"';} ?>><a style="cursor:pointer;"><?php if($this->uri->segment(2)!='' && ($this->uri->segment(2)=='Allcourses' || $this->uri->segment(2)=='affiliate_training' || $this->uri->segment(2)=="classinfo")){ ?> {Tutorials} <?php } else { ?>Tutorials<?php }?> <span class="caret"></span></a> </li>
                         <ul class="dropdown-menu1 dropdown-menu" role="menu" aria-labelledby="menu1">
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="contents/Allcourses">All Course</a></li>
@@ -48,7 +54,7 @@
 
                         <?php } ?>
 
-                      
+                
                         <li class="login">
                       
                     <?php if( ($this->input->cookie('reffrence_id')!='' || $set_code!='') && $this->session->userdata('user_id')=='')
@@ -64,6 +70,9 @@
                         </li>
                     </ul>        
                 </div><!--/.nav-collapse -->
+
+
+                
 
                 <div class="clearfix"></div>
             </div>

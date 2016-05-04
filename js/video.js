@@ -59,6 +59,7 @@ function show_video(id,cl_id,co_id)
                   });
 var vid = document.getElementById("myVideo");
 vid.onended = function() {
+  
    var res= $.ajax({
                   type : 'post',
                   url : 'Ajax/Fncompletevideoclass',
@@ -66,7 +67,15 @@ vid.onended = function() {
                   async : false,
                   success : function(msg)
                    {
-                 
+                      if(msg==0)
+                      {
+                       $('.status_'+cl_id).html('Status: Completed Full Training.');
+                      }
+                      else
+                      {
+                         $('.status_'+cl_id).html('Status: Need to Complete This Training.');
+                      }
+                      
                      
                    }
                   });

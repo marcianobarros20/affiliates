@@ -650,6 +650,13 @@ public function Fnoldpasswordchk()
 			$con1=array('tr_id'=>$id,'co_id'=>$co_id,'cl_id'=>$cl_id,'u_id'=>$u_id);
 			$up['status']=1;
 			$up=$this->Common_model->update('training_details',$con1,$up);
+			$con2=array('tr_id > '=>$id,'class_id'=>$cl_id,'status'=>0);
+			$con3=array('tr_id > '=>$id,'cl_id'=>$cl_id,'status'=>1,'u_id'=>$u_id);
+			
+		 $tot=$this->Common_model->fetchinfo('training_material',$con2,'count');
+		 $tot_com=$this->Common_model->fetchinfo('training_details',$con3,'count');
+		echo $sub=($tot-$tot_com);
+		//echo $this->db->last_query();
 	}
 
 	function Fnchktrainingstatus()
