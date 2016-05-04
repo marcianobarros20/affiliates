@@ -22,8 +22,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
-    <script src="js/jquery-1.10.1.min.js"></script>
-   
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+   <script type="text/javascript" src="js/menu.js"></script>
 
  
 
@@ -45,7 +45,7 @@
                 <div class="span6">
                     <ul class="breadcrumb pull-right">
                         <li><a href="<?php echo base_url();?>">Home</a></li>
-                        <li class="active">Quiz</li>
+                        <li class="active"> / Quiz</li>
                     </ul>
                 </div>
             </div>
@@ -144,8 +144,8 @@ $percentage=round(($test_result_final['curr_ans']/$test_result_final['tot_ques']
 <!--Footer-->
   <?php echo $footer;?>
 <!--/Footer-->
-    
+        <script src="js/main.js"></script>
+
      <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
 </body>
 </html>
