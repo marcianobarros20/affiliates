@@ -69,24 +69,15 @@ if($this->session->userdata('succ_msg')!=''){?>
                   <?php echo  $this->session->userdata('err_msg');$this->session->set_userdata('err_msg','');?>
                   </div>
 <?php }?>
+        <div  class="box">
+       
+        <h4 class="padd-left"><a href="<?php echo base_url();?>admin/courses/manage_quize"><span>&lt;&lt;</span>  Back </a> </h4>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    <div  class="box">
                           <div class="box-title">
                               <h3>Edit Quize</h3>
                           </div>
+
+
                           <div class="box-body">
                       <form role="form" method="post"  name="add_quize" id="add_quize">      
                             <div class="form-group">
@@ -120,7 +111,7 @@ if($this->session->userdata('succ_msg')!=''){?>
                                         <option value="1">Yes</option>                                  
                                         <option value="2">No</option>                                  
                                     </select>   
-                            </div>
+                                </div>
 
 
                                  <div class="form-group" id="select_option_div" style="display:none">

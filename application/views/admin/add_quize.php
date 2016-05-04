@@ -70,20 +70,8 @@ if($this->session->userdata('succ_msg')!=''){?>
                   </div>
 <?php }?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    <div  class="box">
+<div  class="box">
+                    <h4 class="padd-left"><a href="<?php echo base_url();?>admin/courses/manage_quize"><span>&lt;&lt;</span>  Back </a> </h4>
                           <div class="box-title">
                               <h3>Add Quize</h3>
                           </div>

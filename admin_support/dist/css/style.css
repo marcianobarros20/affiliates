@@ -14,6 +14,10 @@
     margin-bottom: 19px;
     width: 100%;
 }
+.padd-left
+{
+  padding-left: 700px;
+}
 
 .paginationD strong {
     background-color: #3C8DBC;
