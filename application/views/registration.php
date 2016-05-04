@@ -87,7 +87,7 @@
       $user_info=Parentstatus($parent_id);?>
 
 
- Your Affiliate Sponsor
+ Your Affiliate Sponsored By :
     <br>
     <?php if($user_info['profile_image']!=''){ ?>
     <img src='profile_img/thumb/<?php echo $user_info['profile_image'];?>' alt=''>
