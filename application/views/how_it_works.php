@@ -17,7 +17,8 @@
   <link rel="stylesheet" href="css/sl-slide.css">
 
   <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-
+  <script src="js/vendor/jquery-1.9.1.min.js"></script>
+ <script type="text/javascript" src="js/menu.js"></script>
   <!-- Le fav and touch icons -->
   <link rel="shortcut icon" href="images/ico/favicon.ico">
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
@@ -136,7 +137,7 @@
 
 
 
-<script src="js/vendor/jquery-1.9.1.min.js"></script>
+
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 

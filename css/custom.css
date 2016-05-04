@@ -136,7 +136,7 @@ a.edit-btn:hover{color: #000; text-decoration: none;}
 .change-password-sec{padding: 0 15px}
 .profile-pic{margin-bottom: 15px;}
 
-.
+
 
 
 
@@ -167,6 +167,11 @@ a.edit-btn:hover{color: #000; text-decoration: none;}
 	
 
 
+
+
+
+
+
 }
 @media only screen and (max-width: 768px) {
 
@@ -182,7 +187,7 @@ a.edit-btn:hover{color: #000; text-decoration: none;}
 @media only screen and (max-width: 511px) {
 
 	.width50{width: 100% !important; float: none;}
-	
+
 
 }
 

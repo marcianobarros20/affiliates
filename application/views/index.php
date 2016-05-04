@@ -27,6 +27,7 @@
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 
 <script src="js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
 
     <script src='js/video.js'></script>
 

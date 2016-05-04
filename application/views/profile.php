@@ -21,31 +21,16 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
      <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
+<script type="text/javascript" src="js/menu.js"></script>
 
 
-
- <!-- tree css and js -->
-  
-    <link rel="stylesheet" href="css/jquery.jOrgChart.css"/>
-    <link rel="stylesheet" href="css/custom.css"/>
-    <link href="css/prettify.css" type="text/css" rel="stylesheet" />
-
-    <script type="text/javascript" src="js/prettify.js"></script>
     
     <!-- jQuery includes -->
    
-    
-    <script src="js/jquery.jOrgChart.js"></script>
+   
 
   
- <!-- tree css and js -->
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-    <script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.5"></script>
-    <link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
  
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"> 
-    
-     <script type="text/javascript" src="js/frame.js"></script>
    
     <link rel="stylesheet" href="css/custom.css"/>
 
@@ -220,7 +205,7 @@
 <!--Footer-->
   <?php echo $footer;?>
 <!--/Footer-->
-    
+  <script  src="js/main.js"></script>
       <script src="js/bootstrap.min.js"></script>
 
 </body>

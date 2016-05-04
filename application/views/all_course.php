@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
      <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-   
+   <script type="text/javascript" src="js/menu.js"></script>
 
 </head>
 

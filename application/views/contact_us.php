@@ -25,6 +25,9 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  
+
+<script type="text/javascript" src="js/menu.js"></script>
   <script src="js/jquery.validate.js"></script>
 <script type="text/javascript">
   $(document ).ready(function() {

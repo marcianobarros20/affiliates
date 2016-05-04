@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/sl-slide.css">
 <script src="js/vendor/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
   
@@ -112,7 +113,7 @@
    
    
     <form class="center"  method="POST" id='reg_form' onsubmit="return validate();">
-      <fieldset class="registration-form">
+      <fieldset class="registration-form reg-2" >
        <div class="control-group">
           <!-- Username -->
           <div class="controls">
