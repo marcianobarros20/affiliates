@@ -306,6 +306,15 @@
           return $res->row_array();
       }
 
+
+      public function Fntotcurrans($u_id)
+      {
+        $this->db->select_sum('curr_ans');
+        $this->db->where('u_id',$u_id);
+        $query = $this->db->get('quiz_test_result');
+        return $query->row_array();
+      }
+
       public function fnchktrainingcompleted($co_id)
       {
         $this->db->select('*');

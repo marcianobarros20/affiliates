@@ -471,6 +471,61 @@ public function Fnoldpasswordchk()
 				$info=$this->Common_model->fetchinfo('users',$con,'row');
 				$con1=array('uid'=>$info['parent_id']);
 				$parent_info=$this->Common_model->fetchinfo('users',$con1,'row');
+				$tot_course_material=$this->Common_model->fetchinfo('training_material',array('status'=>0),'count');
+				$started=$this->Common_model->fetchinfo('training_details',array('u_id'=>$info['uid']),'count');
+				$msg='';
+				if($started >0)
+				{
+				$completed=$this->Common_model->fetchinfo('training_details',array('u_id'=>$info['uid'],'status'=>1),'count');	
+				if($completed>=$tot_course_material)
+				{
+					$msg="<b>Training Status:</b> All Training Completed.";
+					//$tot_ques=0;
+					//$tot_ans=0;
+					$cur_ans=$this->Common_model->Fntotcurrans($info['uid']);
+					$tot_ques=$this->Common_model->fetchinfo('quize_ques','','count');
+					if(!empty($cur_ans)){
+					
+					$tot_ans=$cur_ans['curr_ans'];
+					//echo '<pre>';print_r($cur_ans);exit;
+						if($tot_ques==$tot_ans)
+						{
+							$msg.='Quiz Completed Successfully with 100% Marks.';
+						}
+						else
+						{
+							$perc=($tot_ans/$tot_ques)*100;
+							if($perc >=70)
+							{
+								$msg.='Quiz Done Up to '.$perc.'% .';
+							}
+							else if($perc==100)
+							{
+								$msg.='Quiz Completed Successfully with 100% Marks.';
+							}
+							else
+							{
+								$msg.='Need To pass Some of The Quiz.';	
+							}
+						}
+
+					}
+					else
+					{
+						$msg.="Need To Start Quiz For 100% completion of Training.";
+					}
+
+				}
+				else
+				{
+					$msg="<b>Training Status:</b> Need To Complete Training.";
+				}
+
+				}
+				else
+				{
+					$msg="<b>Training Status:</b> Not Yet Started Any Training.";
+				}
 				if($info)
 				{
 					if($info['profile_image']!='')
@@ -483,7 +538,7 @@ public function Fnoldpasswordchk()
                 }
 
 				 echo "<div class='col-md-12 col-lg-12'><div class='col-md-6 col-lg-6'><h3>Name: ".$info['fname'].' '.$info['lname']."</h3>
-       			  </div><div class='col-md-6 col-lg-6'><img src='".$img."' alt=''></div></div><p><h4>Sponsorer Name:</h4> ".$parent_info['fname']." ".$parent_info['lname']."</p><p><h4>Description:</h4> ".$info['description']."</p>";
+       			  </div><div class='col-md-6 col-lg-6'><img src='".$img."' alt=''></div></div><p><h4>Sponsorer Name:</h4> ".$parent_info['fname']." ".$parent_info['lname']."</p><p><h4>Description:</h4> ".$info['description']."</p><p>".$msg."</p>";
        			}
         
 			}

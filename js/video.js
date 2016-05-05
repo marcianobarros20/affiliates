@@ -7,7 +7,7 @@
 }); 
   
       
-setInterval(function() {
+setTimeout(function() {
 
     hello();
 }, 5000);
