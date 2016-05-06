@@ -2,7 +2,7 @@
 require_once('./connection.php');
 if($_SESSION['log_in']==1)
 {
-    $base= $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+   $base= $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['SCRIPT_NAME'], 0, strpos($_SERVER['SCRIPT_NAME'], basename($_SERVER['SCRIPT_FILENAME'])));
 
   header("Location:".$base."chat.php");
 }
