@@ -40,6 +40,7 @@
                         <ul class="sub-menu">
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="contents/Allcourses">All Course</a></li>
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="contents/affiliate_training">Affiliates training Details</a></li>
+                        <li><a href="<?php echo base_url();?>twilio">Chat Room</a></li>
                         </ul>
                         </li>                                
                                                 <?php }?>

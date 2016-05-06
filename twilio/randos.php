@@ -1,4 +1,5 @@
 <?php
+require_once('./connection.php');
 
 // Generate a random username for the connecting client
 function randomUsername() {
@@ -28,6 +29,12 @@ function randomUsername() {
     $adj = $ADJECTIVES[array_rand($ADJECTIVES)];
     $fn = $FIRST_NAMES[array_rand($FIRST_NAMES)];
     $ln = $LAST_NAMES[array_rand($LAST_NAMES)];
-    
+    if($_SESSION['username']=='')
+        {
     return $adj . $fn . $ln;
+        }
+        else
+        {
+            return $_SESSION['username'];
+        }
 }

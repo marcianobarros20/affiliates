@@ -24,6 +24,7 @@ $(function() {
         } else {
             $msg.text(infoMessage);
         }
+        
         $chatWindow.append($msg);
     }
 
@@ -46,10 +47,11 @@ $(function() {
     // Get an access token for the current user, passing a username (identity)
     // and a device ID - for browser-based apps, we'll always just use the 
     // value "browser"
-    $.getJSON('/token.php', {
+    $.getJSON('./token.php', {
         identity: username,
         device: 'browser'
     }, function(data) {
+ 
         // Alert the user they have been assigned a random username
         username = data.identity;
         print('You have been assigned a random username of: ' 
@@ -86,6 +88,7 @@ $(function() {
 
     // Set up channel after it has been found
     function setupChannel() {
+
         // Join the general channel
         generalChannel.join().then(function(channel) {
             print('Joined channel as ' 
@@ -102,6 +105,7 @@ $(function() {
     var $input = $('#chat-input');
     $input.on('keydown', function(e) {
         if (e.keyCode == 13) {
+            //alert($input.val());
             generalChannel.sendMessage($input.val())
             $input.val('');
         }
