@@ -69,6 +69,7 @@
       <div class="span6">
         <h3>1. Become an Affiliate</h3>
         <p>The first step is to become a Tier5 Affiliate. You can do this by registering on the Tier5 Affiliate Portal that you can find here!</p>
+        <br>
         <h4>Requirements</h4>
         <ul class="arrow">
          <li>Willingness to learn.</li>
@@ -80,8 +81,9 @@
 
        <h3>3. Sell Tier5 Services</h3>
        <p>After completing your Tier5 Success Training you are ready to start selling Tier5 services so you can begin to earn income. You will find that it is very easy to sell Tier5 services as every business is in need of them. You sell our services by the hour or by package and you get paid for every sale.</p>
+       <br>
        <h4>Requirements</h4>
-       <ul class="arrow">
+       <ul class="arrow ">
          <li>Tier5 Affilaite Account.</li>
          <li>Completed Success Training.</li>
          <li>Computer with internet connection.</li>
@@ -90,6 +92,8 @@
          <li>Resources from the Tier5 Affilate Resource Vault.</li>
        </ul>
 
+       <hr>
+
      </div>
      <!-- /Left Column -->
 
@@ -97,6 +101,7 @@
      <div class="span6">
       <h3>2. Complete Success Training</h3>
       <p>The Tier5 Affiliate Success Training is a training system that will provide you with all the information you need to get started as a Tier5 Affiliate. It will train you to become a very productive Affiliate so that in a very short time you can begin to see huge payouts.</p>
+      <br>
       <h4>Requirements</h4>
       <ul class="arrow">
        <li>Tier5 Affiliate Account.</li>
@@ -110,6 +115,7 @@
 
      <h3>4. Recruit Affiliates</h3>
      <p>If you want to start making even more income then your next step is to start recruiting Tier5 Affiliates and building your down stream. They have access to everything you have access to, you can give them unique training and support to help them become a successful affiliate. After all, you do make money for each hour of Tier5 services that they sell.</p>
+     <br>
      <h4>Requirements</h4>
      <ul class="arrow">
        <li>Tier5 Affiliate Account.</li>

@@ -274,14 +274,21 @@ li.active a{color:#12dffd !important}
     .card--learning{min-height: 214px;}
 
      
+ul.lft {text-align: left}
 
+.top-pad{padding-top: 40px;}
+
+.fancybox-wrap{left:0 !important; right: 0 !important; top: 20% !important; bottom: 0 !important; margin:0 auto !important;}
 
 
 }
 
+
+
+
 @media only screen and (max-width: 766px) {
 
-    #inline1 video{width: 300px; height: auto}
+    #inline1 video{width: 100%; height: auto}
 
     body > section {padding: 50px 17px;}
 

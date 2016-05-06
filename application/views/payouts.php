@@ -56,7 +56,7 @@
             <div class="span6">
                 <h2>How much do you make?</h2>
                 <p>The payout is large. My first year working in this model I made over $53,000 and last year I made over $93,000, in the last 3 months I’ve made over $30,000 which I am happy to provide proof of. We charge a minimum fee per development hour, anything above that minimum fee is the payout.</p>
-                <ul>
+                <ul class="lft">
                 	<li>SP = Selling Price</li>
                     <li>C = Tier5 Cost</li>
                     <li>P = Payout</li>
@@ -170,7 +170,7 @@
                 <h3>How much do I actually make?</h3>
                 <p>Yes, the best question. We already talked about payouts. How much you actually make depends on how many development hours you and the Tier[s] below you actually contract out. The payout scale looks like this:</p>
                
-                <ul>
+                <ul class="lft">
                 <li>Tier[5] (YOU): 50% of payout</li>
                 <li>Tier[4]: 15% of payout</li>
                 <li>Tier[3]: 10% of payout</li>

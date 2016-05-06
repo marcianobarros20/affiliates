@@ -180,7 +180,7 @@ Why do you want to be a Tier5 Affiliate?
             </form>
         </div>
 
-        <div class="span3">
+        <div class="span3 top-pad">
             <h4>Our Address</h4>
             <p>Tier5 currently has 3 Locations</p>
             
