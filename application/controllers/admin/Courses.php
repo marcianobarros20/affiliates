@@ -625,6 +625,108 @@ class Courses extends CI_Controller {
 
 	}
 
+
+	public function manage_quize()
+	{
+		if (!$this->session->userdata('adminid'))
+		{
+			redirect(base_url()."admin/welcome/login");
+			
+		}
+		else
+		{
+
+		$page = $this->uri->segment(5)?$this->uri->segment(5):0;
+		$this->load->library('pagination');			
+		$config['base_url'] = base_url('admin/courses/manage_quize/index');
+		
+		$data['RecordTotal']=$this->Common_model->FngetAllquizADmin('count');
+		//$data['RecordTotal']=$this->home_model->casino_total();
+		$config['total_rows'] = $data['RecordTotal'];
+		$config['per_page'] = $limit = 2;
+		$start = $page;//start page			
+		$config["uri_segment"] =5;
+		$this->pagination->initialize($config);			
+		$data['PaginationLink']= $this->pagination->create_links();
+		//$data['casino_list']=$this->home_model->casino($limit,$start);
+		
+		$data['AllQuiz']=$this->Common_model->FngetAllquizADmin('result','',$limit,$start);	
+		//$data['AllCourse']=$this->Common_model->FngetAllquizADmin();
+		$data['header']=$this->load->view('admin/includes/header','',true);
+	    $data['footer']=$this->load->view('admin/includes/footer','',true);
+	    $data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
+		$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
+			 
+	    $this->load->view('admin/manage_quize',$data);			
+		}
+	}
+
+	function delete_question($q_id)
+	{
+		$con=array('qid'=>$q_id);
+		$con1=array('question_id'=>$q_id);
+		$this->Common_model->delete($con1,'answer_quize');
+		$del=$this->Common_model->delete($con,'quize_ques');
+		if($del)
+		{
+			$this->session->set_userdata('succ_msg','Quiz Deleted Successfully.');
+			redirect(base_url().'admin/courses/manage_quize');
+		}
+	}
+
+
+	public function edit_question($ques_id)
+	{
+		if (!$this->session->userdata('adminid'))
+		{
+			redirect(base_url()."admin/welcome/login");
+			
+		}
+		else
+		{
+
+			if($_POST)
+			{
+				//echo '<pre>';print_r($_POST);exit;
+
+				if($this->input->post('option_value'))
+				{
+					$count=count($this->input->post('option_value'));
+					$this->Common_model->delete(array('question_id'=>$ques_id),'answer_quize');	
+					for($i=0;$i<$count;$i++)
+					{
+						$ins_op['option']=$this->input->post('option_value')[$i];
+						$ins_op['question_id']=$ques_id;
+						$this->Common_model->insert('answer_quize',$ins_op);
+					}
+				$update_quiz['numberofoption']=$this->input->post('answer_option');
+				$update_quiz['correct_answer']=$this->input->post('cor_ans');
+				$update_quiz['question']=$this->input->post('quize_ques');
+				}	
+				
+				else
+				{
+					$update_quiz['question']=$this->input->post('quize_ques');
+					$update_quiz['correct_answer']=$this->input->post('curr_answer');
+				}
+				
+				$up1=$this->Common_model->update('quize_ques',array('qid'=>$ques_id),$update_quiz);
+				if($up1)
+				{
+					$this->session->set_userdata('succ_msg','Quiz edited Successfully');
+					redirect(base_url().'admin/courses/edit_question/'.$ques_id);
+				}
+				
+			}
+		$data['question_info']=$this->Common_model->Fngetinfo($ques_id);
+		$data['header']=$this->load->view('admin/includes/header','',true);
+	    $data['footer']=$this->load->view('admin/includes/footer','',true);
+	    $data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
+		$data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);
+			 
+	    $this->load->view('admin/edit_quize',$data);	
+		}
+	}
     public function question_add()
     {
     	if($_POST)

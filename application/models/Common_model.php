@@ -125,6 +125,9 @@
         return $this->db->affected_rows(); 
       }
 
+
+
+
       public function conditionchk($cl_id,$co_id)
       {
         $this->db->select('*');
@@ -270,6 +273,46 @@
         $res=$this->db->get($tbl);
         $result=$res->result_array();
         echo '<pre>';print_r($result);exit;
+      }
+
+      public function FngetAllquizADmin($type,$con=null,$limit=null,$start=null)
+      {
+        $this->db->select('*');
+        $this->db->join('courses','courses.co_id=quize_ques.course_id');
+        
+        if($type=='count')
+        {
+         
+          $res=$this->db->get('quize_ques');
+          
+          return $res->num_rows();
+        }
+        else
+        {
+          
+          $this->db->limit($limit,$start);
+
+          $res=$this->db->get('quize_ques');
+          return $res->result_array();
+        }
+      }
+
+      public function Fngetinfo($ques_id)
+      {
+        $this->db->select('*');
+        $this->db->join('courses','courses.co_id=quize_ques.course_id');
+         $this->db->where('quize_ques.qid',$ques_id);
+         $res=$this->db->get('quize_ques');
+          return $res->row_array();
+      }
+
+
+      public function Fntotcurrans($u_id)
+      {
+        $this->db->select_sum('curr_ans');
+        $this->db->where('u_id',$u_id);
+        $query = $this->db->get('quiz_test_result');
+        return $query->row_array();
       }
 
       public function fnchktrainingcompleted($co_id)

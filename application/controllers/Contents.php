@@ -391,7 +391,16 @@ public function pricing()
 			}
 			else
 			{
+				if($Fnalreadytakentest['tot_ques']!=$data['tot_ques'])
+				{
 				$up['curr_ans']=$cur_ans;
+				$up['tot_ques']=$data['tot_ques'];
+				}
+				else
+				{
+					$up['curr_ans']=$cur_ans;
+					
+				}
 				$insert_test=$this->Common_model->update('quiz_test_result',$con_test,$up);
 			}
 			

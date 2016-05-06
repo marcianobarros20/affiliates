@@ -64,7 +64,8 @@
                 <li  <?php if($this->uri->segment(2)=='courses' && $this->uri->segment(3)=='edit_class_and_course'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/courses/edit_class_and_course"><i class="fa fa-circle-o"></i>Manage Course/Class</a></li>
 
                 <li  <?php if($this->uri->segment(2)=='courses' && $this->uri->segment(3)=='add_class_and_course'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/courses/add_class_and_course"><i class="fa fa-circle-o"></i>Add Course/Class</a></li>
-                <li  <?php if($this->uri->segment(2)=='courses' && $this->uri->segment(3)=='add_quize'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/courses/add_quize"><i class="fa fa-circle-o"></i>Manage Quize</a></li>
+                <li  <?php if($this->uri->segment(2)=='courses' && $this->uri->segment(3)=='add_quize'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/courses/add_quize"><i class="fa fa-circle-o"></i>Add Quize</a></li>
+                <li  <?php if($this->uri->segment(2)=='courses' && $this->uri->segment(3)=='manage_quize'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/courses/manage_quize"><i class="fa fa-circle-o"></i>Manage Quize</a></li>
                 
               </ul>
             </li> 

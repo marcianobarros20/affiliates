@@ -7,7 +7,7 @@
 }); 
   
       
-setInterval(function() {
+setTimeout(function() {
 
     hello();
 }, 5000);
@@ -39,7 +39,16 @@ function hello()
 
                    }
                   });
+
+  var hmvideo=document.getElementById("homepageVideo");
+hmvideo.onended = function() {
+ $('.fancybox-close').click();
 }
+}
+
+
+
+
 
 
 function show_video(id,cl_id,co_id)
