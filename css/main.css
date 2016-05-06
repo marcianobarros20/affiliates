@@ -287,6 +287,9 @@ li.active a{color:#12dffd !important}
 
     .box{margin: 10px 15px}
 
+    footer{padding-top: 0 !important; padding-bottom: 0 !important; position: relative;}
+#footer #gototop{position: absolute !important; right: 0 !important; bottom: 0 !important}
+
 
 }
 
@@ -317,7 +320,7 @@ body > section {padding: 50px 17px;text-align: center;}
 h1{font-size: 28px;}
 h2{font-size: 21px;}
 
-.width50 input[type="text"]{width: 140px !important;}
+.width50 input[type="text"]{width: 88% !important;}
 
 }
 
