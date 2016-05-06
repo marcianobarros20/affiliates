@@ -29,9 +29,11 @@ if($_SESSION['username']=='')
   </header>
 
   <section>
+<div class="logout-btn"><a href="logout.php">logout</a></div>
     <div id="messages"></div>
     <input id="chat-input" type="text" placeholder="say anything" autofocus/>
   </section>
+
 
  
 </body>

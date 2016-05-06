@@ -23,6 +23,10 @@ if($_POST)
 		header("Location: ".$base."chat.php");
 	}
 	
+	else
+	{
+		header("Location: ".$base);
+	}
 
 	}		
 }
