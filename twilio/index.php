@@ -3,7 +3,7 @@ require_once('./connection.php');
 if($_SESSION['log_in']==1)
 {
    $base= $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['SCRIPT_NAME'], 0, strpos($_SERVER['SCRIPT_NAME'], basename($_SERVER['SCRIPT_FILENAME'])));
-
+  
   header("Location:".$base."chat.php");
 }
 
@@ -23,9 +23,12 @@ if($_SESSION['log_in']==1)
 
 <!--STYLESHEETS-->
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+
 
 <!--SCRIPTS-->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.js"></script>
 <!--Slider-in icons-->
 <script type="text/javascript">
 $(document).ready(function() {
@@ -42,8 +45,16 @@ $(document).ready(function() {
 	$(".password").blur(function() {
 		$(".pass-icon").css("left","0px");
 	});
+
+    $('.login-form').validate();
 });
 </script>
+<style>
+.error
+{
+    color:red;
+}
+</style>
 
 </head>
 <body>
@@ -68,8 +79,8 @@ $(document).ready(function() {
 	
 	<!--CONTENT-->
     <div class="content">
-	<!--USERNAME--><input name="email" type="email" class="input username"  onfocus="this.value=''" placeholder="Email Address" /><!--END USERNAME-->
-    <!--PASSWORD--><input name="pass" type="password" class="input password"  onfocus="this.value=''" placeholder="Password"/><!--END PASSWORD-->
+	<!--USERNAME--><input name="email" type="email" class="input username required email"  onfocus="this.value=''" placeholder="Email Address" /><!--END USERNAME-->
+    <!--PASSWORD--><input name="pass" type="password" class="input password required"  onfocus="this.value=''" placeholder="Password"/><!--END PASSWORD-->
     </div>
     <!--END CONTENT-->
     
@@ -77,6 +88,7 @@ $(document).ready(function() {
     <div class="footer">
     <!--LOGIN BUTTON--><input type="submit" name="submit" value="Login" class="button" /><!--END LOGIN BUTTON-->
     <!--REGISTER BUTTON <input type="submit" name="submit" value="Register" class="register" />END REGISTER BUTTON-->
+    <a  class="register" href="<?php echo $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'];?>" > Home Page </a>
     </div>
     <!--END FOOTER-->
 
