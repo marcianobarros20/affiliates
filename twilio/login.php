@@ -1,7 +1,7 @@
 <?php 
 
 require_once('./connection.php');
-echo $base= $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'];
+echo $base= $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['SCRIPT_NAME'], 0, strpos($_SERVER['SCRIPT_NAME'], basename($_SERVER['SCRIPT_FILENAME'])));
 
 exit;
 if($_POST)
