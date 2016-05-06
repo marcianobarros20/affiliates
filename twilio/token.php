@@ -1,7 +1,7 @@
 <?php
-require_once('./twilio-php/Services/Twilio.php');
-require_once('./randos.php');
-require_once('./config.php');
+require_once('../twilio-php/Services/Twilio.php');
+require_once('../randos.php');
+require_once('../config.php');
 
 // An identifier for your app - can be anything you'd like
 $appName = 'TwilioChatDemo';
