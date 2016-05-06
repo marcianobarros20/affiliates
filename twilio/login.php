@@ -1,7 +1,9 @@
 <?php 
 
 require_once('./connection.php');
+echo $base= $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'];
 
+exit;
 if($_POST)
 {
   	$email=$_POST['email'];
@@ -18,10 +20,10 @@ if($_POST)
 	{
 		$_SESSION['username'] = $row['fname']." ".$row['lname'];
 		$_SESSION['log_in']=1;	
-		header("Location: http://localhost/affiliate_final/twilio/chat.php");
+		header("Location: ".$base."chat.php");
 	}
 	
-print_r($_SESSION);
+
 	}		
 }
 ?>

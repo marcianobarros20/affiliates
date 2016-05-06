@@ -2,7 +2,9 @@
 require_once('./connection.php');
 if($_SESSION['log_in']==1)
 {
-  header("Location: http://localhost/twilio/chat.php");
+    $base= $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+
+  header("Location:".$base."chat.php");
 }
 
 ?>

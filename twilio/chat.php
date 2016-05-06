@@ -3,7 +3,9 @@ require_once('./connection.php');
 //print_r($_SESSION);
 if($_SESSION['username']=='')
 {
-  header("Location: http://localhost/twilio");
+    echo  $base= $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+
+  header("Location: ".$base);
 }
 
 ?>
