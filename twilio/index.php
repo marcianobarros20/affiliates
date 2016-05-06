@@ -76,7 +76,7 @@ $(document).ready(function() {
     <!--FOOTER-->
     <div class="footer">
     <!--LOGIN BUTTON--><input type="submit" name="submit" value="Login" class="button" /><!--END LOGIN BUTTON-->
-    <!--REGISTER BUTTON--><input type="submit" name="submit" value="Register" class="register" /><!--END REGISTER BUTTON-->
+    <!--REGISTER BUTTON <input type="submit" name="submit" value="Register" class="register" />END REGISTER BUTTON-->
     </div>
     <!--END FOOTER-->
 
