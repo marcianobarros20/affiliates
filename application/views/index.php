@@ -31,6 +31,8 @@
 
     <script src='js/video.js'></script>
 
+   
+
 <!-- fancybox -->
  <script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.5"></script>
     <link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
@@ -129,6 +131,9 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
 <div id="inline1" height="200px" width="400px">
    
 </div>
+
+
+
 
 <!--Services-->
 <section id="services" >
