@@ -99,7 +99,7 @@ $(function() {
 
         // Listen for new messages sent to the channel
         generalChannel.on('messageAdded', function(message) {
-            alert(message);
+            //alert(message);
             printMessage(message.author, message.body);
         });
     }
