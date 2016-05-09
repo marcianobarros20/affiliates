@@ -88,7 +88,7 @@ $(document).ready(function() {
     <div class="footer">
     <!--LOGIN BUTTON--><input type="submit" name="submit" value="Login" class="button" /><!--END LOGIN BUTTON-->
     <!--REGISTER BUTTON <input type="submit" name="submit" value="Register" class="register" />END REGISTER BUTTON-->
-    <a  class="register" href="<?php echo $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'];?>" > Home Page </a>
+    <!--<a  class="register" href="<?php echo $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'];?>" > Home Page </a>-->
     <a  class="register" href="<?php echo $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'];?>" > Home Page </a>
     </div>
     <!--END FOOTER-->
