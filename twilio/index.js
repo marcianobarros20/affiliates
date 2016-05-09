@@ -66,7 +66,9 @@ $(function() {
         print('Attempting to join "general" chat channel...');
         var promise = messagingClient.getChannelByUniqueName('general');
         promise.then(function(channel) {
+
             generalChannel = channel;
+
             if (!generalChannel) {
                 // If it doesn't exist, let's create it
                 messagingClient.createChannel({
@@ -97,6 +99,7 @@ $(function() {
 
         // Listen for new messages sent to the channel
         generalChannel.on('messageAdded', function(message) {
+            alert(message);
             printMessage(message.author, message.body);
         });
     }

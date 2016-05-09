@@ -66,7 +66,11 @@ $(document).ready(function() {
     <div class="user-icon"></div>
     <div class="pass-icon"></div>
     <!--END SLIDE-IN ICONS-->
+<?php $uri= $_SERVER['REQUEST_URI'];
+        $explode=explode("/",$uri);
+        echo '<pre>';print_r($explode);
 
+?>
 <!--LOGIN FORM-->
 <form name="login-form" class="login-form" action ="login.php" method="post">
 
@@ -89,6 +93,7 @@ $(document).ready(function() {
     <!--LOGIN BUTTON--><input type="submit" name="submit" value="Login" class="button" /><!--END LOGIN BUTTON-->
     <!--REGISTER BUTTON <input type="submit" name="submit" value="Register" class="register" />END REGISTER BUTTON-->
     <a  class="register" href="<?php echo $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'];?>" > Home Page </a>
+    <a  class="register" href="<?php echo $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'];?>" > Home Page </a>
     </div>
     <!--END FOOTER-->
 
