@@ -66,11 +66,7 @@ $(document).ready(function() {
     <div class="user-icon"></div>
     <div class="pass-icon"></div>
     <!--END SLIDE-IN ICONS-->
-<?php $uri= $_SERVER['REQUEST_URI'];
-        $explode=explode("/",$uri);
-        echo '<pre>';print_r($explode);
 
-?>
 <!--LOGIN FORM-->
 <form name="login-form" class="login-form" action ="login.php" method="post">
 
