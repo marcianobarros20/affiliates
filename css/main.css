@@ -13,6 +13,10 @@
     padding: 10px;
 }
 
+.navbar-fixed-top, .navbar-fixed-bottom{z-index: 500}
+.modal{z-index: 999}
+.modal-backdrop{z-index: 500}
+
 .col-xs-6 {
     width: 33%;
      float: left;
