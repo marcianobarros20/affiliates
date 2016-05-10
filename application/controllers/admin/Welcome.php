@@ -130,7 +130,8 @@ class Welcome extends CI_Controller {
 				{
 				
 				$updata=array();//get the uploaded data details
-				$updata = $this->upload->data();				
+				$updata = $this->upload->data();
+				exec("ffmpeg -i ".$updata['full_path']." ".$updata['file_path'].$updata['raw_name'].".jpeg");				
 				//echo '<pre>';print_r($updata);
 				$f_resize=$updata['file_name'];
 
