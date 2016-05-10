@@ -143,7 +143,7 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
                
                 <div class="demo-gallery dark mrb35" style="display:none;">
                     <ul id="html5-videos" class="list-unstyled row">
-                         <li class="col-xs-6 col-sm-4 col-md-3 video" data-poster="video_file/thumb-v-y-2.jpg" data-sub-html="&lt;h4&gt;CGI Animated Short HD: Student Academy Award Winning 'PeckPocketed' by Kevin Herron&lt;/h4&gt;" data-html="#video1">
+                         <li class="col-xs-6 col-sm-4 col-md-3 video" data-poster="video_file/thumb-v-y-2.jpg" data-sub-html="Watch This Video" data-html="#video1">
                             <a href="" id="new_my_video">
                                 <img class="img-responsive" src="video_file/thumb-v-y-2.jpg">
                                 <div class="demo-gallery-poster">

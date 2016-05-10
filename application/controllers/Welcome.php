@@ -45,7 +45,7 @@ class Welcome extends CI_Controller
 		$this->input->set_cookie($cookie_ref);	
 		$data['set_code']=$referlcode;		
 		}
-		
+			
 		$data['header']=$this->load->view('includes/header',$data,true);
 		$data['footer']=$this->load->view('includes/footer','',true);
 		$this->load->view('index',$data);
