@@ -4,6 +4,10 @@
        */
 
 //$('.fancybox').fancybox();
+
+
+
+
 }); 
   
       
@@ -27,7 +31,7 @@ function hello()
                      
                        if(msg!='' && con!=1)
                        {
-                        
+                       
                        $('#video1').html(msg);
                       $('#new_my_video').click();
                       $('.lg-video-cont').click();
