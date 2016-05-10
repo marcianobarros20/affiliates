@@ -59,7 +59,7 @@
                         <?php }?>  
                         <?php if($this->session->userdata('user_id')==''){ ?>
                         <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='contact'){ echo 'class="active"';} ?>><a href="<?php echo base_url();?>welcome/contact"><?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='contact'){?>{Get Started}<?php } else { ?> Get Started <?php }?></a></li>
-                        <li><a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a></li>
+                        <li><a data-toggle="modal" href="#loginForm" id="login"><i class="icon-lock"></i></a></li>
                         <?php } else { ?>
                         <li class='login'><a href="<?php echo base_url();?>welcome/logout">Logout</a></li>
                         <?php }?> </ul>        

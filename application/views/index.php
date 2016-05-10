@@ -32,21 +32,13 @@
     <script src='js/video.js'></script>
 
    <!-- test -->
-       <!--     <link href="video_file/main.css" rel="stylesheet"> -->
+
 
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
         <link href="video_file/lightgallery.css" rel="stylesheet">
    <!-- test -->
 
 
-<!-- fancybox -->
-<!--
- <script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.5"></script>
-    <link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />-->
-
-
-
-<!-- fancybox -->
 </head>
 
 <body>
@@ -136,9 +128,6 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
     </div>
 </section>
 
-<!-- <div id="inline1" height="200px" width="400px">
-   
-</div> -->
 
 
 
