@@ -109,14 +109,14 @@ class Welcome extends CI_Controller {
     {
     	if($_FILES['popup_video']['size']!=0)
         {
-        	//echo "Hi";
+        	//echo "Hi";exit;
         	    $this->load->library('image_lib');
 				$time=time();
 			    $config['upload_path'] ='./popup_video/';
 				$config['file_name']=$time;
 				$config['overwrite']='TRUE';
 				$config['allowed_types']='avi|flv|wmv|mp3|mp4|AVI|FLV|WMV|MP3|MP4';
-				$config['max_size']='200000';
+				$config['max_size']='20000';
 								
 				$this->load->library('upload', $config);
 				if( ! $this->upload->do_upload('popup_video'))//initialize

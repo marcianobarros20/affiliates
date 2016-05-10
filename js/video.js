@@ -3,7 +3,7 @@
        *  Simple image gallery. Uses default settings
        */
 
-      $('.fancybox').fancybox();
+//$('.fancybox').fancybox();
 }); 
   
       
@@ -23,32 +23,43 @@ function hello()
                   success : function(msg)
                    {
                     var con=$('#video_open').val();
-                       //alert(msg);
-                       
+                      // alert(msg);
+                     
                        if(msg!='' && con!=1)
                        {
-                        $('#various1').click();
-                       $('#inline1').html(msg);
-                       $('#video_open').val(1);
-                       //$('#myModal').modal('show');
+                        
+                       $('#video1').html(msg);
+                      $('#new_my_video').click();
+                      $('.lg-video-cont').click();
+                     
+                      $('#video_open').val(1);
+                       
 
                         }
-                        else if($('.fancybox-overlay').length==0){
+                       /* else if($('.fancybox-overlay').length==0){
                          $('#video_open').val(0);
+                        }*/
+                        else
+                        {
+                          $('#video_open').val(0);
                         }
 
                    }
                   });
 
-  var hmvideo=document.getElementById("homepageVideo");
-hmvideo.onended = function() {
- $('.fancybox-close').click();
-}
+
+ 
 }
 
 
+function videoEnded()
+{
+ 
+  setTimeout(function() {
 
-
+   $('.lg-close').click();
+}, 1000);
+}
 
 
 function show_video(id,cl_id,co_id)

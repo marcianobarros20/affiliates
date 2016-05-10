@@ -655,11 +655,37 @@ public function Fnoldpasswordchk()
 			$result='';
 			if(!empty($info_video))
 			{
-				$result.="<object class='embed-responsive-item'>
+				/*$result.="<object class='embed-responsive-item'>
      <video id='homepageVideo' width='600px' height='500px' controls autoplay >
        <source src='".base_url()."popup_video/".$info_video['media']."'/>
      </video>
-   </object>";
+   </object>";*/
+
+
+   				/*$result.="<div style='display:none;' id='video1'>
+                    <video class='lg-video-object lg-html5' controls='controls' id='homepageVideo' autoplay>
+                        <source src='".base_url()."popup_video/".$info_video['media']."' type='video/mp4'>
+                         Your browser does not support HTML5 video.
+                    </video>
+                </div>
+               
+                <div class='demo-gallery dark mrb35'>
+                    <ul id='html5-videos' class='list-unstyled row'>
+                         <li class='col-xs-6 col-sm-4 col-md-3 video' data-poster='".base_url()."video_file/thumb-v-y-2.jpg' data-sub-html='Watch Home Page Video.' data-html='#video1'>
+                            <a href='' id='new_my_video'>
+                                <img class='img-responsive' src='".base_url()."video_file/thumb-v-y-2.jpg'>
+                                <div class='demo-gallery-poster'>
+                                    <img src='".base_url()."video_file/play-button.png'>
+                                </div>
+                            </a>
+                        </li>
+                         </ul>
+                </div>";*/
+                $result.='<video class="lg-video-object lg-html5 homepageVideo1" controls="controls" id="homepageVideo1" autoplay onended="videoEnded()">
+                        <source src="'.base_url().'popup_video/'.$info_video['media'].'">
+                         Your browser does not support HTML5 video.
+                    </video>';
+
 			}
 			echo $result;
 		}

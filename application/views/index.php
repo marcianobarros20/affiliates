@@ -31,11 +31,18 @@
 
     <script src='js/video.js'></script>
 
-   
+   <!-- test -->
+           <link href="video_file/main.css" rel="stylesheet">
+
+        
+        <link href="video_file/lightgallery.css" rel="stylesheet">
+   <!-- test -->
+
 
 <!-- fancybox -->
+<!--
  <script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.5"></script>
-    <link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
+    <link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />-->
 
 
 
@@ -113,7 +120,7 @@
  <div class='text-center'><h4><?php if($this->session->userdata('err_msg')!=''){ echo '<span class="error">'.$this->session->userdata('err_msg').'</span>'; $this->session->set_userdata('err_msg','');} 
 if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('succ_msg');$this->session->set_userdata('succ_msg','');}?>
 </h4></div>
-<a id="various1" href="#inline1" class="fancybox" title="Watch This Video" style="display:none;">Inline - auto detect width / height</a>
+<!-- <a id="various1" href="#inline1" class="fancybox" title="Watch This Video" style="display:none;">Inline - auto detect width / height</a> -->
 <section class="main-info">
     <div class="container">
         <div class="row-fluid">
@@ -121,6 +128,7 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
                 <h4>Tier5 introduces the <strong>Tier5 Affiliate Program</strong></h4>
                 <p class="no-margin">With the Tier5 Affiliate Program we provide all the training and materials you need to make a more than successful living working mostly in the Technical Industry.</p>
             </div>
+
             <div class="span3">
                 <a class="btn btn-success btn-large pull-right" href="<?php echo base_url();?>Tier5.docx" download="Tier5.docx">Get The Packet</a>
             </div>
@@ -128,9 +136,39 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
     </div>
 </section>
 
-<div id="inline1" height="200px" width="400px">
+<!-- <div id="inline1" height="200px" width="400px">
    
-</div>
+</div> -->
+
+
+
+<!-- testing -->
+<div id="Video_place">
+                
+                <div style="display:none;" id="video1">
+                   <!--  <video class="lg-video-object lg-html5" controls="controls" id="homepageVideo" autoplay>
+                        <source src="video_file/video1.mp4" type="video/mp4">
+                         Your browser does not support HTML5 video.
+                    </video> -->
+                </div>
+               
+                <div class="demo-gallery dark mrb35" style="display:none;">
+                    <ul id="html5-videos" class="list-unstyled row">
+                         <li class="col-xs-6 col-sm-4 col-md-3 video" data-poster="video_file/thumb-v-y-2.jpg" data-sub-html="&lt;h4&gt;CGI Animated Short HD: Student Academy Award Winning 'PeckPocketed' by Kevin Herron&lt;/h4&gt;" data-html="#video1">
+                            <a href="" id="new_my_video">
+                                <img class="img-responsive" src="video_file/thumb-v-y-2.jpg">
+                                <div class="demo-gallery-poster">
+                                    <img src="video_file/play-button.png">
+                                </div>
+                            </a>
+                        </li>
+                         </ul>
+                </div>
+
+</div>           
+
+<!-- testing -->
+
 
 
 
@@ -326,27 +364,17 @@ if($this->session->userdata('succ_msg')!=''){ echo $this->session->userdata('suc
 
 </section>
 
-<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        
-      </div>
-      <div class="modal-body" id="video_play">
-        ...
-      </div>
-      <div class="modal-footer">
 
-      </div>
-    </div>
-  </div>
-</div> -->
 
 <!--Footer-->
 <?php echo $footer;?>
 <!--/Footer-->
-
+<!-- test -->
+<script src="video_file/jquery.js"></script>
+<script src="video_file/lightgallery.js"></script>
+<script src="video_file/lg-video.js"></script>
+<script src="video_file/demos.js"></script>
+<!-- test -->
 
 
 <script src="js/vendor/bootstrap.min.js"></script>

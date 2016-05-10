@@ -88,6 +88,18 @@ $(function() {
         });
     });
 
+
+
+    // Create a Channel sudipta
+/*messagingClient.createChannel({
+    uniqueName: 'Newchannel',
+    friendlyName: 'Newchannel Chat Channel'
+}).then(function(channel) {
+    console.log('Created Newchannel channel:');
+    console.log(channel);
+});*/
+ // end create channel
+
     // Set up channel after it has been found
     function setupChannel() {
 
