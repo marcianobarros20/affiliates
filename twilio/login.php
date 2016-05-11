@@ -20,6 +20,9 @@ if($_POST)
 	{
 		$_SESSION['username'] = $row['fname']." ".$row['lname'];
 		$_SESSION['log_in']=1;	
+		$_SESSION['user_log_id']= $row['uid'];	
+		$query1 = "update `users` set `login` ='1' WHERE `uid` = '".$row['uid']."'";
+		$results1 = mysql_query($query1);
 		header("Location: ".$base."chat.php");
 	}
 	

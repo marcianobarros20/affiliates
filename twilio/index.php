@@ -1,5 +1,5 @@
 <?php 
-require_once('./connection.php');
+$db=require_once('./connection.php');
 if($_SESSION['log_in']==1)
 {
    $base= $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['SCRIPT_NAME'], 0, strpos($_SERVER['SCRIPT_NAME'], basename($_SERVER['SCRIPT_FILENAME'])));

@@ -12,6 +12,7 @@ $(function() {
     // will have in this sample app
     var generalChannel;
 
+
     // The server will assign the client a random username - store that value
     // here
     var username;
@@ -24,7 +25,7 @@ $(function() {
         } else {
             $msg.text(infoMessage);
         }
-        
+       
         $chatWindow.append($msg);
     }
 
@@ -38,6 +39,7 @@ $(function() {
         var $container = $('<div class="message-container">');
         $container.append($user).append($message);
         $chatWindow.append($container);
+
         $chatWindow.scrollTop($chatWindow[0].scrollHeight);
     }
 
@@ -54,7 +56,7 @@ $(function() {
  
         // Alert the user they have been assigned a random username
         username = data.identity;
-        print('You have been assigned a random username of: ' 
+        print('Welcome To The Chat Room : ' 
             + '<span class="me">' + username + '</span>', true);
 
         // Initialize the IP messaging client
@@ -70,6 +72,7 @@ $(function() {
             generalChannel = channel;
 
             if (!generalChannel) {
+                
                 // If it doesn't exist, let's create it
                 messagingClient.createChannel({
                     uniqueName: 'general',
@@ -81,8 +84,11 @@ $(function() {
                     setupChannel();
                 });
             } else {
+                
                 console.log('Found general channel:');
+                //alert(generalChannel);
                 console.log(generalChannel);
+
                 setupChannel();
             }
         });
@@ -90,15 +96,6 @@ $(function() {
 
 
 
-    // Create a Channel sudipta
-/*messagingClient.createChannel({
-    uniqueName: 'Newchannel',
-    friendlyName: 'Newchannel Chat Channel'
-}).then(function(channel) {
-    console.log('Created Newchannel channel:');
-    console.log(channel);
-});*/
- // end create channel
 
     // Set up channel after it has been found
     function setupChannel() {
@@ -118,7 +115,7 @@ $(function() {
 
     // Send a new message to the general channel
     var $input = $('#chat-input');
-    $input.on('keydown', function(e) {
+    $input.on('keydown', function(e) {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
         if (e.keyCode == 13) {
             //alert($input.val());
             generalChannel.sendMessage($input.val())

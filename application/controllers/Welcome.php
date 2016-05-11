@@ -221,6 +221,8 @@ class Welcome extends CI_Controller
                                              }
 					$this->session->set_userdata('user_id',$log['uid']);
 					$this->session->set_userdata('username',$log['username']);
+					
+
                     redirect(base_url().'welcome/dashboard');
                     exit();
 				}
@@ -292,9 +294,12 @@ class Welcome extends CI_Controller
 	
 	public function logout()
 	{
+		$insert_log['login']=0;
+		$this->Common_model->update('users',array('uid'=>$this->session->userdata('user_id')),$insert_log);
 		$this->session->set_userdata('user_id','');
 		$this->session->set_userdata('username','');
 		$this->session->set_userdata('succ_msg','You have successfully Logout.');
+
 		redirect();
         exit();
 	}

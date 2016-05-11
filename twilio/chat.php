@@ -1,5 +1,5 @@
 <?php 
-require_once('./connection.php');
+$db=require_once('./connection.php');
 
 //print_r($_SESSION);
 if($_SESSION['username']=='')
@@ -31,8 +31,22 @@ if($_SESSION['username']=='')
 
   <section>
 <div class="logout-btn"><a href="logout.php">logout</a>
+  
 
+</div>
+<div class="actv_user">
+<span>Online Users:</span><br>
+<?php
 
+  $query = "SELECT * FROM `users` WHERE `login` ='1' and `uid`!='".$_SESSION['user_log_id']."'";
+  $results = mysql_query($query);
+  $rowCount = mysql_num_rows($results);
+  if($rowCount>0){
+while($row = mysql_fetch_object($results)){
+    echo "<a href=''>".$row->fname." ".$row->lname."</a><BR>";
+}
+}
+  ?>
 
 </div>
 
