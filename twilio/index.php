@@ -23,7 +23,6 @@ if($_SESSION['log_in']==1)
 
 <!--STYLESHEETS-->
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
-<link href="../css/style.css" rel="stylesheet" type="text/css" />
 
 
 <!--SCRIPTS-->
@@ -81,10 +80,13 @@ $(document).ready(function() {
     <div class="content">
 	<!--USERNAME--><input name="email" type="email" class="input username required email"  onfocus="this.value=''" placeholder="Email Address" /><!--END USERNAME-->
     <!--PASSWORD--><input name="pass" type="password" class="input password required"  onfocus="this.value=''" placeholder="Password"/><!--END PASSWORD-->
+    <br><br>
+     <input type="checkbox" value="1" name="is_admin"><span class="adm_clk">Click If Admin</span>
     </div>
     <!--END CONTENT-->
     
     <!--FOOTER-->
+
     <div class="footer">
     <!--LOGIN BUTTON--><input type="submit" name="submit" value="Login" class="button" /><!--END LOGIN BUTTON-->
     <!--REGISTER BUTTON <input type="submit" name="submit" value="Register" class="register" />END REGISTER BUTTON-->

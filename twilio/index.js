@@ -12,7 +12,7 @@ $(function() {
     // will have in this sample app
     var generalChannel;
 
-
+    var add_log=$('#add_log').val();
     // The server will assign the client a random username - store that value
     // here
     var username;
@@ -31,9 +31,25 @@ $(function() {
 
     // Helper function to print chat message to the chat window
     function printMessage(fromUser, message) {
-        var $user = $('<span class="username">').text(fromUser + ':');
+
+
+       if(add_log!=1){
         if (fromUser === username) {
+             var $user = $('<span class="username">').text('Me' + ':');
             $user.addClass('me');
+        }
+        else
+        {
+             var $user = $('<span class="username">').text(fromUser + ':');
+        }
+        }
+        else
+        {
+             var $user = $('<span class="username">').text(fromUser + ':');
+             if (fromUser === username) {
+             
+            $user.addClass('me');
+                }
         }
         var $message = $('<span class="message">').text(message);
         var $container = $('<div class="message-container">');
@@ -67,6 +83,7 @@ $(function() {
         // sent in this simple application
         print('Attempting to join "general" chat channel...');
         var promise = messagingClient.getChannelByUniqueName('general');
+
         promise.then(function(channel) {
 
             generalChannel = channel;
@@ -99,13 +116,20 @@ $(function() {
 
         generalChannel.getMessages().then(function(messages) {
         var totalMessages = messages.length;
-        print('Chat history');
+       
+        if(add_log==1){
+             print('Chat history');
+
         for (i=0; i<messages.length; i++) 
             {
                 var message = messages[i];
                 print('<span>'+message.author+":"+ message.body + '</span>', true);
-                console.log(message.author+":"+ message.body); }
-                console.log('Total Messages:' + totalMessages); });
+                console.log(message.author+":"+ message.body); 
+            }
+               console.log('Total Messages:' + totalMessages); 
+            }
+    
+            });
                 // newchannel  
                 setupChannel();
             }
@@ -118,6 +142,8 @@ $(function() {
 
     // Set up channel after it has been found
     function setupChannel() {
+
+
 
         // Join the general channel
         generalChannel.join().then(function(channel) {

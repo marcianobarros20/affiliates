@@ -28,7 +28,7 @@ if($_SESSION['username']=='')
   <header>
  
   </header>
-
+<input type="hidden" name="add_log" id="add_log" value="<?php echo $_SESSION['admin_log_in'];?>">
   <section>
 <div class="logout-btn"><a href="logout.php">logout</a>
   
