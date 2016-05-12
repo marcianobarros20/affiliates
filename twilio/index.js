@@ -83,16 +83,35 @@ $(function() {
                     generalChannel = channel;
                     setupChannel();
                 });
+
+
+
             } else {
                 
                 console.log('Found general channel:');
                 //alert(generalChannel);
+              //  var chat_history=generalChannel.messages;
                 console.log(generalChannel);
+               // console.log(chat_history.length);
+                
+               // console.log(generalChannel.messages);
+                // newchannel 
 
+        generalChannel.getMessages().then(function(messages) {
+        var totalMessages = messages.length;
+        print('Chat history');
+        for (i=0; i<messages.length; i++) 
+            {
+                var message = messages[i];
+                print('<span>'+message.author+":"+ message.body + '</span>', true);
+                console.log(message.author+":"+ message.body); }
+                console.log('Total Messages:' + totalMessages); });
+                // newchannel  
                 setupChannel();
             }
         });
     });
+
 
 
 
@@ -110,6 +129,7 @@ $(function() {
         generalChannel.on('messageAdded', function(message) {
             //alert(message);
             printMessage(message.author, message.body);
+
         });
     }
 
