@@ -1,6 +1,9 @@
+
+
 $(function() {
     // Get handle to the chat div 
     var $chatWindow = $('#messages');
+    var $history = $('.actv_user1');
 
     // Manages the state of our access token we got from the server
     var accessManager;
@@ -15,9 +18,15 @@ $(function() {
     var add_log=$('#add_log').val();
     // The server will assign the client a random username - store that value
     // here
-    var username;
+    var username=$('#username').val();
+    var userId=$('#userId').val();
+    var createdchannel;
+
 
     // Helper function to print info messages to the chat window
+
+
+
     function print(infoMessage, asHtml) {
         var $msg = $('<div class="info">');
         if (asHtml) {
@@ -28,6 +37,81 @@ $(function() {
        
         $chatWindow.append($msg);
     }
+
+     function Historyprint(infoMessage, asHtml) {
+        $('.loader').hide();
+        var $msg = $('<div class="info">');
+        if (asHtml) {
+            $msg.html(infoMessage);
+        } else {
+            $msg.text(infoMessage);
+        }
+       
+        $history.append($msg);
+    }
+
+
+if (add_log==1)
+{
+    setTimeout(function() {
+
+    CallHistory();
+}, 1000);
+}
+
+function CallHistory()
+{
+
+      $.getJSON('./token.php',{
+        identity: username,
+        device: 'browser'
+    },function(data) {
+       
+ 
+        var accessManager = new Twilio.AccessManager(data.token);
+        var messagingClient = new Twilio.IPMessaging.Client(accessManager);
+
+
+    /** history **/
+    messagingClient.getChannels().then(function(channels) {
+  var newchannel=25;
+  newchannel.getMessages().then(function(messages) {
+  var totalMessages = messages.length;
+  for (i=0; i<messages.length; i++) {
+    var message = messages[i];
+    Historyprint(message.author+': '+message.body);
+   // $('.actv_user1').html(message.author+': '+message.body);
+  }
+  console.log('Total Messages:' + totalMessages);
+});
+   for (i=0; i<channels.length; i++) {
+    var myChannel = channels[i];
+  console.log(myChannel);
+
+        /* get history here */
+        myChannel.getMessages().then(function(messages) {
+  var totalMessages = messages.length;
+  for (i=0; i<messages.length; i++) {
+    var message = messages[i];
+    Historyprint(message.author+': '+message.body);
+   // $('.actv_user1').html(message.author+': '+message.body);
+  }
+  console.log('Total Messages:' + totalMessages);
+});
+        /* get history here */
+
+  }
+});
+       
+     
+        
+    });
+
+
+
+
+
+}
 
     // Helper function to print chat message to the chat window
     function printMessage(fromUser, message) {
@@ -62,13 +146,138 @@ $(function() {
     // Alert the user they have been assigned a random username
     print('Logging in...');
 
+
+$('.userId').click(function() {
+
+//console.log($(this).data("title"));
+//console.log('channel creation');
+$('#msg_body').show();
+$('.actv_user1').hide();
+createchannel($(this).data("title"),$(this).data("id"));
+
+});
+
+
+function createchannel(usernamechat,toid){
+    $('#messages').show();
+    $('#chat-input').show();
+   
+    $.getJSON('./token.php',{
+        identity: username,
+        device: 'browser'
+    },function(data) {
+       //console.log(data.identity);
+        // console.log(username);
+       // console.log(usernamechat);
+        if(toid<userId)
+        {
+        var comboId=toid+userId;
+        }
+        else
+        {
+        var comboId=userId+toid;
+        }   
+    
+
+        var request = $.ajax({
+  url: "script.php",
+  method: "POST",
+  data: { id : comboId },
+  dataType: "html"
+});
+ 
+request.done(function( msg ) {
+createdchannel=msg;
+});
+ 
+
+
+ 
+        var accessManager = new Twilio.AccessManager(data.token);
+        var messagingClient = new Twilio.IPMessaging.Client(accessManager);
+       
+            if(createdchannel=='')
+            {
+          messagingClient.createChannel({
+            uniqueName: comboId,
+            friendlyName: 'Test Chat Channel'
+      }).then(function(channel) {
+           // console.log('Created test channel:');
+           console.log(channel);
+          //  sendtext(channel);
+       });
+        get_channel(messagingClient, usernamechat);
+    }
+    else
+    {
+            get_channel(messagingClient, createdchannel);
+    }
+       
+        
+    });
+
+
+}
+
+
+function get_channel(messagingClient, channel_name){
+   //console.log(channel_name);
+    messagingClient.getChannels().then(function(channels) {
+        for (i=0; i<channels.length; i++) {
+         var channel = channels[i];   
+   // console.log('Channel: ' + channel.friendlyName);
+    //console.log(channel.uniqueName);
+            if(channel.uniqueName == channel_name){
+               // console.log(channel);
+             
+              generalChannel=channels[i];
+                sendtext(generalChannel);
+                generalChannel.on('messageAdded', function(message) {
+                    //alert(message);
+                    printMessage(message.author, message.body);
+
+                });
+              
+                break;
+            }
+
+        }
+
+
+
+         print('Joined channel as ' 
+                + '<span class="me">' + username + '</span>.', true);
+    });
+    
+}
+
+function sendtext(generalChannel){
+    console.log(generalChannel);
+    var $input = $('#chat-input');
+    $input.on('keydown', function(e) {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+        if (e.keyCode == 13) {
+      
+           generalChannel.join().then(function(channel) {
+    console.log('Joined channel ' + channel.friendlyName) ;
+
+    var msg = $('#chat-input').val();
+generalChannel.sendMessage(msg);
+ $input.val('');
+});
+            }
+        });
+    }
     // Get an access token for the current user, passing a username (identity)
     // and a device ID - for browser-based apps, we'll always just use the 
     // value "browser"
-    $.getJSON('./token.php', {
+
+
+
+   /* $.getJSON('./token.php', {
         identity: username,
         device: 'browser'
     }, function(data) {
+        console.log(data);
  
         // Alert the user they have been assigned a random username
         username = data.identity;
@@ -84,9 +293,16 @@ $(function() {
         print('Attempting to join "general" chat channel...');
         var promise = messagingClient.getChannelByUniqueName('general');
 
+
+            messagingClient.on('channelAdded', function(channel) {
+              console.log('Channel added: ' + channel.friendlyName);
+            });
+
         promise.then(function(channel) {
 
-            generalChannel = channel;
+            console.log(channel);
+
+             generalChannel = channel;
 
             if (!generalChannel) {
                 
@@ -99,6 +315,7 @@ $(function() {
                     console.log(channel);
                     generalChannel = channel;
                     setupChannel();
+
                 });
 
 
@@ -130,12 +347,14 @@ $(function() {
             }
     
             });
+
+
                 // newchannel  
                 setupChannel();
+               //createchannel();
             }
         });
-    });
-
+    });*/
 
 
 
@@ -160,12 +379,18 @@ $(function() {
     }
 
     // Send a new message to the general channel
-    var $input = $('#chat-input');
+  /*  var $input = $('#chat-input');
     $input.on('keydown', function(e) {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
         if (e.keyCode == 13) {
             //alert($input.val());
             generalChannel.sendMessage($input.val())
             $input.val('');
         }
-    });
+         
+    });*/
+
+
+
 });
+
+

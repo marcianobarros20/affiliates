@@ -29,7 +29,10 @@ if($_SESSION['username']=='')
  
   </header>
 <input type="hidden" name="add_log" id="add_log" value="<?php echo $_SESSION['admin_log_in'];?>">
+<input type="hidden" name="username" id="username" value="<?php echo $_SESSION['username'];?>">
+<input type="hidden" name="userId" id="userId" value="<?php echo $_SESSION['user_log_id'];?>">
   <section>
+
 <div class="logout-btn"><a href="logout.php">logout</a>
   
 
@@ -43,15 +46,23 @@ if($_SESSION['username']=='')
   $rowCount = mysql_num_rows($results);
   if($rowCount>0){
 while($row = mysql_fetch_object($results)){
-    echo "<a href=''>".$row->fname." ".$row->lname."</a><BR>";
+    echo "<a class='userId' id='userId_".$row->uid."' data-id='".$row->uid."' data-title='".$row->fname." ".$row->lname."'>".$row->fname." ".$row->lname."</a><BR>";
 }
 }
   ?>
 
 </div>
+<?php if($_SESSION['admin_log_in']==1){?>
+<div class="actv_user1">
+ 
+</div>
+<div class="loader"></div>
+<?php }?>
+<span id="msg_body" style="display:none;">
 
     <div id="messages"></div>
     <input id="chat-input" type="text" placeholder="say anything" autofocus/>
+    </span>
   </section>
 
 
