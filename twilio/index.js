@@ -21,7 +21,7 @@ $(function() {
     var username=$('#username').val();
     var userId=$('#userId').val();
     var createdchannel;
-
+    var myChannel;
 
     // Helper function to print info messages to the chat window
 
@@ -39,6 +39,7 @@ $(function() {
     }
 
      function Historyprint(infoMessage, asHtml) {
+        //console.log(infoMessage);
         $('.loader').hide();
         var $msg = $('<div class="info">');
         if (asHtml) {
@@ -63,7 +64,7 @@ function CallHistory()
 {
 
       $.getJSON('./token.php',{
-        identity: username,
+        identity: 'admin',
         device: 'browser'
     },function(data) {
        
@@ -74,36 +75,26 @@ function CallHistory()
 
     /** history **/
     messagingClient.getChannels().then(function(channels) {
-  var newchannel=25;
-  newchannel.getMessages().then(function(messages) {
-  var totalMessages = messages.length;
-  for (i=0; i<messages.length; i++) {
-    var message = messages[i];
-    Historyprint(message.author+': '+message.body);
-   // $('.actv_user1').html(message.author+': '+message.body);
-  }
-  console.log('Total Messages:' + totalMessages);
-});
-   for (i=0; i<channels.length; i++) {
-    var myChannel = channels[i];
-  console.log(myChannel);
 
-        /* get history here */
-        myChannel.getMessages().then(function(messages) {
-  var totalMessages = messages.length;
-  for (i=0; i<messages.length; i++) {
-    var message = messages[i];
-    Historyprint(message.author+': '+message.body);
-   // $('.actv_user1').html(message.author+': '+message.body);
-  }
-  console.log('Total Messages:' + totalMessages);
-});
-        /* get history here */
+            for (var i=0; i<channels.length; i++) {
+            var myChannel = channels[i];
+            console.log(myChannel);
 
-  }
+            /* get history here */
+            myChannel.getMessages().then(function(messages) {
+            var totalMessages = messages.length;
+            for (var k=0; k<messages.length; k++) {
+            var message = messages[k];
+            Historyprint(message.author+': '+message.body);
+
+            }
+
+            });
+
+            }
 });
        
-     
+   
         
     });
 
@@ -112,6 +103,9 @@ function CallHistory()
 
 
 }
+
+
+
 
     // Helper function to print chat message to the chat window
     function printMessage(fromUser, message) {
@@ -166,51 +160,84 @@ function createchannel(usernamechat,toid){
         identity: username,
         device: 'browser'
     },function(data) {
-       //console.log(data.identity);
+      // console.log(data.identity);
         // console.log(username);
        // console.log(usernamechat);
         if(toid<userId)
         {
-        var comboId=toid+userId;
+       // var comboId=toid+userId;
+        var comboId=usernamechat+username;
         }
         else
         {
-        var comboId=userId+toid;
+        //var comboId=userId+toid;
+        var comboId=username+usernamechat;
         }   
-    
 
-        var request = $.ajax({
-  url: "script.php",
-  method: "POST",
-  data: { id : comboId },
-  dataType: "html"
+var createdchannel=0;
+$.ajax({
+    type: "POST",
+    url: "script.php",
+    async: false, 
+    data: { id : comboId },
+    success: function(data) {
+        createdchannel = data;   
+        
+    }
 });
- 
-request.done(function( msg ) {
-createdchannel=msg;
-});
- 
+
 
 
  
         var accessManager = new Twilio.AccessManager(data.token);
         var messagingClient = new Twilio.IPMessaging.Client(accessManager);
+
+
+
+
+        messagingClient.getChannels().then(function(channels) {
+
+                   for (i=0; i<channels.length; i++) {
+                    var myChannel = channels[i];
+                  console.log(myChannel);
+                if(myChannel!=null){
+                       
+                        myChannel.getMessages().then(function(messages) {
+                  var totalMessages = messages.length;
+                  for (i=0; i<messages.length; i++) {
+                    var message = messages[i];
+                    console.log(message.author+': '+message.body);
+                    
+                  }
+                  console.log('Total Messages:' + totalMessages);
+                });
+                       
+                }
+                  }
+
+
+
+        });
+
+
+
        
-            if(createdchannel=='')
+            if(createdchannel==0)
             {
+                console.log('entered to chat');
           messagingClient.createChannel({
             uniqueName: comboId,
-            friendlyName: 'Test Chat Channel'
+            friendlyName: comboId
       }).then(function(channel) {
-           // console.log('Created test channel:');
+           console.log('Created test channel:');
            console.log(channel);
           //  sendtext(channel);
        });
-        get_channel(messagingClient, usernamechat);
+        get_channel(messagingClient, comboId);
     }
     else
     {
-            get_channel(messagingClient, createdchannel);
+            get_channel(messagingClient, comboId);
     }
        
         
@@ -221,16 +248,16 @@ createdchannel=msg;
 
 
 function get_channel(messagingClient, channel_name){
-   //console.log(channel_name);
+   console.log(channel_name);
     messagingClient.getChannels().then(function(channels) {
         for (i=0; i<channels.length; i++) {
          var channel = channels[i];   
    // console.log('Channel: ' + channel.friendlyName);
-    //console.log(channel.uniqueName);
+    console.log(channel.uniqueName);
             if(channel.uniqueName == channel_name){
                // console.log(channel);
              
-              generalChannel=channels[i];
+                generalChannel=channels[i];
                 sendtext(generalChannel);
                 generalChannel.on('messageAdded', function(message) {
                     //alert(message);
@@ -238,8 +265,10 @@ function get_channel(messagingClient, channel_name){
 
                 });
               
-                break;
+               
             }
+
+
 
         }
 
@@ -248,6 +277,9 @@ function get_channel(messagingClient, channel_name){
          print('Joined channel as ' 
                 + '<span class="me">' + username + '</span>.', true);
     });
+
+
+
     
 }
 
