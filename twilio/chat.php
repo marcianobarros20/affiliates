@@ -15,7 +15,7 @@ if($_SESSION['username']=='')
 <html>
 <head>
   <title>Chat Room</title>
-  <base href="<?php echo  $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].substr($_SERVER['SCRIPT_NAME'], 0, strpos($_SERVER['SCRIPT_NAME'], basename($_SERVER['SCRIPT_FILENAME'])));?>">
+  
   <link rel="shortcut icon" href="images/ico/favicon.ico">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="index.css">

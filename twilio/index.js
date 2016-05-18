@@ -61,44 +61,51 @@ if (add_log==1)
 function CallHistory()
 {
 
+
+
+
+
       $.getJSON('./token.php',{
-        identity: 'admin',
+        identity: username,
         device: 'browser'
     },function(data) {
        
  
         var accessManager = new Twilio.AccessManager(data.token);
         var messagingClient = new Twilio.IPMessaging.Client(accessManager);
-          messagingClient.getChannels().then(function(channels) {
-  for (i=0; i<channels.length; i++) {
-    var channel = channels[i];
-    //console.log('Channel: ' + channel.friendlyName);
-  }
-});
+          
 
+
+   
 
     /* history **/
     messagingClient.getChannels().then(function(channels) {
 
             for (var i=0; i<channels.length; i++) {
             var myChannel = channels[i];
-            console.log(myChannel);
 
-            /* get history here */
+
+            
+            
+
+            //console.log(channels[i].status);
+            if(channels[i].status==='joined' && myChannel.uniqueName!=null)
+            {
             myChannel.getMessages().then(function(messages) {
             var totalMessages = messages.length;
+             console.log(myChannel.uniqueName);
             for (var k=0; k<messages.length; k++) {
             var message = messages[k];
-            var updatedate=message.dateUpdated;
-            //console.log(updatedate);
-           // var splitval=updatedate.split(" ");
-            //var date=splitval[0]+' '+splitval[1]+' '+splitval[2]+' '+splitval[3]+' '+splitval[4];
-           var date='';
-            Historyprint(message.author+': '+message.body);
+           console.log(message);
+           console.log(message.author+': '+message.body);
+           Historyprint(message.author+': '+message.body);
 
             }
 
             });
+            }
+
+    
 
             }
 });
@@ -236,21 +243,21 @@ $.ajax({
        
             if(createdchannel==0)
             {
-                console.log('entered to chat');
-          messagingClient.createChannel({
+            console.log('entered to chat');
+            messagingClient.createChannel({
             uniqueName: comboId,
             friendlyName: comboId
-      }).then(function(channel) {
-           console.log('Created test channel:');
-           console.log(channel);
-          //  sendtext(channel);
-       });
-        get_channel(messagingClient, comboId);
-    }
-    else
-    {
+            }).then(function(channel) {
+            console.log('Created test channel:');
+            console.log(channel);
+            //  sendtext(channel);
+            });
             get_channel(messagingClient, comboId);
-    }
+            }
+            else
+            {
+            get_channel(messagingClient, comboId);
+            }
        
         
     });
@@ -261,6 +268,9 @@ $.ajax({
 
 function get_channel(messagingClient, channel_name){
    console.log(channel_name);
+
+
+
     messagingClient.getChannels().then(function(channels) {
         for (i=0; i<channels.length; i++) {
          var channel = channels[i];   
@@ -276,13 +286,9 @@ function get_channel(messagingClient, channel_name){
                     printMessage(message.author, message.body);
 
                 });
-              
                
             }
-
-
-
-        }
+         }
 
 
 
@@ -302,6 +308,12 @@ function sendtext(generalChannel){
         if (e.keyCode == 13) {
       
            generalChannel.join().then(function(channel) {
+console.log(generalChannel);
+               generalChannel.on('memberJoined', function(member) {
+  console.log(member.identity + 'has joined the channel.');
+});
+
+
     console.log('Joined channel ' + channel.friendlyName) ;
 
     var msg = $('#chat-input').val();
