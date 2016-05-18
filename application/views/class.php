@@ -26,7 +26,7 @@
 <script type="text/javascript" src="js/menu.js"></script>
 <!-- <script src="js/jquery-1.10.1.min.js"></script> -->
 
-    <script src='js/video.js'></script>
+    <script src='js/videoClass.js'></script>
 
 <!-- fancybox -->
  <script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.5"></script>
