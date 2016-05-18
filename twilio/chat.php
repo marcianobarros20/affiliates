@@ -51,6 +51,19 @@ while($row = mysql_fetch_object($results)){
     echo "<a class='userId' id='userId_".$row->uid."' data-id='".$row->uid."' data-title='".$row->fname." ".$row->lname."' target='_blank'>".$row->fname." ".$row->lname."</a><BR>";
 }
 }
+
+if($_SESSION['admin_log_in']==''){
+  $query1 = "SELECT * FROM `Admin` WHERE `login` ='1'";
+ $results1 = mysql_query($query1);
+ $rowCount1 = mysql_num_rows($results1);
+ 
+  if($rowCount1>0){
+$row1 = mysql_fetch_object($results1);
+//echo "<a class='userId' id='userId_".$row1->id."' data-id='".$row1->id."' data-title='".$row1->name"' target='_blank'>".$row1->name."</a><BR>";
+echo "<a class='userId' id='userId_".$row1->id."' data-id='".$row1->id."' data-title='".$row1->name."'>".$row1->name."</a>";
+}
+
+}
   ?>
 
 </div>

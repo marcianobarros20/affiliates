@@ -1,5 +1,3 @@
-
-
 $(function() {
     // Get handle to the chat div 
     var $chatWindow = $('#messages');
@@ -71,9 +69,15 @@ function CallHistory()
  
         var accessManager = new Twilio.AccessManager(data.token);
         var messagingClient = new Twilio.IPMessaging.Client(accessManager);
+          messagingClient.getChannels().then(function(channels) {
+  for (i=0; i<channels.length; i++) {
+    var channel = channels[i];
+    //console.log('Channel: ' + channel.friendlyName);
+  }
+});
 
 
-    /** history **/
+    /* history **/
     messagingClient.getChannels().then(function(channels) {
 
             for (var i=0; i<channels.length; i++) {
@@ -85,6 +89,11 @@ function CallHistory()
             var totalMessages = messages.length;
             for (var k=0; k<messages.length; k++) {
             var message = messages[k];
+            var updatedate=message.dateUpdated;
+            //console.log(updatedate);
+           // var splitval=updatedate.split(" ");
+            //var date=splitval[0]+' '+splitval[1]+' '+splitval[2]+' '+splitval[3]+' '+splitval[4];
+           var date='';
             Historyprint(message.author+': '+message.body);
 
             }
@@ -94,19 +103,11 @@ function CallHistory()
             }
 });
        
-   
+   /* history */
         
     });
 
-
-
-
-
 }
-
-
-
-
     // Helper function to print chat message to the chat window
     function printMessage(fromUser, message) {
 
@@ -168,6 +169,18 @@ function createchannel(usernamechat,toid){
        // var comboId=toid+userId;
         var comboId=usernamechat+username;
         }
+
+        else if(toid==userId)
+        {
+            if(username=='admin')
+            {
+                var comboId=username+usernamechat;
+            }
+            else
+            {
+                var comboId=usernamechat+username;
+            }
+        }
         else
         {
         //var comboId=userId+toid;
@@ -187,11 +200,10 @@ $.ajax({
 });
 
 
-
- 
         var accessManager = new Twilio.AccessManager(data.token);
         var messagingClient = new Twilio.IPMessaging.Client(accessManager);
 
+      
 
 
 
@@ -199,17 +211,17 @@ $.ajax({
 
                    for (i=0; i<channels.length; i++) {
                     var myChannel = channels[i];
-                  console.log(myChannel);
+                 // console.log(myChannel);
                 if(myChannel!=null){
                        
                         myChannel.getMessages().then(function(messages) {
                   var totalMessages = messages.length;
                   for (i=0; i<messages.length; i++) {
                     var message = messages[i];
-                    console.log(message.author+': '+message.body);
+                    //console.log(message.author+': '+message.body);
                     
                   }
-                  console.log('Total Messages:' + totalMessages);
+                 // console.log('Total Messages:' + totalMessages);
                 });
                        
                 }

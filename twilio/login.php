@@ -27,6 +27,8 @@ if($_POST)
 		$_SESSION['log_in']=1;	
 		$_SESSION['user_log_id']= $row['id'];	
 		$_SESSION['admin_log_in']=1;
+		$query1 = "update `Admin` set `login` ='1' WHERE `id` = '".$row['id']."'";
+			$results1 = mysql_query($query1);
 		header("Location: ".$base."chat.php");
 	}
 	

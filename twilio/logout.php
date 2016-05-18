@@ -6,6 +6,11 @@
 		$query1 = "update `users` set `login` ='0' WHERE `uid` = '".$_SESSION['user_log_id']."'";
 		$results1 = mysql_query($query1);
 		}
+		else
+		{
+		$query1 = "update `Admin` set `login` ='0'";
+		$results1 = mysql_query($query1);
+		}
 		$_SESSION['username'] ='';
 		$_SESSION['log_in']='';	
 		$_SESSION['admin_log_in']='';
