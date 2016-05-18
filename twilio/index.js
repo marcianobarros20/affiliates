@@ -267,15 +267,14 @@ $.ajax({
 
 
 function get_channel(messagingClient, channel_name){
-   console.log(channel_name);
-
-
-
+  console.log(channel_name);
+  var str = channel_name;
+  var clicent = str.replace(username, "");
     messagingClient.getChannels().then(function(channels) {
         for (i=0; i<channels.length; i++) {
          var channel = channels[i];   
    // console.log('Channel: ' + channel.friendlyName);
-    console.log(channel.uniqueName);
+   // console.log(channel.uniqueName);
             if(channel.uniqueName == channel_name){
                // console.log(channel);
              
@@ -293,7 +292,7 @@ function get_channel(messagingClient, channel_name){
 
 
          print('Joined channel as ' 
-                + '<span class="me">' + username + '</span>.', true);
+                + '<span class="me">' + username + ' With '+clicent+'</span>.', true);
     });
 
 
