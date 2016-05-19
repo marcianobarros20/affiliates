@@ -34,6 +34,7 @@ if($_POST)
 	
 	else
 	{
+		$_SESSION['err_msg']='Invalid Login Or Password';
 		header("Location: ".$base);
 	}
 
@@ -61,6 +62,7 @@ if($_POST)
 		
 		else
 		{
+			$_SESSION['err_msg']='Invalid Login Or Password';
 			header("Location: ".$base);
 		}
 

@@ -72,7 +72,15 @@ $(document).ready(function() {
 	<!--HEADER-->
     <div class="header">
     <!--TITLE--><h1>Login</h1><!--END TITLE-->
-    <!--DESCRIPTION--><span>Fill out the form below to Enter To The Chat Room.</span><!--END DESCRIPTION-->
+    <!--DESCRIPTION--><span>Fill out the form below to Enter To The Chat Room.
+        <br>
+         <?php if($_SESSION['err_msg']!='')
+    {
+        echo '<font color="red">'.$_SESSION['err_msg'].'</font>';$_SESSION['err_msg']='';
+    }?>
+
+    </span><!--END DESCRIPTION-->
+   
     </div>
     <!--END HEADER-->
 	

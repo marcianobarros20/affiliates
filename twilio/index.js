@@ -21,6 +21,7 @@ $(function() {
     var createdchannel;
     var myChannel;
 
+
     // Helper function to print info messages to the chat window
 
 
@@ -61,11 +62,7 @@ if (add_log==1)
 function CallHistory()
 {
 
-
-
-
-
-      $.getJSON('./token.php',{
+  $.getJSON('./token.php',{
         identity: username,
         device: 'browser'
     },function(data) {
@@ -80,25 +77,37 @@ function CallHistory()
 
     /* history **/
     messagingClient.getChannels().then(function(channels) {
-
+ Historyprint('Chat history of last 3 days');
             for (var i=0; i<channels.length; i++) {
             var myChannel = channels[i];
 
 
             
-            
+           
 
             //console.log(channels[i].status);
             if(channels[i].status==='joined' && myChannel.uniqueName!=null)
             {
             myChannel.getMessages().then(function(messages) {
             var totalMessages = messages.length;
-             console.log(myChannel.uniqueName);
+             //console.log(myChannel.uniqueName);
             for (var k=0; k<messages.length; k++) {
             var message = messages[k];
-           console.log(message);
-           console.log(message.author+': '+message.body);
-           Historyprint(message.author+': '+message.body);
+           // console.log(message);
+           var today = new Date()
+           var priorDate = new Date().setDate(today.getDate()-3);
+            //console.log(message.dateUpdated);
+            //console.log(priorDate);
+            //console.log(Date.parse(message.dateUpdated));
+         //  console.log(message.author+': '+message.body);
+
+         if(Date.parse(message.dateUpdated)>=priorDate)
+            {
+                var  get_date = new Date(Date.parse(message.dateUpdated));
+                var Posted_date=get_date.getDate()+'/'+get_date.getMonth()+'/'+get_date.getFullYear();
+    console.log(get_date.getDate()+'/'+get_date.getMonth()+'/'+get_date.getFullYear());
+           Historyprint(message.author+': '+message.body+' [Posted On('+Posted_date+')]');
+            }
 
             }
 
@@ -168,9 +177,7 @@ function createchannel(usernamechat,toid){
         identity: username,
         device: 'browser'
     },function(data) {
-      // console.log(data.identity);
-        // console.log(username);
-       // console.log(usernamechat);
+      
         if(toid<userId)
         {
        // var comboId=toid+userId;
