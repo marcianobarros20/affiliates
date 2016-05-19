@@ -105,7 +105,7 @@ function CallHistory()
             {
                 var  get_date = new Date(Date.parse(message.dateUpdated));
                 var Posted_date=get_date.getDate()+'/'+get_date.getMonth()+'/'+get_date.getFullYear();
-    console.log(get_date.getDate()+'/'+get_date.getMonth()+'/'+get_date.getFullYear());
+    //console.log(get_date.getDate()+'/'+get_date.getMonth()+'/'+get_date.getFullYear());
            Historyprint(message.author+': '+message.body+' [Posted On('+Posted_date+')]');
             }
 
