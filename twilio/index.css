@@ -105,6 +105,15 @@ section input {
     right: 218px;
     top: 90px;}
 
+    .actv_user2{background: #000 none repeat scroll 0 0;
+    color: #dedede;
+    font-style: italic;
+    margin: 5px 0;
+    padding: 3px 6px;
+    
+    right: 218px;
+    top: 90px;}
+
 /*    .loader{
 -moz-border-bottom-colors: none;
 -moz-border-left-colors: none;
