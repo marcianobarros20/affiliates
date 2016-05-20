@@ -282,7 +282,7 @@ function CallHistory()
         $chatWindow.append($container);
 
         $chatWindow.scrollTop($chatWindow[0].scrollHeight);
-         printMessagenotify(fromUser,message);
+         
     }
 
     // Alert the user they have been assigned a random username
@@ -467,7 +467,7 @@ generalChannel.on('typingStarted', function(member) {
         var msg = $('#chat-input').val();
          chk_status(toid);
         generalChannel.sendMessage(msg);
-
+        printMessagenotify('user1','new message');
         $input.val('');
         });
             }
