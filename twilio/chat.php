@@ -36,7 +36,7 @@ if($_SESSION['username']=='')
 
 <div class="logout-btn"><a href="logout.php">logout</a>
   
-
+<button onclick="notifyMe()" id="notify">Notify me!</button>
 </div>
 <div class="actv_user">
 <span>Online Users:</span><br>
@@ -65,7 +65,7 @@ echo "<a class='userId' id='userId_".$row1->id."' data-id='".$row1->id."' data-t
 
 }
   ?>
-
+<span id="typing1_<?php echo $_SESSION['user_log_id'];?>" style="color:cyan;"></span>
 </div>
 <?php if($_SESSION['admin_log_in']==1){?>
 <div class="actv_user1">
@@ -79,7 +79,7 @@ echo "<a class='userId' id='userId_".$row1->id."' data-id='".$row1->id."' data-t
 <?php }?>
 <span id="msg_body" style="display:none;">
 
-    <div id="messages"></div>
+    <div id="messages"><span id="typing" style="color:cyan;"></span></div>
     <input id="chat-input" type="text" placeholder="say anything" autofocus/>
     </span>
   </section>

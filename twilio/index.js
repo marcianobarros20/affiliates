@@ -1,7 +1,41 @@
+
+function notifyMe() {
+  // Let's check if the browser supports notifications
+  if (!("Notification" in window)) {
+    alert("This browser does not support desktop notification");
+  }
+
+  // Let's check whether notification permissions have already been granted
+  else if (Notification.permission === "granted") {
+    // If it's okay let's create a notification
+    var notification = new Notification("Hi there!");
+  }
+
+  // Otherwise, we need to ask the user for permission
+  else if (Notification.permission !== 'denied') {
+    Notification.requestPermission(function (permission) {
+      // If the user accepts, let's create a notification
+      if (permission === "granted") {
+        var notification = new Notification("Hi there!");
+      }
+    });
+  }
+
+  // At last, if the user has denied notifications, and you 
+  // want to be respectful there is no need to bother them any more.
+}
+
+function chk_status()
+{
+     $('#notify').click();
+}
+
+
 $(function() {
     // Get handle to the chat div 
     var $chatWindow = $('#messages');
     var $history = $('.actv_user1');
+    var $history1 = $('.actv_user2');
 
     // Manages the state of our access token we got from the server
     var accessManager;
@@ -20,10 +54,16 @@ $(function() {
     var userId=$('#userId').val();
     var createdchannel;
     var myChannel;
+    var Getchannel;
+    var explodevalue;
 
 
     // Helper function to print info messages to the chat window
-
+/*var channelchk='Gargi PalSudipta Mitra';
+channelchk.on('messageAdded', function(message) {
+  console.log(message.author, message.body);
+});*/
+// Promise
 
 
     function print(infoMessage, asHtml) {
@@ -51,6 +91,20 @@ $(function() {
     }
 
 
+     function Historyprint1(infoMessage, asHtml) {
+        //console.log(infoMessage);
+        $('.loader').hide();
+        var $msg = $('<div class="info">');
+        if (asHtml) {
+            $msg.html(infoMessage);
+        } else {
+            $msg.text(infoMessage);
+        }
+       
+        $history1.append($msg);
+    }
+
+
 if (add_log==1)
 {
     setTimeout(function() {
@@ -59,14 +113,72 @@ if (add_log==1)
 }, 1000);
 }
 
+else
+{
+     $.getJSON('./token.php',{
+        identity: username,
+        device: 'browser'
+    },function(data) {
+       
+       
+
+       var accessManager = new Twilio.AccessManager(data.token);
+        var messagingClient = new Twilio.IPMessaging.Client(accessManager);
+        
+         messagingClient.getChannels().then(function(channels) {
+            for (var i=0; i<channels.length; i++) {
+                 var myChannel = channels[i];
+            myChannel.getMessages().then(function(messages) {
+            var totalMessages = messages.length;
+             //console.log(myChannel.uniqueName);
+            for (var k=0; k<messages.length; k++) {
+            var message = messages[k];
+                  Historyprint1(message.author+': '+message.body);
+            }
+
+            });
+
+            }
+         });
+
+
+
+});
+
+     /*$.ajax({
+    type: "POST",
+    url: "script1.php",
+    async: false, 
+    data: { id : username },
+    success: function(data) {
+
+    Getchannel = data;   
+        
+    }
+});
+     var explodevalue=Getchannel.split(',');
+     for(var n=0;n<explodevalue.length;n++)
+     {
+        var myChannel=explodevalue[n];
+   myChannel.on('messageAdded', function(message) {
+  console.log(message.author, message.body);
+});
+        }*/
+
+
+}
+
 function CallHistory()
 {
+
+
 
   $.getJSON('./token.php',{
         identity: username,
         device: 'browser'
     },function(data) {
        
+      // console.log(data.token);
  
         var accessManager = new Twilio.AccessManager(data.token);
         var messagingClient = new Twilio.IPMessaging.Client(accessManager);
@@ -106,7 +218,7 @@ function CallHistory()
                 var  get_date = new Date(Date.parse(message.dateUpdated));
                 var Posted_date=get_date.getDate()+'/'+get_date.getMonth()+'/'+get_date.getFullYear();
     //console.log(get_date.getDate()+'/'+get_date.getMonth()+'/'+get_date.getFullYear());
-           Historyprint(message.author+': '+message.body+' [Posted On('+Posted_date+')]');
+           Historyprint(message.author+': '+message.body+' [Posted On('+Posted_date+')]'+'id message '+k);
             }
 
             }
@@ -123,6 +235,8 @@ function CallHistory()
         
     });
 
+
+
 }
     // Helper function to print chat message to the chat window
     function printMessage(fromUser, message) {
@@ -136,6 +250,12 @@ function CallHistory()
         else
         {
              var $user = $('<span class="username">').text(fromUser + ':');
+                
+                new Notification('New Message', {
+                body: fromUser + ': ' + 'new message'
+                });
+               
+                
         }
         }
         else
@@ -164,6 +284,7 @@ $('.userId').click(function() {
 //console.log('channel creation');
 $('#msg_body').show();
 $('.actv_user1').hide();
+$('.actv_user2').hide();
 createchannel($(this).data("title"),$(this).data("id"));
 
 });
@@ -259,11 +380,11 @@ $.ajax({
             console.log(channel);
             //  sendtext(channel);
             });
-            get_channel(messagingClient, comboId);
+            get_channel(messagingClient, comboId,toid);
             }
             else
             {
-            get_channel(messagingClient, comboId);
+            get_channel(messagingClient, comboId,toid);
             }
        
         
@@ -273,8 +394,8 @@ $.ajax({
 }
 
 
-function get_channel(messagingClient, channel_name){
-  console.log(channel_name);
+function get_channel(messagingClient, channel_name,toid){
+ // console.log(channel_name);
   var str = channel_name;
   var clicent = str.replace(username, "");
     messagingClient.getChannels().then(function(channels) {
@@ -286,7 +407,7 @@ function get_channel(messagingClient, channel_name){
                // console.log(channel);
              
                 generalChannel=channels[i];
-                sendtext(generalChannel);
+                sendtext(generalChannel,toid);
                 generalChannel.on('messageAdded', function(message) {
                     //alert(message);
                     printMessage(message.author, message.body);
@@ -307,27 +428,45 @@ function get_channel(messagingClient, channel_name){
     
 }
 
-function sendtext(generalChannel){
-    console.log(generalChannel);
+function sendtext(generalChannel,toid){
+   // console.log(generalChannel);  console.log('generalChannel');
+  
     var $input = $('#chat-input');
+
+generalChannel.on('typingStarted', function(member) {
+     //console.log(member.identity + 'is currently typing.');
+        $('#typing').html(member.identity + ' is currently typing.');
+});
+
     $input.on('keydown', function(e) {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
         if (e.keyCode == 13) {
-      
-           generalChannel.join().then(function(channel) {
-console.log(generalChannel);
-               generalChannel.on('memberJoined', function(member) {
-  console.log(member.identity + 'has joined the channel.');
-});
 
+            /* notification */
 
-    console.log('Joined channel ' + channel.friendlyName) ;
+            /* notification */
 
-    var msg = $('#chat-input').val();
-generalChannel.sendMessage(msg);
- $input.val('');
-});
+        generalChannel.join().then(function(channel) {
+        generalChannel.on('memberJoined', function(member) {
+        console.log('Member joined');
+        $('#typing1_'+toid).html('New message arrived from '+member.identity);
+        });
+
+        var msg = $('#chat-input').val();
+         chk_status();
+        generalChannel.sendMessage(msg);
+
+        $input.val('');
+        });
+            }
+
+            else { 
+        generalChannel.typing(); 
+ 
             }
         });
+
+   
+
     }
     // Get an access token for the current user, passing a username (identity)
     // and a device ID - for browser-based apps, we'll always just use the 
@@ -436,6 +575,8 @@ generalChannel.sendMessage(msg);
         generalChannel.on('messageAdded', function(message) {
             //alert(message);
             printMessage(message.author, message.body);
+
+           
 
         });
     }
