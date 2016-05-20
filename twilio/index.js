@@ -28,6 +28,9 @@ function notifyMe() {
 function chk_status()
 {
      $('#notify').click();
+       new Notification('New Message', {
+                body: 'from' + ': ' + 'new message'
+                });
 }
 
 
@@ -251,9 +254,9 @@ function CallHistory()
         {
              var $user = $('<span class="username">').text(fromUser + ':');
                 
-                new Notification('New Message', {
+               /* new Notification('New Message', {
                 body: fromUser + ': ' + 'new message'
-                });
+                });*/
                
                 
         }
