@@ -40,7 +40,7 @@ function chk_status(toid)
 
   function printMessagenotify(fromUser, message) {
 
-
+        var username=$('#username').val();
      
         if (fromUser === username) {
            console.log(message);
