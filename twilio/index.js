@@ -25,12 +25,15 @@ function notifyMe() {
   // want to be respectful there is no need to bother them any more.
 }
 
-function chk_status()
+function chk_status(toid)
 {
      $('#notify').click();
+     if(toid==$('#userId').val())
+     {
        new Notification('New Message', {
                 body: 'from' + ': ' + 'new message'
                 });
+   }
 }
 
 
@@ -133,7 +136,7 @@ else
                  var myChannel = channels[i];
             myChannel.getMessages().then(function(messages) {
             var totalMessages = messages.length;
-             //console.log(myChannel.uniqueName);
+             console.log(myChannel.uniqueName);
             for (var k=0; k<messages.length; k++) {
             var message = messages[k];
                   Historyprint1(message.author+': '+message.body);
@@ -413,6 +416,7 @@ function get_channel(messagingClient, channel_name,toid){
                 sendtext(generalChannel,toid);
                 generalChannel.on('messageAdded', function(message) {
                     //alert(message);
+                    console.log(message);
                     printMessage(message.author, message.body);
 
                 });
@@ -455,7 +459,7 @@ generalChannel.on('typingStarted', function(member) {
         });
 
         var msg = $('#chat-input').val();
-         chk_status();
+         chk_status(toid);
         generalChannel.sendMessage(msg);
 
         $input.val('');
