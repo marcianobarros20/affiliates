@@ -27,15 +27,37 @@ function notifyMe() {
 
 function chk_status(toid)
 {
-     $('#notify').click();
+    /* $('#notify').click();
+     alert($('#userId').val());
      if(toid==$('#userId').val())
      {
        new Notification('New Message', {
                 body: 'from' + ': ' + 'new message'
                 });
-   }
+    }*/
 }
 
+
+  function printMessagenotify(fromUser, message) {
+
+
+     
+        if (fromUser === username) {
+           console.log(message);
+        }
+        else
+        {
+             var $user = $('<span class="username">').text(fromUser + ':');
+                
+                new Notification('New Message', {
+                body: fromUser + ': ' + 'new message'
+                });
+               
+                
+        }
+       
+        
+    }
 
 $(function() {
     // Get handle to the chat div 
@@ -151,25 +173,7 @@ else
 
 });
 
-     /*$.ajax({
-    type: "POST",
-    url: "script1.php",
-    async: false, 
-    data: { id : username },
-    success: function(data) {
-
-    Getchannel = data;   
-        
-    }
-});
-     var explodevalue=Getchannel.split(',');
-     for(var n=0;n<explodevalue.length;n++)
-     {
-        var myChannel=explodevalue[n];
-   myChannel.on('messageAdded', function(message) {
-  console.log(message.author, message.body);
-});
-        }*/
+   
 
 
 }
@@ -257,9 +261,9 @@ function CallHistory()
         {
              var $user = $('<span class="username">').text(fromUser + ':');
                 
-               /* new Notification('New Message', {
+                new Notification('New Message', {
                 body: fromUser + ': ' + 'new message'
-                });*/
+                });
                
                 
         }
@@ -278,6 +282,7 @@ function CallHistory()
         $chatWindow.append($container);
 
         $chatWindow.scrollTop($chatWindow[0].scrollHeight);
+         printMessagenotify(fromUser,message);
     }
 
     // Alert the user they have been assigned a random username
@@ -418,6 +423,7 @@ function get_channel(messagingClient, channel_name,toid){
                     //alert(message);
                     console.log(message);
                     printMessage(message.author, message.body);
+                   
 
                 });
                
