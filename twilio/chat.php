@@ -36,7 +36,7 @@ if($_SESSION['username']=='')
 
 <div class="logout-btn"><a href="logout.php">logout</a>
   
-<button onclick="notifyMe()" id="notify">Notify me!</button>
+<button onclick="notifyMe()" id="notify" style="display:none;">Notify me!</button>
 </div>
 <div class="actv_user">
 <span>Online Users:</span><br>

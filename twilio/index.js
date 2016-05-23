@@ -27,7 +27,7 @@ function notifyMe() {
 
 function chk_status(toid)
 {
-    /* $('#notify').click();
+   /* $('#notify').click();
      alert($('#userId').val());
      if(toid==$('#userId').val())
      {
@@ -38,19 +38,25 @@ function chk_status(toid)
 }
 
 
-  function printMessagenotify(fromUser, message) {
+  function printMessagenotify(toid, message) {
+
 
         var username=$('#username').val();
+        var userId=$('#userId').val();
+        var $chatWindow = $('#messages');
      
-        if (fromUser === username) {
+        if (toid === userId) {
            console.log(message);
+           /*new Notification('New Message', {
+                body: toid + ': ' + 'new message'
+                });*/
         }
         else
         {
              var $user = $('<span class="username">').text(fromUser + ':');
                 
                 new Notification('New Message', {
-                body: fromUser + ': ' + 'new message'
+                body: toid + ': ' + 'new message'
                 });
                
                 
@@ -259,6 +265,7 @@ function CallHistory()
         }
         else
         {
+            $('#notify').click();
              var $user = $('<span class="username">').text(fromUser + ':');
                 
                 new Notification('New Message', {
@@ -467,8 +474,9 @@ generalChannel.on('typingStarted', function(member) {
         var msg = $('#chat-input').val();
          chk_status(toid);
         generalChannel.sendMessage(msg);
-        printMessagenotify('user1','new message');
-        $input.val('');
+         $input.val('');
+      //  printMessagenotify(toid,'new message');
+       
         });
             }
 
