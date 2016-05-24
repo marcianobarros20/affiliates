@@ -681,7 +681,7 @@ public function Fnoldpasswordchk()
                         </li>
                          </ul>
                 </div>";*/
-                $result.='<video class="lg-video-object lg-html5 homepageVideo1" controls="controls" id="homepageVideo1" autoplay onended="videoEnded()">
+                $result.='<video class="lg-video-object lg-html5 homepageVideo1" controls id="homepageVideo1" preload="none" controls="controls">
                         <source src="'.base_url().'popup_video/'.$info_video['media'].'">
                          Your browser does not support HTML5 video.
                     </video>';

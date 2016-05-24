@@ -52,10 +52,18 @@ function hello()
                   });
 
 
+var vid_hm = document.getElementById("homepageVideo1");
+ 
+ $( ".lg-close" ).click(function() {
+  vid_hm.pause(); 
+ });
  
 }
 
-
+function pause()
+{
+  alert('hello');
+}
 function videoEnded()
 {
  
@@ -65,7 +73,7 @@ function videoEnded()
 }, 1000);
 }
 
-
+ 
 function show_video(id,cl_id,co_id)
 {
 // alert(id);
