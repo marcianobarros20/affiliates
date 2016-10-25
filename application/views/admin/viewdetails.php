@@ -52,16 +52,115 @@
     <?php echo $rightsidebar;?>
     <!-- /.control-sidebar -->
     <div class="content-wrapper">
-      <div class="">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="tree">
-              <ul>
-                <li>
+      <div class="tree">
+        <ul>
+          <li>
+            <a href="#">
+              <div class="container-fluid">
+                <div class="row">
+                  Top level
+                </div>
+              </div>
+            </a>
+            <ul>
+              <li>
+                <a href="#">
+                  <div class="container-fluid">
+                    <div class="row">
+                        1st
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div class="container-fluid">
+                      <div class="row">
+                          2nd
+                          <p>( 2 )</p>
+                      </div>
+                  </div>
+                </a>
+                <ul>
+                  <li>
+                    <a href="#">
+                      <div class="container-fluid">
+                          <div class="row">
+                              4th
+                              <p>( 3 )</p>
+                          </div>
+                      </div>
+                    </a>
+                    <ul>
+                      <li>
+                        <a href="#">
+                          <div class="container-fluid">
+                              <div class="row">
+                                  6th
+                              </div>
+                          </div>
+                        </a>
+                        
+                      </li>
+                      <li>
+                        <a href="#">
+                          <div class="container-fluid">
+                            <div class="row">
+                               7th
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <div class="container-fluid">
+                            <div class="row">
+                                8th
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <div class="container-fluid">
+                        <div class="row">
+                            5th
+                            <p>( 2 )</p>
+                        </div>
+                      </div>
+                    </a>
+                    <ul>
+                      <li>
+                        <a href="#">
+                          <div class="container-fluid">
+                              <div class="row">
+                                  9th
+                              </div>
+                          </div>
+                        </a>
+                        
+                      </li>
+                      <li>
+                        <a href="#">
+                          <div class="container-fluid">
+                            <div class="row">
+                               10th
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
                   <a href="#">
                     <div class="container-fluid">
                       <div class="row">
-                        Top level
+                        3rd
+                        <p>( 2 )</p>
                       </div>
                     </div>
                   </a>
@@ -69,18 +168,9 @@
                     <li>
                       <a href="#">
                         <div class="container-fluid">
-                          <div class="row">
-                              1st
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="container-fluid">
                             <div class="row">
-                                2nd
-                                <p>( 2 )</p>
+                                4th
+                                <p>( 3 )</p>
                             </div>
                         </div>
                       </a>
@@ -89,164 +179,68 @@
                           <a href="#">
                             <div class="container-fluid">
                                 <div class="row">
-                                    4th
-                                    <p>( 3 )</p>
+                                    6th
                                 </div>
                             </div>
                           </a>
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        6th
-                                    </div>
-                                </div>
-                              </a>
-                              
-                            </li>
-                            <li>
-                              <a href="#">
-                                <div class="container-fluid">
-                                  <div class="row">
-                                     7th
-                                  </div>
-                                </div>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <div class="container-fluid">
-                                  <div class="row">
-                                      8th
-                                  </div>
-                                </div>
-                              </a>
-                            </li>
-                          </ul>
+                          
                         </li>
                         <li>
                           <a href="#">
                             <div class="container-fluid">
                               <div class="row">
-                                  5th
-                                  <p>( 2 )</p>
+                                 7th
                               </div>
                             </div>
                           </a>
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        9th
-                                    </div>
-                                </div>
-                              </a>
-                              
-                            </li>
-                            <li>
-                              <a href="#">
-                                <div class="container-fluid">
-                                  <div class="row">
-                                     10th
-                                  </div>
-                                </div>
-                              </a>
-                            </li>
-                          </ul>
+                        </li>
+                        <li>
+                          <a href="#">
+                            <div class="container-fluid">
+                              <div class="row">
+                                  8th
+                              </div>
+                            </div>
+                          </a>
                         </li>
                       </ul>
                     </li>
                     <li>
-                        <a href="#">
-                          <div class="container-fluid">
-                            <div class="row">
-                              3rd
+                      <a href="#">
+                        <div class="container-fluid">
+                          <div class="row">
+                              5th
                               <p>( 2 )</p>
-                            </div>
                           </div>
-                        </a>
-                        <ul>
-                          <li>
-                            <a href="#">
-                              <div class="container-fluid">
-                                  <div class="row">
-                                      4th
-                                      <p>( 3 )</p>
-                                  </div>
-                              </div>
-                            </a>
-                            <ul>
-                              <li>
-                                <a href="#">
-                                  <div class="container-fluid">
-                                      <div class="row">
-                                          6th
-                                      </div>
-                                  </div>
-                                </a>
-                                
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <div class="container-fluid">
-                                    <div class="row">
-                                       7th
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <div class="container-fluid">
-                                    <div class="row">
-                                        8th
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <div class="container-fluid">
+                        </div>
+                      </a>
+                      <ul>
+                        <li>
+                          <a href="#">
+                            <div class="container-fluid">
                                 <div class="row">
-                                    5th
-                                    <p>( 2 )</p>
+                                    9th
                                 </div>
+                            </div>
+                          </a>
+                          
+                        </li>
+                        <li>
+                          <a href="#">
+                            <div class="container-fluid">
+                              <div class="row">
+                                 10th
                               </div>
-                            </a>
-                            <ul>
-                              <li>
-                                <a href="#">
-                                  <div class="container-fluid">
-                                      <div class="row">
-                                          9th
-                                      </div>
-                                  </div>
-                                </a>
-                                
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <div class="container-fluid">
-                                    <div class="row">
-                                       10th
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
                     </li>
                   </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
 
