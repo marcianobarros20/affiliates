@@ -31,6 +31,8 @@
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="admin_support/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
+    <link rel="stylesheet" href="css/admin_style.css">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -38,184 +40,221 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script type="text/javascript" src="js/affiliate.js"></script>
-
- 
-    <style>
-  
-
-
-   #user_info_box{
-    background-color: lightgrey;
-    border: 10px solid #003366;
-   }
-   
-   .box-header{
-    padding: 10px;
-
-   }
-
-   .box-body{
-    padding: 10px;
-
-   }
-
-   #uppertier_info_box{
-    background-color: lightgrey;
-    border: 10px solid #003366;
-
-   }
-
-   #first_lower_tier_info{
-    background-color: lightgrey;
-    border: 10px solid #003366;
-
-   }
-
-</style>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
 
-     <?php echo $header;?>
-      <!-- Left side column. contains the logo and sidebar -->
-      <?php echo $leftsidebar;?>
-      <!-- Control Sidebar -->
+    <?php echo $header;?>
+    <!-- Left side column. contains the logo and sidebar -->
+    <?php echo $leftsidebar;?>
+    <!-- Control Sidebar -->
 
-      <?php echo $rightsidebar;?>
-      <!-- /.control-sidebar -->
-
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-          
-
-
-          <section class="content">
-            <div align="right">
-                  <h4><a  href="<?php echo base_url();?>index.php/admin/users"><span><<</span>  Back </a> </h4>
-            </div><!-- /.box-header -->
-
-                <div class="box" id="user_info_box">
-                    <div class="box-header">
-                      <h1 class="box-title">User Details</h1> 
-                    </div><!-- /.box-header -->
-                    <div class="box-body"> <!-- box-body -->     
-                           
-                           Name: <?php echo $user_info['fname']." ".$user_info['lname'];?>
-                           <br>
-                           User Name: <?php echo $user_info['username'];?>
-                           <br>
-                           Email: <?php echo $user_info['email'];?>
-                           <br>
-                           Refferal Code: <?php echo $user_info['refferalcode'];?>
-                           <br>
-                           Date Of Registration: <?php echo date('m/d/Y',strtotime($user_info['date_register']));?>
-                    </div> <!-- /.box-body -->
-                </div><!-- /.box -->
-
-                 <?php 
-                   if ($user_info['parent_id']==0)
-                   {
-                        echo "";
-                   }
-                   else
-                  {
-                  ?>
-                  <div class="box" id="uppertier_info_box">
-                      <div class="box-header">
-                        <h1 class="box-title">Upper Tier</h1> 
-                      </div><!-- /.box-header -->
-                      <div class="box-body"> <!-- box-body -->  
-                       
-                              <?php 
-
-                            $parent_info=Parentstatus($user_info['parent_id']);
-                          ?>
-                      
-                           Name:  <?php echo $parent_info['fname'].  ' '.$parent_info['lname']; ?>
-                           <br>
-                           Refferal Code:  <?php echo $user_info['refferalparent']; ?>
-
-                      </div> <!-- /.box-body -->
-                  </div><!-- /.box -->
-                  <?php } ?>
-            
-                  <div class="box" id="first_lower_tier_info">
-                      <div class="box-header">
-                        <h1 class="box-title">Affiliate Details</h1> 
-                      </div><!-- /.box-header -->
-                      <div class="box-body">
-                        
-                         <h1>Tier 4</h1>
-                         
-                         <div class="row-fluid">
-                             <div class="span3">
-                         <?php  $child_info=children_info($user_info['uid']);
-                           if($child_info)
-                           {
-                                 foreach ($child_info as $key )
-                                 {  
-
-                                  
-                                ?><div class="row-wrapper">
-                                  
-                                <?php
-                                      
-                                  
-                                   echo 'Id:'.$key['uid']. '</br> Name:'.$key['fname']." ".$key['lname'].'<br> Email:'.$key['email'].'<br> Refferal Code:'.$key['refferalcode'].'<br><input type="button" value="Show Tier 3 Affiliates" onclick="show_child_tier3('.$key['uid'].')"><br><br>';
-                                 
-                                   ?>
-                                    <div id="child_show_tier3<?php echo $key['uid'];?>" style="border: 10px solid #003366; padding-left:50px; padding-right:10px;">
-
-                                      
-
-                                   </div>
-                                   
-
-                                   <hr>
-                                  
-                                  <?php
-                                   }
-                                  ?>
-                                   </div>
-                                 </div>
-                                <?php
-
-
-                           }
-                           else
-                           {
-                                 
-                                  echo('Donot Have Any Affiliate Till Now');
-                            }
-                         ?>
-                          
-                       </div>
-                      </div>  
-                    
-
-                        
-                  </div><!-- /.box -->
-
-
-        </section>
-               
-         
-
+    <?php echo $rightsidebar;?>
+    <!-- /.control-sidebar -->
+    <div class="content-wrapper">
+      <div class="">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="tree">
+              <ul>
+                <li>
+                  <a href="#">
+                    <div class="container-fluid">
+                      <div class="row">
+                        Top level
+                      </div>
+                    </div>
+                  </a>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <div class="container-fluid">
+                          <div class="row">
+                              1st
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <div class="container-fluid">
+                            <div class="row">
+                                2nd
+                                <p>( 2 )</p>
+                            </div>
+                        </div>
+                      </a>
+                      <ul>
+                        <li>
+                          <a href="#">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    4th
+                                    <p>( 3 )</p>
+                                </div>
+                            </div>
+                          </a>
+                          <ul>
+                            <li>
+                              <a href="#">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        6th
+                                    </div>
+                                </div>
+                              </a>
+                              
+                            </li>
+                            <li>
+                              <a href="#">
+                                <div class="container-fluid">
+                                  <div class="row">
+                                     7th
+                                  </div>
+                                </div>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <div class="container-fluid">
+                                  <div class="row">
+                                      8th
+                                  </div>
+                                </div>
+                              </a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <a href="#">
+                            <div class="container-fluid">
+                              <div class="row">
+                                  5th
+                                  <p>( 2 )</p>
+                              </div>
+                            </div>
+                          </a>
+                          <ul>
+                            <li>
+                              <a href="#">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        9th
+                                    </div>
+                                </div>
+                              </a>
+                              
+                            </li>
+                            <li>
+                              <a href="#">
+                                <div class="container-fluid">
+                                  <div class="row">
+                                     10th
+                                  </div>
+                                </div>
+                              </a>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                          <div class="container-fluid">
+                            <div class="row">
+                              3rd
+                              <p>( 2 )</p>
+                            </div>
+                          </div>
+                        </a>
+                        <ul>
+                          <li>
+                            <a href="#">
+                              <div class="container-fluid">
+                                  <div class="row">
+                                      4th
+                                      <p>( 3 )</p>
+                                  </div>
+                              </div>
+                            </a>
+                            <ul>
+                              <li>
+                                <a href="#">
+                                  <div class="container-fluid">
+                                      <div class="row">
+                                          6th
+                                      </div>
+                                  </div>
+                                </a>
+                                
+                              </li>
+                              <li>
+                                <a href="#">
+                                  <div class="container-fluid">
+                                    <div class="row">
+                                       7th
+                                    </div>
+                                  </div>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#">
+                                  <div class="container-fluid">
+                                    <div class="row">
+                                        8th
+                                    </div>
+                                  </div>
+                                </a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <div class="container-fluid">
+                                <div class="row">
+                                    5th
+                                    <p>( 2 )</p>
+                                </div>
+                              </div>
+                            </a>
+                            <ul>
+                              <li>
+                                <a href="#">
+                                  <div class="container-fluid">
+                                      <div class="row">
+                                          9th
+                                      </div>
+                                  </div>
+                                </a>
+                                
+                              </li>
+                              <li>
+                                <a href="#">
+                                  <div class="container-fluid">
+                                    <div class="row">
+                                       10th
+                                    </div>
+                                  </div>
+                                </a>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-   
+    </div>
 
-
-
-      
-
-
-
-      <!-- Add the sidebar's background. This div must be placed
+    <!-- Add the sidebar's background. This div must be placed
            immediately after the control sidebar -->
-      <div class="control-sidebar-bg"></div>
+    <div class="control-sidebar-bg"></div>
     </div><!-- ./wrapper -->
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js" type="text/javascript"></script>
     <!-- jQuery 2.1.4 -->
     <script src="admin_support/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -259,4 +298,13 @@
      <?php echo $footer;?>
      <!-- footer -->
   </body>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".tree ul li a").click(function(e){
+      $(this).parent().find($("ul")).first().toggleClass("open");
+      $(this).parent().siblings().find($("ul")).removeClass("open");
+      e.preventDefault();
+    });
+  });
+</script>
 </html>
