@@ -353,6 +353,14 @@
          return $val;
       }
 
+      function fetch_active()
+      {
+        $this->db->select('*');
+        $this->db->where('status',1);
+        $res=$this->db->get('users');
+        return $res->result_array();
+      }
+
 
   }
 ?>

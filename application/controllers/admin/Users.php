@@ -70,8 +70,7 @@ class Users extends CI_Controller {
 
 
 		   $data['list']= $this->Common_model->fetchrejectandpending();
-		  
-
+           $data['active_affiliate']=$this->Common_model->fetch_active();
 		   $data['header']=$this->load->view('admin/includes/header','',true);
 		   $data['footer']=$this->load->view('admin/includes/footer','',true);
 		   $data['leftsidebar']=$this->load->view('admin/includes/leftsidebar','',true);

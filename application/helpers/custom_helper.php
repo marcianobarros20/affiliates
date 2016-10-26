@@ -19,6 +19,7 @@
 
         $CI->db->select('uid,fname,lname,refferalcode,username,email,date_register,profile_image');
         $CI->db->where('parent_id',$uid);
+        $CI->db->where('status',1);
         $res = $CI->db->get('users');
         return $return = $res->result_array();
 
@@ -221,6 +222,7 @@ function fetchCategoryTreeList5($parent = 0, $user_tree_array = '') {
 
         $CI->db->select('*');
         $CI->db->where('parent_id',$parent);
+        $CI->db->where('status',1);
         $res = $CI->db->get('users');
         $info=$res->result_array();
   
@@ -475,6 +477,78 @@ function Fnchktrainingstatus($cl_id,$co_id,$u_id)
         $res = $CI->db->get('answer_quize');
         return $return = $res->result_array();     
   }
+
+  /*function affiliate_count($uid)
+  {
+    //return $uid;
+      $CI=& get_instance();
+      $CI->load->database(); 
+      $CI->db->select('*');
+      $CI->db->where('parent_id',$uid);
+      $CI->db->where('status',1);
+      $q = $CI->db->get('users');
+      $allchild = $q->result_array();  
+      $count=$q->num_rows();
+      foreach ($allchild as $child )
+      {
+        
+      }
+
+  }*/
+
+
+ function affiliate_count($parent = 0)
+ {
+    $count=0;
+
+    $CI=& get_instance();
+    $CI->load->database(); 
+    $CI->db->select('*');
+    $CI->db->where('parent_id',$parent);
+    $CI->db->where('status',1);
+    $res = $CI->db->get('users');
+    $info=$res->result_array();
+  
+    if ($res->num_rows() > 0)
+    {
+      $count=$res->num_rows();
+      if ($res->result_array())
+      {
+        foreach($info as $ins)
+        {
+          $count_recur=affiliate_count1($ins['uid'],$count);
+          $count=$count+$count_recur;
+        }
+      }
+    }
+    return $count;
+  }
+
+  function affiliate_count1($parent = 0,$count1)
+  {
+    $CI=& get_instance();
+    $CI->load->database(); 
+    if ($count1)
+    $count=0;
+    $CI->db->select('*');
+    $CI->db->where('parent_id',$parent);
+    $res = $CI->db->get('users');
+    $info=$res->result_array();
+  
+    if ($res->num_rows() > 0)
+    {
+      $count=$res->num_rows();
+      if ($res->result_array()) {
+      foreach($info as $ins)
+      {
+          $count_recur=affiliate_count1($ins['uid'],$count);
+          $count=$count+$count_recur;
+      }
+    }
+    //$user_tree_array[] = "</ul>";
+  }
+  return $count;
+}
 
 
 

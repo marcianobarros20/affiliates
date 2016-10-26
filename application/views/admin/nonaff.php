@@ -38,6 +38,32 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script type="text/javascript" src="js/affiliate.js"></script>
+    <style type="text/css">
+      .suggestion
+      {
+          border: 1px solid #ccc;
+          position: absolute;
+          
+          background: #fff;
+          z-index: 9;
+          padding: 10px;
+          width: 250px;
+      }
+
+      
+      /*.assign{
+        position: relative;
+      }
+
+      .scroll {
+
+    
+    height: 200px;
+    overflow-y: scroll;
+    
+    overflow-x: hidden; 
+     }*/
+    </style>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -90,7 +116,31 @@
                                   }
                                 ?>
                               </td>
-                              <td><span id="assign_reff_<?php echo $users['uid'];?>" style="display:none"><input type="text" placeholder="Assign Refferal Code" id="refferal_code_<?php echo $users['uid'];?>"><input type="submit" value="Assign" id="assign_code_btn_<?php echo $users['uid'];?>"> </span></td>
+                              <td><span id="assign_reff_<?php echo $users['uid'];?>" style="display:none" class="assign">
+                                    <input type="text" placeholder="Assign Refferal Code" id="refferal_code_<?php echo $users['uid'];?>"  onfocus="show_sugg(<?php echo $users['uid'];?>)" class="refferal"><input type="submit" value="Assign" class="reff_assign" id="assign_code_btn_<?php echo $users['uid'];?>">
+                                    <br>
+  
+                                      <div class="suggestion  scroll" style="display:none;" id="suggestion_div_<?php echo $users['uid'];?>">
+                                        <?php foreach($active_affiliate as $affiliate) {?>
+
+                                         <a onclick="get_refferal('<?php echo $users['uid']; ?>','<?php echo $affiliate['refferalcode']; ?>')">
+                                          <div class="row" >
+                                            <div class="col-md-4" title="Affiliate Name" >
+                                              <?php echo $affiliate['fname']." ".$affiliate['lname']; ?>
+                                            </div>
+                                            <div class="col-md-6" title="Refferal Code">
+                                              <?php echo $affiliate['refferalcode']; ?>
+                                            </div>
+                                            <div class="col-md-2" title="Number Of Affiliates">
+                                             <?php echo $total_affiliate=affiliate_count($affiliate['uid']); ?>
+                                            </div>
+                                            
+                                          </div></a>
+                                        <?php } ?>
+
+                                      </div>
+                                       
+                                   </span></td>
                               <td>
 
                                    <?php 
