@@ -438,8 +438,9 @@ function show_child_tier0(uid)
   function show_assign_div(uid)
   {
     //alert(uid);
+    $('.suggestion').hide();
     $('#Assign_div_'+uid).toggle();
-
+   
     $('#assign_code_button_'+uid).click(function(){
 
              refferalcode=$.trim($('#assign_code_'+uid).val());
@@ -863,4 +864,13 @@ function get_refferal(uid,refferal)
     $('.suggestion').hide();
    
 }
+
+function get_refferals(uid,refferal)
+{
+   $("#assign_code_"+uid).val(refferal);
+    $('.suggestion').hide();
+   
+}
+
+
 

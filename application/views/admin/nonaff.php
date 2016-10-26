@@ -41,13 +41,25 @@
     <style type="text/css">
       .suggestion
       {
-          border: 1px solid #ccc;
           position: absolute;
-          
-          background: #fff;
           z-index: 9;
-          padding: 10px;
-          width: 250px;
+          border-radius: 3px 3px 3px 3px;
+          height: 500px; overflow-y: scroll;
+      }
+
+      .all-affiliate
+      {
+        padding: 10px 10px 10px 10px ;
+        background: #3c8dbc;
+        color: #fff;
+
+      }
+
+      .all-affiliate:hover
+      {
+        padding: 10px 10px 10px 10px ;
+        background:#fff ;
+        color: #3c8dbc;
       }
 
       
@@ -118,13 +130,13 @@
                               </td>
                               <td><span id="assign_reff_<?php echo $users['uid'];?>" style="display:none" class="assign">
                                     <input type="text" placeholder="Assign Refferal Code" id="refferal_code_<?php echo $users['uid'];?>"  onfocus="show_sugg(<?php echo $users['uid'];?>)" class="refferal"><input type="submit" value="Assign" class="reff_assign" id="assign_code_btn_<?php echo $users['uid'];?>">
-                                    <br>
+                                   
   
-                                      <div class="suggestion  scroll" style="display:none;" id="suggestion_div_<?php echo $users['uid'];?>">
+                                      <div class="row suggestion" style="display:none;" id="suggestion_div_<?php echo $users['uid'];?>">
                                         <?php foreach($active_affiliate as $affiliate) {?>
 
                                          <a onclick="get_refferal('<?php echo $users['uid']; ?>','<?php echo $affiliate['refferalcode']; ?>')">
-                                          <div class="row" >
+                                          <div class="row all-affiliate" >
                                             <div class="col-md-4" title="Affiliate Name" >
                                               <?php echo $affiliate['fname']." ".$affiliate['lname']; ?>
                                             </div>

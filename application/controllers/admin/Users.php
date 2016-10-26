@@ -40,6 +40,7 @@ class Users extends CI_Controller {
 
 		else
 		{	
+			$data['active_affiliate']=$this->Common_model->fetch_active();
 			$data['header']=$this->load->view('admin/includes/header','',true);
 			$data['footer']=$this->load->view('admin/includes/footer','',true);
 			$data['rightsidebar']=$this->load->view('admin/includes/rightsidebar','',true);
@@ -47,6 +48,7 @@ class Users extends CI_Controller {
 			$con=array('status'=>1);
  
 			$data['list_users']=$this->Common_model->fetchinfo('users',$con,'result');
+			 $data['active_affiliate']=$this->Common_model->fetch_active();
              
 			$this->load->view('admin/affiliates',$data);
 		}

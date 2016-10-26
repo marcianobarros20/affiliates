@@ -37,6 +37,37 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+      .assign-upper {
+        padding: 5px 5px 5px 5px;
+
+       }
+
+      .suggestion
+      {
+          position: absolute;
+          z-index: 9;
+          border-radius: 3px 3px 3px 3px;
+          height: 500px; overflow-y: scroll;
+      }
+
+      .all-affiliate
+      {
+        padding: 10px 10px 10px 10px ;
+        background: #3c8dbc;
+        color: #fff;
+
+      }
+
+      .all-affiliate:hover
+      {
+        padding: 10px 10px 10px 10px ;
+        background:#fff ;
+        color: #3c8dbc;
+      }
+
+     
+    </style>
     <script type="text/javascript" src="js/affiliate.js"></script>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
@@ -84,25 +115,41 @@
                               {
                                  echo "Top Most Tier";
                               }
-                              else
-                              {
-                               echo "";
-                              }
-                          }
-                          else
-                          {
-                            echo '<button id="Assign_upperdiv_button'.$users['uid'].'" onclick="show_assign_div('.$users['uid'].')">Assign Upper Tier</button>
-                                  <br>
-                                  <br>
-                                  <div style="display:none" id="Assign_div_'.$users['uid'].'"><input type="Text" placeholder="Assign Refferal Code" id="assign_code_'.$users['uid'].'">
-                                  <br>
-                                  <input type="button" value="Click To Assign" id="assign_code_button_'.$users['uid'].'" onclick="assign_uppertier('.$users['uid'].')">
-                                  </div>';
-                          }
-                        ?>
+                              
+                          } ?>
+                          
+                                  
+                                  
+                                  <div class="col-md-12 assign-upper" style="display:none" id="Assign_div_<?php echo $users['uid']; ?>">
+                                    <input type="text" placeholder="Assign Refferal Code" id="assign_code_<?php echo $users['uid']; ?>" onfocus="show_sugg(<?php echo $users['uid']; ?>)">
+                                    <input type="button" class="" value="Click To Assign" id="assign_code_button_<?php echo $users['uid']; ?>" onclick="assign_uppertier(<?php echo $users['uid']; ?>)">
+                                    <div class="row suggestion" style="display:none" id="suggestion_div_<?php echo $users['uid']; ?>">
+                                       <?php foreach($active_affiliate as $affiliate) {?>
+
+                                         <a onclick="get_refferals('<?php echo $users['uid']; ?>','<?php echo $affiliate['refferalcode']; ?>')">
+                                          <div class="row all-affiliate" >
+                                            <div class="col-md-4" title="Affiliate Name" >
+                                              <?php echo $affiliate['fname']." ".$affiliate['lname']; ?>
+                                            </div>
+                                            <div class="col-md-6" title="Refferal Code">
+                                              <?php echo $affiliate['refferalcode']; ?>
+                                            </div>
+                                            <div class="col-md-2" title="Number Of Affiliates">
+                                             <?php echo $total_affiliate=affiliate_count($affiliate['uid']); ?>
+                                            </div>
+                                            
+                                          </div></a>
+                                        <?php } ?>
+
+                                    </div>
+                                  </div>
+                        
+                       
 
                       </td>
-                     <td><?php 
+                     <td>
+
+                      <?php 
                         
                               if($users['parent_id']=="0")
                               {
@@ -117,6 +164,20 @@
                             <?php
                           }
                         ?>
+
+                        <?php 
+                          if($users['refferalparent'])
+                          {
+                             
+                          }
+                          else
+                          {
+                            echo '<button id="Assign_upperdiv_button'.$users['uid'].'" onclick="show_assign_div('.$users['uid'].')" class="label label-warning" title="Assign Upper Tier">Assign</button>
+                                  
+                                 ';
+                          }
+                        ?>
+
 
 
 
