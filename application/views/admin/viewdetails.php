@@ -55,7 +55,8 @@
 
           
     <div class="content-wrapper">
-      <div class="tree">
+      <div class="charttree">
+        <div class="tree">
         <?php $res = fetchaffiliatestree($user_info['uid']);  if(!empty($res)){?>
           <ul>  
              <li><a href='#'><div class='container-fluid'><div class='row'><?php echo $user_info['fname'].' '.$user_info['lname'];?><p><?php echo $total_affiliate=affiliate_count($user_info['uid']); ?></p></div></div></a> 
@@ -66,6 +67,7 @@
               </li>
           </ul>
         <?php }?>
+        </div>
       </div>
     </div>
 
