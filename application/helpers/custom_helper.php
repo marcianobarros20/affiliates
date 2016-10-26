@@ -571,13 +571,13 @@ function fetchchildaffiliate($parent = 0, $user_tree_array = '') {
          $child=children_info($ins['uid']);
          if(!empty($child))
          {
-            $user_tree_array[] = "<li> <a href='#''><div class='container-fluid'><div class='row'>". $ins['fname'].' '.$ins['lname']."<p>". $total_affiliate=affiliate_count($ins['uid'])."</p></div></div></a>";
+            $user_tree_array[] = "<li> <a ><div class='container-fluid'><div class='row' onclick='description(".$ins['uid'].")'>". $ins['fname'].' '.$ins['lname']."<p>". $total_affiliate=affiliate_count($ins['uid'])."</p></div></div></a>";
             $user_tree_array = fetchchildaffiliate($ins['uid'], $user_tree_array);
             $user_tree_array[]="</li>";
         }
         else
         {
-             $user_tree_array[] = "<li> <a href='#''><div class='container-fluid'><div class='row'>". $ins['fname'].' '.$ins['lname']."<p>". $total_affiliate=affiliate_count($ins['uid'])."</p></div></div></a></li>";
+             $user_tree_array[] = "<li> <a ><div class='container-fluid'><div class='row' onclick='description(".$ins['uid'].")'>". $ins['fname'].' '.$ins['lname']."<p>". $total_affiliate=affiliate_count($ins['uid'])."</p></div></div></a></li>";
         }
       
         }
@@ -608,13 +608,13 @@ function fetchaffiliatestree($parent = 0, $user_tree_array = '') {
          $child=children_info($ins['uid']);
          if(!empty($child))
          {
-      $user_tree_array[] = "<li> <a href='#''><div class='container-fluid'><div class='row'>". $ins['fname'].' '.$ins['lname']."<p>". $total_affiliate=affiliate_count($ins['uid'])."</p></div></div></a>";
+      $user_tree_array[] = "<li> <a ><div class='container-fluid'><div class='row' onclick='description(".$ins['uid'].")'>". $ins['fname'].' '.$ins['lname']."<p>". $total_affiliate=affiliate_count($ins['uid'])."</p></div></div></a>";
       $user_tree_array = fetchchildaffiliate($ins['uid'], $user_tree_array);
       $user_tree_array[]="</li>";
         }
         else
         {
-            $user_tree_array[] = "<li> <a href='#''><div class='container-fluid'><div class='row'>". $ins['fname'].' '.$ins['lname']."<p>". $total_affiliate=affiliate_count($ins['uid'])."</p></div></div></a></li>";
+            $user_tree_array[] = "<li> <a ><div class='container-fluid'><div class='row' onclick='description(".$ins['uid'].")'>". $ins['fname'].' '.$ins['lname']."<p>". $total_affiliate=affiliate_count($ins['uid'])."</p></div></div></a></li>";
         }
       
         }

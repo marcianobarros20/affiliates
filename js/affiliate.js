@@ -1,5 +1,4 @@
- 
-  $(document).ready(function() {
+ $(document).ready(function() {
       /*
        *  Simple image gallery. Uses default settings
        */
@@ -8,6 +7,8 @@ $('#course_id').change(function(){
 
 $('#show_class_div').submit();
 });
+
+
 
 
 $('#quize_course_id').change(function(){
@@ -208,7 +209,7 @@ if($(this).val()!='')
          // var conf=confirm("You sure you want to Approve this user!");
         
            $("#assign_reff_"+param1).toggle();
-
+           $('.suggestion').hide();
            $('#assign_code_btn_'+param1).click(function(){
 
              refferalcode=$.trim($('#refferal_code_'+param1).val());
@@ -848,5 +849,18 @@ function change_status_popup(action,videoid)
             }
   }
   
+}
+
+function show_sugg(userid)
+{
+  $('.suggestion').hide();
+  $('#suggestion_div_'+userid).fadeIn();
+}
+
+function get_refferal(uid,refferal)
+{
+   $("#refferal_code_"+uid).val(refferal);
+    $('.suggestion').hide();
+   
 }
 

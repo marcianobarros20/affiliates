@@ -21,9 +21,9 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
      <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-
+  <link rel="stylesheet" href="css/admin_style.css">
  <script type="text/javascript" src="js/menu.js"></script>
-
+ <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
  <!-- tree css and js -->
   
     <link rel="stylesheet" href="css/jquery.jOrgChart.css"/>
@@ -44,8 +44,7 @@
     <link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
  
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"> 
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
      <script type="text/javascript" src="js/frame.js"></script>
  
 </head>
@@ -86,31 +85,86 @@
         <a href="<?php echo base_url();?>welcome/view_downstrem">Down Stream</a>
       </div>
       <div class="col-md-8" >
-        Your Rank In This Week
-        <!-- <h1 class="center">Meet the Team</h1>
-          <center>
+         <h1 class="center">Team</h1>
+         <!--  <center>
             <div class="comment_div">
-             ('Click' On <strong>Name</strong> To View The Details Of Affiliates)
+              ('Click' On <strong>Name</strong> To View The Details Of Affiliates)
             </div>
           </center> -->
-        <!-- <div class="chart_tree">
-          <div id="chart" class="orgChart"></div>
-            <?php $res = fetchCategoryTreeList5($this->session->userdata('user_id'));  if(!empty($res)) { ?>
-              <ul id="org" style="display:none">  
-                <li><?php echo $fetch_allinfo['fname'].' '.$fetch_allinfo['lname'];?> 
-                  <?php
-                    foreach ($res as $r)
-                    {
-                      echo  $r;
-                    }?>
-                </li>
-              </ul>
-            <?php }?>
-        </div> -->
+          <div class="tree ">
+        
+          <ul>  
+              <li>
+                <a href='#'>
+                  <div class='container-fluid'>
+                    <div class='row'>
+                      <?php echo $fetch_allinfo['fname'].' '.$fetch_allinfo['lname'];?>
+                    </div>
+                  </div>
+                </a>
+                  <ul>  
+                    <li>
+                      <a href='#'>
+                        <div class='container-fluid'>
+                          <div class='row'>
+                            <?php echo $fetch_allinfo['fname'].' '.$fetch_allinfo['lname'];?>
+                          </div>
+                        </div>
+                      </a>
+                         <ul>  
+                            <li>
+                              <a href='#'>
+                                <div class='container-fluid'>
+                                  <div class='row'>
+                                    <?php echo $fetch_allinfo['fname'].' '.$fetch_allinfo['lname'];?>
+                                  </div>
+                                </div>
+                              </a>
+                                 <ul>  
+                                    <li>
+                                      <a href='#'>
+                                        <div class='container-fluid'>
+                                          <div class='row'>
+                                            <?php echo $fetch_allinfo['fname'].' '.$fetch_allinfo['lname'];?>
+                                          </div>
+                                        </div>
+                                      </a> 
+                                    </li>
+                                  </ul> 
+                            </li>
+                          </ul> 
+                    </li>
+                  </ul> 
+              </li>
+          </ul>
+        
+      </div>
       </div>
     </div>
     </section>
 
+
+
+
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Basic Informations</h4>
+      </div>
+      <div class="modal-body" id="chkline">
+        ...
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -119,6 +173,14 @@
 <!--/Footer-->
     
      <script src="js/bootstrap.min.js"></script>
-  
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $(".tree ul li a").click(function(e){
+      $(this).parent().find($("ul")).first().toggleClass("open");
+      $(this).parent().siblings().find($("ul")).removeClass("open");
+      e.preventDefault();
+    });
+  });
+</script>
 </body>
 </html>
