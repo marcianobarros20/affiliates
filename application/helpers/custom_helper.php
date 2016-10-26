@@ -552,4 +552,79 @@ function Fnchktrainingstatus($cl_id,$co_id,$u_id)
 
 
 
+function fetchchildaffiliate($parent = 0, $user_tree_array = '') {
+ $CI=& get_instance();
+        $CI->load->database(); 
+    if (!is_array($user_tree_array))
+    $user_tree_array = array();
+
+        $CI->db->select('*');
+        $CI->db->where('parent_id',$parent);
+        $res = $CI->db->get('users');
+        $info=$res->result_array();
+  
+  if ($res->num_rows() > 0) {
+     $user_tree_array[] = "<ul>";
+    if ($res->result_array()) {
+        foreach($info as $ins)
+        {
+         $child=children_info($ins['uid']);
+         if(!empty($child))
+         {
+            $user_tree_array[] = "<li> <a href='#''><div class='container-fluid'><div class='row'>". $ins['fname'].' '.$ins['lname']."<p>". $total_affiliate=affiliate_count($ins['uid'])."</p></div></div></a>";
+            $user_tree_array = fetchchildaffiliate($ins['uid'], $user_tree_array);
+            $user_tree_array[]="</li>";
+        }
+        else
+        {
+             $user_tree_array[] = "<li> <a href='#''><div class='container-fluid'><div class='row'>". $ins['fname'].' '.$ins['lname']."<p>". $total_affiliate=affiliate_count($ins['uid'])."</p></div></div></a></li>";
+        }
+      
+        }
+    }
+    $user_tree_array[] = "</ul>";
+  }
+  return $user_tree_array;
+}
+
+
+function fetchaffiliatestree($parent = 0, $user_tree_array = '') {
+ $CI=& get_instance();
+        $CI->load->database(); 
+    if (!is_array($user_tree_array))
+    $user_tree_array = array();
+
+        $CI->db->select('*');
+        $CI->db->where('parent_id',$parent);
+        $CI->db->where('status',1);
+        $res = $CI->db->get('users');
+        $info=$res->result_array();
+  
+  if ($res->num_rows() > 0) {
+     $user_tree_array[] = "<ul>";
+    if ($res->result_array()) {
+        foreach($info as $ins)
+        {
+         $child=children_info($ins['uid']);
+         if(!empty($child))
+         {
+      $user_tree_array[] = "<li> <a href='#''><div class='container-fluid'><div class='row'>". $ins['fname'].' '.$ins['lname']."<p>". $total_affiliate=affiliate_count($ins['uid'])."</p></div></div></a>";
+      $user_tree_array = fetchchildaffiliate($ins['uid'], $user_tree_array);
+      $user_tree_array[]="</li>";
+        }
+        else
+        {
+            $user_tree_array[] = "<li> <a href='#''><div class='container-fluid'><div class='row'>". $ins['fname'].' '.$ins['lname']."<p>". $total_affiliate=affiliate_count($ins['uid'])."</p></div></div></a></li>";
+        }
+      
+        }
+    }
+    $user_tree_array[] = "</ul>";
+  }
+  return $user_tree_array;
+}
+/* new child tree */
+
+
+
 ?>

@@ -51,196 +51,21 @@
 
     <?php echo $rightsidebar;?>
     <!-- /.control-sidebar -->
+
+
+          
     <div class="content-wrapper">
       <div class="tree">
-        <ul>
-          <li>
-            <a href="#">
-              <div class="container-fluid">
-                <div class="row">
-                  Top level
-                </div>
-              </div>
-            </a>
-            <ul>
-              <li>
-                <a href="#">
-                  <div class="container-fluid">
-                    <div class="row">
-                        1st
-                    </div>
-                  </div>
-                </a>
+        <?php $res = fetchaffiliatestree($user_info['uid']);  if(!empty($res)){?>
+          <ul>  
+             <li><a href='#'><div class='container-fluid'><div class='row'><?php echo $user_info['fname'].' '.$user_info['lname'];?><p><?php echo $total_affiliate=affiliate_count($user_info['uid']); ?></p></div></div></a> 
+               <?php
+                  foreach ($res as $r) {
+                    echo  $r;
+                  }?>
               </li>
-              <li>
-                <a href="#">
-                  <div class="container-fluid">
-                      <div class="row">
-                          2nd
-                          <p>( 2 )</p>
-                      </div>
-                  </div>
-                </a>
-                <ul>
-                  <li>
-                    <a href="#">
-                      <div class="container-fluid">
-                          <div class="row">
-                              4th
-                              <p>( 3 )</p>
-                          </div>
-                      </div>
-                    </a>
-                    <ul>
-                      <li>
-                        <a href="#">
-                          <div class="container-fluid">
-                              <div class="row">
-                                  6th
-                              </div>
-                          </div>
-                        </a>
-                        
-                      </li>
-                      <li>
-                        <a href="#">
-                          <div class="container-fluid">
-                            <div class="row">
-                               7th
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <div class="container-fluid">
-                            <div class="row">
-                                8th
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="container-fluid">
-                        <div class="row">
-                            5th
-                            <p>( 2 )</p>
-                        </div>
-                      </div>
-                    </a>
-                    <ul>
-                      <li>
-                        <a href="#">
-                          <div class="container-fluid">
-                              <div class="row">
-                                  9th
-                              </div>
-                          </div>
-                        </a>
-                        
-                      </li>
-                      <li>
-                        <a href="#">
-                          <div class="container-fluid">
-                            <div class="row">
-                               10th
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                  <a href="#">
-                    <div class="container-fluid">
-                      <div class="row">
-                        3rd
-                        <p>( 2 )</p>
-                      </div>
-                    </div>
-                  </a>
-                  <ul>
-                    <li>
-                      <a href="#">
-                        <div class="container-fluid">
-                            <div class="row">
-                                4th
-                                <p>( 3 )</p>
-                            </div>
-                        </div>
-                      </a>
-                      <ul>
-                        <li>
-                          <a href="#">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    6th
-                                </div>
-                            </div>
-                          </a>
-                          
-                        </li>
-                        <li>
-                          <a href="#">
-                            <div class="container-fluid">
-                              <div class="row">
-                                 7th
-                              </div>
-                            </div>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <div class="container-fluid">
-                              <div class="row">
-                                  8th
-                              </div>
-                            </div>
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="container-fluid">
-                          <div class="row">
-                              5th
-                              <p>( 2 )</p>
-                          </div>
-                        </div>
-                      </a>
-                      <ul>
-                        <li>
-                          <a href="#">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    9th
-                                </div>
-                            </div>
-                          </a>
-                          
-                        </li>
-                        <li>
-                          <a href="#">
-                            <div class="container-fluid">
-                              <div class="row">
-                                 10th
-                              </div>
-                            </div>
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
+          </ul>
+        <?php }?>
       </div>
     </div>
 
