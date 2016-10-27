@@ -626,5 +626,81 @@ function fetchaffiliatestree($parent = 0, $user_tree_array = '') {
 /* new child tree */
 
 
+function get_downstream($parent = 0, $user_tree_array = '')
+{
+    $CI=& get_instance();
+    $CI->load->database(); 
+    if (!is_array($user_tree_array))
+    $user_tree_array = array();
+
+    $CI->db->select('*');
+    $CI->db->where('parent_id',$parent);
+    $CI->db->where('status',1);
+    $res = $CI->db->get('users');
+    $info=$res->result_array();
+  
+    if ($res->num_rows() > 0)
+    {
+     
+      if ($res->result_array())
+      {
+        foreach($info as $ins)
+        {
+          $child=children_info($ins['uid']);
+          if(!empty($child))
+          {
+            $user_tree_array[] = $ins['uid'];
+            $user_tree_array = get_downstreams($ins['uid'], $user_tree_array);
+          }
+          else
+          {
+              $user_tree_array[] = $ins['uid'];
+          }
+        
+        }
+      }
+    
+  }
+  return $user_tree_array;
+}
+
+
+function get_downstreams($parent = 0, $user_tree_array = '')
+{
+  $CI=& get_instance();
+  $CI->load->database(); 
+  if (!is_array($user_tree_array))
+  $user_tree_array = array();
+
+  $CI->db->select('*');
+  $CI->db->where('parent_id',$parent);
+  $res = $CI->db->get('users');
+  $info=$res->result_array();
+  
+  if ($res->num_rows() > 0)
+  {
+    
+    if ($res->result_array()) {
+        foreach($info as $ins)
+        {
+         $child=children_info($ins['uid']);
+         if(!empty($child))
+          {
+            $user_tree_array[] = $ins['uid'];
+            $user_tree_array = get_downstreams($ins['uid'], $user_tree_array);
+          }
+          else
+          {
+              $user_tree_array[] = $ins['uid'];
+          }
+        
+      
+        }
+    }
+    
+  }
+  return $user_tree_array;
+}
+
 
 ?>

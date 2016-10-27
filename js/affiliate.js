@@ -447,24 +447,50 @@ function show_child_tier0(uid)
               
                 if(refferalcode)
                 {
+                  var getcode=$.trim($('#suggestion_div_'+uid).find(".reff-code").text());
+                  //alert(getcode);
                   
-                  
-                  var res= $.ajax({
-                  type : 'post',
-                  url : 'Ajax/assign_parent',
-                  data : 'refferalcode='+refferalcode+'& uid='+uid,
-                  async : false,
-                  success : function(msg)
-                   {
-                       alert(msg);
-                        window.location.reload();
+                    if(getcode.indexOf(refferalcode) !== -1)
+                    {
+                      var res= $.ajax({
+                      type : 'post',
+                      url : 'Ajax/assign_parent',
+                      data : 'refferalcode='+refferalcode+'& uid='+uid,
+                      async : false,
+                      success : function(msg)
+                       {
+                        if(msg==0)
+                        {
+                          alert('Invalid Reffaral Code');
+                        }
+                        else if(msg==1)
+                        {
+                          window.location.reload();
+                        }
+                        else if(msg==2)
+                        {
+                          alert('Try Again!');
+                        }
+                        else
+                        {
+                          window.location.reload();
+                        }
+                           /*alert(msg);
+                            window.location.reload();*/
 
-                   }
-                  });
+                       }
+                      });
+                    }
+                    else
+                    {
+                      alert('Reffaral Code Is Not Applicable');
+                    }
+                  
+                  
                 }
                 else
                 {
-                   alert("Assign Refferal Code");
+                  $('#assign_code_'+uid).focus();
                 }
              });
         

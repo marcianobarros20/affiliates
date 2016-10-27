@@ -108,6 +108,7 @@
                       <td><?php echo date('d/m/Y',strtotime($users['date_register']));?></td>
                       <td><?php echo $users['refferalcode'];?></td>
                       <td>
+                  
                         <?php 
                           if($users['refferalparent'])
                           {
@@ -121,22 +122,34 @@
                                     <input type="text" placeholder="Assign Refferal Code" id="assign_code_<?php echo $users['uid']; ?>" onfocus="show_sugg(<?php echo $users['uid']; ?>)">
                                     <input type="button" class="" value="Click To Assign" id="assign_code_button_<?php echo $users['uid']; ?>" onclick="assign_uppertier(<?php echo $users['uid']; ?>)">
                                     <div class="row suggestion" style="display:none" id="suggestion_div_<?php echo $users['uid']; ?>">
-                                       <?php foreach($active_affiliate as $affiliate) {?>
+                                       <?php 
+                                            $all_downstream=get_downstream($users['uid']);
+                                            $user = Array();
+                                            foreach ($all_downstream as $key => $value) {
+                                              $user[] = $value;
+                                            }
 
-                                         <a onclick="get_refferals('<?php echo $users['uid']; ?>','<?php echo $affiliate['refferalcode']; ?>')">
-                                          <div class="row all-affiliate" >
-                                            <div class="col-md-4" title="Affiliate Name" >
-                                              <?php echo $affiliate['fname']." ".$affiliate['lname']; ?>
+                                          foreach($active_affiliate as $affiliate) {
+                                           if($users['uid']!=$affiliate['uid']) {
+                                         
+                                         
+                                            if (!in_array($affiliate['uid'], $user)) 
+                                              { ?>
+                                             <a onclick="get_refferals('<?php echo $users['uid']; ?>','<?php echo $affiliate['refferalcode']; ?>')">
+                                            <div class="row all-affiliate" >
+                                              <div class="col-md-4" title="Affiliate Name" >
+                                                <?php echo $affiliate['fname']." ".$affiliate['lname']; ?>
+                                              </div>
+                                              <div class="col-md-6 reff-code" title="Refferal Code">
+                                                <?php echo $affiliate['refferalcode']; ?>
+                                              </div>
+                                              <div class="col-md-2" title="Number Of Affiliates">
+                                               <?php echo $total_affiliate=affiliate_count($affiliate['uid']); ?>
+                                              </div>
                                             </div>
-                                            <div class="col-md-6" title="Refferal Code">
-                                              <?php echo $affiliate['refferalcode']; ?>
-                                            </div>
-                                            <div class="col-md-2" title="Number Of Affiliates">
-                                             <?php echo $total_affiliate=affiliate_count($affiliate['uid']); ?>
-                                            </div>
-                                            
-                                          </div></a>
-                                        <?php } ?>
+                                          </a>  
+                                        <?php
+                                         } } } ?>
 
                                     </div>
                                   </div>

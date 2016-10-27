@@ -393,18 +393,18 @@ public function Fnoldpasswordchk()
 
                         if($update)
                         {
-                            echo "Assigned Successful";
+                            echo 1;
                         }
                         else
                         {
-                            echo "Assigned Rejected";
+                            echo 2;
                         }
 
 
                     }
                     else
                     {
-                    	echo "No Such refferal Code";
+                    	echo 0;
                     }
 				}
 			}
