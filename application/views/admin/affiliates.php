@@ -117,10 +117,7 @@
                               }
                               
                           } ?>
-                          
-                                  
-                                  
-                                  <div class="col-md-12 assign-upper" style="display:none" id="Assign_div_<?php echo $users['uid']; ?>">
+                           <div class="col-md-12 assign-upper" style="display:none" id="Assign_div_<?php echo $users['uid']; ?>">
                                     <input type="text" placeholder="Assign Refferal Code" id="assign_code_<?php echo $users['uid']; ?>" onfocus="show_sugg(<?php echo $users['uid']; ?>)">
                                     <input type="button" class="" value="Click To Assign" id="assign_code_button_<?php echo $users['uid']; ?>" onclick="assign_uppertier(<?php echo $users['uid']; ?>)">
                                     <div class="row suggestion" style="display:none" id="suggestion_div_<?php echo $users['uid']; ?>">
