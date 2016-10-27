@@ -50,10 +50,19 @@
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
-      <section>
+        <section class="content-header">
+           
+            <ol class="breadcrumb">
+         <li><a ><i class="fa fa-dashboard"></i> Manage Blog</a></li> 
+                <li class="active"><a href="<?php echo base_url();?>admin/blog"> Blog Details</a></li>
+                <li class="active"><a > Edit</a></li>
+            </ol>
+            <br>
+        </section>
+      <section class="content">
         <!-- Content Header (Page header) -->
         <div class="clearfix"></div>
-        <div class="box box-primary">
+        <div class="box ">
                 <div class="box-header with-border">
                   <h3 class="box-title">Edit Blog</h3>
                   <br>

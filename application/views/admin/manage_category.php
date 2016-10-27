@@ -49,6 +49,13 @@
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
+        <section class="content-header">
+            <ol class="breadcrumb">
+               <li><a><i class="fa fa-dashboard"></i> Manage Blog</a></li>
+                <li class="active"><a> Manage Blog Catagory</a></li>
+            </ol>
+            <br>
+        </section>
         <!-- Content Header (Page header) -->
         <section class="content">
         <div class="row">

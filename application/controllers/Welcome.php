@@ -250,7 +250,10 @@ class Welcome extends CI_Controller
 			$u_id=$this->session->userdata('user_id');
 			$con=array('uid'=>$u_id);
 			$con1=array('parent_id'=>$u_id);
-			$data['fetch_child']=$this->Common_model->fetchinfo('users',$con1,'result');
+		    
+
+		    $data['fetch_rank']=$this->Common_model->getlatestrank($u_id);
+			$data['fetch_child']=$this->Common_model->fetchinfo('users',$con1,'count');
 			$data['fetch_allinfo']=$this->Common_model->fetchinfo('users',$con,'row');
 			$data['header']=$this->load->view('includes/header',$data,true);
 			$data['footer']=$this->load->view('includes/footer','',true);
@@ -710,6 +713,60 @@ class Welcome extends CI_Controller
 			redirect();exit();
 		}
 	}
+
+	public function leader_board($start_date='')
+	{
+		 if($this->session->userdata('user_id')!='')
+		{
+			$data=array();
+			$data['set_code']='';
+			$u_id=$this->session->userdata('user_id');
+			$con=array('uid'=>$u_id);
+			$con1=array('parent_id'=>$u_id);
+			
+			 if($start_date!='')
+            {
+
+				$days_ago = date('Y-m-d', strtotime('-7 days', strtotime($start_date)));
+                $date=$days_ago;
+                $ts = strtotime($date);
+                $start = (date('w', $ts) == 0) ? $ts : strtotime('last sunday', $ts);
+                $last_week_start = date('Y-m-d', $start);
+                $last_week_end = date('Y-m-d', strtotime('next saturday', $start));
+				
+		    }
+		    else
+		    {
+
+                $previous_week = strtotime("-1 week +1 day");
+	            $start_week = strtotime("last sunday midnight",$previous_week);
+			    $end_week = strtotime("next saturday",$start_week);
+	            $last_week_start = date("Y-m-d",$start_week);
+			    $last_week_end = date("Y-m-d",$end_week);
+		    }
+            
+
+            $data['get_leader_board']=$this->Common_model->get_leader_board($last_week_start,$last_week_end);
+			$data['last_week_start']=$last_week_start;
+			$data['last_week_end']=$last_week_end;
+			
+			$data['fetch_allinfo']=$this->Common_model->fetchinfo('users',$con,'row');
+			$data['header']=$this->load->view('includes/header',$data,true);
+			$data['footer']=$this->load->view('includes/footer','',true);
+			$data['middle']=$this->load->view('includes/middle','',true);
+			
+
+			$this->load->view('leaderboard',$data);
+		}
+		else
+		{
+			$this->session->set_userdata('err_msg','You are Not Yet Logged In.');
+			redirect();exit();
+		}
+	}
+
+
+
 
 	
 

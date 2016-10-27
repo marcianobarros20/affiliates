@@ -26,16 +26,24 @@
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            <li class="header" style="color:white;">MAIN NAVIGATION</li>
+           <!--  <li class="header" style="color:white;">MAIN NAVIGATION</li> -->
+            <li class="<?php if($this->uri->segment(1)=='admin'){ echo 'active';}?> treeview">
+              <a href="<?php echo base_url();?>admin">
+                <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              
+            </li>
+
+
             <li class="<?php if($this->uri->segment(2)=='users'){ echo 'active';}?> treeview">
               <a href="<?php echo base_url();?>admin/welcome">
-                <i class="fa fa-dashboard"></i> <span>Manage users</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-dashboard"></i> <span>Manage Users</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
 
                 <li <?php if($this->uri->segment(2)=='users' && $this->uri->segment(3)==''){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/users"><i class="fa fa-circle-o"></i> Affiliate</a></li>
-                <li <?php if($this->uri->segment(2)=='users' && $this->uri->segment(3)=='non_aff'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/users/non_aff"><i class="fa fa-circle-o"></i>Non-Affiliate</a></li>
-                <li <?php if($this->uri->segment(2)=='users' && $this->uri->segment(3)=='delete_affiliate'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/users/delete_affiliate"><i class="fa fa-circle-o"></i>Deleted-Affiliate</a></li>
+                <li <?php if($this->uri->segment(2)=='users' && $this->uri->segment(3)=='non_aff'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/users/non_aff"><i class="fa fa-circle-o"></i> Non-Affiliate</a></li>
+                <li <?php if($this->uri->segment(2)=='users' && $this->uri->segment(3)=='delete_affiliate'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/users/delete_affiliate"><i class="fa fa-circle-o"></i> Deleted-Affiliate</a></li>
                
               </ul>
             </li>
@@ -46,7 +54,7 @@
               </a>
               <ul class="treeview-menu">
                 <li  <?php if($this->uri->segment(2)=='blog' && $this->uri->segment(3)=='add'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/blog/add"><i class="fa fa-circle-o"></i>Add Blog</a></li>
-                <li  <?php if($this->uri->segment(2)=='blog' && $this->uri->segment(3)==''){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/blog"><i class="fa fa-circle-o"></i> Manage Blog</a></li>
+                <li  <?php if($this->uri->segment(2)=='blog' && $this->uri->segment(3)==''){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/blog"><i class="fa fa-circle-o"></i>Blog Details</a></li>
                 <li <?php if($this->uri->segment(2)=='blog' && $this->uri->segment(3)=='add_category'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/blog/add_category"><i class="fa fa-circle-o"></i>Add Blog Category</a></li>
                 <li <?php if($this->uri->segment(2)=='blog' && $this->uri->segment(3)=='manage'){ ?>class="active" <?php } ?>><a href="<?php echo base_url();?>admin/blog/manage"><i class="fa fa-circle-o"></i>Manage Blog Category</a></li>
                 
@@ -80,6 +88,16 @@
                 
               </ul>
             </li> 
+
+            <li class="<?php if($this->uri->segment(2)=='leaderboard'){ echo 'active';}?> treeview">
+              <a href="<?php echo base_url();?>admin/leaderboard">
+                 <i class="fa fa-dashboard"></i> <span>Leader Board</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li  ><a href="<?php echo base_url();?>admin/leaderboard/viewleaderboard"><i class="fa fa-circle-o"></i>View Leader Board</a></li>
+                <li  ><a href="<?php echo base_url();?>admin/leaderboard/manage_leader_board"><i class="fa fa-circle-o"></i>Manage Leader Board</a></li>
+              </ul>
+            </li>
             
 
 

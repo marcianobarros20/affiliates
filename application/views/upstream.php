@@ -75,45 +75,31 @@
 
     <section id="about-us" class="container main" >
     <div class="row">
-      <div class="span2">
-        <a href="<?php echo base_url();?>welcome/dashboard">Dashboard</a>
-        <br>
-        <a>Leader Board</a>
-        <br>
-        <a href="<?php echo base_url();?>welcome/view_upstream">Upstream</a>
-        <br>
-        <a href="<?php echo base_url();?>welcome/view_downstrem">Down Stream</a>
-      </div>
-      <div class="span10" >
-         <h1 class="center">Team</h1>
-         <div class="treelist">
-          <ul>
-            <li>
-              <p>Aparajita</p>
-              <a href="#" class="info" title="View Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-              <a href="#" class="upstream" title="View Upstream"><i class="fa fa-level-up" aria-hidden="true"></i></a>
-            </li>
-            <li>
-              <p>Tania Mistry</p>
-              <a href="#" class="info" title="View Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-              <a href="#" class="upstream" title="View Upstream"><i class="fa fa-level-up" aria-hidden="true"></i></a>
-            </li>
-            <li>
-              <p>Gargi Pal</p>
-              <a href="#" class="info" title="View Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-              <a href="#" class="upstream" title="View Upstream"><i class="fa fa-level-up" aria-hidden="true"></i></a>
-            </li>
-            <li>
-              <p>Sudipta Mitra</p>
-              <a href="#" class="info" title="View Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-              <a href="#" class="upstream" title="View Upstream"><i class="fa fa-level-up" aria-hidden="true"></i></a>
-            </li>
-            <li class="hasparent">
-              <p>Nandita Das</p>
-              <a href="#" class="info" title="View Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-              <a href="#" class="upstream" title="View Upstream"><i class="fa fa-level-up" aria-hidden="true"></i></a> 
-            </li>
-          </ul>
+
+     
+      <div class="span12" >
+         <!-- <h1 class="center">Team</h1> -->
+         <!--  <center>
+            <div class="comment_div">
+              ('Click' On <strong>Name</strong> To View The Details Of Affiliates)
+            </div>
+          </center> -->
+          <!-- s -->
+         <h1 class="center">View Up Stream</h1>
+         <div class="treelist center">
+         
+         <ul>
+
+           <?php $res = get_upstreams_details($fetch_allinfo['uid']);  if(!empty($res)){
+             
+                    foreach ($res as $r) {
+                      echo  $r;
+                    }?>
+            </ul>
+          <?php }?>
+ 
+      
+
          </div>
       </div>
     </div>
@@ -139,6 +125,7 @@
 <!--/Footer-->
     
      <script src="js/bootstrap.min.js"></script>
+<<<<<<< HEAD
   <script type="text/javascript">
   // $(document).ready(function(){
   //   $(".tree ul li a.upstream").click(function(e){
@@ -151,12 +138,19 @@
   //   });
   // });
 </script>
+=======
+  
+>>>>>>> Frontend dashboard
 <script type="text/javascript">
    $(document).ready(function(e){
     $(".treelist ul li a.upstream").click(function(e){
       e.preventDefault();
+<<<<<<< HEAD
       $(this).parent().prev().addClass("showprev");
       $(this).parent().prev().addClass("hasparent");
+=======
+      $(this).parent().prev().addClass("showprev hasparent");
+>>>>>>> Frontend dashboard
       $(this).parent().removeClass("hasparent");
       $(this).hide();
       $(".treelist ul li::before").show();

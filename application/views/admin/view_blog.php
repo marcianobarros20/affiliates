@@ -50,26 +50,77 @@
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content">
+        <section class="content-header">
+           
+            <ol class="breadcrumb">
+         <li><a ><i class="fa fa-dashboard"></i> Manage Blog</a></li> 
+                <li class="active"><a href="<?php echo base_url();?>admin/blog"> Blog Details</a></li>
+                <li class="active"><a > View Details</a></li>
+            </ol>
+            <br>
+        </section>
+      <section class="content">
         <div class="row">
             <div class="col-xs-12">
               <div class="box">
-                <div class="box-header">
+                <div class="box-header with-border">
+                  <h3 class="box-title">View Blog Details</h3>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                       <label>Blog Name</label>
+                       <h4 class="media-heading"><?php echo $single_blog['title'];?></h4>
+                   </div>
+                   <div class="form-group">
+                       <label>Blog Catagory</label>
+                       <h4 class="media-heading"><?php echo $single_blog['title'];?></h4>
+                   </div>
+                   <div class="form-group">
+                       <label>Description</label>
+                       <h4 class="media-heading"><?php echo $single_blog['description'];?></h4>
+                   </div>
+                   <div class="form-group media-left media-middle">
+                    <?php
+                    if($single_blog['media_type']==1)
+                                {
+
+                                  ?>
+                                  <label>Image</label>
+                                  <?php  } else{ ?>
+                                   <label>Video</label>
+                                  <?php  } ?>
+                    <!--  <label>Description</label> -->
+                     <div>
+                       <?php
+                    if($single_blog['media_type']==1)
+                                {
+                                  ?>
+                                   <img src="<?php echo base_url();?>blog_file/original/<?php echo $single_blog['media'];?>" alt="blog_image" >
+                                  
+                                  <?php
+                                }
+                                else
+                                {?>
+                               <object class="embed-responsive-item">
+                       <video width='320' height='240' controls>
+                         <source src="<?php echo base_url();?>blog_file/video/<?php echo $single_blog['media'];?>" width="100" height="100"/>
+                       </video>
+                     </object>
+                                 
+                                <?php }
+                                ?>
+
+
+                     </div>
+                   
+                    </div>
+                </div>
                  
-                  <div class="box-tools">
-                    <div style="width: 150px;" class="input-group">
-                   <a href="<?php echo base_url();?>admin/blog">  Back</a>
-                  </div>
-                </div><!-- /.box-header -->
+                
              
              
-              <!-- container -->
-              <div class="container-fluid bg-1 text-center">
- <h3 class="box-title">View Blog Details </h3>
-  
-</div>
-
-
+   
+<!-- 
 
 
 <div class="media">
@@ -100,11 +151,11 @@
   </div>
 </div>
 
-              <!-- container -->
+              
 
+ -->
 
-
-              </div>
+              
               </div><!-- /.box -->
             </div>
           </div>

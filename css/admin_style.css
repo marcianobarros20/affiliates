@@ -4,6 +4,10 @@
     min-height: 825px;
 }
 
+.charttree.frontchart{
+    min-height: auto;
+}
+
 /*#region Organizational Chart*/
 .tree * {
     margin: 0; padding: 0;

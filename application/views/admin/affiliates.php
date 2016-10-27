@@ -80,6 +80,14 @@
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <ol class="breadcrumb">
+               <li><a><i class="fa fa-dashboard"></i> Manage User</a></li>
+                <li class="active"><a> Affiliate</a></li>
+            </ol>
+            <br>
+        </section>
+        <!-- Content Header (Page header) -->
         <section class="content">
         <div class="row">
             <div class="col-xs-12">
@@ -118,38 +126,65 @@
                               }
                               
                           } ?>
+
+                                                
                            <div class="col-md-12 assign-upper" style="display:none" id="Assign_div_<?php echo $users['uid']; ?>">
                                     <input type="text" placeholder="Assign Refferal Code" id="assign_code_<?php echo $users['uid']; ?>" onfocus="show_sugg(<?php echo $users['uid']; ?>)">
                                     <input type="button" class="" value="Click To Assign" id="assign_code_button_<?php echo $users['uid']; ?>" onclick="assign_uppertier(<?php echo $users['uid']; ?>)">
                                     <div class="row suggestion" style="display:none" id="suggestion_div_<?php echo $users['uid']; ?>">
-                                       <?php 
-                                            $all_downstream=get_downstream($users['uid']);
-                                            $user = Array();
-                                            foreach ($all_downstream as $key => $value) {
-                                              $user[] = $value;
-                                            }
 
-                                          foreach($active_affiliate as $affiliate) {
-                                           if($users['uid']!=$affiliate['uid']) {
-                                         
-                                         
-                                            if (!in_array($affiliate['uid'], $user)) 
-                                              { ?>
-                                             <a onclick="get_refferals('<?php echo $users['uid']; ?>','<?php echo $affiliate['refferalcode']; ?>')">
-                                            <div class="row all-affiliate" >
-                                              <div class="col-md-4" title="Affiliate Name" >
-                                                <?php echo $affiliate['fname']." ".$affiliate['lname']; ?>
-                                              </div>
-                                              <div class="col-md-6 reff-code" title="Refferal Code">
-                                                <?php echo $affiliate['refferalcode']; ?>
-                                              </div>
-                                              <div class="col-md-2" title="Number Of Affiliates">
-                                               <?php echo $total_affiliate=affiliate_count($affiliate['uid']); ?>
-                                              </div>
-                                            </div>
-                                          </a>  
+                                    <?php $all_downstream=get_downstream($users['uid']); $user = Array(); foreach ($all_downstream as $key => $value) { $user[] = $value; }
+
+                                    foreach($active_affiliate as $affiliate)
+                                    {
+                                      if($users['uid']!=$affiliate['uid']) {
+                                      $getupstream=get_upstream($affiliate['uid']); $parents=end($getupstream);
+                                        if (!in_array($affiliate['uid'], $user)) 
+                                        {
+                                          if($affiliate['uid']==1){ ?>
+                                                  
+                                                     
+                                                  
+                                                 
+                                                     <a onclick="get_refferals('<?php echo $users['uid']; ?>','<?php echo $affiliate['refferalcode']; ?>')">
+                                                    <div class="row all-affiliate" >
+                                                      <div class="col-md-4" title="Affiliate Name" >
+                                                        <?php echo $affiliate['fname']." ".$affiliate['lname']; ?>
+                                                      </div>
+                                                      <div class="col-md-6 reff-code" title="Refferal Code">
+                                                        <?php echo $affiliate['refferalcode']; ?>
+                                                      </div>
+                                                      <div class="col-md-2" title="Number Of Affiliates">
+                                                       <?php echo $total_affiliate=affiliate_count($affiliate['uid']); ?>
+                                                      </div>
+                                                    </div>
+                                                  </a>  
                                         <?php
-                                         } } } ?>
+                                          }else
+                                          { if($parents==1)
+                                                 {?>
+                                                  <a onclick="get_refferals('<?php echo $users['uid']; ?>','<?php echo $affiliate['refferalcode']; ?>')">
+                                                    <div class="row all-affiliate" >
+                                                      <div class="col-md-4" title="Affiliate Name" >
+                                                        <?php echo $affiliate['fname']." ".$affiliate['lname']; ?>
+                                                      </div>
+                                                      <div class="col-md-6 reff-code" title="Refferal Code">
+                                                        <?php echo $affiliate['refferalcode']; ?>
+                                                      </div>
+                                                      <div class="col-md-2" title="Number Of Affiliates">
+                                                       <?php echo $total_affiliate=affiliate_count($affiliate['uid']); ?>
+                                                      </div>
+                                                    </div>
+                                                  </a>
+
+                                         <?php  } }
+
+
+
+
+                                          } } 
+                                    }?>
+
 
                                     </div>
                                   </div>

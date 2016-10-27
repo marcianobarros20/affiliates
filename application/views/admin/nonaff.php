@@ -89,6 +89,15 @@
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <ol class="breadcrumb">
+               <li><a><i class="fa fa-dashboard"></i> Manage User</a></li>
+                <li class="active"><a> Non-Affiliate</a></li>
+            </ol>
+            <br>
+        </section>
+        <!-- Content Header (Page header) -->
+        
                <section class="content">
                 <div class="row">
                     <div class="col-xs-12">

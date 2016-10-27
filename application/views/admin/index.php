@@ -160,8 +160,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
                Welcome Admin
             </h1>
             <ol class="breadcrumb">
-                <li><a href="<?php echo base_url();?>admin"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Dashboard</li>
+      <!--           <li><a href="<?php //echo base_url();?>admin"><i class="fa fa-dashboard"></i> Home</a></li> -->
+                <li class="active"><a href="<?php echo base_url();?>admin"><i class="fa fa-dashboard"></i>Dashboard</a></li>
             </ol>
         </section>
 
@@ -231,11 +231,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 
         <section class="content">
-         
           <!-- map -->
             <div id="map_canvas"></div>
-           <!-- end map -->
-        
+          <!-- end map -->
        </section>  
 
   

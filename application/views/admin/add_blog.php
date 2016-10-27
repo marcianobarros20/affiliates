@@ -50,10 +50,20 @@
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
-      <section>
-        <!-- Content Header (Page header) -->
-        <div class="clearfix"></div>
-        <div class="box box-primary">
+        <section class="content-header">
+           
+            <ol class="breadcrumb">
+         <li><a ><i class="fa fa-dashboard"></i> Manage Blog</a></li> 
+                <li class="active"><a > Add Blog</a></li>
+            </ol>
+            <br>
+        </section>
+
+
+        <section class="content">
+     
+      
+        <div class="box">
                 <div class="box-header with-border">
                   <h3 class="box-title">Add Blog</h3>
 <?php if($this->session->userdata('succ_msg')!=" "){ echo '<font color="green">'.$this->session->userdata('succ_msg').'</font>';$this->session->set_userdata('succ_msg',' ');}?>

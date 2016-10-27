@@ -532,6 +532,7 @@ function Fnchktrainingstatus($cl_id,$co_id,$u_id)
     $count=0;
     $CI->db->select('*');
     $CI->db->where('parent_id',$parent);
+    $CI->db->where('status',1);
     $res = $CI->db->get('users');
     $info=$res->result_array();
   
@@ -560,7 +561,9 @@ function fetchchildaffiliate($parent = 0, $user_tree_array = '') {
 
         $CI->db->select('*');
         $CI->db->where('parent_id',$parent);
+        $CI->db->where('status',1);
         $res = $CI->db->get('users');
+
         $info=$res->result_array();
   
   if ($res->num_rows() > 0) {
@@ -571,16 +574,20 @@ function fetchchildaffiliate($parent = 0, $user_tree_array = '') {
          $child=children_info($ins['uid']);
          if(!empty($child))
          {
-            $user_tree_array[] = "<li> <div class='tree_elem'><div class='container-fluid'><div class='row' onclick='description(".$ins['uid'].")'>". $ins['fname'].' '.$ins['lname']."<p>". $total_affiliate=affiliate_count($ins['uid'])."</p>
-            <a href='#' class='info' title='View Details'><i class='fa fa-info-circle' aria-hidden='true'></i></a><a href='#' class='downstream bounce' title='View Downstream'><i class='fa fa-level-down' aria-hidden='true'></i></a> 
+
+            $user_tree_array[] = "<li> <div class='tree_elem'><div class='container-fluid'><div class='row' >". $ins['fname'].' '.$ins['lname']."<p>". $total_affiliate=affiliate_count($ins['uid'])."</p>
+            <a onclick='description(".$ins['uid'].")' class='info' title='View Info'><i class='fa fa-info-circle' aria-hidden='true'></i></a><a href='#' class='downstream bounce' title='View Downstream'><i class='fa fa-level-down' aria-hidden='true'></i></a> 
+
             </div></div></div>";
             $user_tree_array = fetchchildaffiliate($ins['uid'], $user_tree_array);
             $user_tree_array[]="</li>";
         }
         else
         {
-             $user_tree_array[] = "<li> <div class='tree_elem'><div class='container-fluid'><div class='row' onclick='description(".$ins['uid'].")'>". $ins['fname'].' '.$ins['lname']."<p>". $total_affiliate=affiliate_count($ins['uid'])."</p>
-             <a href='#' class='info' title='View Details'><i class='fa fa-info-circle' aria-hidden='true'></i></a>
+
+             $user_tree_array[] = "<li> <div class='tree_elem'><div class='container-fluid'><div class='row' >". $ins['fname'].' '.$ins['lname']."<p>". $total_affiliate=affiliate_count($ins['uid'])."</p>
+             <a onclick='description(".$ins['uid'].")' class='info' title='View Info'><i class='fa fa-info-circle' aria-hidden='true'></i></a>
+
              </div></div></div></li>";
         }
       
@@ -612,7 +619,9 @@ function fetchaffiliatestree($parent = 0, $user_tree_array = '') {
          $child=children_info($ins['uid']);
          if(!empty($child))
          {
-      $user_tree_array[] = "<li> <div class='tree_elem'><div class='container-fluid'><div class='row' onclick='description(".$ins['uid'].")'>". $ins['fname'].' '.$ins['lname']."<p>". $total_affiliate=affiliate_count($ins['uid'])."</p><a href='#' class='info' title='View Details'><i class='fa fa-info-circle' aria-hidden='true'></i></a><a href='#' class='downstream bounce' title='View Downstream'><i class='fa fa-level-down' aria-hidden='true'></i></a> 
+
+      $user_tree_array[] = "<li> <div class='tree_elem'><div class='container-fluid'><div class='row' >". $ins['fname'].' '.$ins['lname']."<p>". $total_affiliate=affiliate_count($ins['uid'])."</p><a onclick='description(".$ins['uid'].")' class='info' title='View Info'><i class='fa fa-info-circle' aria-hidden='true'></i></a><a href='#' class='downstream bounce' title='View Downstream'><i class='fa fa-level-down' aria-hidden='true'></i></a> 
+
 
       </div></div></div>";
       $user_tree_array = fetchchildaffiliate($ins['uid'], $user_tree_array);
@@ -621,7 +630,9 @@ function fetchaffiliatestree($parent = 0, $user_tree_array = '') {
         else
         {
             $user_tree_array[] = "<li> <div class='tree_elem'><div class='container-fluid'><div class='row' onclick='description(".$ins['uid'].")'>". $ins['fname'].' '.$ins['lname']."<p>". $total_affiliate=affiliate_count($ins['uid'])."</p>
-              <a href='#' class='info' title='View Details'><i class='fa fa-info-circle' aria-hidden='true'></i></a>
+
+              <a onclick='description(".$ins['uid'].")' class='info' title='View Info'><i class='fa fa-info-circle' aria-hidden='true'></i></a>
+
             </div></div></div></li>";
         }
       
@@ -682,6 +693,9 @@ function get_downstreams($parent = 0, $user_tree_array = '')
 
   $CI->db->select('*');
   $CI->db->where('parent_id',$parent);
+
+  $CI->db->where('status',1);
+
   $res = $CI->db->get('users');
   $info=$res->result_array();
   
@@ -709,6 +723,185 @@ function get_downstreams($parent = 0, $user_tree_array = '')
   }
   return $user_tree_array;
 }
+
+
+
+   function get_upstream($uid)
+   {
+        $up_tree= array();
+        $CI=& get_instance();
+        $CI->load->database(); 
+        $CI->db->select('*');
+        $CI->db->where('uid',$uid);
+        $CI->db->where('status',1);
+        $res = $CI->db->get('users');
+
+        $info=$res->row_array();
+        if($info['parent_id'])
+        { 
+           $up_tree[]=$info['parent_id'];
+           $up_tree =get_upstreams($info['parent_id'], $up_tree);
+        }
+        return $up_tree;
+        
+   }
+
+   function get_upstreams($pid,$up_tree)
+   {
+
+        $CI=& get_instance();
+        $CI->load->database(); 
+        $CI->db->select('*');
+        $CI->db->where('uid',$pid);
+        $CI->db->where('status',1);
+        $res = $CI->db->get('users');
+        $info=$res->row_array();
+        if($info['parent_id'])
+        { 
+           $up_tree[]=$info['parent_id'];
+           $up_tree =get_upstreams($info['parent_id'], $up_tree);
+        }
+        return $up_tree;
+   }
+
+   function get_upstreams_details($uid)
+   {
+        $up_tree= array();
+        $CI=& get_instance();
+        $CI->load->database(); 
+        $CI->db->select('*');
+        $CI->db->where('uid',$uid);
+        $CI->db->where('status',1);
+        $res = $CI->db->get('users');
+
+        $info=$res->row_array();
+        if($info['parent_id'])
+        { 
+              $up_tree =get_upstreams_details1($info['parent_id'], $up_tree);
+
+              $up_tree[]='<li class="hasparent">
+              <p>'. $info['fname'].' '.$info['lname'].'</p>
+              <a  onclick="description('.$info['uid'].')" class="info" title="View Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+              <a  class="upstream" title="View Upstream"><i class="fa fa-level-up" aria-hidden="true"></i></a> 
+            </li>';
+        }
+        else
+        {
+          $up_tree[]='<li class="hasparent">
+              <p>'. $info['fname'].' '.$info['lname'].'</p>
+              <a onclick="description('.$info['uid'].')"  class="info" title="View Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+              <a  class="upstream" title="View Upstream"><i class="fa fa-level-up" aria-hidden="true"></i></a> 
+            </li>';
+
+        }
+        return $up_tree;
+   }
+
+
+   function get_upstreams_details1($pid,$up_tree)
+   {
+
+        $CI=& get_instance();
+        $CI->load->database(); 
+        $CI->db->select('*');
+        $CI->db->where('uid',$pid);
+        $CI->db->where('status',1);
+        $res = $CI->db->get('users');
+        $info=$res->row_array();
+        if($info['parent_id'])
+        { 
+           $up_tree =get_upstreams_details1($info['parent_id'], $up_tree);
+
+              $up_tree[]='<li class="hasparent">
+              <p>'. $info['fname'].' '.$info['lname'].'</p>
+              <a  onclick="description('.$info['uid'].')" class="info" title="View Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+              <a  class="upstream" title="View Upstream"><i class="fa fa-level-up" aria-hidden="true"></i></a> 
+            </li>';
+        }
+        else
+        {
+          $up_tree[]='<li class="hasparent">
+              <p>'. $info['fname'].' '.$info['lname'].'</p>
+              <a  onclick="description('.$info['uid'].')" class="info" title="View Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+              <a  class="upstream" title="View Upstream"><i class="fa fa-level-up" aria-hidden="true"></i></a> 
+            </li>';
+
+        }
+        return $up_tree;
+   }
+
+   function previous_ranking_position($last_week_start,$last_week_end,$userid)
+   {  
+
+    $days_ago = date('Y-m-d', strtotime('-7 days', strtotime($last_week_start)));
+     $date=$days_ago;
+    $ts = strtotime($date);
+    $start = (date('w', $ts) == 0) ? $ts : strtotime('last sunday', $ts);
+    $previous_last_week_start = date('Y-m-d', $start);
+    $previous_last_week_end = date('Y-m-d', strtotime('next saturday', $start));
+  
+
+      /*$previous_last_week = strtotime("-2 week +1 day");
+      $start_last_week = strtotime("last sunday midnight",$previous_last_week);
+      $end_last_week = strtotime("next saturday",$start_last_week);
+      $previous_last_week_start = date("Y-m-d",$start_last_week);
+      $previous_last_week_end = date("Y-m-d",$end_last_week);*/
+
+      //$previous_week_rank=$
+      //$this_week_rank=$
+        $CI=& get_instance();
+        $CI->load->database(); 
+        $CI->db->select('rank');
+        $CI->db->where('userid',$userid);
+        $CI->db->where('week_start_date',$previous_last_week_start);
+        $CI->db->where('week_end_date',$previous_last_week_end);
+        $res = $CI->db->get('weekly_rank');
+        $info=$res->row_array();
+         
+        if($info['rank'])
+        {/*
+            $CI=& get_instance();
+            $CI->load->database(); 
+            $CI->db->select('rank');
+            $CI->db->where('userid',$userid);
+            $CI->db->where('week_start_date',$last_week_start);
+            $CI->db->where('week_end_date',$last_week_end);
+            $res = $CI->db->get('weekly_rank');
+            $info1=$res->row_array();
+
+            if($info1['rank'])
+            {
+               $position=$info['rank']-$info1['rank'];
+               return $position;
+            }*/
+            return $info['rank'];
+        }
+        else
+        {
+          return "New Entry";
+        }
+   
+   }
+
+
+   function ranking_position($last_week_start,$last_week_end,$userid)
+   {
+            $CI=& get_instance();
+            $CI->load->database(); 
+            $CI->db->select('rank');
+            $CI->db->where('userid',$userid);
+            $CI->db->where('week_start_date',$last_week_start);
+            $CI->db->where('week_end_date',$last_week_end);
+            $res = $CI->db->get('weekly_rank');
+            $info1=$res->row_array();
+
+            return $info1['rank'];
+            
+            
+          
+   
+   }
+
 
 
 ?>

@@ -40,6 +40,24 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script type="text/javascript" src="js/affiliate.js"></script>
+    <script type="text/javascript">
+       function description(uid)
+        {
+          $('#myModal').modal('show');
+          var res= $.ajax({
+                          type : 'post',
+                          url : 'Ajax/Fngetdetails',
+                          data : 'uid='+uid,
+                          async : false,
+                          success : function(msg)
+                           {
+                               //alert(msg);
+                               $('#chkline').html(msg);
+
+                           }
+          });
+        }
+    </script>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -55,7 +73,34 @@
 
           
     <div class="content-wrapper">
-      <div class="charttree">
+
+      <section class="content-header">
+            <ol class="breadcrumb">
+               <li><a><i class="fa fa-dashboard"></i> Manage User</a></li>
+                <li class="active"><a href="<?php echo base_url();?>admin/users"> Affiliate</a></li>
+                 <li class="active"><a> View Details</a></li>
+            </ol>
+            <br>
+        </section>
+        <!-- Content Header (Page header) -->
+        <section class="content">
+          <div class="charttree">
+            <div class="tree">
+            <?php $res = fetchaffiliatestree($user_info['uid']);  if(!empty($res)){?>
+              <ul>  
+                 <li><a href='#'><div class='container-fluid'><div class='row'><?php echo $user_info['fname'].' '.$user_info['lname'];?><p><?php echo $total_affiliate=affiliate_count($user_info['uid']); ?></p></div></div></a> 
+                   <?php
+                      foreach ($res as $r) {
+                        echo  $r;
+                      }?>
+                  </li>
+              </ul>
+            <?php }?>
+            </div>
+          </div>
+    </section>
+
+     <!--  <div class="charttree">
         <div class="tree">
         <?php $res = fetchaffiliatestree($user_info['uid']);  if(!empty($res)){?>
           <ul>  
@@ -76,7 +121,25 @@
           </ul>
         <?php }?>
         </div>
+      </div> -->
+
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Basic Informations</h4>
       </div>
+      <div class="modal-body" id="chkline">
+        ...
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+
     </div>
 
     <!-- Add the sidebar's background. This div must be placed
@@ -140,11 +203,5 @@
   });
 </script>
 
-<script>
-// $(document).ready(function(){
-//   var offsetLeft = $( ".tree > ul > li > a" ).offset();
-//   $( ".charttree" ).scrollLeft( offsetLeft.left );
-//   console.log(offsetLeft);
-// });
-</script>
+
 </html>

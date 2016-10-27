@@ -46,7 +46,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"> 
     
      <script type="text/javascript" src="js/frame.js"></script>
- 
+
+       
 </head>
 
 <body onload="prettyPrint();">
@@ -75,34 +76,28 @@
 
     <section id="about-us" class="container main" >
     <div class="row">
-      <div class="col-md-4">
-        <a href="<?php echo base_url();?>welcome/dashboard">Dashboard</a>
-        <br>
-        <a>Leader Board</a>
-        <br>
-        <a href="<?php echo base_url();?>welcome/view_upstream">Upstream</a>
-        <br>
-        <a href="<?php echo base_url();?>welcome/view_downstrem">Down Stream</a>
-      </div>
-      <div class="col-md-8" >
-         <h1 class="center">Team</h1>
+     
+      <div class="span12" >
+         <h1 class="center">View Down Stream</h1>
          <!--  <center>
             <div class="comment_div">
               ('Click' On <strong>Name</strong> To View The Details Of Affiliates)
             </div>
           </center> -->
-          <div class="tree ">
-        <?php $res = fetchaffiliatestree($fetch_allinfo['uid']);  if(!empty($res)){?>
-          <ul>  
-             <li><a href='#'><div class='container-fluid'><div class='row'><?php echo $fetch_allinfo['fname'].' '.$fetch_allinfo['lname'];?><p><?php echo $total_affiliate=affiliate_count($fetch_allinfo['uid']);  ?></p></div></div></a> 
-               <?php
-                  foreach ($res as $r) {
-                    echo  $r;
-                  }?>
-              </li>
-          </ul>
-        <?php }?>
-      </div>
+      <div class="charttree frontchart">    
+        <div class="tree ">
+          <?php $res = fetchaffiliatestree($fetch_allinfo['uid']);  if(!empty($res)){?>
+            <ul>  
+               <li><a href='#'><div class='container-fluid'><div class='row '><?php echo $fetch_allinfo['fname'].' '.$fetch_allinfo['lname'];?><p><?php echo $total_affiliate=affiliate_count($fetch_allinfo['uid']);  ?></p></div></div></a> 
+                 <?php
+                    foreach ($res as $r) {
+                      echo  $r;
+                    }?>
+                </li>
+            </ul>
+          <?php }?>
+        </div>
+      </div>  
       </div>
     </div>
     </section>
@@ -136,13 +131,15 @@
   <?php echo $footer;?>
 <!--/Footer-->
     
-     <script src="js/bootstrap.min.js"></script>
-  <script type="text/javascript">
+   <script type="text/javascript">
   $(document).ready(function(){
-    $(".tree ul li a").click(function(e){
-      $(this).parent().find($("ul")).first().toggleClass("open");
-      $(this).parent().siblings().find($("ul")).removeClass("open");
+    $(".tree ul li a.downstream").click(function(e){
+      $(this).parent().parent().parent().parent().find($("ul")).first().toggleClass("open");
+      $(this).parent().parent().parent().parent().siblings().find($("ul")).removeClass("open");
       e.preventDefault();
+
+      $(this).toggleClass("upstream");
+
     });
   });
 </script>

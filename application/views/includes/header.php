@@ -33,7 +33,15 @@
 
                                                 <?php } else { ?>
 
-                        <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='dashboard'){ echo 'class="active"';} ?>><a href="<?php echo base_url()?>welcome/dashboard" > <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='dashboard'){?> {Dashboard} <?php } else { ?> Dashboard <?php }?> </a></li>
+                       <li class ="dropdown"><a style="cursor:pointer;"><?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='dashboard' || $this->uri->segment(2)=='view_upstream' || $this->uri->segment(2)=='view_downstrem' || $this->uri->segment(2)=='leader_board'){  ?> {Dashboard} <?php } else { ?> Dashboard <?php }?> <span class="caret"></span> </a>
+                        <ul class="sub-menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url();?>welcome/dashboard">Home</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url();?>welcome/view_upstream">Up Stream</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url();?>welcome/view_downstrem">Down Stream</a></li>
+                            <li role="presentation"><a href="<?php echo base_url();?>welcome/leader_board">Leader Board</a></li>
+                        </ul>
+                        </li> 
+
                         <li <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='profile'){ echo 'class="active"';} ?>><a href="<?php echo base_url()?>welcome/profile" > <?php if($this->uri->segment(2)!='' && $this->uri->segment(2)=='profile'){?> {Profile} <?php } else { ?> Profile <?php }?> </a></li>
 
                         <li class ="dropdown"><a style="cursor:pointer;"><?php if($this->uri->segment(2)!='' && ($this->uri->segment(2)=='Allcourses' || $this->uri->segment(2)=='affiliate_training' || $this->uri->segment(2)=="classinfo")){ ?> {Tutorials} <?php } else { ?>Tutorials<?php }?> <span class="caret"></span></a>

@@ -361,6 +361,26 @@
         return $res->result_array();
       }
 
+      function get_leader_board($last_week_start,$last_week_end)
+      {
+        $this->db->select('*');
+        $this->db->join('users','users.uid=weekly_rank.userid');
+        $this->db->where('week_start_date',$last_week_start);
+        $this->db->where('week_end_date',$last_week_end);
+        $this->db->order_by('rank','asc');
+        $res=$this->db->get('weekly_rank');
+        return $res->result_array();
+      }
+
+      function getlatestrank($u_id)
+      {
+        $this->db->select('rank');
+        $this->db->where('userid',$u_id);
+        $this->db->order_by('rank','desc');
+        $res=$this->db->get('weekly_rank');
+        return $res->row_array();
+      }
+
 
   }
 ?>

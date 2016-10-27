@@ -50,7 +50,16 @@
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content">
+       
+          <section class="content-header">
+           
+            <ol class="breadcrumb">
+         <li><a ><i class="fa fa-dashboard"></i> Manage Blog</a></li> 
+                <li class="active"><a > Blog Details</a></li>
+            </ol>
+            <br>
+        </section>
+         <section class="content">
         <div class="row">
             <div class="col-xs-12">
               <div class="box">

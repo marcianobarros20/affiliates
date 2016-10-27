@@ -47,7 +47,29 @@
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
      <script type="text/javascript" src="js/frame.js"></script>
- 
+    <style type="text/css">
+    .board{
+      
+      text-align: center;
+       background: #12dffd none repeat scroll 0 0;
+    color: #fff;
+    font-size: 20px;
+    }
+
+    .board :hover{
+      
+    
+       color: #12dffd ;
+       background: #fff;
+    
+    }
+
+
+    .board-header
+    {
+      padding: 20px 20px 20px 20px;
+    }
+    </style>
 </head>
 
 <body onload="prettyPrint();">
@@ -76,17 +98,29 @@
 
     <section id="about-us" class="container main" >
     <div class="row">
-      <div class="col-md-4">
-        <a href="<?php echo base_url();?>welcome/dashboard">Dashboard</a>
-        <br>
-        <a>Leader Board</a>
-        <br>
-        <a href="<?php echo base_url();?>welcome/view_upstream">Upstream</a>
-        <br>
-        <a href="<?php echo base_url();?>welcome/view_downstrem">Down Stream</a>
-      </div>
-      <div class="col-md-8" >
-        Your Rank In This Week
+     
+      <div class="span12" >
+        <div class="row">
+          <div class="span4 board">
+            <div class="board-header" >
+               <b>Rank This Week</b><br><br>
+
+            <b><?php echo $fetch_rank['rank']; ?></b>
+          </div>
+          </div>
+          <div class="span4 board">
+            <div class="board-header" >
+             <b>Total Affiliate</b><br><br>
+            <b><?php echo $fetch_child; ?></b>
+            </div>
+          </div>
+          <div class="span4 board" >
+            <div class="board-header" >
+           <b> Total Down Stream</b><br><br>
+            <b><?php echo $total_affiliate=affiliate_count($fetch_allinfo['uid']);  ?></b>
+          </div>
+
+        </div>
         <!-- <h1 class="center">Meet the Team</h1>
           <center>
             <div class="comment_div">
