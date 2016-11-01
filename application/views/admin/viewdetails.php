@@ -59,7 +59,15 @@
         <div class="tree">
         <?php $res = fetchaffiliatestree($user_info['uid']);  if(!empty($res)){?>
           <ul>  
-             <li><a href='#'><div class='container-fluid'><div class='row'><?php echo $user_info['fname'].' '.$user_info['lname'];?><p><?php echo $total_affiliate=affiliate_count($user_info['uid']); ?></p></div></div></a> 
+              <li>
+              <div class='tree_elem'>
+                <div class='container-fluid'>
+                  <div class='row'>
+                    <?php echo $user_info['fname'].' '.$user_info['lname'];?>
+                    <p><?php echo $total_affiliate=affiliate_count($user_info['uid']); ?></p>
+                  </div>
+                </div>
+              </div> 
                <?php
                   foreach ($res as $r) {
                     echo  $r;
@@ -121,11 +129,22 @@
   </body>
 <script type="text/javascript">
   $(document).ready(function(){
-    $(".tree ul li a").click(function(e){
-      $(this).parent().find($("ul")).first().toggleClass("open");
-      $(this).parent().siblings().find($("ul")).removeClass("open");
+    $(".tree ul li a.downstream").click(function(e){
+      $(this).parent().parent().parent().parent().find($("ul")).first().toggleClass("open");
+      $(this).parent().parent().parent().parent().siblings().find($("ul")).removeClass("open");
       e.preventDefault();
+
+      $(this).toggleClass("upstream");
+
     });
   });
+</script>
+
+<script>
+// $(document).ready(function(){
+//   var offsetLeft = $( ".tree > ul > li > a" ).offset();
+//   $( ".charttree" ).scrollLeft( offsetLeft.left );
+//   console.log(offsetLeft);
+// });
 </script>
 </html>

@@ -21,7 +21,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
      <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-  <link rel="stylesheet" href="css/admin_style.css">
+  <link rel="stylesheet" href="css/front_style.css">
  <script type="text/javascript" src="js/menu.js"></script>
  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
  <!-- tree css and js -->
@@ -75,7 +75,7 @@
 
     <section id="about-us" class="container main" >
     <div class="row">
-      <div class="col-md-4">
+      <div class="span2">
         <a href="<?php echo base_url();?>welcome/dashboard">Dashboard</a>
         <br>
         <a>Leader Board</a>
@@ -84,71 +84,40 @@
         <br>
         <a href="<?php echo base_url();?>welcome/view_downstrem">Down Stream</a>
       </div>
-      <div class="col-md-8" >
+      <div class="span10" >
          <h1 class="center">Team</h1>
-         <!--  <center>
-            <div class="comment_div">
-              ('Click' On <strong>Name</strong> To View The Details Of Affiliates)
-            </div>
-          </center> -->
-          <div class="tree ">
-        
-          <ul>  
-              <li>
-                <a href='#'>
-                  <div class='container-fluid'>
-                    <div class='row'>
-                      <?php echo $fetch_allinfo['fname'].' '.$fetch_allinfo['lname'];?>
-                    </div>
-                  </div>
-                </a>
-                  <ul>  
-                    <li>
-                      <a href='#'>
-                        <div class='container-fluid'>
-                          <div class='row'>
-                            <?php echo $fetch_allinfo['fname'].' '.$fetch_allinfo['lname'];?>
-                          </div>
-                        </div>
-                      </a>
-                         <ul>  
-                            <li>
-                              <a href='#'>
-                                <div class='container-fluid'>
-                                  <div class='row'>
-                                    <?php echo $fetch_allinfo['fname'].' '.$fetch_allinfo['lname'];?>
-                                  </div>
-                                </div>
-                              </a>
-                                 <ul>  
-                                    <li>
-                                      <a href='#'>
-                                        <div class='container-fluid'>
-                                          <div class='row'>
-                                            <?php echo $fetch_allinfo['fname'].' '.$fetch_allinfo['lname'];?>
-                                          </div>
-                                        </div>
-                                      </a> 
-                                    </li>
-                                  </ul> 
-                            </li>
-                          </ul> 
-                    </li>
-                  </ul> 
-              </li>
+         <div class="treelist">
+          <ul>
+            <li>
+              <p>Aparajita</p>
+              <a href="#" class="info" title="View Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+              <a href="#" class="upstream" title="View Upstream"><i class="fa fa-level-up" aria-hidden="true"></i></a>
+            </li>
+            <li>
+              <p>Tania Mistry</p>
+              <a href="#" class="info" title="View Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+              <a href="#" class="upstream" title="View Upstream"><i class="fa fa-level-up" aria-hidden="true"></i></a>
+            </li>
+            <li>
+              <p>Gargi Pal</p>
+              <a href="#" class="info" title="View Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+              <a href="#" class="upstream" title="View Upstream"><i class="fa fa-level-up" aria-hidden="true"></i></a>
+            </li>
+            <li>
+              <p>Sudipta Mitra</p>
+              <a href="#" class="info" title="View Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+              <a href="#" class="upstream" title="View Upstream"><i class="fa fa-level-up" aria-hidden="true"></i></a>
+            </li>
+            <li class="hasparent">
+              <p>Nandita Das</p>
+              <a href="#" class="info" title="View Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+              <a href="#" class="upstream" title="View Upstream"><i class="fa fa-level-up" aria-hidden="true"></i></a> 
+            </li>
           </ul>
-        
-      </div>
+         </div>
       </div>
     </div>
     </section>
-
-
-
-
-
-
-
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -165,20 +134,32 @@
     </div>
   </div>
 </div>
-
-
-
 <!--Footer-->
   <?php echo $footer;?>
 <!--/Footer-->
     
      <script src="js/bootstrap.min.js"></script>
   <script type="text/javascript">
-  $(document).ready(function(){
-    $(".tree ul li a").click(function(e){
-      $(this).parent().find($("ul")).first().toggleClass("open");
-      $(this).parent().siblings().find($("ul")).removeClass("open");
+  // $(document).ready(function(){
+  //   $(".tree ul li a.upstream").click(function(e){
+  //     e.preventDefault();
+  //     $(this).parent().parent().parent().parent().parent().wrap("<ul><li></li></ul>");
+  //     $(this).parent().parent().parent().parent().parent().before('<div class="tree_elem"><div class="container-fluid"><div class="row">hjh<a href="#" class="info" title="View Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a href="#" class="upstream downstream" title="View Upstream"><i class="fa fa-level-up" aria-hidden="true"></i></a></div></div></div>');
+
+  //     console.log($(this).length);
+
+  //   });
+  // });
+</script>
+<script type="text/javascript">
+   $(document).ready(function(e){
+    $(".treelist ul li a.upstream").click(function(e){
       e.preventDefault();
+      $(this).parent().prev().addClass("showprev");
+      $(this).parent().prev().addClass("hasparent");
+      $(this).parent().removeClass("hasparent");
+      $(this).hide();
+      $(".treelist ul li::before").show();
     });
   });
 </script>

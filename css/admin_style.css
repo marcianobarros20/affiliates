@@ -80,7 +80,7 @@ right connector from last child*/
     width: 0; height: 20px;
 }
 
-.tree li a{
+.tree li div.tree_elem{
     width: 150px;
     padding: 10px;
     text-decoration: none;
@@ -93,6 +93,21 @@ right connector from last child*/
     -moz-transition: all 0.5s;
 }
 
+.tree li div.tree_elem a{
+    display: inline-block;
+    font-size: 16px;
+    color: #333;
+    transition: 0.5s;
+}
+
+.downstream{
+    float: right;
+}
+
+.info{
+    float: left;
+}
+
 
 /*Connector styles on hover*/
 .tree li a:hover+ul li::after, 
@@ -103,7 +118,7 @@ right connector from last child*/
 }
 /*#endregion*/
 
-.tree li li li a {
+.tree li li li a , .tree li li li div.tree_elem{
     width: auto;
 }
 
@@ -115,15 +130,34 @@ right connector from last child*/
 .tree > ul > li > ul > li > a {
     width: auto;
 }
+
 .tree ul ul ul{
     display: none;
+    /*opacity: 0;
+    visibility: hidden;
+    -transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;*/
 }
 
 .tree ul ul ul.open{
     display: block;
+    /*opacity: 1;
+    visibility: visible;*/
 }
 
-.tree > ul > li > a{
+.tree > ul > li > .tree_elem{
     background: #3c8dbc;
     color: #fff;
-} 
+}
+
+a.upstream{
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+}
+
+

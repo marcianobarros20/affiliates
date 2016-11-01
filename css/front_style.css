@@ -1,0 +1,64 @@
+.treelist ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: inline-block;
+}
+
+.treelist ul li{
+    background: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+    position: relative;
+    display: none;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 15px;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    border: 1px solid #12dffd;
+}
+
+.treelist ul li:first-child::before{
+    content: '';
+}
+
+.treelist ul li::before{
+    content: "\f176";
+    position: absolute;
+    font-size: 18px;
+    top: -10px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+
+.treelist ul li:last-child, .treelist ul li.showprev{
+    display:block;
+}
+
+/*.treelist ul li.showprev{
+    background: #ccc;
+    
+}*/
+
+.treelist ul li.hasparent {
+  background: #000;
+  color: #f5f5f5;
+}
+
+.treelist ul li.hasparent:first-child {
+  background: #fff;
+  color: #333;
+}
+
+.treelist ul li.hasparent:first-child a.upstream{
+    display: none;
+}
+
+.treelist ul li a.upstream{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
