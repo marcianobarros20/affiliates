@@ -125,32 +125,12 @@
 <!--/Footer-->
     
      <script src="js/bootstrap.min.js"></script>
-<<<<<<< HEAD
-  <script type="text/javascript">
-  // $(document).ready(function(){
-  //   $(".tree ul li a.upstream").click(function(e){
-  //     e.preventDefault();
-  //     $(this).parent().parent().parent().parent().parent().wrap("<ul><li></li></ul>");
-  //     $(this).parent().parent().parent().parent().parent().before('<div class="tree_elem"><div class="container-fluid"><div class="row">hjh<a href="#" class="info" title="View Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a href="#" class="upstream downstream" title="View Upstream"><i class="fa fa-level-up" aria-hidden="true"></i></a></div></div></div>');
 
-  //     console.log($(this).length);
-
-  //   });
-  // });
-</script>
-=======
-  
->>>>>>> Frontend dashboard
 <script type="text/javascript">
    $(document).ready(function(e){
     $(".treelist ul li a.upstream").click(function(e){
       e.preventDefault();
-<<<<<<< HEAD
-      $(this).parent().prev().addClass("showprev");
-      $(this).parent().prev().addClass("hasparent");
-=======
       $(this).parent().prev().addClass("showprev hasparent");
->>>>>>> Frontend dashboard
       $(this).parent().removeClass("hasparent");
       $(this).hide();
       $(".treelist ul li::before").show();
