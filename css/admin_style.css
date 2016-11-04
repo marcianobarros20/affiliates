@@ -2,6 +2,7 @@
     overflow-x: scroll;
     width: 100%;
     min-height: 825px;
+    
 }
 
 .charttree.frontchart{
@@ -85,7 +86,7 @@ right connector from last child*/
 }
 
 .tree li div.tree_elem{
-    width: 150px;
+    width: 100px;
     padding: 10px;
     text-decoration: none;
     background-color: white;
@@ -124,10 +125,12 @@ right connector from last child*/
 
 .tree li li li a , .tree li li li div.tree_elem{
     width: auto;
+    width: 100px;
 }
 
 .tree > ul > li > a {
     width: auto;
+    width: 100px;
 }
 
 
